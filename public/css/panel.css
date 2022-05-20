@@ -1,0 +1,83 @@
+.block {
+    background: #fff url('../images/loading.gif') no-repeat;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1200;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    cursor: not-allowed;
+}
+
+.table_role_summed_up thead tr>th,
+.makeTablePermissionSommedUp thead tr>th {
+    border-bottom: none !important;
+}
+
+table.table_role_summed_up thead>.sorting,
+table.makeTablePermissionSommedUp thead>.sorting {
+    display: none !important;
+}
+
+.dataTables_length {
+    display: none !important;
+}
+
+table.table_role_summed_up>thead .sorting:after,
+table.table_role_summed_up>thead .sorting::before,
+table.makeTablePermissionSommedUp>thead .sorting:after,
+table.makeTablePermissionSommedUp>thead .sorting::before {
+    display: none !important;
+}
+
+.firure {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.firure .img {
+    position: relative;
+    height: 200px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.firure .img img {
+    width: 200px;
+    height: 200px;
+}
+
+.firure .img:hover {
+    box-shadow: 2px 2px 12px #e74a3b;
+    animation: ease-in-out;
+}
+
+.select2-container {
+    min-width: 220px !important;
+    position: absolute !important;
+    left: -80px;
+}
+
+.content-info-company {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.content-company-name {
+    width: auto;
+    border-radius: 50px;
+    background: #fff;
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #000;
+    margin-top: 10px;
+}
