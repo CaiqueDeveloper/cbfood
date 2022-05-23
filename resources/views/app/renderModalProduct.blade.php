@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="content-product-name mr-3 ml-3 my-3">
-            <h1 class="text-xl sm:text-4xl font-bold text-black-600">{{$product['product']->name}}</h1>
+            <h1 class="text-xl sm:text-4xl font-bold text-black-600 product-name">{{$product['product']->name}}</h1>
             <div class="content-produc-category flex mt-3">
                 <p class="text-sm text-black-600 font-bold">Categoria:</p> <p class="text-sm  font-bold bg-orange-300 text-orange-600 ml-2 rounded-lg px-1">{{$product['product']->category->name}}</p>
             </div>
@@ -32,7 +32,7 @@
                 <h1 class="text-xl sm:text-2xl font-bold text-black-600 mr-3 ml-3">Selecione o tamanho desejado</h1>
                 <div class="product-content-info-sizes flex flex-wrap sm:flex-nowrap my-3">
                     @foreach ($product['product']->variations as $key => $value)
-                        <div data-key="{{$key}}" data-price_variation_product="{{$value['variationPrice']}}" class="product-content-info-size mb-2 col col-sm-2 @if($maxValue['variationPrice'] == $value['variationPrice']) bg-orange-300 @endif border-2 border-orange-300 font-medium hover:bg-orange-300 px-[10px] ml-2 py-[15px] text-orange-600 hover:text-white cursor-pointer text-sm rounded-lg font-extrabold">{{$value['variationName']}}<span class="ml-2 text-orange-600 text-xs">{{$value['variationType']}}</span></div>   
+                        <div data-key="{{$key}}" data-price_variation_product="{{$value['variationPrice']}}" data-variation_id="{{$value['id']}}"class="product-content-info-size mb-2 col col-sm-2 @if($maxValue['variationPrice'] == $value['variationPrice']) bg-orange-300 @endif border-2 border-orange-300 font-medium hover:bg-orange-300 px-[10px] ml-2 py-[15px] text-orange-600 hover:text-white cursor-pointer text-sm rounded-lg font-extrabold">{{$value['variationName']}}<span class="ml-2 text-orange-600 text-xs">{{$value['variationType']}}</span></div>   
                     @endforeach 
                 </div>
             </div>  
@@ -90,7 +90,7 @@
             
         </div>
         <div class="product-content-add-cart mr-3 ml-3 my-4 flex items-center">
-            <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer">Adicionar ao Carrinho</div>
+            <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
             <div class="closed-modal bg-red-300 text-red-600 font-bold p-2 rounded-xl cursor-pointer">Cancelar</div>
         </div>
     </div>

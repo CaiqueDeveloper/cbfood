@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdditionalController;
 use App\Http\Controllers\admin\AdditionalItemsController;
 use App\Http\Controllers\Admin\UltilsController;
 use App\Http\Controllers\Admin\Auth\AuthController;
+use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
@@ -81,6 +82,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/storageUpdateAdditonal', [AdditionalController::class, 'storageUpdateAdditonal']);
     Route::post('/storageUpdateItemAdditional', [AdditionalItemsController::class, 'storageUpdateItemAdditional']);
     Route::get('/renderViewContentAdditional', [AdditionalController::class, 'renderViewContentAdditional']);
+
+    
     
 });
 
@@ -88,6 +91,15 @@ Route::prefix('app')->group(function(){
 
     Route::get('/menu/{slug}', [PageHomeController::class, 'index']);
     Route::get('/renderViewGetProduct/{product_id}', [PageHomeController::class, 'renderViewGetProduct']);
+    Route::post('/getProductCart', [PageHomeController::class, 'getProductCart']);
+    Route::get('/getModalCartItem', [PageHomeController::class, 'getModalCartItem']);
+
+    //Cart
+    Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+    Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
+    Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::get('remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');
+    Route::get('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 });
 
 // //auth

@@ -31,10 +31,39 @@
     </header>
     <!-- finish header -->
     <section class="bar-alert w-full h-[50px] shadow-lg">
-        <div class="container mx-auto h-[50px] flex items-center">
-            <h1 class="ml-[20px] ms:ml-[0px]  @if(@count($menuCompany['company']['settings']) > 0) text-[{{$menuCompany['company']['settings']->bgColor}}] @else text-black @endif font-medium text-xl
-            ">Cardapio</h1>
+        <div class="container mx-auto h-[50px] flex items-center justify-between">
+            {{-- <h1 class="ml-[20px] ms:ml-[0px]  @if(@count($menuCompany['company']['settings']) > 0) text-[{{$menuCompany['company']['settings']->bgColor}}] @else text-black @endif font-medium text-xl
+            ">Cardapio {{ Cart::getTotalQuantity()}} --}}
+            <section>
+                Menu
+            </section>
+           
+            <div class="content-alert-bar-menu flex">
+                @if (!Auth::guest())
+                    <div class="user-logged flex">
+                        <p class="mr-2">Olá {{Auth::user()->name}}</p>
+                        <a href="" class="mr-2">Meus Pedidos</a> 
+                    </div>
+                @else
+                    <a href="#">Login</a>
+                    <a href="#" class="mx-3">Cadastre-se</a>
+                @endif
+                <a href="#" class="relative open-shopping-cart">
+                    <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                     </svg>
+                     <div class="total-itemCart absolute top-[-17px] right-[-5px] text-bold">
+                        {{ @count(Cart::getContent())}}
+                     </div>
+                </a>
+            </div>
+        </h1>
+
+        <div id="toggleCart" class="bg-orange-600 sm:hidden  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
+            <i class="fa fa-cart-plus animate-pulse	"></i>
         </div>
+        </div>
+    
     </section>
     @if($menuCompany['company']['settings']->hasOpeneed == 0)
         <div class="bg-red-500 text-center my-4 p-5 text-white" role="alert">

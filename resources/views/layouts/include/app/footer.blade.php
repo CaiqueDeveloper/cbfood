@@ -48,7 +48,26 @@
             </div>
         </div>
           {{-- bloc page --}}
-    
+        <!-- modal Main -->
+        <div class="modal fade" id="modalMain" tabindex="-1" role="dialog" aria-labelledby="modalMainLabel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        
+
+                        <div class="col-4"><h5 class="modal-title"></h5></div>
+                        <div class="col-8 content-button">
+
+                            
+                        
+                            <a href="#" class="close btn btn-danger btn-circle" data-dismiss="modal" aria-label="Close">× </a>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- final footer -->
     <!-- create event -->
@@ -63,7 +82,7 @@
     <script src="{{url('site/js/ultils.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.carousel.min.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.theme.default.min.js')}}"></script>
-    <script src="{{url('https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js')}}"></script>
+    <script src="{{url('theme-sdb-admin-2/vendor/sweetalert2/sweetalert.all.js')}}" type="text/javascript"></script>
     
     <script>
         Home.constructor()
