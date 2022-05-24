@@ -62,5 +62,13 @@ class UserController extends Controller
             return response()->json('error', 400);
         }
     }
+    public function storage($data){
+        
+        $user = [];
+        $user['name'] = $data['name'];
+        $user['email'] = $data['email'];
+        $user['password'] = Hash::make($data['password']);
+        return User::create($user);
+    }
    
 }

@@ -19,7 +19,7 @@
         <h1 class="text-xl sm:text-2xl font-bold text-gray-700 my-3">Total R$ {{ Cart::getTotal() }}</h1>
         
     </div>
-    <div class="product-content-add-cart sm:mr-3 sm:ml-3 my-4 flex items-center">
+    <div class="checout sm:mr-3 sm:ml-3 my-4 flex items-center">
         <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer flex items-center">Proximo 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle-fill ml-2" viewBox="0 0 16 16">
                 <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>

@@ -51,15 +51,18 @@ class User extends Authenticatable
     protected function getInfoUserLogged(){
         
         $data = [];
+        
         $data['user'] = Auth::user();
-        $data['user']['address'] = (self::getAddrressUser(Auth::user()->id) != null) ? self::getAddrressUser(Auth::user()->id) : null;
-        $data['user']['pictureProfile'] = self::getPictureProfileUser(Auth::user()->id);
-        $data['user']['company'] = Company::find(Auth::user()->company_id);
-        $data['user']['company']['address'] = (Company::getAddrressCompany(Auth::user()->company_id) != null) ? Company::getAddrressCompany(Auth::user()->company_id) : null;
-        $data['user']['company']['pictureProfile'] = Company::getPictureProfileCompany(Auth::user()->company_id);
-        $data['user']['company']['settings'] = SettingCompany::find(Auth::user()->company_id);
-        $data['user']['company']['settings']['banner'] = SettingCompany::getPictureSettingCompany(Auth::user()->company_id);
-        $data['user']['companies'] = Auth::user()->companies;
+        if(Auth::user()->company_id != null){
+            $data['user']['address'] = (self::getAddrressUser(Auth::user()->id) != null) ? self::getAddrressUser(Auth::user()->id) : null;
+            $data['user']['pictureProfile'] = self::getPictureProfileUser(Auth::user()->id);
+            $data['user']['company'] = Company::find(Auth::user()->company_id);
+            $data['user']['company']['address'] = (Company::getAddrressCompany(Auth::user()->company_id) != null) ? Company::getAddrressCompany(Auth::user()->company_id) : null;
+            $data['user']['company']['pictureProfile'] = Company::getPictureProfileCompany(Auth::user()->company_id);
+            $data['user']['company']['settings'] = SettingCompany::find(Auth::user()->company_id);
+            $data['user']['company']['settings']['banner'] = SettingCompany::getPictureSettingCompany(Auth::user()->company_id);
+            $data['user']['companies'] = Auth::user()->companies;
+        }
         
         return $data;
     }

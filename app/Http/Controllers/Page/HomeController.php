@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\Page;
 
+use App\Http\Controllers\Admin\AddressController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Controller;
 use App\Models\Additional;
 use App\Models\Company;
 use App\Models\Product;
 use App\Models\SettingCompany;
+use App\Models\User;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -37,5 +43,29 @@ class HomeController extends Controller
 
         $cartItens = \Cart::getContent();
         return view('app.modals.modalCartItem', compact('cartItens'));
+    }
+    protected function getModalCheckout(){
+        $cartItens = \Cart::getContent();
+        return view('app.modals.modalCheckout',compact('cartItens'));
+    }
+    protected function ckeckout(Request $request){
+        //Get Data User
+        $user = UserController::storage($request->only('name', 'email', 'password'));
+        $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix'));
+        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'));
+        $credentials = $request->only('email', 'password');
+        if(isset($user) && isset($address) && isset($order)){
+
+            if(Auth::attempt($credentials)){
+                
+                $response['user'] = User::find(Auth::user()->id)->get();
+                return response()->json($response, 200);
+            }else{
+                return response()->json('Erro e-mail e/ou senha incorretos.', 500);
+            }
+        }
+
+
+     
     }
 }

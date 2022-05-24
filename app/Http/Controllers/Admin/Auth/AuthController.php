@@ -70,7 +70,7 @@ class AuthController extends Controller
         $company_id = Company::insertGetId($company);
         $user['company_id'] = $company_id;
         $user_id = User::insertGetId($user);
-
+        
         $credentials = $request->only('email', 'password');
 
         if(isset($user_id) && isset($company_id)){

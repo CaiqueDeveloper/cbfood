@@ -93,6 +93,8 @@ Route::prefix('app')->group(function(){
     Route::get('/renderViewGetProduct/{product_id}', [PageHomeController::class, 'renderViewGetProduct']);
     Route::post('/getProductCart', [PageHomeController::class, 'getProductCart']);
     Route::get('/getModalCartItem', [PageHomeController::class, 'getModalCartItem']);
+    Route::get('/getModalCheckout', [PageHomeController::class, 'getModalCheckout']);
+    Route::post('/ckeckout', [PageHomeController::class, 'ckeckout']);
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');

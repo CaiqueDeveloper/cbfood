@@ -48,9 +48,22 @@ var Home = {
             let product_id = $(this).attr('data-id_product')
             let url = window.location.origin + `/app/updateItemCart?product_id=${product_id}&quatity=${quantity}`;
             Home.updateItemCart(url);
-            
         })
-       
+       $('.checout').on('click', function(e){
+           e.preventDefault()
+           e.stopImmediatePropagation()
+
+           let url = window.location.origin+ '/app/getModalCheckout'
+           Home.getModalCheckout(url)
+       })
+       $('.form-checkout-new-user').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+           let url = window.location.origin + '/app/ckeckout'
+           Home.CheckoutUser(url, this)
+        })
+    
     },
     renderViewGetProduct(url){
         axios({
@@ -257,6 +270,8 @@ var Home = {
                         setTimeout(() =>{
                             swal.close()
                             Home.getTotalItemCart()
+                            let url = window.location.origin + '/app/getModalCartItem'
+                            Home.getModalCartItem(url)
                             $("#modalMain").modal('hide');
                         },3000)
                     }
@@ -293,6 +308,56 @@ var Home = {
         .then((response) =>{
             let url = window.location.origin + '/app/getModalCartItem'
             Home.getModalCartItem(url)
+        })
+        .catch((error) =>{
+           
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
+    },
+    getModalCheckout(url){
+        axios({
+            url:url,
+            method:'GET'
+        }).then((response) =>{
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Checkout');
+            Home.init_listerns()
+            
+            
+            
+            console.log(qtModal)
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            console.log('finalizou a consulta')
+        })
+    },
+    CheckoutUser(url,data){
+        axios({
+            url:url,
+            method: 'POST',
+            data: new FormData(data),
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            
+                swal(
+                    'Sucesso!',
+                    '',
+                    'success'
+                )
+                setTimeout(() =>{
+                    $('.announcementModalArea').fadeOut('slow')
+                    Home.getTotalItemCart()
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                   
+                },3000)
+            
         })
         .catch((error) =>{
            
