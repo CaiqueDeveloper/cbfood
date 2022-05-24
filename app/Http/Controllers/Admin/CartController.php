@@ -37,12 +37,13 @@ class CartController extends Controller
 
     public function updateCart(Request $request)
     {
+        
        \Cart::update(
-            $request->id,
+            $request->product_id,
             [
                 'quantity' => [
                     'relative' => false,
-                    'value' => $request->quantity
+                    'value' => $request->quatity
                 ],
             ]
         );

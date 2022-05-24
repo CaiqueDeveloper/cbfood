@@ -42,7 +42,14 @@ var Home = {
             e.find('.product-content-info--qt').html(qtModal)
            console.log($(this));
         })
-        
+        $('input[name="quatity"]').on('change', function(e){
+            
+            let quantity = ($(this).val() > 0) ? $(this).val() : 1; 
+            let product_id = $(this).attr('data-id_product')
+            let url = window.location.origin + `/app/updateItemCart?product_id=${product_id}&quatity=${quantity}`;
+            Home.updateItemCart(url);
+            
+        })
        
     },
     renderViewGetProduct(url){
@@ -277,5 +284,19 @@ var Home = {
         }).finally(()=>{
             console.log('finalizou a consulta')
         })
+    },
+    updateItemCart(url){
+        axios({
+            url:url,
+            method: 'GET',
+        })
+        .then((response) =>{
+            let url = window.location.origin + '/app/getModalCartItem'
+            Home.getModalCartItem(url)
+        })
+        .catch((error) =>{
+           
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
 }

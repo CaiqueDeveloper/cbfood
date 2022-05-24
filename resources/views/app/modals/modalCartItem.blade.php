@@ -5,11 +5,7 @@
             <div class="col flex items-center justify-center">{{$item->name}}</div>
             <div class="col flex items-center justify-center">@if($item->attributes->sizeText != ""){!!$item->attributes->sizeText!!} @else SEM VARIAÇÃO @endif</div>
             <div class="col flex items-center justify-center">
-                <div class="product-content-info--qtarea flex items-center  h-[30px] rounded-[10px] px-[10px]">
-                    <button class="product-content-info--qtmenos  px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">-</button>
-                    <div class="product-content-info--qt mx-3 font-bold">{{$item->quantity}}</div>
-                    <button class="product-content-info--qtmais px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">+</button>
-                </div>
+                <input type="number" class="col-6 border rounded-lg" autofocus name="quatity" data-id_product="{{$item->id}}" value="{{$item->quantity}}">
             </div>
             <div class="col flex items-center justify-center text-red-300 cursor-pointer remove-item-cart" data-id_item-cart="{{$item->id}}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash text-red" viewBox="0 0 16 16">

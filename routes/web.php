@@ -97,7 +97,7 @@ Route::prefix('app')->group(function(){
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
     Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
-    Route::post('update-cart', [CartController::class, 'updateCart'])->name('cart.update');
+    Route::get('updateItemCart', [CartController::class, 'updateCart'])->name('cart.update');
     Route::get('remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');
     Route::get('clear', [CartController::class, 'clearAllCart'])->name('cart.clear');
 });
