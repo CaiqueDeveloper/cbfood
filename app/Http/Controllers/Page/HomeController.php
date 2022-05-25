@@ -52,21 +52,21 @@ class HomeController extends Controller
     protected function ckeckout(Request $request){
         //dd($request->only('name', 'email', 'password', 'number_phone'));
         //Get Data User
+       
         $user = UserController::storage($request->only('name', 'email', 'password', 'number_phone'));
+        $credentials = $request->only('number_phone', 'password');
+        Auth::attempt($credentials);
         $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix'));
         $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $address->id);
-        $credentials = $request->only('number_phone', 'password');
+        
         if(isset($user) && isset($address) && isset($order)){
-
-            if(Auth::attempt($credentials)){
-                
-                $response['user'] = User::find(Auth::user()->id)->get();
-                return response()->json($response, 200);
-            }else{
-                return response()->json('Erro e-mail e/ou senha incorretos.', 500);
-            }
+            
+            $response['user'] = User::find(Auth::user()->id)->get();
+            return response()->json($response, 200);
+        }else{
+            return response()->json('Erro e-mail e/ou senha incorretos.', 500);
         }
-    }
+}
     protected function getModalInserNewAddressUser(){
         return view('app.modals.modalInserNewAddressUser');
     }
@@ -76,12 +76,7 @@ class HomeController extends Controller
     }
     protected function sendOrderUser(Request $request){
         
-        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
-        if($order){
-            return response()->json('success', 200);
-        }else{
-            return response()->json('error', 500);
-        }
+        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
         
     }
 }

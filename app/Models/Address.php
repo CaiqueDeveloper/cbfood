@@ -22,7 +22,7 @@ class Address extends Model
         return $user->address()->updateOrCreate(['addres_morph_id' => $user_id], $data);
     }
     public function insetNewAddressUser($user_id, $data){
-        
+
         $user = User::find($user_id['user_id']);
         return $user->address()->create($data);
     }

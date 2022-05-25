@@ -439,9 +439,7 @@ var Home = {
             url:url,
             method: 'POST',
             data: new FormData(data),
-            headers: {
-                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-            },
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         })
         .then((response) =>{
             

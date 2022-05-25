@@ -12,23 +12,28 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     public function getOredsUser($orders, $paymentMethod, $address){
-       
+      $address_id = 0;
        $auxOrder = $orders->first();
        $payment = '';
-      //dd($orders);
+       //dd($auxOrder);
        if(isset($paymentMethod['money'])){
            $payment = $paymentMethod['money'];
        }else{
             $payment = $paymentMethod['credcard'];
        }
+       if(isset($address['address'])){
+           $address_id = $address['address'];
+       }else{
+           $address_id = $address;
+       }
        $orderUser =  [];
        $orderUser['company_id'] = $auxOrder->attributes->company_id;
        $orderUser['user_id'] = Auth::user()->id;
-       $orderUser['address_id'] = $address['address'];
+       $orderUser['address_id'] = $address_id;
        $orderUser['payment_method'] = $payment;
        $orderUser['delivery_price'] = 0;
        $orderUser['price_total'] = \Cart::getTotal();
-       $orderInser = Order::create($orderUser);
+       $orderInsert = Order::create($orderUser);
 
        $additional_id = '';
        foreach($orders as  $order){
@@ -36,7 +41,7 @@ class OrderController extends Controller
                 $additional_id = implode(',', $order->attributes->additionalsIds);
            }
            OrderProduct::insert([
-               'orders_id' => $orderInser->id,
+               'orders_id' => $orderInsert->id,
                'products_id' => $order->attributes->product_id,
                'price' => $order->price,
                'quantity' => $order->quantity,

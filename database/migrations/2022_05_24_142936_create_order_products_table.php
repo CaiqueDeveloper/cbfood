@@ -24,7 +24,7 @@ class CreateOrderProductsTable extends Migration
                 ->on('products')
                 ->onDelete('cascade');
             $table->text('additional_id')->nullable();
-            $table->int('quantity')->nullable();
+            $table->integer('quantity')->nullable();
             $table->text('price')->nullable();
             $table->text('sizeText')->nullable();
             $table->string('observation')->nullable();

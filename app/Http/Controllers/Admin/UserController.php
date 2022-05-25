@@ -70,6 +70,7 @@ class UserController extends Controller
         $user['number_phone'] = $data['number_phone'];
         $user['password'] = Hash::make($data['password']);
         return User::create($user);
+
     }
    
 }

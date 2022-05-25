@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class AddressController extends Controller
 {
     public function storageAddress($id, $data){
-        
         return Address::storageAddressUser($id, $data);
     }
 }
