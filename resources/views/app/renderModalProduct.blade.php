@@ -1,4 +1,4 @@
-<div class="announcementModalArea   w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100] flex items-center justify-center overflow-y-auto" >
+<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100] flex items-center justify-center overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg">
         <div class="content-product-imgs relative overflow-hidden">
             <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/{{$product['product']->images->last()->path}}')">
@@ -10,7 +10,7 @@
         <div class="content-product-name mr-3 ml-3 my-3">
             <h1 class="text-xl sm:text-4xl font-bold text-black-600 product-name">{{$product['product']->name}}</h1>
             <div class="content-produc-category flex mt-3">
-                <p class="text-sm text-black-600 font-bold">Categoria:</p> <p class="text-sm  font-bold bg-orange-300 text-orange-600 ml-2 rounded-lg px-1">{{$product['product']->category->name}}</p>
+                <p class="text-sm text-black-600 font-bold" >Categoria:</p> <p class="text-sm  font-bold bg-orange-300 text-orange-600 ml-2 rounded-lg px-1">{{$product['product']->category->name}}</p>
             </div>
         </div>
         @if($product['product']->description != null)

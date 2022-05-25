@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function getOredsUser($orders, $paymentMethod){
-        return true;
+    public function getOredsUser($orders, $paymentMethod, $address){
+       return true;
+
     }
 }

@@ -3,6 +3,7 @@
         <div class="row shadow my-3 sm:mr-3 sm:ml-3 ">
             <div class="col bg-cover bg-no-repeat bg-center  items-center rounded-t-lg h-20" style="background-image: url('{{$item->attributes->image}}')" ></div>
             <div class="col flex items-center justify-center">{{$item->name}}</div>
+            <div class="col flex items-center justify-center">R$ {{number_format($item->price,2,",",".")}}</div>
             <div class="col flex items-center justify-center">@if($item->attributes->sizeText != ""){!!$item->attributes->sizeText!!} @else SEM VARIAÇÃO @endif</div>
             <div class="col flex items-center justify-center">
                 <input type="number" class="col-6 border rounded-lg" autofocus name="quatity" data-id_product="{{$item->id}}" value="{{$item->quantity}}">
@@ -16,7 +17,7 @@
         </div>
     @endforeach
     <div class="sm:mr-3 sm:ml-3">
-        <h1 class="text-xl sm:text-2xl font-bold text-gray-700 my-3">Total R$ {{ Cart::getTotal() }}</h1>
+        <h1 class="text-xl sm:text-2xl font-bold text-gray-700 my-3">Total R$ {{ number_format(Cart::getTotal(),2,",",".") }}</h1>
         
     </div>
     <div class="checout sm:mr-3 sm:ml-3 my-4 flex items-center">

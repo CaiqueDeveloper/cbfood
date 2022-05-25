@@ -17,14 +17,16 @@ class CartController extends Controller
     }
 
 
-    public function addToCart(Request $request)
-    {   
+    public function addToCart(Request $request){
+        
        \Cart::add([
             'id' => $request[0]['identifier'],
             'name' => $request[0]['name'],
             'price' => $request[0]['price'],
             'quantity' => $request[0]['quatity'],
             'attributes' => [
+                'product_id' => $request[0]['product_id'],
+                'company_id' => $request[0]['company_id'],
                 'image' => $request[0]['image'],
                 'additionalsIds' => $request[0]['itemsAdditional'],
                 'sizeId' => (isset($request[0]['sizeId'])) ? $request[0]['sizeId']: '',

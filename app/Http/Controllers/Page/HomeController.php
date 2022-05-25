@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Controller;
 use App\Models\Additional;
+use App\Models\Address;
 use App\Models\Company;
 use App\Models\Product;
 use App\Models\SettingCompany;
@@ -49,11 +50,12 @@ class HomeController extends Controller
         return view('app.modals.modalCheckout',compact('cartItens'));
     }
     protected function ckeckout(Request $request){
+        //dd($request->only('name', 'email', 'password', 'number_phone'));
         //Get Data User
-        $user = UserController::storage($request->only('name', 'email', 'password'));
+        $user = UserController::storage($request->only('name', 'email', 'password', 'number_phone'));
         $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix'));
-        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'));
-        $credentials = $request->only('email', 'password');
+        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $address->id);
+        $credentials = $request->only('number_phone', 'password');
         if(isset($user) && isset($address) && isset($order)){
 
             if(Auth::attempt($credentials)){
@@ -64,8 +66,17 @@ class HomeController extends Controller
                 return response()->json('Erro e-mail e/ou senha incorretos.', 500);
             }
         }
+    }
+    protected function getModalInserNewAddressUser(){
+        return view('app.modals.modalInserNewAddressUser');
+    }
+    protected function storageNewAddressUser(Request $request){
 
-
-     
+        return Address::insetNewAddressUser($request->only('user_id'), $request->except('user_id'));
+    }
+    protected function sendOrderUser(Request $request){
+        dd($request->all());
+        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
+        
     }
 }

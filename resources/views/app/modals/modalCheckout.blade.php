@@ -1,36 +1,57 @@
 @if(Auth::user())
-
-
-    <div class="col order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted font-bold text-gray-900">Seu Carrinho</span>
-            <span class="badge badge-secondary badge-pill">{{@count($cartItens)}}</span>
-        </h4>
-        <ul class="list-group mb-3">
-            @foreach ($cartItens as $item) 
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                    <h6 class="my-0">{{$item->name}} - Qt ({{$item->quantity}})</h6>
-                    <small class="text-muted">{{$item->description}}</small>
-                    </div>
-                    <span class="text-muted">{{$item->price}}</span>
-                </li>
-            @endforeach
-            <li class="list-group-item d-flex justify-content-between">
-                <span>Total </span>
-                <strong>R$ {{ Cart::getTotal() }}</strong>
+<h4 class="mb-3 font-bold text-gray-900 text-xl">Olá {{Auth::user()->name}}</h4>
+<hr class="mb-4">
+<div class="col order-md-2 mb-4">
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted font-bold text-gray-900">Seu Carrinho</span>
+        <span class="badge badge-secondary badge-pill">{{@count($cartItens)}}</span>
+    </h4>
+    <ul class="list-group mb-3">
+        @foreach ($cartItens as $item) 
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <div>
+                <h6 class="my-0">{{$item->name}} - Qt ({{$item->quantity}})</h6>
+                <small class="text-muted">{{$item->description}}</small>
+                </div>
+                <span class="text-muted">R$ {{number_format($item->price,2,",",".")}}</span>
             </li>
-        </ul>
-    </div>
-    <h4 class="mb-3 font-bold text-gray-900 text-2xl">{{Auth::user()->name}}, Selecione um dos Seus endereços Abaixo.</h4>
+        @endforeach
+        <li class="list-group-item d-flex justify-content-between">
+            <span>Total </span>
+            <strong>R$ {{number_format(Cart::getTotal(),2,",",".") }}</strong>
+        </li>
+    </ul>
+</div>
 <div class="row">
     <div class="col my-3 ">
+        <form action="" class="send-address-user">
+            <hr class="mb-4">
+            {{-- Method Payment --}}
+            <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
+            <div class="d-block my-3">
+                <div class="custom-control custom-radio">
+                    <input id="credit" name="credcard" type="checkbox" class="custom-control-input" value="credcard">
+                    <label class="custom-control-label" for="credit">Cartão</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input id="debit" name="money" type="checkbox" class="custom-control-input" value="money">
+                    <label class="custom-control-label" for="debit">Dinheiro</label>
+                </div>
+                <div class="custom-control custom-radio hidden">
+                    <input id="paypal" name="pix" type="checkbox" class="custom-control-input" value="pix">
+                    <label class="custom-control-label" for="paypal">Pix</label>
+                </div>
+            </div>
+            <hr class="mb-4">
+            <article class="flex items-center"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
         @foreach(Auth::user()->address as $addres)
-        <div class="custom-control custom-radio shadow py-3 rounded-2xl cursor-pointer">
-            <input id="{{$addres->id}}" name="credcard" type="checkbox" class="custom-control-input ml-3 cursor-pointer" >
+        <div class="custom-control custom-radio shadow py-3 my-3 rounded-2xl cursor-pointer">
+            <input id="{{$addres->id}}" name="address" type="checkbox" class="custom-control-input ml-3 cursor-pointer" value="{{$addres->id}}">
             <label class="custom-control-label ml-3 cursor-pointer" for="{{$addres->id}}">Rua {{$addres->road}}, Nª {{$addres->number}}, Bairro {{$addres->distric}}, Cidade {{$addres->city}}/{{$addres->states}}...</label>
         </div>
         @endforeach
+        <button class="bg-green-300 text-green-600 font-bold p-2 rounded-xl text-lg my-3" type="submit">Confirma Compra</button>
+    </form>
     </div>
 </div>
 
@@ -129,15 +150,15 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credit" name="credcard" type="checkbox" class="custom-control-input" >
+                    <input id="credit" name="credcard" type="checkbox" class="custom-control-input"  value="credcard">
                     <label class="custom-control-label" for="credit">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input id="debit" name="money" type="checkbox" class="custom-control-input" >
+                    <input id="debit" name="money" type="checkbox" class="custom-control-input" value="money">
                     <label class="custom-control-label" for="debit">Dinheiro</label>
                 </div>
                 <div class="custom-control custom-radio hidden">
-                    <input id="paypal" name="pix" type="checkbox" class="custom-control-input" >
+                    <input id="paypal" name="pix" type="checkbox" class="custom-control-input" value="pix">
                     <label class="custom-control-label" for="paypal">Pix</label>
                 </div>
             </div>

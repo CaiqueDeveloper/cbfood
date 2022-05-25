@@ -13,6 +13,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
+        // STATUS
+        //1 pedido enviado
+        //2 pedido recebido
+        //3 pedido enviado a cozinha
+        //4 pedido saindo para ser entregue
+        //5 pedido entregue
+        //0 pedido cancelado cliente/ou estabilecimento 
+        
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned()
@@ -29,7 +37,7 @@ class CreateOrdersTable extends Migration
             ->onDelete('set null');
             $table->string('payment_method');
             $table->string('delivery_price');
-            $table->string('subtotal');
+            $table->string('price_total');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

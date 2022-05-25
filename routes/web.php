@@ -95,6 +95,9 @@ Route::prefix('app')->group(function(){
     Route::get('/getModalCartItem', [PageHomeController::class, 'getModalCartItem']);
     Route::get('/getModalCheckout', [PageHomeController::class, 'getModalCheckout']);
     Route::post('/ckeckout', [PageHomeController::class, 'ckeckout']);
+    Route::get('/getModalInserNewAddressUser', [PageHomeController::class, 'getModalInserNewAddressUser']);
+    Route::post('/storageNewAddressUser', [PageHomeController::class, 'storageNewAddressUser']);
+    Route::post('/sendOrderUser', [PageHomeController::class, 'sendOrderUser']);
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');

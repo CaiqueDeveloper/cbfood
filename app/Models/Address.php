@@ -21,6 +21,11 @@ class Address extends Model
         $user = User::find($user_id);
         return $user->address()->updateOrCreate(['addres_morph_id' => $user_id], $data);
     }
+    public function insetNewAddressUser($user_id, $data){
+        
+        $user = User::find($user_id['user_id']);
+        return $user->address()->create($data);
+    }
     public function storageAddressCompany($company_id, $data){
 
         $company = Company::find($company_id);

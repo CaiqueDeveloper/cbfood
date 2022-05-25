@@ -67,6 +67,7 @@ class UserController extends Controller
         $user = [];
         $user['name'] = $data['name'];
         $user['email'] = $data['email'];
+        $user['number_phone'] = $data['number_phone'];
         $user['password'] = Hash::make($data['password']);
         return User::create($user);
     }

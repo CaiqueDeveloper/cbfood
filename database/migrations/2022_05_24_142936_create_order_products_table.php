@@ -19,11 +19,12 @@ class CreateOrderProductsTable extends Migration
                 ->references('id')
                 ->on('orders')
                 ->onDelete('cascade');
-
             $table->integer('products_id')
                 ->references('id')
                 ->on('products')
                 ->onDelete('cascade');
+            $table->string('observation')->nullable();
+            $table->string('additional_id')->nullable();
         });
     }
 
