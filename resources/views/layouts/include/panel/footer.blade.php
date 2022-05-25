@@ -59,13 +59,18 @@
     <script src="{{url('panel/js/user.js')}}"></script>
     <script src="{{url('panel/js/company.js')}}"></script>
     <script src="{{url('panel/js/category.js')}}"></script>
+    <script src="{{url('panel/js/dashboard.js')}}"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/sweetalert2/sweetalert.all.js')}}" type="text/javascript"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/mommentJS/momment.js')}}" type="text/javascript"></script>
     <script type="text/javascript" src="{{url('theme-sdb-admin-2/vendor/datatables/dataTable.js')}}"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/axiosJS/axios.js')}}"></script>
     <script src="https://cdn.tiny.cloud/1/4xl4ui109j5gg218xpziynph018x3cp5fr4rea1q0ly51vwt/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     
     <script type="text/javascript">
         $(document).ready(function(){
@@ -73,6 +78,7 @@
             User.construct();
             Company.construct();
             Category.construct();
+            Dashboard.construct();
         })
     </script>
     @yield('scripts')

@@ -12,7 +12,7 @@
     <!-- Date range picker example-->
     <div class="input-group input-group-joined border-0 shadow" style="width: 16.5rem">
         <span class="input-group-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-        <input class="form-control ps-0 pointer" id="litepickerRangePlugin" placeholder="Select date range...">
+        <input class="form-control ps-0 pointer" id="date-ranger-picker-dashboard" placeholder="Select date range...">
     </div>
 </div>
 <div class="row">
@@ -22,7 +22,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="me-3">
                         <div class="text-white-75 small">Faturamento (Mensal)</div>
-                        <div class="text-lg fw-bold">R$ 00,00</div>
+                        <div class="text-lg fw-bold total-billing">R$ 00,00</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-dollar-sign feather-xl text-white-50"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="me-3">
                         <div class="text-white-75 small">Total de Vendas</div>
-                        <div class="text-lg fw-bold">0</div>
+                        <div class="text-lg fw-bold sales-amount">0</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16">
                         <path d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2z"/>

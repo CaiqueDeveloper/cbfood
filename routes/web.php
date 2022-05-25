@@ -83,6 +83,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/storageUpdateItemAdditional', [AdditionalItemsController::class, 'storageUpdateItemAdditional']);
     Route::get('/renderViewContentAdditional', [AdditionalController::class, 'renderViewContentAdditional']);
 
+    // Orders
+    Route::get('/getAllOrdersCompany', [HomeController::class, 'getAllOrdersCompany']);
+
     
     
 });
