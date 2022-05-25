@@ -30,15 +30,15 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credit" name="credcard" type="checkbox" class="custom-control-input" value="credcard">
-                    <label class="custom-control-label" for="credit">Cartão</label>
+                    <input id="credcard" name="credcard" type="checkbox" class="custom-control-input" value="credcard">
+                    <label class="custom-control-label" for="credcard">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
                     <input id="debit" name="money" type="checkbox" class="custom-control-input" value="money">
                     <label class="custom-control-label" for="debit">Dinheiro</label>
                 </div>
                 <div class="custom-control custom-radio hidden">
-                    <input id="paypal" name="pix" type="checkbox" class="custom-control-input" value="pix">
+                    <input id="paypal" name="pay" type="checkbox" class="custom-control-input" value="pix">
                     <label class="custom-control-label" for="paypal">Pix</label>
                 </div>
             </div>
@@ -46,8 +46,8 @@
             <article class="flex items-center"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
         @foreach(Auth::user()->address as $addres)
         <div class="custom-control custom-radio shadow py-3 my-3 rounded-2xl cursor-pointer">
-            <input id="{{$addres->id}}" name="address" type="checkbox" class="custom-control-input ml-3 cursor-pointer" value="{{$addres->id}}">
-            <label class="custom-control-label ml-3 cursor-pointer" for="{{$addres->id}}">Rua {{$addres->road}}, Nª {{$addres->number}}, Bairro {{$addres->distric}}, Cidade {{$addres->city}}/{{$addres->states}}...</label>
+            <input id="{{$addres->id}}" name="address" type="checkbox" class="custom-control-input ml-3 cursor-pointer z-40" value="{{$addres->id}}">
+            <label class="custom-control-label ml-3 cursor-pointer z-40" for="{{$addres->id}}">Rua {{$addres->road}}, Nª {{$addres->number}}, Bairro {{$addres->distric}}, Cidade {{$addres->city}}/{{$addres->states}}...</label>
         </div>
         @endforeach
         <button class="bg-green-300 text-green-600 font-bold p-2 rounded-xl text-lg my-3" type="submit">Confirma Compra</button>

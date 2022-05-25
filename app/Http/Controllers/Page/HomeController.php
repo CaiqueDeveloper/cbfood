@@ -75,8 +75,13 @@ class HomeController extends Controller
         return Address::insetNewAddressUser($request->only('user_id'), $request->except('user_id'));
     }
     protected function sendOrderUser(Request $request){
-        dd($request->all());
-        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
+        
+        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
+        if($order){
+            return response()->json('success', 200);
+        }else{
+            return response()->json('error', 500);
+        }
         
     }
 }

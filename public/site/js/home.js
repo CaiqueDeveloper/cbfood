@@ -420,8 +420,10 @@ var Home = {
                 )
                 setTimeout(() =>{
                     $('.announcementModalArea').fadeOut('slow')
-                    let url = window.location.origin+ '/app/getModalCheckout'
-                    Home.getModalCheckout(url)
+                    Home.getTotalItemCart()
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                   
                     swal.close()
                    
                 },3000)
@@ -449,10 +451,11 @@ var Home = {
                     'success'
                 )
                 setTimeout(() =>{
+                    $("#modalMain").modal('hide');
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
                     swal.close()
-                    $("#modalMain").modal('hide');
+                    
                    
                 },3000)
             

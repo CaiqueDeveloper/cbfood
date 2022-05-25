@@ -35,9 +35,10 @@ class CreateOrdersTable extends Migration
             ->references('id')->on('address')
             ->nullable()
             ->onDelete('set null');
-            $table->string('payment_method');
-            $table->string('delivery_price');
-            $table->string('price_total');
+            $table->string('payment_method')->nullable();
+            $table->string('delivery_price')->nullable();
+            $table->string('price_total')->nullable();
+            $table->string('thing')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
