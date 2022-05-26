@@ -1,10 +1,10 @@
   <!-- button scroll top -->
-    <div id="toggleCart" class="bg-orange-600 sm:hidden  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toggleCart" class="bg-orange-600 sm:hidden open-shopping-cart  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-cart-plus animate-pulse	"></i>
     </div>
     <!-- final  button scroll top -->
     <!-- button scroll top -->
-    <div id="toTop" class="bg-orange-600 hidden w-[40px] h-[40px] fixed bottom-[30px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toTop" class="bg-orange-600 hidden  w-[40px] h-[40px] fixed bottom-[30px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
     </div>
     <!-- final  button scroll top -->
@@ -86,49 +86,5 @@
     
     <script>
         Home.constructor()
-        // const toggleCart = document.querySelector("#toggleCart")
-        // const toggleMenuMobible = document.querySelector("#toggle-menu-mobile")
-        // const header = document.querySelector('.header')
-
-        // toggleMenuMobible.addEventListener('click', (e) => {
-        //     const nav = document.querySelector('nav')
-        //     if (nav.classList.contains('hidden')) {
-        //         nav.classList.remove('hidden')
-        //     } else {
-        //         nav.classList.add('hidden')
-        //         nav.classList.add('to-blue-500')
-        //     }
-        // })
-        // toggleCart.addEventListener('click', (e) => {
-        //     const nav = document.querySelector('.content-section-payment')
-        //     if (nav.classList.contains('hidden')) {
-        //         nav.classList.remove('hidden')
-        //         window.scrollTo({
-        //             top: 0,
-        //             behavior: 'smooth'
-        //         });
-        //     } else {
-        //         nav.classList.add('hidden')
-        //         nav.classList.add('to-blue-500')
-        //     }
-        // })
-        // window.addEventListener("scroll", (event) => {
-        //     let scroll = this.scrollY
-        //     if (scroll >= 100) {
-        //         document.querySelector("#toTop").style.display = 'block';
-        //         header.classList.add('fixed')
-        //          header.classList.add('z-40')
-        //         let toTop = document.querySelector("#toTop")
-        //         toTop.addEventListener('click', (e) => {
-        //             window.scrollTo({
-        //                 top: 0,
-        //                 behavior: 'smooth'
-        //             });
-        //         })
-        //     } else {
-        //         document.querySelector("#toTop").style.display = 'none';
-        //         header.classList.remove('fixed')
-        //         header.classList.remove('z-40')
-        //     }
-        // });
+       
     </script>

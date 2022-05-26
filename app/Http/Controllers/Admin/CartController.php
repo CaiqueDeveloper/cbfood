@@ -31,6 +31,7 @@ class CartController extends Controller
                 'additionalsIds' => $request[0]['itemsAdditional'],
                 'sizeId' => (isset($request[0]['sizeId'])) ? $request[0]['sizeId']: '',
                 'sizeText' => (isset($request[0]['sizeText'])) ? $request[0]['sizeText'] : '',
+                'observation' => $request[0]['observation'],
             ]
         ]);
 

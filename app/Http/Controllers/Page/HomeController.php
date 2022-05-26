@@ -16,6 +16,7 @@ use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
 
 class HomeController extends Controller
 {
@@ -78,5 +79,24 @@ class HomeController extends Controller
         
         return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
         
+    }
+    protected function getModalLoginUser(){
+        return view('app.modals.modalLoginUser');
+    }
+    protected function loginUser(Request $request){
+       
+        if(Auth::attempt($request->except('redirectURL'))){
+            return Redirect::to($request->redirectURL);
+        }else{
+            return response()->json('error', 500);
+        }
+    }
+    protected function logoutUser(Request $request){
+      
+        Auth::logout();
+        return Redirect::to($request->redirectURL);
+    }
+    protected function getModalMyBagUser(){
+        return view('app.modals.modalMyBagUser');
     }
 }

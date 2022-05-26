@@ -101,6 +101,10 @@ Route::prefix('app')->group(function(){
     Route::get('/getModalInserNewAddressUser', [PageHomeController::class, 'getModalInserNewAddressUser']);
     Route::post('/storageNewAddressUser', [PageHomeController::class, 'storageNewAddressUser']);
     Route::post('/sendOrderUser', [PageHomeController::class, 'sendOrderUser']);
+    Route::get('/getModalLoginUser', [PageHomeController::class, 'getModalLoginUser']);
+    Route::post('/loginUser', [PageHomeController::class, 'loginUser']);
+    Route::post('/logoutUser', [PageHomeController::class, 'logoutUser']);
+    Route::get('/getModalMyBagUser', [PageHomeController::class, 'getModalMyBagUser']);
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');

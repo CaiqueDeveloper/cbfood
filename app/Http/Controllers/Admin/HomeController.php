@@ -17,8 +17,6 @@ class HomeController extends Controller
     }
     protected function getAllOrdersCompany(){
 
-        $company = Company::find(Auth::user()->company_id);
-        $orders = $company->orders;
-        return response()->json($orders);
+        return response()->json(OrderController::getDataIdicatorOrders());
     }
 }

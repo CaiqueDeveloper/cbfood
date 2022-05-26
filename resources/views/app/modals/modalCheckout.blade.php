@@ -82,7 +82,7 @@
             @endforeach
             <li class="list-group-item d-flex justify-content-between">
                 <span>Total </span>
-                <strong>R$ {{ Cart::getTotal() }}</strong>
+                <strong>R$ {{ number_format(Cart::getTotal()) }}</strong>
             </li>
         </ul>
     </div>
@@ -154,7 +154,7 @@
                     <label class="custom-control-label" for="credit">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input id="debit" name="money" type="checkbox" class="custom-control-input" value="money">
+                    <input id="debit" name="money" type="checkbox" class="custom-control-input checkbox-money" value="money">
                     <label class="custom-control-label" for="debit">Dinheiro</label>
                 </div>
                 <div class="custom-control custom-radio hidden">

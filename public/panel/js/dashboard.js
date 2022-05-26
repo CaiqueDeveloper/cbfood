@@ -2,6 +2,7 @@ const Dashboard = {
 
     construct(){
 
+        // iniciando o seletor de períodos
         let start = moment().startOf('month');
         let end = moment();
         let dateRanges = new Array();
@@ -22,15 +23,15 @@ const Dashboard = {
         }, function(start_, end_, label) {
             start = moment(start_).format("YYYY-MM-DD");
             end = moment(end_).format("YYYY-MM-DD");
+            Dashboard.getRederIdicatorsDashboard(start, end)
         });
-        
+        Dashboard.getRederIdicatorsDashboard(start, end)
 
-        Dashboard.getRederIdicatorsDashboard()
     },
     init_listerns(){
 
     },
-    getRederIdicatorsDashboard(){
+    getRederIdicatorsDashboard(start, end){
         axios({
             url:window.location.origin + '/admin/getAllOrdersCompany',
             method: 'GET',
@@ -42,12 +43,11 @@ const Dashboard = {
                 
                totalBilling += response.data[i].price_total
             }
-            $('.total-billing').html(totalBilling);
+            $('.total-billing').html(response.data.revenue);
             $('.sales-amount').html(response.data.length);
         })
         .catch((error) =>{
           console.log(error.response.data)
         })
-        .finally(() =>{$('.AppBlock').addClass('d-none');});
     }
 }

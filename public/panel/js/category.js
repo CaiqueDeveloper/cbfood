@@ -47,6 +47,7 @@ const Category = {
             $('#modalMain').modal('show');
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Cadastrar Categoria');
+            
             Category.inti_listerns()
         }).catch((error)=>{
             console.log(error.response.data)

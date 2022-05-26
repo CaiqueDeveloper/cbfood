@@ -89,6 +89,25 @@
             </div>
             
         </div>
+        <div class="row mt-3">
+            <div class="col-md-12 mr-3 ml-3 font-bold text-2xl">
+                <h3>Observações</h3>
+            </div>
+            <div class="mt-2 col mr-3 ml-3">
+                <div class="mb-0 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+                                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                                <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                            </span>
+                        </div>
+                        <textarea placeholder="Escreva observações..." aria-label="With textarea"  name="comments" class="checkout-comments form-control observation-user"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="product-content-add-cart mr-3 ml-3 my-4 flex items-center">
             <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
             <div class="closed-modal bg-red-300 text-red-600 font-bold p-2 rounded-xl cursor-pointer">Cancelar</div>

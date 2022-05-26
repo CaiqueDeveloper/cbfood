@@ -84,6 +84,34 @@ var Home = {
             let url = window.location.origin + '/app/sendOrderUser'
             Home.sendOrderUser(url, this)
         })
+        $('.show-modal-login-user').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            let url = window.location.origin + '/app/getModalLoginUser'
+            Home.getModalLoginUser(url)
+        })
+        $('.form-login-user').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let url = window.location.origin + '/app/loginUser?redirectURL='+window.location.href
+            Home.loginUser(url, this)
+        })
+        $('.logout-user').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let url = window.location.origin +'/app/logoutUser?redirectURL='+window.location.href
+            Home.logoutUser(url)
+        })
+        $('.my-bag').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let url = window.location.origin +'/app/getModalMyBagUser'
+            Home.getModalMyBagUser(url);
+        })
+     
     },
     renderViewGetProduct(url){
         axios({
@@ -163,6 +191,7 @@ var Home = {
                     price: parseFloat(price).toFixed(2),
                     quatity: qtModal,
                     image: image,
+                    observation: $('.observation-user').val(),
                     sizeId:  $('.product-content-info-size.bg-orange-300').attr('data-variation_id'),
                     sizeText:  $('.product-content-info-size.bg-orange-300').html(),
                     itemsAdditional: idItemsAdditonal
@@ -422,9 +451,10 @@ var Home = {
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
                     swal.close()
+                  
+                    let url = window.location.origin +'/app/getModalMyBagUser'
+                    Home.getModalMyBagUser(url);
                     $("#modalMain").modal('hide');
-                   
-                    swal.close()
                    
                 },3000)
             
@@ -462,5 +492,96 @@ var Home = {
            
         })
         .finally(() =>{$('.AppBlock').addClass('d-none');});
+    },
+    getModalLoginUser(url){
+        axios({
+            url:url,
+            method:'GET'
+        }).then((response) =>{
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Login');
+            Home.init_listerns()
+            
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            console.log('finalizou a consulta')
+        })
+    },
+    loginUser(url,data){
+        axios({
+            url:url,
+            method: 'POST',
+            data: new FormData(data),
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            
+                swal(
+                    'Sucesso!',
+                    '',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                   
+                   
+                },3000)
+            
+        })
+        .catch((error) =>{
+           
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
+    },
+    logoutUser(url){
+        axios({
+            url:url,
+            method: 'POST',
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            
+                swal(
+                    'Sucesso!',
+                    '',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                    window.location.href
+                   
+                },3000)
+            
+        })
+        .catch((error) =>{
+           
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
+    },
+    getModalMyBagUser(url){
+        axios({
+            url:url,
+            method:'GET'
+        }).then((response) =>{
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Minha Sacola');
+            Home.init_listerns()
+            
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            console.log('finalizou a consulta')
+        })
     },
 }

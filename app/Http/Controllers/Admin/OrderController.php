@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Darryldecode\Cart\Cart;
@@ -47,10 +48,37 @@ class OrderController extends Controller
                'quantity' => $order->quantity,
                'sizeText' => ($order->attributes->sizeText != null) ? $order->attributes->sizeText : "",
                'additional_id' => (sizeof($order->attributes->additionalsIds) > 0) ? $additional_id : '',
-               'observation' => '',
+               'observation' => $order->attributes->observation,
            ]);
        }
        \Cart::clear();
        return true;
     }   
+    public function getDataIdicatorOrders(){
+        
+        $company = Company::find(Auth::user()->company_id);
+        $orders = $company->orders;
+
+        $revenue = 0;
+        $orderConfirmed = 0;
+        $orderCanceled = 0;
+
+        $oderTotal = sizeof($orders);
+        foreach($orders as $key => $value){
+            $revenue += $value->price_total;
+            if($value->status == 2){
+                $orderConfirmed++;
+            }
+            if($value->status == 0){
+                $orderCanceled++;
+            }
+        }
+
+        return $idicatorOrder = [
+            'revenue' => $revenue,
+            'orderConfirmed'=> $orderConfirmed,
+            'orderCanceled'=> $orderCanceled,
+            'oderTotal'=> $oderTotal,
+        ];
+    }
 }
