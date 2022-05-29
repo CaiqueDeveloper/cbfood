@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\admin\ProductsController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
@@ -84,7 +85,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/renderViewContentAdditional', [AdditionalController::class, 'renderViewContentAdditional']);
 
     // Orders
+    Route::get('/orders', [OrderController::class, 'orders']);
     Route::get('/getAllOrdersCompany', [HomeController::class, 'getAllOrdersCompany']);
+    Route::get('/getOrders', [OrderController::class, 'getOrders']);
+    Route::get('/renderOrderView', [OrderController::class, 'renderOrderView']);
+    Route::get('/updateStatusOrder', [OrderController::class, 'updateStatusOrder']);
 
     
     

@@ -118,4 +118,16 @@ const Ultils = {
         })
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
+    formatMoney(element) {
+    	return accounting.formatMoney(element, "R$ ", 2, ".", ",");
+    },
+    formatMoneyChart(number) {
+    	if (number != null) {
+    		var number = number.toFixed(2).split('.');
+    		number[0] = "R$ " + number[0].split(/(?=(?:...)*$)/).join('.');
+    		return number.join(',');
+    	} else {
+    		return '-';
+    	}
+    },
 }

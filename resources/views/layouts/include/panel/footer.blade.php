@@ -53,6 +53,7 @@
     <script src="{{url('theme-sdb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- Core plugin JavaScript-->
     <script src="{{url('theme-sdb-admin-2/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{url('theme-sdb-admin-2/vendor/accounting/accounting.min.js')}}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{{url('theme-sdb-admin-2/js/sb-admin-2.min.js')}}"></script>
     <script src="{{url('panel/js/ultils.js')}}"></script>
