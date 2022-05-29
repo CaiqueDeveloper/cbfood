@@ -96,9 +96,9 @@
                 <div id="collapseInvocer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/admin/orders">Todos</a>
-                        <a class="collapse-item" href="">Entregues</a>
-                        <a class="collapse-item" href="">Sendo Preparados</a>
-                        <a class="collapse-item" href="">Cancelados</a>
+                        <a class="collapse-item" href="/admin/delivered">Entregues</a>
+                        <a class="collapse-item" href="/admin/beingPrepared">Sendo Preparados</a>
+                        <a class="collapse-item" href="/admin/canceled">Cancelados</a>
                     </div>
                 </div>
             </li>

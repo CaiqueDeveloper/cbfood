@@ -15,6 +15,15 @@ class OrderController extends Controller
     public function orders(){
         return view('panel.orders.index');
     }
+    public function delivered(){
+        return view('panel.orders.delivered');
+    }
+    public function beingPrepared(){
+        return view('panel.orders.beingPrepared');
+    }
+    public function canceled(){
+        return view('panel.orders.canceled');
+    }
     public function getOredsUser($orders, $paymentMethod, $address){
         $address_id = 0;
         $auxOrder = $orders->first();

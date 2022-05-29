@@ -90,6 +90,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/getOrders', [OrderController::class, 'getOrders']);
     Route::get('/renderOrderView', [OrderController::class, 'renderOrderView']);
     Route::get('/updateStatusOrder', [OrderController::class, 'updateStatusOrder']);
+    Route::get('/delivered', [OrderController::class, 'delivered']);
+    Route::get('/beingPrepared', [OrderController::class, 'beingPrepared']);
+    Route::get('/canceled', [OrderController::class, 'canceled']);
 
     
     
