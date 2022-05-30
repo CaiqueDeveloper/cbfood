@@ -121,6 +121,24 @@ const Orders = {
                     let url = window.location.origin + `/admin/updateStatusOrder?order_id=${order_id}&status=${status}`
                     Orders.updateStatusOrder(url);
                 })
+                $('.exportOrder').on('click', function(e){
+                    e.preventDefault()
+                    e.stopImmediatePropagation()
+
+                    let order_id = $(this).attr('value')
+                    let url = window.location.origin + '/admin/exportOrder/'+order_id
+                    Orders.exportOrder(url);
+                })
+                $('.show-modal-address').on('click', function(e){
+                    e.preventDefault()
+                    e.stopImmediatePropagation()
+
+                    let address_id = $(this).attr('value')
+                    let url = window.location.origin + '/admin/showModalAddressOrderUser/'+address_id
+                    Orders.showModalAddressOrderUser(url);
+                })
+                
+                
             },
             columnDefs: [{
                 targets: 0,
@@ -210,7 +228,7 @@ const Orders = {
                 targets: 9,
                 orderable: true,
                 render: function(a, n, e, s) {
-                    return `<a href="#" value="${a}" style="color:#2563eb">
+                    return `<a href="#" class="show-modal-address" value="${a}" style="color:#2563eb">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                         <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
@@ -237,6 +255,12 @@ const Orders = {
                       <a class="dropdown-item being-prepared-order" href="#" data-order_status="3" value="${a}">SENDO PREPARADO</a>
                       <a class="dropdown-item out-for-delivery-order" href="#" data-order_status="4" value="${a}">SAIU PARA ENTREGA</a>
                       <a class="dropdown-item delivered-order" href="#" data-order_status="5" value="${a}">ENTREGUE</a>
+                      <a class="dropdown-item exportOrder" href="#" data-order_status="5" value="${a}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                            <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                            <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                        </svg>
+                      </a>
                     </div>
                   </div>
                     `;
@@ -258,6 +282,14 @@ const Orders = {
                 row.child(format(row.data())).show();
                 tr.addClass('shown');
             }
+            $('.show-modal-additional').on('click', function(e){
+                e.preventDefault()
+                e.stopImmediatePropagation()
+                
+                let additional_id = $(this).attr('data-additionals_id')
+                let url = window.location.origin + '/admin/showModalGerAdditionalOrders'
+                Orders.showModalGerAdditionalOrders(url, additional_id);
+            })
         });
         //Creating sub children table
         function format(d) {
@@ -269,7 +301,7 @@ const Orders = {
            for(let i in d.itemsOrderuser){
             size =  ( d.itemsOrderuser[i].itemSizeText != '') ? d.itemsOrderuser[i].itemSizeText : 'NÃO ESPECIFICADO'
             obs =  ( d.itemsOrderuser[i].itemObservation != null) ? d.itemsOrderuser[i].itemObservation : 'NÃO ESPECIFICADO'
-            additionals =  (d.itemsOrderuser[i].itemAdditionalID != '') ? `<a href="#" data-additionals_id="${d.itemsOrderuser[i].itemAdditionalID}">
+            additionals =  (d.itemsOrderuser[i].itemAdditionalID != '') ? `<a href="#" class="show-modal-additional" data-additionals_id="${d.itemsOrderuser[i].itemAdditionalID}">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                 <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                 <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
@@ -1054,6 +1086,52 @@ const Orders = {
           }
           return row;
         } 
+    },
+    exportOrder(url){
+        axios({
+            url: url,
+            method: 'GET'
+        }).then((response) => {
+            console.log(response.data)
+            window.open(url, '_blank');
+        }).catch((error) => {
+            console.log(error.response.data);
+        })
+    },
+    showModalAddressOrderUser(url){
+        axios({
+            method: 'GET',
+            url: url
+        }).then((response) =>{
+
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Endereço de Entrega');
+
+        }).catch((error)=>{
+            console.log(error.response.data)
+        }).finally(() => {
+            console.log('finalizou a consulta..')
+        })
+    },
+    showModalGerAdditionalOrders(url, additional_id){
+        axios({
+            method: 'GET',
+            url: url,
+            params:{id:additional_id}
+        }).then((response) =>{
+
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Endereço de Entrega');
+
+        }).catch((error)=>{
+            console.log(error.response.data)
+        }).finally(() => {
+            console.log('finalizou a consulta..')
+        })
     },
     
 }

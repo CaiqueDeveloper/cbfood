@@ -14,7 +14,7 @@ class Order extends Model
 
     public function orderProduct(){
        
-        return $this->hasMany(OrderProduct::class, 'orders_id')->with('productOrder');
+        return $this->hasMany(OrderProduct::class, 'orders_id');
     }
     public function orderUser(){
        
@@ -24,6 +24,9 @@ class Order extends Model
     protected static function getOrders(){
 
         $company_id = Auth::user()->company_id;
-        return Order::find($company_id)->with('orderProduct','orderUser')->orderBy('orders.created_at', 'desc')->get();
+        return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
+    }
+    protected static function getOrder($id){
+        return Order::where('id', $id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
     }
 }

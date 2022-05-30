@@ -3,9 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Additional;
+use App\Models\AdditionalItems;
+use App\Models\Address;
 use App\Models\Company;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\User;
+use Barryvdh\DomPDF\PDF;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,5 +109,34 @@ class OrderController extends Controller
             return response()->json('error', 500);
         }
        
+    }
+    protected function showModalAddressOrderUser($id){
+        $addressOrderuser = Address::find($id);
+        return view('panel.modals.orders.modalAddressOrderUser', compact('addressOrderuser'));
+    }
+    protected function showModalGerAdditionalOrders(Request $request){
+        $additionalItems = AdditionalItems::whereIn('id',explode(',',$request->id))->get();
+        return view('panel.modals.orders.modaladditionalItems', compact('additionalItems'));
+    }
+    protected function exportOrder($id){
+        $order = Order::getOrder($id);
+        $auxOrder = [];
+        $auxOrder['orderCod'] = $order[0]->id;
+        $auxOrder['orderUser'] = User::where('id',$order[0]->user_id)->select('name','number_phone')->get();
+        $auxOrder['orderQtItem'] = count(OrderProduct::where('orders_id', $order[0]->id)->get());
+        $auxOrder['orderPaymentMethod'] = ($order[0]->payment_method != 'credcard') ? 'Dinheiro' : 'Cartão de Crédito';
+        $auxOrder['orderTotalPrice'] = 'R$ '.number_format($order[0]->price_total,2,",",".");
+        $auxOrder['orderThing'] = ($order[0]->thing != null) ? 'R$ '.number_format($order[0]->thing,2,",",".") : 'VALOR NÃO ESPECIFICADO';
+        $auxOrder['orderDate'] = date('d/m/Y', strtotime($order[0]->created_at));
+        $auxOrder['orderAddressUser'] = Address::find($order[0]->address_id);
+        foreach(OrderProduct::where('orders_id', $order[0]->id)->get() as $key => $value){
+
+            $value->additional = AdditionalItems::whereIn('id',explode(',',$value->additional_id))->get();
+            $auxOrder['orderItem'][] = $value;
+        }
+        //$pdf = \PDF::loadView('panel.orders.exportOrder', ['auxOrder'=> $auxOrder]);
+        return view('panel.orders.exportOrder', compact('auxOrder'));
+        return $pdf->download('cbfood-Order.pdf');
+
     }
 }

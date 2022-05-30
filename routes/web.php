@@ -93,6 +93,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/delivered', [OrderController::class, 'delivered']);
     Route::get('/beingPrepared', [OrderController::class, 'beingPrepared']);
     Route::get('/canceled', [OrderController::class, 'canceled']);
+    Route::get('/exportOrder/{id}', [OrderController::class, 'exportOrder']);
+    Route::get('/showModalAddressOrderUser/{id}', [OrderController::class, 'showModalAddressOrderUser']);
+    Route::get('/showModalGerAdditionalOrders', [OrderController::class, 'showModalGerAdditionalOrders']);
 
     
     
