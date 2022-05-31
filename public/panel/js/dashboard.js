@@ -86,12 +86,17 @@ const Dashboard = {
                             +'<SeriesInterpolate/>'
                         +'</showDataEffect>'
                    +'</Line2DSeries>'
-                     +'<Line2DSeries yField="last_sales" fill="#ffffff" radius="6" displayName="Mês Anterior" itemRenderer="TriangleItemRenderer">'
+                     +'<Line2DSeries yField="cancel_sales" fill="#ffffff" radius="6" displayName="Cancelamentos" itemRenderer="CircleItemRenderer">'
                       +'<showDataEffect>'
                             +'<SeriesInterpolate/>'
                         +'</showDataEffect>'
                    +'</Line2DSeries>'
-                     +'<Line2DSeries yField="cancel_sales" fill="#ffffff" radius="6" displayName="Cancelamento" itemRenderer="TriangleItemRenderer">'
+                     +'<Line2DSeries yField="last_sales" fill="#ffffff" radius="6" displayName="Realizo Mês Anterior" itemRenderer="CircleItemRenderer">'
+                      +'<showDataEffect>'
+                            +'<SeriesInterpolate/>'
+                        +'</showDataEffect>'
+                   +'</Line2DSeries>'
+                     +'<Line2DSeries yField="last_canceled_sales" fill="#ffffff" radius="6" displayName="Cancelamento Mês anterior" itemRenderer="CircleItemRenderer">'
                       +'<showDataEffect>'
                             +'<SeriesInterpolate/>'
                         +'</showDataEffect>'
@@ -105,7 +110,7 @@ const Dashboard = {
              +'</KoolChart>';
             var data_sales_chart = [];
             for (var i in response.data.original) {  
-                data_sales_chart.push({ "day": response.data.original[i].day, "sales": response.data.original[i].sales, "last_sales": response.data.original[i].last_sales, 'cancel_sales': response.data.original[i].cancel_sales});
+                data_sales_chart.push({ "day": response.data.original[i].day, "sales": response.data.original[i].sales, "last_sales": response.data.original[i].last_sales, 'last_canceled_sales':response.data.original[i].last_canceled_sales, 'cancel_sales': response.data.original[i].cancel_sales});
             }
             
             

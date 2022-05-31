@@ -111,7 +111,7 @@ class OrderController extends Controller
         $data = [];
         $daterange_actual = new DatePeriod($start, $interval, $end->modify('+1 day'));
         foreach($daterange_actual as $key_actual => $day_actual){
-            $data[] = ["day" => $day_actual->format('d/m'), "sales" => '0', "cancel_sales" => 0,'last_day' => $day_actual->modify('-1 month')->format('d/m'), "last_sales" => 0];
+            $data[] = ["day" => $day_actual->format('d/m'), "sales" => '0', "cancel_sales" => 0,'last_day' => $day_actual->modify('-1 month')->format('d/m'), "last_sales" => 0,"last_canceled_sales" => 0];
         }
 
         $orders_actual = Order::where('company_id',Auth::user()->company_id)
@@ -136,6 +136,8 @@ class OrderController extends Controller
                 if($d['last_day'] == $order_last->created_at->format('d/m')){
                     if($order_last->status !== 0){
                         $data[$key]['last_sales'] += $order_last->price_total;
+                    }else{
+                        $data[$key]['last_canceled_sales'] += $order_last->price_total;
                     }
                 }
             }
