@@ -74,9 +74,10 @@ class OrderController extends Controller
        return true;
     }   
     public function getDataIdicatorOrders($start, $end){
-        
+        $start = new DateTime($start);
+        $end = new DateTime($end);
         $orders = Order::where('company_id',Auth::user()->company_id)
-        ->whereBetween('created_at', [$start, $end])
+        ->whereBetween('created_at', [$start, $end->modify('+1 day')])
         ->get();
 
         $revenue = 0;
@@ -102,13 +103,13 @@ class OrderController extends Controller
         ];
     }
     public function getDataGraphSales($start, $end){
-        
+
         $start = new DateTime($start);
         $end = new DateTime($end);
         $interval = new DateInterval('P1D');
         
         $data = [];
-        $daterange_actual = new DatePeriod($start, $interval, $end);
+        $daterange_actual = new DatePeriod($start, $interval, $end->modify('+1 day'));
         foreach($daterange_actual as $key_actual => $day_actual){
             $data[] = ["day" => $day_actual->format('d/m'), "sales" => '0', "cancel_sales" => 0,'last_day' => $day_actual->modify('-1 month')->format('d/m'), "last_sales" => 0];
         }
