@@ -86,7 +86,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     // Orders
     Route::get('/orders', [OrderController::class, 'orders']);
-    Route::get('/getAllOrdersCompany', [HomeController::class, 'getAllOrdersCompany']);
+    Route::get('/getIdicatorsDashboard', [HomeController::class, 'getIdicatorsDashboard']);
     Route::get('/getOrders', [OrderController::class, 'getOrders']);
     Route::get('/renderOrderView', [OrderController::class, 'renderOrderView']);
     Route::get('/updateStatusOrder', [OrderController::class, 'updateStatusOrder']);
@@ -96,6 +96,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/exportOrder/{id}', [OrderController::class, 'exportOrder']);
     Route::get('/showModalAddressOrderUser/{id}', [OrderController::class, 'showModalAddressOrderUser']);
     Route::get('/showModalGerAdditionalOrders', [OrderController::class, 'showModalGerAdditionalOrders']);
+    Route::get('/getDataGraphSales', [HomeController::class, 'getDataGraphSales']);
 
     
     

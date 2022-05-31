@@ -15,8 +15,11 @@ class HomeController extends Controller
     
         return view('panel.index');
     }
-    protected function getAllOrdersCompany(){
-
-        return response()->json(OrderController::getDataIdicatorOrders());
+    protected function getIdicatorsDashboard(Request $request){
+        
+        return response()->json(OrderController::getDataIdicatorOrders($request->start, $request->end));
+    }
+    protected function getDataGraphSales(Request $request){
+        return response()->json(OrderController::getDataGraphSales($request->start, $request->end));
     }
 }
