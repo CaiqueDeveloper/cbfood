@@ -58,9 +58,9 @@ class User extends Authenticatable
             $data['user']['pictureProfile'] = self::getPictureProfileUser(Auth::user()->id);
             $data['user']['company'] = Company::find(Auth::user()->company_id);
             $data['user']['company']['address'] = (Company::getAddrressCompany(Auth::user()->company_id) != null) ? Company::getAddrressCompany(Auth::user()->company_id) : null;
-            $data['user']['company']['pictureProfile'] = Company::getPictureProfileCompany(Auth::user()->company_id);
+            $data['user']['company']['pictureProfile'] = (sizeof(Company::getPictureProfileCompany(Auth::user()->company_id)) > 0) ? Company::getPictureProfileCompany(Auth::user()->company_id) : null;
             $data['user']['company']['settings'] = SettingCompany::find(Auth::user()->company_id);
-            $data['user']['company']['settings']['banner'] = SettingCompany::getPictureSettingCompany(Auth::user()->company_id);
+            $data['user']['company']['settings']['banner'] = (sizeof(SettingCompany::getPictureSettingCompany(Auth::user()->company_id)) > 0) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
             $data['user']['companies'] = Auth::user()->companies;
         }
         
