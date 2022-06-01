@@ -22,8 +22,8 @@
             <section class="content-info-company" style="display: flex;flex-direction:column;justify-content: center;
             align-items: center;">
                 
-                <img class="rounded-circle mb-2" src="@if(!is_null($response['user']['company']['pictureProfile'])) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @endif" width="120px" height="120px">
-                <div class="content-company-name" style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;width:max-content;">{{$response['user']['company']->name}}</div>
+                <img class="rounded-circle mb-2" src="@if(@count($response['user']['company']['pictureProfile']) > 0 ) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @endif" width="120px" height="120px">
+                <div class="content-company-name" style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;width:max-content;">@if(@count($response['user']['company']) > 0 ){{$response['user']['company']->name}}@endif</div>
             </section><br>
             
             <!-- Divider -->
@@ -334,7 +334,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left: -20px">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{Auth::user()->name}}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="@if(!is_null($response['user']['pictureProfile']) ) /profile/{{$response['user']['pictureProfile'][0]->path}} @endif">
+                                    src="@if(@count($response['user']['pictureProfile']) > 0 ) /profile/{{$response['user']['pictureProfile'][0]->path}} @endif">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
