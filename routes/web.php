@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\admin\AdditionalController;
-use App\Http\Controllers\admin\AdditionalItemsController;
+use App\Http\Controllers\Admin\AdditionalController;
+use App\Http\Controllers\Admin\AdditionalItemsController;
 use App\Http\Controllers\Admin\UltilsController;
 use App\Http\Controllers\Admin\Auth\AuthController;
 use App\Http\Controllers\Admin\CartController;
-use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\OrderController;
-use App\Http\Controllers\admin\ProductsController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
