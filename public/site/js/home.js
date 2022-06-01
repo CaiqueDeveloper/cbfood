@@ -477,8 +477,9 @@ var Home = {
                     Home.getTotalItemCart()
                     swal.close()
                   
-                   window.locatio.href = window.location.href
+                   
                     $("#modalMain").modal('hide');
+                    window.location.href = window.location.href
                    
                 },3000)
             
