@@ -36,32 +36,5 @@ class OrderProduct extends Model
 
         return true;
     }
-    public static function getDataIndicatorsDashboard($start, $end){
-
-        $orders = Order::where('company_id',Auth::user()->company_id)
-        ->whereBetween('created_at', [$start, $end->modify('+1 day')])
-        ->get();
-
-            $revenue = 0;
-            $orderConfirmed = 0;
-            $orderCanceled = 0;
-            $oderTotal = sizeof($orders);
-            foreach($orders as $key => $value){
-                if($value->status != 0){
-                    $revenue += $value->price_total;
-                }
-                if($value->status == 5){
-                    $orderConfirmed ++;
-                }
-                if($value->status == 0){
-                    $orderCanceled++;
-                }
-            }
-            return [
-                'revenue' => 'R$ '.number_format($revenue,2,",","."),
-                'orderConfirmed'=> $orderConfirmed,
-                'orderCanceled'=> $orderCanceled,
-                'oderTotal'=> $oderTotal,
-            ];
-    }
+    
 }
