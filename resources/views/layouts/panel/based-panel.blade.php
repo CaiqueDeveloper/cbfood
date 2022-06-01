@@ -23,7 +23,7 @@
             align-items: center;">
                 
                 <img class="rounded-circle mb-2" src="@if(!is_null($response['user']['company']['pictureProfile'])) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @endif" width="120px" height="120px">
-                <div class="content-company-name" style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;width:max-content;">@if(!is_null($response['user']['company']) ){{$response['user']['company']->name}}@endif</div>
+                <div class="content-company-name" style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;width:max-content;">{{$response['user']['company']->name}}</div>
             </section><br>
             
             <!-- Divider -->
