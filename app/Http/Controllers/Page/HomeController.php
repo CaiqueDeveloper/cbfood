@@ -76,8 +76,8 @@ class HomeController extends Controller
         return Address::insetNewAddressUser($request->only('user_id'), $request->except('user_id'));
     }
     protected function sendOrderUser(Request $request){
-        
-        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $request->only('address') );
+      
+        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'),$request->only('thing'), $request->only('address') );
         
     }
     protected function getModalLoginUser(){

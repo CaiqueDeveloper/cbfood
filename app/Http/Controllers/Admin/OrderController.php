@@ -32,7 +32,7 @@ class OrderController extends Controller
     public function canceled(){
         return view('panel.orders.canceled');
     }
-    public function getOredsUser($orders, $paymentMethod, $address){
+    public function getOredsUser($orders, $paymentMethod,$thing, $address){
         $address_id = 0;
         $auxOrder = $orders->first();
         $payment = '';
@@ -46,12 +46,14 @@ class OrderController extends Controller
         }else{
             $address_id = $address;
         }
+        
         $orderUser =  [];
         $orderUser['company_id'] = $auxOrder->attributes->company_id;
         $orderUser['user_id'] = Auth::user()->id;
         $orderUser['address_id'] = $address_id;
         $orderUser['payment_method'] = $payment;
         $orderUser['delivery_price'] = 0;
+        $orderUser['thing'] = $thing['thing'];
         $orderUser['price_total'] = \Cart::getTotal();
         $orderInsert = Order::create($orderUser);
 

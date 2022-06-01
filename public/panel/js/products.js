@@ -112,7 +112,7 @@ const Products = {
             $('.modal-title').html('Cadastrar novo Produto');
             Products.init_listerns()
             Products.createNewFieldsVariationAnnouncement()
-            Ultils.applayMasMonay();
+            $('input[name="variationPrice[]"]').mask("#,##0.00", {reverse: true})
 
         }).catch((error) =>{
 
@@ -158,12 +158,19 @@ const Products = {
         var max_fields = 4; //maximum input boxes allowed
         var wrapper = $(".input_fields_wrap"); //Fields wrapper
         var add_button = $(".add_field_button"); //Add button ID
-
+       
         var x = 1; //initlal text box count
         $(add_button).click(function(e) { //on add input button click
             e.preventDefault();
+            setTimeout(()=>{
+                $('input[name="variationPrice[]"]').mask("#,##0.00", {reverse: true})
+            },300)
+
             if (x < max_fields) { //max input box allowed
                 x++; //text box increment
+                setTimeout(()=>{
+                    $('input[name="variationPrice[]"]').mask("#,##0.00", {reverse: true})
+                },300)
                 $(wrapper).append(
                     `  
                     <article class="row d-flex flex-column flex-sm-row w-100 ml-1 mt-3">

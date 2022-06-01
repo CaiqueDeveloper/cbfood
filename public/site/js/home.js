@@ -375,7 +375,32 @@ var Home = {
             $('.modal-title').html('Checkout');
             Home.init_listerns()
             
-            
+            ;
+            $('input[name="money"]').on('change', function(e) {
+                e.stopImmediatePropagation()
+                e.preventDefault();
+               
+                if ($(this).prop('checked')) {
+                    $('.content-thing').fadeIn()
+                        // $(this).attr('value', '1')
+                        $('input[name="thing"]').mask("#,##0.00", {reverse: true})
+                } else {
+                    $('.content-thing').fadeOut();
+                    // $(this).attr('value', '0')
+                }
+            })
+            $('input[name="credcard"]').on('change', function(e) {
+                e.stopImmediatePropagation()
+                e.preventDefault();
+               
+                if ($(this).prop('checked')) {
+                    // $(this).attr('value', '1')
+                    $('.content-thing').fadeOut();
+                } else {
+                    $('.content-variation-area').fadeOut();
+                    // $(this).attr('value', '0')
+                }
+            })
             
             console.log(qtModal)
         }).catch((error) =>{
@@ -529,7 +554,7 @@ var Home = {
                 setTimeout(() =>{
                     swal.close()
                     $("#modalMain").modal('hide');
-                   
+                    window.location.href = window.location.href
                    
                 },3000)
             
@@ -557,7 +582,7 @@ var Home = {
                 setTimeout(() =>{
                     swal.close()
                     $("#modalMain").modal('hide');
-                    window.location.href
+                    window.location.href = window.location.href
                    
                 },3000)
             
