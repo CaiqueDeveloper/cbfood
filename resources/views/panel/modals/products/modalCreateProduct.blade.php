@@ -12,7 +12,7 @@
       </div>
       <div class="form-group col-md-6 content-input-price">
         <label for="inputEmail4">Preço Base do Produto</label>
-        <input type="text" name="price"class="form-control" >
+        <input type="number" name="price"class="form-control" >
       </div>
     </div>
     <div class="form-row">
@@ -63,7 +63,7 @@
             <div class="col ">
                 <label for="name">Preço da Variação</label>
                 <section style="display: flex;align-items: center;">
-                    <input type="text" class="form-control form-control-user" id=""
+                    <input type="number" class="form-control form-control-user" id=""
                     placeholder="R$ 10,00" name="variationPrice[]" value="">
                    <a href="" class="btn btn-info rounded-circle border-0 add_field_button" style="margin-left: 10px"><i class="fa fa-plus icon-acc"></i></a>
                 </section>

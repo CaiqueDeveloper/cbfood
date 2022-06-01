@@ -189,7 +189,7 @@ const Products = {
                         <div class="col">
                             <label for="name">Preço da Variação</label>
                             <section style="display: flex;align-items: center;">
-                                <input type="text" class="form-control form-control-user"  id="price"
+                                <input type="number" class="form-control form-control-user"  id="price"
                                     placeholder="R$ 10,00" name="variationPrice[]" value="">
                                 <a href="#" class="remove_field btn btn-danger rounded-circle border-0 " value="" style="margin-left:10px;curso:pointer"><i class="fa fa-trash icon-acc"></i></a>
                             </section>

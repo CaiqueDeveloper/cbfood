@@ -58,7 +58,7 @@ class HomeController extends Controller
         $credentials = $request->only('number_phone', 'password');
         Auth::attempt($credentials);
         $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix'));
-        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'), $address->id);
+        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'),$request->only('thing'), $address->id);
         
         if(isset($user) && isset($address) && isset($order)){
             

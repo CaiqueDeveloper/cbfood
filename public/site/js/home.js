@@ -477,8 +477,7 @@ var Home = {
                     Home.getTotalItemCart()
                     swal.close()
                   
-                    let url = window.location.origin +'/app/getModalMyBagUser'
-                    Home.getModalMyBagUser(url);
+                   window.locatio.href = window.location.href
                     $("#modalMain").modal('hide');
                    
                 },3000)
@@ -508,7 +507,7 @@ var Home = {
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
                     swal.close()
-                    
+                    window.locatio.href = window.location.href
                    
                 },3000)
             

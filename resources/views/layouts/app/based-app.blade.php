@@ -71,12 +71,17 @@
     
     </section>
     @if($menuCompany['company']['settings']->hasOpeneed == 0)
-        <div class="bg-red-500 text-center my-4 p-5 text-white" role="alert">
-            <strong>Aviso </strong>Essa loja encorou o expediente por hoje, mas fique tranquilo os seus pedidos serão salvos e poderão ser preparado e entregues amanhã.
+        <div class="mx-auto w-[80%] mt-4">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Aviso !</strong> Essa loja encorou o expediente por hoje, mas fique tranquilo os seus pedidos serão salvos e poderão ser preparado e entregues amanhã.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
     @endif
     <section class="w-full h-full">
-        <div class="container mx-auto">
+        <div class="container mx-auto mb-3">
             @yield('content-page')
         </div>
     </section>

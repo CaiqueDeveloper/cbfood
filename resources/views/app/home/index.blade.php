@@ -6,21 +6,7 @@
 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-[50px]">
     <div class="content sm:col-span-3">
         <!-- init section filters -->
-        <div class="sm:col-span-2 sm:h-[150px] h-[250px] border-solid border-2 shadow-md rounded-md flex flex-col items-center justify-center  hidden">
-            <div class="w-full header-filter flex justify-between">
-                <h1 class="text-black-700 text-[16px] font-bold ml-[30px]">Filters</h1>
-                <h1 class="text-orange-700 text-[12px] font-medium mr-[30px]">Reset Filters</h1>
-            </div>
-            <div class="w-full body-filter flex flex-col sm:flex-row mt-[20px] sm:mt-[-30px] items-center sm:justify-between">
-                <select name="select " class="w-[95vw] sm:w-[25vw] mb-[30px] sm:-mb-[0px] h-[50px] sm:ml-[20px] sm:mt-[40px] rounded-lg" style="border: 1px solid #ddd;">
-                    <option value="valor1">Valor 1</option>
-                    <option value="valor2" selected>Valor 2</option>
-                    <option value="valor3">Valor 3</option>
-                    </select>
-
-                <input name="select " class="w-[95vw] sm:w-[25vw] h-[50px] sm:mr-[20px] sm:mt-[40px] rounded-lg" style="border: 1px solid #ddd;"></input>
-            </div>
-        </div>
+       
         {{-- section reder view products --}}
         <div class="content-modal-view-product"></div>
         

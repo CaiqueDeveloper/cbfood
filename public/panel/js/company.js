@@ -41,6 +41,14 @@ const Company = {
             let hasOpeneed = $(this).attr('data-hasOpeneed')
             Company.OpenedOrClosedStore(url, hasOpeneed)
         })
+        
+        setTimeout(()=>{
+            $('#user-secury-tab').click()
+        },500)
+        setTimeout(()=>{
+            $('#user-folks-tab').click()
+        },700)
+            
     },
     storageOrCreateCompany (url ,data){
         $('.AppBlock').removeClass('d-none');
