@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Auth;
 
-use App\Http\Controllers\admin\UltilsController;
+use App\Http\Controllers\Admin\UltilsController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorageCompanyRequest;
 use App\Http\Requests\StorageUserRequester;
