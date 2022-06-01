@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Additional extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable  = ['name'];
 
     public function aadditional_morph(){
         
