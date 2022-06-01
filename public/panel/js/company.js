@@ -155,6 +155,7 @@ const Company = {
                 cancelButtonText: "Cancelar!",
             }).then((result) => {
                 if (result.value) {
+                    $('.AppBlock').removeClass('d-none');
                     axios({
                         url:url,
                         method: 'GET',
@@ -184,6 +185,7 @@ const Company = {
                 }
             });
         }else{
+            $('.AppBlock').removeClass('d-none');
             axios({
                 url:url,
                 method: 'GET',

@@ -4,7 +4,7 @@ const Dashboard = {
         Dashboard.init_listerns()
         // iniciando o seletor de períodos
         let start = moment().startOf('month');
-        let end = moment();
+        let end = moment().endOf('month');
         let dateRanges = new Array();
         dateRanges['Dia atual'] = [moment().startOf('day'), moment().endOf('day')];
         dateRanges['Dia Anterior'] = [moment().subtract(1, 'days').startOf('day'), moment().endOf('day')];
@@ -34,6 +34,7 @@ const Dashboard = {
         
     },
     getRederIdicatorsDashboard(start, end){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:window.location.origin + '/admin/getIdicatorsDashboard',
             method: 'GET',
@@ -54,8 +55,10 @@ const Dashboard = {
         .catch((error) =>{
           console.log(error.response.data)
         })
+        .finally(() =>{$('.AppBlock').addClass('d-none');})
     },
     getDataGraphSales(start, end){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:window.location.origin + '/admin/getDataGraphSales',
             method: 'GET',
@@ -122,5 +125,6 @@ const Dashboard = {
         .catch((error) =>{
           console.log(error.response.data)
         })
+        .finally(()=>{$('.AppBlock').addClass('d-none');})
     }
 }

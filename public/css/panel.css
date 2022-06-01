@@ -1,5 +1,5 @@
 .block {
-    background: #fff url('../images/loading.gif') no-repeat;
+    background:  #0000005c url('../panel/img/loading.gif') no-repeat;
     width: 100%;
     height: 100%;
     position: fixed;

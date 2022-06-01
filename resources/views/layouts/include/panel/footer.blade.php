@@ -45,7 +45,7 @@
     </div>
 
     {{-- bloc page --}}
-    <div class="AppBlock d-none">
+    <div class="AppBlock block d-none">
        
     </div>
     <!-- Bootstrap core JavaScript-->

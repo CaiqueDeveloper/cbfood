@@ -101,6 +101,7 @@ const Products = {
        
     },
     getModalCreatProduct(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method:'GET'
@@ -116,10 +117,11 @@ const Products = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     storageProdudct(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -198,6 +200,7 @@ const Products = {
         })
     },
     getAllProducts(){
+        $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: window.location.origin + '/admin/getAllProducts'
@@ -206,7 +209,7 @@ const Products = {
         }).catch((error) =>{
 
             console.log(error.response.data)
-        }).finally(() => {console.log('hello')});
+        }).finally(() => {$('.AppBlock').addClass('d-none');});
     },
     drawTableProducts(data){    
        console.log(data);
@@ -319,6 +322,7 @@ const Products = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',
@@ -349,6 +353,7 @@ const Products = {
         });
     },
     getModalUpdateProduct(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: url
@@ -371,7 +376,7 @@ const Products = {
         }).catch((error)=>{
             console.log(error.response.data)
         }).finally(() => {
-            console.log('finalizou a consulta..')
+            $('.AppBlock').addClass('d-none');
         })
     },
     deleteAdditionalProduct(url){
@@ -386,6 +391,7 @@ const Products = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',
@@ -429,6 +435,7 @@ const Products = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',
@@ -472,6 +479,7 @@ const Products = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',

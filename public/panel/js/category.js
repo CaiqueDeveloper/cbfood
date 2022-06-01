@@ -38,6 +38,7 @@ const Category = {
        })
     },
     getModalCreateCategory(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: url
@@ -52,10 +53,11 @@ const Category = {
         }).catch((error)=>{
             console.log(error.response.data)
         }).finally(() => {
-            console.log('finalizou a consulta..')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getModalUpdateCategory(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: url
@@ -69,10 +71,11 @@ const Category = {
         }).catch((error)=>{
             console.log(error.response.data)
         }).finally(() => {
-            console.log('finalizou a consulta..')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getAllCategoryCompany(){
+        $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: window.location.origin + '/admin/getAllCategoryCompany'
@@ -82,10 +85,11 @@ const Category = {
         }).catch((error)=>{
             console.log(error.response.data)
         }).finally(() => {
-            console.log('finalizou a consulta..')
+            $('.AppBlock').addClass('d-none');
         })
     },
     storageCategory(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -118,6 +122,7 @@ const Category = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     storageUpdateCategory(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -219,6 +224,7 @@ const Category = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',

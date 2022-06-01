@@ -29,6 +29,7 @@ var User = {
     },
    
     getInfoUserLogged(){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url: window.location.origin + '/admin/getInfoUserLogged',
             method: 'get',
@@ -38,7 +39,7 @@ var User = {
         })
         .catch((error) => {
             console.log(error.response.data);
-        })
+        }).finally(() => {$('.AppBlock').addClass('d-none');})
     },
     updateUserFolks(url, data){
         $('.AppBlock').removeClass('d-none');

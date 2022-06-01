@@ -70,6 +70,7 @@ const Additionals = {
         })
     },
     renderViewContentAdditional(){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url: window.location.origin + '/admin/renderViewContentAdditional',
             method:'GET'
@@ -81,10 +82,11 @@ const Additionals = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getModalCreateGroupAdditional(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method:'GET'
@@ -98,10 +100,11 @@ const Additionals = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getModalUpdateAdditional(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method:'GET'
@@ -115,10 +118,11 @@ const Additionals = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getModalUpdateIemAdditional(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method:'GET'
@@ -132,10 +136,11 @@ const Additionals = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     getModalCreateItemAdditional(url){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method:'GET'
@@ -149,10 +154,11 @@ const Additionals = {
         }).catch((error) =>{
 
         }).finally(()=>{
-            console.log('finalizou a consulta')
+            $('.AppBlock').addClass('d-none');
         })
     },
     storageGropAdditional(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -185,6 +191,7 @@ const Additionals = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     storageItemAdditional(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -217,6 +224,7 @@ const Additionals = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     storageUpdateAdditonal(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -249,6 +257,7 @@ const Additionals = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     storageUpdateItemAdditional(url, data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -291,6 +300,7 @@ const Additionals = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',
@@ -332,6 +342,7 @@ const Additionals = {
             cancelButtonText: "Cancelar!",
         }).then((result) => {
             if (result.value) {
+                $('.AppBlock').removeClass('d-none');
                 axios({
                     url:url,
                     method: 'GET',
