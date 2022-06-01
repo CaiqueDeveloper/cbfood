@@ -81,7 +81,7 @@ class UltilsController extends Controller
             }
         }
     }
-    public function generateSlug($name){
+    public static function generateSlug($name){
         
         $slug = Str::slug($name);
         return $slug;
