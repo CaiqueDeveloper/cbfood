@@ -133,7 +133,7 @@ var Home = {
         })
     },
     actionModalProduct(){
-        let qtModal = 0;
+        let qtModal = 1;
         const cartItem = [];
 
         $('.closed-modal').on('click', function(e){
