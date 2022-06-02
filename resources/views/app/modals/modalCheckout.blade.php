@@ -44,7 +44,7 @@
             </div>
             <div class="col-6 content-thing mb-4" style="display: none;margin-left:-10px">
                 <label for="lastName">Troco?</label>
-                <input type="number" class="form-control" name="thing" placeholder="" id="thing">
+                <input type="text" class="form-control" name="thing" placeholder="" id="thing">
             </div>
             <hr class="mb-4">
             <article class="flex items-center"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
@@ -168,7 +168,7 @@
             </div>
             <div class="col-6 content-thing mb-4" style="display: none;margin-left:-10px">
                 <label for="lastName">Troco?</label>
-                <input type="number" class="form-control" name="thing" placeholder="" required>
+                <input type="text" class="form-control" name="thing" placeholder="" required>
             </div>
             <hr class="mb-4">
             <button class="bg-green-300 text-green-600 font-bold p-2 rounded-xl text-xl" type="submit">Confirma Compra</button>
