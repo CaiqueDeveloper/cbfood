@@ -29,6 +29,8 @@
             "Database\\Seeders\\": "database/seeders/"
         }
     },
+    "post-install-cmd": 
+    [ "ln -sr storage/app/public public/storage" ],
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
