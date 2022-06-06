@@ -51,15 +51,12 @@ class HomeController extends Controller
         return view('app.modals.modalCheckout',compact('cartItens'));
     }
     protected function ckeckout(Request $request){
-        //dd($request->only('name', 'email', 'password', 'number_phone'));
-        //Get Data User
-        dd($request->all());
-       
+    
         $user = UserController::storage($request->only('name', 'email', 'password', 'number_phone'));
         $credentials = $request->only('number_phone', 'password');
         Auth::attempt($credentials);
-        $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix'));
-        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'),$request->only('thing'), $address->id);
+        $address = AddressController::storageAddress($user->id, $request->except('name', 'email', 'password', 'credcard', 'money', 'pix','pick_up_on_the_spot'));
+        $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('payment_method'),$request->only('thing'), $request->only('pick_up_on_the_spot'),$address->id);
         
         if(isset($user) && isset($address) && isset($order)){
             
@@ -77,8 +74,9 @@ class HomeController extends Controller
         return Address::insetNewAddressUser($request->only('user_id'), $request->except('user_id'));
     }
     protected function sendOrderUser(Request $request){
-      
-        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('credcard', 'money', 'pix'),$request->only('thing'), $request->only('address') );
+        
+       
+        return $order = OrderController::getOredsUser(\Cart::getContent(), $request->only('payment_method'),$request->only('thing'), $request->only('pick_up_on_the_spot'), $request->only('address') );
         
     }
     protected function getModalLoginUser(){

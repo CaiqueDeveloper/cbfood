@@ -397,6 +397,7 @@ var Home = {
                 if ($(this).prop('checked')) {
                     // $(this).attr('value', '1')
                     $('.content-thing').fadeOut();
+                    $('input[name="thing"]').attr('value', '0.00')
                 } else {
                     $('.content-variation-area').fadeOut();
                     // $(this).attr('value', '0')

@@ -33,9 +33,9 @@ class OrderController extends Controller
     public function canceled(){
         return view('panel.orders.canceled');
     }
-    public function getOredsUser($orders, $paymentMethod,$thing, $address){
+    public function getOredsUser($orders, $paymentMethod,$thing, $pickUpOnTheSpot,$address){
 
-       $storageOrder = Order::storageOrderUser($orders, $paymentMethod,$thing, $address);
+       $storageOrder = Order::storageOrderUser($orders, $paymentMethod,$thing,$pickUpOnTheSpot, $address);
         if($storageOrder){
 
             \Cart::clear();

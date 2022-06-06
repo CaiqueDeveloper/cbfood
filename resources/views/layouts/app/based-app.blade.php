@@ -55,7 +55,7 @@
                       </div>
                 @else
                     <a href="#" class="show-modal-login-user" type="button" style="text-decoration:none">Login</a>
-                    <a href="#" class="mx-3" type="button" style="text-decoration:none">Cadastre-se</a>
+                    <a href="#" class="mx-3 hidden" type="button" style="text-decoration:none">Cadastre-se</a>
                 @endif
                 <a href="#" class="relative hidden sm:block open-shopping-cart">
                     <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

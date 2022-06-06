@@ -79,11 +79,13 @@
     <!-- Core plugin JavaScript-->
     <script src="{{url('theme-sdb-admin-2/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{url('site/js/home.js')}}"></script>
+    <script src="{{url('site/js/checkout.js')}}"></script>
     <script src="{{url('site/js/ultils.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.carousel.min.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.theme.default.min.js')}}"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/sweetalert2/sweetalert.all.js')}}" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     
     <script>
         Home.constructor()

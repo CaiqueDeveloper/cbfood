@@ -11,7 +11,7 @@ class Order extends Model
 {
     use HasFactory;
     protected $table = 'orders';
-    protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing'];
+    protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot'];
 
     public function orderProduct(){
        
@@ -30,14 +30,15 @@ class Order extends Model
     protected static function getOrder($id){
         return Order::where('id', $id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
     }
-    public static function storageOrderUser($orders, $paymentMethod,$thing, $address){
+    public static function storageOrderUser($orders, $paymentMethod,$thing,$pickUpOnTheSpot, $address){
+        
         $address_id = 0;
         $auxOrder = $orders->first();
         $payment = '';
-        if(isset($paymentMethod['money'])){
-            $payment = $paymentMethod['money'];
+        if(isset($paymentMethod['payment_method'])){
+            $payment = $paymentMethod['payment_method'];
         }else{
-                $payment = $paymentMethod['credcard'];
+                $payment = $paymentMethod['payment_method'];
         }
         if(isset($address['address'])){
             $address_id = $address['address'];
@@ -52,6 +53,7 @@ class Order extends Model
         $orderUser['payment_method'] = $payment;
         $orderUser['delivery_price'] = 0;
         $orderUser['thing'] = $thing['thing'];
+        $orderUser['pickUpOnTheSpot'] = $pickUpOnTheSpot['pick_up_on_the_spot'];
         $orderUser['price_total'] = \Cart::getTotal();
 
         $orderInsert = Order::create($orderUser);
