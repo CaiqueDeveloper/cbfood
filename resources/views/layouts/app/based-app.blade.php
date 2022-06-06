@@ -54,7 +54,7 @@
                         </div>
                       </div>
                 @else
-                    <a href="#" class="show-modal-login-user" type="button" style="text-decoration:none">Login</a>
+                    <a href="#" class="show-modal-login-user mr-2" type="button" style="text-decoration:none">Login</a>
                     <a href="#" class="mx-3 hidden" type="button" style="text-decoration:none">Cadastre-se</a>
                 @endif
                 <a href="#" class="relative hidden sm:block open-shopping-cart">

@@ -6,7 +6,7 @@
     <div class="row font-bold text-gray-900">
         <div class="col mb-3">
             <label for="firstName">WhatApp</label>
-            <input type="number" class="form-control" name="number_phone" required>
+            <input type="text" class="form-control phone_number" name="number_phone" required>
         </div>
     </div>
     <div class="mb-3 font-bold text-gray-900">

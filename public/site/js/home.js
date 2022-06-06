@@ -530,7 +530,7 @@ var Home = {
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Login');
             Home.init_listerns()
-            
+            $('.phone_number').mask('(00) 0 0000-0000');
         }).catch((error) =>{
 
         }).finally(()=>{
