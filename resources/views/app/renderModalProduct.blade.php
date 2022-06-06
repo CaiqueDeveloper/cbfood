@@ -71,7 +71,13 @@
             </div>
         @endif
         <div class="product-content-total-price mr-3 ml-3 mb-3 flex flex-column justify-start text-xl sm:text-1xl mr-3 mt-3 ">
-            <h1 class="text-xl sm:text-2xl font-bold text-black-600 my-3">@if(@count($product['product']->variations) < 0)Valor/Quantidade @else Informe o valor e quantidade desejada @endif</h1>
+            <h1 class="text-xl sm:text-2xl font-bold text-black-600 my-3">@if(@count($product['product']->variations) > 0)Valor/Quantidade @else Informe o valor e quantidade desejada @endif</h1>
+            <div class="alert alert-info alert-dismissible fade show @if(@count($product['product']->variations) > 0) d-none @endif" role="alert">
+                <strong>Aviso</strong> Esse produto não tem variação, necessário especificar o valor desejado. Obrigado !
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
             <div class="price-product flex">
                 <p class="font-bold mr-2">R$</p>
                 @if(@count($product['product']->variations) > 0)
