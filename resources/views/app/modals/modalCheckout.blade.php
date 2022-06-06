@@ -30,19 +30,19 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credcard" name="credcard" type="checkbox" class="custom-control-input" value="credcard">
-                    <label class="custom-control-label" for="credcard">Cartão</label>
+                    <input id="credit" name="payment_method" type="radio" class="custom-control-input checkbox-credcard"  value="credcard">
+                    <label class="custom-control-label" for="credit">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input id="debit" name="money" type="checkbox" class="custom-control-input" value="money">
+                    <input id="debit" name="payment_method" type="radio" class="custom-control-input checkbox-money" value="money">
                     <label class="custom-control-label" for="debit">Dinheiro</label>
                 </div>
                 <div class="custom-control custom-radio hidden">
-                    <input id="paypal" name="pay" type="checkbox" class="custom-control-input" value="pix">
+                    <input id="paypal" name="payment_method" type="radio" class="custom-control-input" value="pix">
                     <label class="custom-control-label" for="paypal">Pix</label>
                 </div>
             </div>
-            <div class="col-6 content-thing mb-4" style="display: none;margin-left:-10px">
+            <div class="col-sm-6 col content-thing mb-4" style="display: none;margin-left:-10px">
                 <label for="lastName">Troco?</label>
                 <input type="text" class="form-control" name="thing" placeholder="" id="thing">
             </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">WhatApp Number</label>
-                    <input type="text" class="form-control" id="lastName" name="number_phone" placeholder="" value="" required>
+                    <input type="text" class="form-control phone_number" id="lastName" name="number_phone" placeholder="" value="" required>
                 </div>
             </div>
             <div class="mb-3 font-bold text-gray-900">
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">CEP</label>
-                    <input type="text" class="form-control" name="zipe_code" placeholder="" required>
+                    <input type="text" class="form-control cep" name="zipe_code" placeholder="" required>
                 </div>
             </div>
             <div class="row font-bold text-gray-900">
@@ -154,19 +154,19 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credit" name="credcard" type="checkbox" class="custom-control-input"  value="credcard">
+                    <input id="credit" name="payment_method" type="radio" class="custom-control-input checkbox-credcard"  value="credcard">
                     <label class="custom-control-label" for="credit">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input id="debit" name="money" type="checkbox" class="custom-control-input checkbox-money" value="money">
+                    <input id="debit" name="payment_method" type="radio" class="custom-control-input checkbox-money" value="money">
                     <label class="custom-control-label" for="debit">Dinheiro</label>
                 </div>
                 <div class="custom-control custom-radio hidden">
-                    <input id="paypal" name="pix" type="checkbox" class="custom-control-input" value="pix">
+                    <input id="paypal" name="payment_method" type="radio" class="custom-control-input" value="pix">
                     <label class="custom-control-label" for="paypal">Pix</label>
                 </div>
             </div>
-            <div class="col-6 content-thing mb-4" style="display: none;margin-left:-10px">
+            <div class="col-sm-6 col content-thing mb-4" style="display: none;margin-left:-10px">
                 <label for="lastName">Troco?</label>
                 <input type="text" class="form-control" name="thing" placeholder="" required>
             </div>

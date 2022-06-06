@@ -3,24 +3,24 @@
 {{-- inlcude head --}}
 @include('layouts.include.panel.head')
 
-<body class="bg-gradient-primary">
+<body class="">
 
     <div class="container">
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="row d-flex justify-content-center align-items-center" style="height: 100vh">
 
-            <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="col col-sm-6">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
-                        <div class="row">
-                            <div class="col-lg-6 d-flex align-items-center justify-content-center ">
+                        <div class="row d-flex flex-column">
+                            <div class="d-flex align-items-center justify-content-center ">
                                 <img src="{{ url('panel/img/logo/icon-page.svg') }}" alt="" width="200px">
                             </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
+                            <div class="col mt-4">
+                                <div class="p-3">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">@yield('title-form-auth')</h1>
                                     </div>

@@ -3,6 +3,8 @@ var Home = {
     constructor() {
         Home.init_listerns()
         Home.getTotalItemCart()
+        //apply filter
+        
 
     },
     init_listerns(){
@@ -36,12 +38,6 @@ var Home = {
             let url = window.location.origin+ '/app/remove/'+$(this).attr('data-id_item-cart')
             Home.removeItemCart(url)
         })
-        // $('.product-content-info--qtmais').on('click', function(e){
-        //     e.preventDefault();
-        //     qtModal++
-        //     e.find('.product-content-info--qt').html(qtModal)
-        //    console.log($(this));
-        // })
         $('input[name="quatity"]').on('change', function(e){
             
             let quantity = ($(this).val() > 0) ? $(this).val() : 1; 
@@ -220,8 +216,9 @@ var Home = {
                     '',
                     'success'
                 )
+                $('.announcementModalArea').addClass('hidden')
                 setTimeout(() =>{
-                    $('.announcementModalArea').fadeOut('slow')
+                    
                     Home.getTotalItemCart()
                     swal.close()
                    
@@ -373,10 +370,14 @@ var Home = {
             $('#modalMain').modal('show');
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Checkout');
+            
+            //apply filter
+            $('.phone_number').mask('(00) 0 0000-0000');
+            $('.cep').mask('00000-000');
             Home.init_listerns()
             
             ;
-            $('input[name="money"]').on('change', function(e) {
+            $('.checkbox-money').on('change', function(e) {
                 e.stopImmediatePropagation()
                 e.preventDefault();
                
@@ -389,7 +390,7 @@ var Home = {
                     // $(this).attr('value', '0')
                 }
             })
-            $('input[name="credcard"]').on('change', function(e) {
+            $('.checkbox-credcard').on('change', function(e) {
                 e.stopImmediatePropagation()
                 e.preventDefault();
                

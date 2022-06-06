@@ -53,6 +53,7 @@ class HomeController extends Controller
     protected function ckeckout(Request $request){
         //dd($request->only('name', 'email', 'password', 'number_phone'));
         //Get Data User
+        dd($request->all());
        
         $user = UserController::storage($request->only('name', 'email', 'password', 'number_phone'));
         $credentials = $request->only('number_phone', 'password');

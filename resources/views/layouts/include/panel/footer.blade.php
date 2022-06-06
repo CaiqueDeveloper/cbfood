@@ -63,6 +63,7 @@
     <script src="{{url('panel/js/dashboard.js')}}"></script>
     <script src="{{url('koolChartJs/KoolChart/JS/KoolChart.js')}}"></script>
     <script src="{{url('koolChartJs/LicenseKey/KoolChartLicense.js')}}"></script>
+    <script src="{{url('jQueryMask/jquery.mask.js')}}"></script>
     
     <script src="{{url('theme-sdb-admin-2/vendor/sweetalert2/sweetalert.all.js')}}" type="text/javascript"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/mommentJS/momment.js')}}" type="text/javascript"></script>
