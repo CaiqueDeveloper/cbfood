@@ -112,7 +112,7 @@ const Products = {
             $('.modal-title').html('Cadastrar novo Produto');
             Products.init_listerns()
             Products.createNewFieldsVariationAnnouncement()
-            $('input[name="variationPrice[]"]').mask("#,##0.00", {reverse: true})
+            $('input[name="variationPrice[]"], input[name="price"]').mask("#,##0.00", {reverse: true})
 
         }).catch((error) =>{
 

@@ -70,9 +70,10 @@
                 </div>
             </div>
         @endif
+        
         <div class="product-content-total-price mr-3 ml-3 mb-3 flex flex-column justify-start text-xl sm:text-1xl mr-3 mt-3 ">
-            <h1 class="text-xl sm:text-2xl font-bold text-black-600 my-3">@if(@count($product['product']->variations) > 0)Valor/Quantidade @else Informe o valor e quantidade desejada @endif</h1>
-            <div class="alert alert-info alert-dismissible fade show @if(@count($product['product']->variations) > 0) d-none @endif" role="alert">
+            <h1 class="text-xl sm:text-2xl font-bold text-black-600 my-3">@if(@count($product['product']->variations) > 0 || $product['product']->price != null)Valor/Quantidade @else Informe o valor e quantidade desejada @endif</h1>
+            <div class="alert alert-info alert-dismissible fade show @if(@count($product['product']->variations) > 0   || $product['product']->price != null) d-none @endif" role="alert">
                 <strong>Aviso</strong> Esse produto não tem variação, necessário especificar o valor desejado. Obrigado !
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -85,7 +86,7 @@
                         {{$maxValue['variationPrice']}}
                     </div>
                 @else
-                <input type="number" name="priceCliente" class="outline-none w-[120px]" placeholder="Ex: 30.00">
+                <input type="number" @if($product['product']->price != null) readonly @endif name="priceCliente" class="outline-none w-[120px]" placeholder="Ex: 30.00" value="{{$product['product']->price}}">
                 @endif
                 <div class="product-content-info--qtarea flex items-center  h-[30px] rounded-[10px] px-[10px]">
                     <button class="product-content-info--qtmenos  px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">-</button>
