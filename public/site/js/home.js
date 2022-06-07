@@ -212,7 +212,7 @@ var Home = {
         .then((response) =>{
             
                 swal(
-                    'Sucesso!',
+                    'Item adicionado ao carrinho!',
                     '',
                     'success'
                 )
@@ -474,14 +474,13 @@ var Home = {
                     '',
                     'success'
                 )
+                window.location.href = window.location.href
                 setTimeout(() =>{
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
                     swal.close()
-                  
-                   
                     $("#modalMain").modal('hide');
-                    window.location.href = window.location.href
+                    
                    
                 },3000)
             
@@ -501,18 +500,19 @@ var Home = {
         .then((response) =>{
             
                 swal(
-                    'Sucesso!',
+                    'Compra Realizada!',
                     '',
                     'success'
                 )
+                
                 setTimeout(() =>{
                     $("#modalMain").modal('hide');
-                    $('.announcementModalArea').fadeOut('slow')
-                    Home.getTotalItemCart()
                     swal.close()
-                    window.locatio.href = window.location.href
+                    window.location.href = window.location.href
+                    
                    
-                },3000)
+                },2000)
+               
             
         })
         .catch((error) =>{
@@ -549,7 +549,7 @@ var Home = {
         .then((response) =>{
             
                 swal(
-                    'Sucesso!',
+                    'Estamos lhe Redicionando novamente!',
                     '',
                     'success'
                 )
@@ -577,7 +577,7 @@ var Home = {
         .then((response) =>{
             
                 swal(
-                    'Sucesso!',
+                    'Estamos lhe Redicionando novamente!',
                     '',
                     'success'
                 )
