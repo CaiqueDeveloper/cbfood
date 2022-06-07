@@ -103,7 +103,7 @@
 		</ul>
 	</div>
 	<div class="form_wrap">
-		<div class="form_1 data_info w-[350px] m-[0px -27%] sm:w-full sm:ml-0">
+		<div class="form_1 data_info w-[350px] m-[-27%] mt-3 sm:w-full sm:ml-0">
 			<h2 class="font-bold tex-2xl tex-gray-600">Resumo do Carrinho</h2>
             {{-- Item in Cart --}}
             <div class="col order-md-2 mb-4">
@@ -129,7 +129,7 @@
             </div>
 		</div>
         <form class="needs-validation form-checkout-new-user">
-            <div class="form_2 data_info w-[350px] m-[0px -27%] sm:w-full sm:ml-0" style="display: none;">
+            <div class="form_2 data_info w-[350px] m-[-27%] mt-3 sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações Pessoal</h2>
                 
                     <div class="form_container">
@@ -166,7 +166,7 @@
                         </div>
                     </div>
             </div>
-            <div class="form_3 data_info w-[350px] m-[0px -27%] sm:w-full sm:ml-0" style="display: none;">
+            <div class="form_3 data_info w-[350px] m-[-27%] mt-3 sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações de Pagamento e Endereço</h2>
                     <div class="form_container">
                         <div class="row font-bold text-gray-900 d-none">
