@@ -11,7 +11,7 @@
     </div>
 </div>
 <div class="row mt-4">
-    <div class="col-12">
+    <div class="col-12 table-responsive">
         <table class="table-orders table table-striped"  >
             
         </table>

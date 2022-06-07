@@ -37,6 +37,7 @@ const Orders = {
                     orderPaymentMethod: response.data[i].payment_method,
                     orderDeliveryPrice: response.data[i].delivery_price,
                     orderThing: response.data[i].thing,
+                    orderPickUpOnTheSpot: response.data[i].pickUpOnTheSpot,
                     orderStatus: response.data[i].status,
                     orderTotalItens: response.data[i].order_product.length,
                     orderAddressUserId: response.data[i].address_id,
@@ -86,6 +87,10 @@ const Orders = {
         }, {
             data: "orderThing",
             title: "TROCO",
+            className: 'text-center'
+        },{
+            data: "orderPickUpOnTheSpot",
+            title: "RETIRAR NO LOCAL?",
             className: 'text-center'
         }, {
             data: 'orderStatus',
@@ -198,6 +203,12 @@ const Orders = {
                 targets: 7,
                 orderable: true,
                 render: function(a, n, e, s) {
+                    return a;
+                }
+            }, {
+                targets: 8,
+                orderable: true,
+                render: function(a, n, e, s) {
                    switch(a){
                        case 0:
                             return '<p style="background:#fca5a5; color:#dc2626;border-radius:20px;font-weight:bold;" >CANCELADO</p>'    
@@ -220,13 +231,13 @@ const Orders = {
                    }
                 }
             }, {
-                targets: 8,
+                targets: 9,
                 orderable: true,
                 render: function(a, n, e, s) {
                     return moment(a.orderDate).format('DD/MM/YYYY');   ;
                 }
             }, {
-                targets: 9,
+                targets: 10,
                 orderable: true,
                 render: function(a, n, e, s) {
                     return `<a href="#" class="show-modal-address" value="${a}" style="color:#2563eb">
@@ -237,7 +248,7 @@ const Orders = {
                     </a>`;
                 }
             }, {
-                targets: 10,
+                targets: 11,
                 orderable: true,
                 render: function(a, n, e, s) {
                     
