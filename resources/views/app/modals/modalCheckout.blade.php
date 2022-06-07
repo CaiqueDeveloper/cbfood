@@ -245,7 +245,7 @@
             </div>
         </form>
 	</div>
-	<div class="btns_wrap col">
+	<div class="btns_wrap col mt-3">
 		<div class="common_btns form_1_btns col">
 			<button type="button" class="btn_next col">Proximo <span class="icon"><ion-icon name="arrow-forward-sharp"></ion-icon></span></button>
 		</div>
