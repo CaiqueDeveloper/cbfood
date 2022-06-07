@@ -144,7 +144,7 @@
                             </div>
                         </div>
                         <div class="mb-3 font-bold text-gray-900">
-                            <label for="username">Senha</label>
+                            <label for="username">Senha (A Senha dever 8 caracteres)</label>
                             <div class="input-group">
                                 <input type="password" class="form-control" id="username" name="password" required>
                             </div>
