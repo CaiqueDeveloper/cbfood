@@ -64,10 +64,6 @@
                     <label class="custom-control-label" for="no">Não</label>
                 </div>
             </div>
-            <div class="col-sm-6 col content-thing mb-4" style="display: none;margin-left:-10px">
-                <label for="lastName">Troco?</label>
-                <input type="text" class="form-control" name="thing" placeholder="" id="thing">
-            </div>
             <hr class="mb-4">
             <article class="flex items-center flex-col sm:flex-row"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
         @foreach(Auth::user()->address as $addres)
@@ -169,7 +165,7 @@
             <div class="form_3 data_info w-[280px] ml-[-55px] sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações de Pagamento e Endereço</h2>
                     <div class="form_container">
-                        <div class="row font-bold text-gray-900 d-none">
+                        <div class="row font-bold text-gray-900">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Estado</label>
                                 <input type="text" class="form-control" name="states" placeholder="">
