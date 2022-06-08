@@ -49,14 +49,20 @@
                             <p class="mr-2">Olá {{Auth::user()->name}}</p>
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                          <button class="dropdown-item my-bag">Minha Sacola</button>
+                          <button class="dropdown-item my-bag hidden">Minha Sacola</button>
                           <button class="dropdown-item logout-user" >Sair</button>
                         </div>
                       </div>
+                     
                 @else
                     <a href="#" class="show-modal-login-user mr-2" type="button" style="text-decoration:none">Login</a>
-                    <a href="#" class="mx-3 hidden" type="button" style="text-decoration:none">Cadastre-se</a>
+                  
                 @endif
+                <a href="#" class="my-bag mr-3 text-orange-600 hove:text-orange-600 active:text-orange-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-bag-fill" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+                      </svg>
+                  </a>
                 <a href="#" class="relative hidden sm:block open-shopping-cart">
                     <svg class="w-5 h-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>

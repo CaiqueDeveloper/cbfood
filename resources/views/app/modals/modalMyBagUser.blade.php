@@ -3,27 +3,22 @@
     @forelse (Auth::user()->orders as $order)
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center" id="heading-{{$order->id}}">
-        <h2 class="mb-0 col">
+        <h2 class="">
             <button class="btn btn-block text-left shadow-none" type="button" data-toggle="collapse" data-target="#collapse-{{$order->id}}" aria-expanded="true" aria-controls="collapse-{{$order->id}}">
                 @php 
                 @endphp
-                <strong class="flex items-center">
-                    <div class="icon-plus text-orange-600 mr-2">
+                <strong class="">
+                    <div class="icon-plus text-orange-600 flex">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                             <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                         </svg>
+                        <strong class="ml-2">Pedido</strong>
                     </div>
-                    Cod# {{$order->id}}</strong> 
-                
+                    
             </button>
+           
             
         </h2>
-        <div class="price-order col font-bold">
-           Valor R$ {{number_format($order->price_total)}}
-        </div>
-        <div class="qtItems col font-bold">
-            Qt Itens ({{@count($order->orderProduct)}})
-        </div>
         <div class="status col">
             @switch($order->status)
                 @case(0)
