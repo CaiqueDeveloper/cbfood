@@ -67,4 +67,7 @@ class Company extends Model
     public function orders(){
         return $this->hasMany(Order::class, 'company_id');
     }
+    protected static function getCompanyOrder($company_id){
+        return Company::where('id', $company_id)->select('companies.name','companies.phone_number')->get();
+    }
 }

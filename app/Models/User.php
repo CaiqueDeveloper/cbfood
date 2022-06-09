@@ -94,4 +94,7 @@ class User extends Authenticatable
 
         return $this->hasMany(Order::class, 'user_id');
     }
+    protected static function getUserOrder($user_id){
+        return User::where('id', $user_id)->select('users.name','users.number_phone')->get();
+    }
 }

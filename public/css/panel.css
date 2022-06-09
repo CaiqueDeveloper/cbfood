@@ -32,7 +32,11 @@ table.makeTablePermissionSommedUp>thead .sorting:after,
 table.makeTablePermissionSommedUp>thead .sorting::before {
     display: none !important;
 }
-
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current
+{
+    color: #fff !important;
+}
 .firure {
     width: 100%;
     height: auto;

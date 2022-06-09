@@ -6,6 +6,7 @@ use DatePeriod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Node\Query\OrExpr;
 
 class Order extends Model
 {
@@ -148,5 +149,19 @@ class Order extends Model
                 'orderCanceled'=> $orderCanceled,
                 'oderTotal'=> $oderTotal,
             ];
+    }
+    protected static function changeStateOrderUser($order_id, $status){
+        
+        $order = Order::where('id', $order_id)->get();
+        $user = User::getUserOrder($order[0]->user_id);
+        $company = Company::getCompanyOrder($order[0]->company_id);
+        $order[0]->status = $status;
+        if($order[0]->save()){
+            return [
+                'user' => $user,
+                'company' => $company,
+                'status_order' => $status,
+            ];
+        }
     }
 }

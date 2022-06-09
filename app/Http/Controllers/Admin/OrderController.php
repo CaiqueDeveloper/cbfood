@@ -65,9 +65,9 @@ class OrderController extends Controller
         return response()->json(Order::getOrders(), 200);
     }
     protected function updateStatusOrder(Request $request){
-
-        if(Order::where('id', $request->order_id)->update($request->except('order_id'))){
-            return response()->json('success', 200);
+        $changeStateOrder = Order::changeStateOrderUser($request->order_id, $request->status);
+        if($changeStateOrder){
+            return response()->json($changeStateOrder, 200);
         }else{
             return response()->json('error', 500);
         }
