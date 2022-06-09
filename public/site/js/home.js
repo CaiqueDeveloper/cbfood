@@ -116,8 +116,6 @@ var Home = {
         }).then((response) =>{
             
             $('.content-modal-view-product').html(response.data.view)
-          
-
             Home.actionModalProduct()
             Home.init_listerns()
             
@@ -372,7 +370,7 @@ var Home = {
             $('.modal-title').html('Checkout');
             
             //apply filter
-            $('.phone_number').mask('(00) 0 0000-0000');
+            $('.phone_number').mask('(00)  0000-0000');
             $('.cep').mask('00000-000');
             Home.init_listerns()
             

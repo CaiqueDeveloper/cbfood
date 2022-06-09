@@ -55,10 +55,10 @@
                             @foreach ($additional->items as $item)
                                 <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
                                     <div class="form-check">
-                                        <input class="form-check-input" id="{{$item->id}}" value="{{$item->id}}" name="items[]" type="checkbox">
+                                        <input class="form-check-input" id="{{$item->id}}" data-price_additional="{{$item->price}}" value="{{$item->id}}" name="items[]" type="checkbox">
                                         <label class="form-check-label" for="{{$item->id}}" style="cursor: pointer">{{$item->name}}</label>
                                     </div>
-                                    R$ {{$item->price}}
+                                   <div class="additional_price">R$ {{$item->price}}</div>
                                 </div>
                             @endforeach
                         </div>
@@ -87,6 +87,7 @@
                     </div>
                 @else
                 <input type="number" @if($product['product']->price != null) readonly @endif name="priceCliente" class="outline-none w-[120px]" placeholder="Ex: 30.00" value="{{$product['product']->price}}">
+                
                 @endif
                 <div class="product-content-info--qtarea flex items-center  h-[30px] rounded-[10px] px-[10px]">
                     <button class="product-content-info--qtmenos  px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">-</button>
