@@ -79,6 +79,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+                
             <div class="price-product flex">
                 <p class="font-bold mr-2">R$</p>
                 @if(@count($product['product']->variations) > 0)
@@ -97,6 +98,17 @@
             </div>
             
         </div>
+        @if(@count($additional->items) > 0)
+            <div class="content-value-price-additional mr-3 ml-3 mb-3 my-3 text-xl sm:text-1xl">
+                <h3 class="font-bold ">Valor dos Adicionais</h3>
+                <section class="flex mt-2">
+                    <p class="font-bold mr-2">R$</p> <div class="price_additional">0,00</div>
+                </section>
+                <div class="flex my-2 text-black font-bold">
+                    <Strong>Valor Total R$</Strong> <div class="final-price ml-2"> 0,00</div>
+                </div>
+            </div>
+        @endif
         <div class="row mt-3">
             <div class="col-md-12 mr-3 ml-3 font-bold text-2xl">
                 <h3>Observações</h3>

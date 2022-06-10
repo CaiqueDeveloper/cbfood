@@ -118,8 +118,10 @@ var Home = {
             $('.content-modal-view-product').html(response.data.view)
             Home.actionModalProduct()
             Home.init_listerns()
-            
-
+            $('input[name="items[]"]').on('change', function(e){
+                e.preventDefault();
+                Home.sumValueAdditionalSelected()
+            })
         }).catch((error) =>{
 
         }).finally(()=>{
@@ -154,6 +156,7 @@ var Home = {
             $(this).addClass('bg-orange-300')
             let price_product_selected = $(this).attr('data-price_variation_product')
             $('.price-product-selected').html(price_product_selected)
+            Home.sumValueAdditionalSelected(price_product_selected)
         })
         $('.product-content-info--qt').html(qtModal);
 
@@ -168,11 +171,13 @@ var Home = {
             let image = $('.img-product').css('background-image');
             image = image.replace('url(','').replace(')','').replace(/\"/gi, "");
             console.log(idItemsAdditonal);
-            if($('.price-product-selected').length > 0){
-                price = $('.price-product-selected').html();
+            if(idItemsAdditonal.length > 0){
+                price = $('.final-price').html();
             }else{
-                price = $('input[name="priceCliente"]').val()
-            } 
+                if($('.price-product-selected').length > 0){
+                    price = $('.price-product-selected').html();
+                }
+            }
 
             if(key > -1){
                 cartItem[key].qtModal += qtModal
@@ -609,4 +614,38 @@ var Home = {
             console.log('finalizou a consulta')
         })
     },
+    sumValueAdditionalSelected(price_product_selected){
+        var total = 0;
+        let price_additiona = []
+        let priceSelectedClient = 0
+        let finalPrice = 0;
+        if($('input[name="priceCliente"]').length > 0){
+            priceSelectedClient = parseFloat($('input[name="priceCliente"]').val()) 
+        }else{
+            priceSelectedClient = parseFloat($('.price-product-selected').html())
+        }
+
+        $('input[name="items[]"]:checked').each(function(index, element){
+            price_additiona.push({price: parseFloat($(this).attr('data-price_additional'))})
+            
+        }) 
+        for (var i in price_additiona) {
+            total += price_additiona[i].price;
+        }
+
+        $('.price_additional').html(total.toFixed(2))
+        if($('input[name="priceCliente"]').length > 0){
+
+            $('input[name="priceCliente"]').on('keyup',function(e){
+                e.preventDefault()
+                priceSelectedClient = parseFloat($('input[name="priceCliente"]').val()) 
+                finalPrice = priceSelectedClient + parseFloat(total.toFixed(2))
+                $('.final-price').html(finalPrice.toFixed(2))
+            })
+            
+        }
+        priceSelectedClient = (!isNaN( priceSelectedClient)) ? priceSelectedClient : 0;
+        finalPrice = total + priceSelectedClient
+        $('.final-price').html(finalPrice.toFixed(2))
+    }
 }
