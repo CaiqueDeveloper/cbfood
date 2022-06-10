@@ -1,5 +1,5 @@
-<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100] flex items-center justify-center overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
-    <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg">
+<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
+    <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4">
         <div class="content-product-imgs relative overflow-hidden">
             <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/{{$product['product']->images->last()->path}}')">
             <div class="contente-product-imgs-controls w-full flex justify-between hidden">

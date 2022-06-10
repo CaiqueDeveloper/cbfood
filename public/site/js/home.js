@@ -622,7 +622,10 @@ var Home = {
         if($('input[name="priceCliente"]').length > 0){
             priceSelectedClient = parseFloat($('input[name="priceCliente"]').val()) 
         }else{
-            priceSelectedClient = parseFloat($('.price-product-selected').html())
+            setTimeout(function(e){
+                priceSelectedClient = parseFloat($('.price-product-selected').html())
+            },300)
+           
         }
 
         $('input[name="items[]"]:checked').each(function(index, element){
