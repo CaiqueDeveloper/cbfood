@@ -622,9 +622,7 @@ var Home = {
         if($('input[name="priceCliente"]').length > 0){
             priceSelectedClient = parseFloat($('input[name="priceCliente"]').val()) 
         }else{
-            setTimeout(function(e){
-                priceSelectedClient = parseFloat($('.price-product-selected').html())
-            },300)
+            priceSelectedClient = parseFloat($('.price-product-selected').html())
            
         }
 
