@@ -239,14 +239,14 @@
                                     <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                                 </div>
                         </div>
-                        <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
+                        {{-- <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                             <div class="alert alert-info alert-dismissible fade show" role="alert">
                                 <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($response['user']['company']['settings']->deliveryPrice, 2, ',','.')}} por conta da entrega
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                        </div>
+                        </div> --}}
                         <hr class="mb-4">
                         
                     </div>
