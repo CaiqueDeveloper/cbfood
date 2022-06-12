@@ -9,7 +9,7 @@ class SettingCompany extends Model
 {
     use HasFactory;
     protected $table = 'setting_company';
-    protected $fillable = ['company_id','slug_url','bgColor', 'hasOpeneed'];
+    protected $fillable = ['company_id','slug_url','primaryColor','secondColor','hasDelivery', 'hasOpeneed'];
 
     public function image(){
         

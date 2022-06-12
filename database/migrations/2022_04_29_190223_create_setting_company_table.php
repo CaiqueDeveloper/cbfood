@@ -20,8 +20,11 @@ class CreateSettingCompanyTable extends Migration
             ->nullable()
             ->onDelete('set null');
             $table->string('slug_url');
-            $table->string('bgColor')->nullable();
+            $table->string('primaryColor')->nullable();
+            $table->string('secondColor')->nullable();
+            $table->string('deliveryPrice')->nullable();
             $table->string('hasOpeneed')->nullable()->default(1);
+            $table->string('hasDelivery')->nullable()->default(1);
             $table->timestamps();
         });
     }

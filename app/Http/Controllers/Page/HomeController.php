@@ -35,11 +35,10 @@ class HomeController extends Controller
         return response()->json(['status' => 200, 'view' => $view]);
     }
     protected function getProductCart(Request $request){
-       //dd($request[0]['product_id']);
         $product = [];
         $prd = Product::find($request[0]['product_id']);
         $product['product'] = $prd;
-        dd($product);
+        return $product;
     }
     protected function getModalCartItem(){
 
@@ -51,7 +50,7 @@ class HomeController extends Controller
         return view('app.modals.modalCheckout',compact('cartItens'));
     }
     protected function ckeckout(Request $request){
-    
+        
         $user = UserController::storage($request->only('name', 'email', 'password', 'number_phone'));
         $credentials = $request->only('number_phone', 'password');
         Auth::attempt($credentials);

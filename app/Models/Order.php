@@ -36,6 +36,8 @@ class Order extends Model
         $address_id = 0;
         $auxOrder = $orders->first();
         $payment = '';
+        $deliveryPrice = 0;
+
         if(isset($paymentMethod['payment_method'])){
             $payment = $paymentMethod['payment_method'];
         }else{
@@ -46,13 +48,21 @@ class Order extends Model
         }else{
             $address_id = $address;
         }
-        
+       
+            
+        if($pickUpOnTheSpot['pick_up_on_the_spot'] == 'não'){
+            $company = Company::where('id', $auxOrder->attributes->company_id)->get();
+            $deliveryPrice =  $company[0]->settings[0]->deliveryPrice;
+        }else{
+            $deliveryPrice = 0;
+        }
+
         $orderUser =  [];
         $orderUser['company_id'] = $auxOrder->attributes->company_id;
         $orderUser['user_id'] = Auth::user()->id;
         $orderUser['address_id'] = $address_id;
         $orderUser['payment_method'] = $payment;
-        $orderUser['delivery_price'] = 0;
+        $orderUser['delivery_price'] = $deliveryPrice;
         $orderUser['thing'] = $thing['thing'];
         $orderUser['pickUpOnTheSpot'] = $pickUpOnTheSpot['pick_up_on_the_spot'];
         $orderUser['price_total'] = \Cart::getTotal();

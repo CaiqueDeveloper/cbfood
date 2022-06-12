@@ -39,6 +39,7 @@ class CreateOrdersTable extends Migration
             $table->string('delivery_price')->nullable();
             $table->string('price_total')->nullable();
             $table->string('thing')->nullable();
+            $table->string('pickUpOnTheSpot')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

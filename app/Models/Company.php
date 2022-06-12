@@ -31,6 +31,10 @@ class Company extends Model
         
         return $this->morphMany(Product::class, 'product_morph');
     }
+    public function settings(){
+        
+        return $this->hasMany(SettingCompany::class, 'company_id');
+    }
     protected static function getAddrressCompany($id){
         $company = Company::find($id);
         if(!$company)

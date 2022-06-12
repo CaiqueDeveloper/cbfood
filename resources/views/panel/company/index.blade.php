@@ -157,7 +157,6 @@
                             <input type="submit" value="Enviar" class="btn btn-primary btn-user btn-block">
                         </div>
                     </form>
-                    
                 </div>
             </div>
         </div>
@@ -183,8 +182,23 @@
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-3">
-                                <label class="small mb-1" for="inputPhone">Cor Predominante</label>
-                                <input class="form-control" type="color" name="bgColor" value="{{$response['user']['company']['settings']->bgColor}}">
+                                <label class="small mb-1" for="inputPhone">Cor Primaria</label>
+                                <input class="form-control" type="color" name="primaryColor" value="{{$response['user']['company']['settings']->primaryColor}}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small mb-1" for="inputPhone">Cor Secundaria</label>
+                                <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings']->secondColor}}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small mb-1" for="inputPhone">Valor do Delivery</label>
+                                <input class="form-control" type="text" name="deliveryPrice" value="{{$response['user']['company']['settings']->deliveryPrice}}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small mb-1" for="inputPhone">O Delivery está disponível ?</label>
+                                <select class="custom-select  mb-3" name="hasDelivery">
+                                    <option value="1">Sim</option>
+                                    <option value="0">Não</option>>
+                                  </select>
                             </div>
                             <input type="hidden" id="custId" name="company_id" value="{{$response['user']['company']->id}}">
                         </div>

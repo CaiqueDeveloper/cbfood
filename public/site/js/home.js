@@ -176,6 +176,8 @@ var Home = {
             }else{
                 if($('.price-product-selected').length > 0){
                     price = $('.price-product-selected').html();
+                }else{
+                    price = $('input[name="priceCliente"]').val();
                 }
             }
 
@@ -404,6 +406,22 @@ var Home = {
                 } else {
                     $('.content-variation-area').fadeOut();
                     // $(this).attr('value', '0')
+                }
+            })
+            $('#pick_up_on_the_spot-yes').on('change', function(e){
+                e.preventDefault()
+                if($(this).prop('checked')){
+                    $('.content-info-delivery-price').fadeOut()
+                }else{
+                    $('.content-info-delivery-price').fadeOut();
+                }
+            })
+            $('#pick_up_on_the_spot-no').on('change', function(e){
+                e.preventDefault()
+                if($(this).prop('checked')){
+                    $('.content-info-delivery-price').fadeIn();
+                }else{
+                    $('.content-info-delivery-price').fadeOut();
                 }
             })
             

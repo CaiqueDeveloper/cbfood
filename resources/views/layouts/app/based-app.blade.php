@@ -86,6 +86,16 @@
             </div>
         </div>
     @endif
+    @if($menuCompany['company']['settings']->hasDelivery == 0)
+        <div class="mx-auto w-[80%] mt-4">
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Aviso !</strong> Desculpe mas não estamos com o delivery disponível hoje, somente retirada na nossa loja
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    @endif
     <section class="w-full h-full">
         <div class="container mx-auto mb-3">
             @yield('content-page')
