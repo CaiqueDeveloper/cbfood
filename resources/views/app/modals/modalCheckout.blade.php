@@ -56,15 +56,14 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" @if($response['user']['company']['settings']->hasDelivery == 0) checked @endif class="custom-control-input"  value="sim">
+                    <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" class="custom-control-input"  value="sim">
                     <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                 </div>
-                @if($response['user']['company']['settings']->hasDelivery == 1)
+                
                     <div class="custom-control custom-radio">
                         <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                         <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                     </div>
-                @endif
             </div>
             <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -231,15 +230,14 @@
                         <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" @if($response['user']['company']['settings']->hasDelivery == 0) checked @endif class="custom-control-input"  value="sim">
+                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"  class="custom-control-input"  value="sim">
                                 <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                             </div>
-                            @if($response['user']['company']['settings']->hasDelivery == 1)
+                            
                                 <div class="custom-control custom-radio">
                                     <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                                     <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                                 </div>
-                            @endif
                         </div>
                         <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                             <div class="alert alert-info alert-dismissible fade show" role="alert">
