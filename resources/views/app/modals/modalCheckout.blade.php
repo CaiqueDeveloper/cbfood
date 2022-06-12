@@ -65,14 +65,14 @@
                         <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                     </div>
             </div>
-            <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
+            {{-- <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                     <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($response['user']['company']['settings']->deliveryPrice, 2, ',','.')}} por conta da entrega
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div>
+            </div> --}}
             <hr class="mb-4">
             <article class="flex items-center flex-col sm:flex-row"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
         @foreach(Auth::user()->address as $addres)
