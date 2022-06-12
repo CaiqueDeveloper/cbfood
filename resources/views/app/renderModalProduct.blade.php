@@ -3,8 +3,8 @@
         <div class="content-product-imgs relative overflow-hidden">
             <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/{{$product['product']->images->last()->path}}')">
             <div class="contente-product-imgs-controls w-full flex justify-between hidden">
-                <div class="prev w-[50px] h-[50px] bg-white   text-orange-600 rounded-full text-center shadow-lg  shadow-orange-500/50 cursor-pointer ml-3 leading-[45px] font-bold text-2xl"><</div>
-                <div class="next w-[50px] h-[50px] bg-white   text-orange-600 rounded-full text-center shadow-lg  shadow-orange-500/50 cursor-pointer mr-3 leading-[45px] font-bold text-2xl">></div>
+                <div class="prev w-[50px] h-[50px] bg-white text-orange-600 rounded-full text-center shadow-lg shadow-orange-500/50 cursor-pointer ml-3 leading-[45px] font-bold text-2xl"><</div>
+                <div class="next w-[50px] h-[50px] bg-white text-orange-600 rounded-full text-center shadow-lg shadow-orange-500/50 cursor-pointer mr-3 leading-[45px] font-bold text-2xl">></div>
             </div>
         </div>
         <div class="content-product-name mr-3 ml-3 my-3">
@@ -32,7 +32,7 @@
                 <h1 class="text-xl sm:text-2xl font-bold text-black-600 mr-3 ml-3">Selecione o tamanho desejado</h1>
                 <div class="product-content-info-sizes flex flex-wrap sm:flex-nowrap my-3">
                     @foreach ($product['product']->variations as $key => $value)
-                        <div data-key="{{$key}}" data-price_variation_product="{{$value['variationPrice']}}" data-variation_id="{{$value['id']}}"class="product-content-info-size mb-2 col col-sm-2 @if($maxValue['variationPrice'] == $value['variationPrice']) bg-orange-300endif border-2  border-orange-30if font-medium hover:@if($response['user']['company']['settings']->secondColor == null) bg-orange-300 @else bg-[{{$response['user']['company']['settings']->secondColor}}] @endif px-[10px] ml-2 py-[15px]   text-orange-600 hover:text-white cursor-pointer text-sm rounded-lg font-extrabold">{{$value['variationName']}}<span class="ml-2   text-orange-600 text-xs">{{$value['variationType']}}</span></div>   
+                        <div data-key="{{$key}}" data-price_variation_product="{{$value['variationPrice']}}" data-variation_id="{{$value['id']}}"class="product-content-info-size mb-2 col col-sm-2 @if($maxValue['variationPrice'] == $value['variationPrice']) bg-orange-300 @endif border-2 border-orange-300 font-medium hover:bg-orange-300 px-[10px] ml-2 py-[15px] text-orange-600 hover:text-white cursor-pointer text-sm rounded-lg font-extrabold">{{$value['variationName']}}<span class="ml-2 text-orange-600 text-xs">{{$value['variationType']}}</span></div>   
                     @endforeach 
                 </div>
             </div>  
@@ -91,9 +91,9 @@
                 
                 @endif
                 <div class="product-content-info--qtarea flex items-center  h-[30px] rounded-[10px] px-[10px]">
-                    <button class="product-content-info--qtmenos  px-[10px] text-lg bg-orange-600ext-white font-bold rounded-lg">-</button>
+                    <button class="product-content-info--qtmenos  px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">-</button>
                     <div class="product-content-info--qt mx-3 font-bold">1</div>
-                    <button class="product-content-info--qtmais px-[10px] text-lg bg-orange-600ext-white font-bold rounded-lg">+</button>
+                    <button class="product-content-info--qtmais px-[10px] text-lg bg-orange-600 text-white font-bold rounded-lg">+</button>
                 </div>
             </div>
             
