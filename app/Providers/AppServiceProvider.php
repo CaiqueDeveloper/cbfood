@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\Admin\UserController;
+use App\Models\SettingCompany;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -26,12 +27,34 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot(){  
+     
+        view()->composer("*", function ($view){
 
-        view()->composer('*', function ($view){
+            $excludedViews = ['auth.login','auth.requestFreeDemo', 'layouts.auth.based-auth', 'layouts.include.panel.head'];
+
+            $subject = url()->previous();
+            $search = 'http://127.0.0.1:8000' ;
+            $trimmed = str_replace($search, '', $subject) ;
+            $url = substr($subject, strpos($subject, "/app/menu/"), strpos($subject, "/app/menu/"));
+
+            $urlAux = substr($subject, -strlen($url), strpos($subject, "/app/menu/"));
+            if($trimmed == $urlAux){
+                $company = SettingCompany::getCompanyUsingSlug(str_replace("/app/menu/","", $urlAux));
+            }else{
+                $company = [];
+            }
            if(Auth::check()){
                 $response = User::getInfoUserLogged();
-                $view->with('response', $response ); 
-           }    
+               if($trimmed == $urlAux){
+                   
+                    $view->with(['response' => $response, 'company' => $company]); 
+                }else{
+                  
+                    $view->with(['response' => $response, 'company' => $company]); 
+                }
+           }else{
+                $view->with(['company' => $company]); 
+           }
         });  
     }
 }

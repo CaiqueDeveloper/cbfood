@@ -32,8 +32,6 @@
     <!-- finish header -->
     <section class="bar-alert w-full h-[50px] shadow-lg">
         <div class="container mx-auto h-[50px] flex items-center justify-between font-bold text-gray-600">
-            {{-- <h1 class="ml-[20px] ms:ml-[0px]  @if(@count($menuCompany['company']['settings']) > 0) text-[{{$menuCompany['company']['settings']->bgColor}}] @else text-black @endif font-medium text-xl
-            ">Cardapio {{ Cart::getTotalQuantity()}} --}}
             <section class="text-orange-600 text-2xl">
                 <header class="flex items-center justify-center sm:text-2xl font-bold text-gray-900">    
                     <img src="{{ url('panel/img/logo/icon-page.svg') }}" alt="" width="70px"><p class="hidden sm:block ml-2">CbFood.</p>
@@ -74,7 +72,7 @@
             </div>
         </h1>
         </div>
-    
+       
     </section>
     @if($menuCompany['company']['settings']->hasOpeneed == 0)
         <div class="mx-auto w-[80%] mt-4">

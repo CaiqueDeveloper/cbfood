@@ -1,11 +1,9 @@
+
 var Home = {
 
     constructor() {
         Home.init_listerns()
         Home.getTotalItemCart()
-        //apply filter
-        
-
     },
     init_listerns(){
         let qtModal = 0;
@@ -666,5 +664,6 @@ var Home = {
         priceSelectedClient = (!isNaN( priceSelectedClient)) ? priceSelectedClient : 0;
         finalPrice = total + priceSelectedClient
         $('.final-price').html(finalPrice.toFixed(2))
-    }
+    },
+    
 }

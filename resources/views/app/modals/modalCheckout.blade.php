@@ -56,23 +56,24 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" class="custom-control-input"  value="sim">
+                    <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" @if($company['company']->settings->hasDelivery == 0) checked @endif  class="custom-control-input"  value="sim">
                     <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                 </div>
-                
-                    <div class="custom-control custom-radio">
-                        <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
-                        <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
-                    </div>
+                @if($company['company']->settings->hasDelivery == 1)
+                <div class="custom-control custom-radio">
+                    <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
+                    <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                </div>
+                @endif
             </div>
-            {{-- <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
+            <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($response['user']['company']['settings']->deliveryPrice, 2, ',','.')}} por conta da entrega
+                    <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($company['company']->settings->deliveryPrice, 2, ',','.')}} por conta da entrega
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-            </div> --}}
+            </div>
             <hr class="mb-4">
             <article class="flex items-center flex-col sm:flex-row"><p class="text-xl tex-gray-600">Selecione um dos Seus endereços Abaixo ou</p> <a href="#" class="bg-green-300 text-green-600 font-bold p-2 rounded-xl ml-3 no-underline show-modal-insert-new-addrees-user">Adicionar novo endereço</a></article>
         @foreach(Auth::user()->address as $addres)
@@ -230,23 +231,24 @@
                         <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
                         <div class="d-block my-3">
                             <div class="custom-control custom-radio">
-                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"  class="custom-control-input"  value="sim">
+                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio" @if($company['company']->settings->hasDelivery == 0) checked @endif  class="custom-control-input"  value="sim">
                                 <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                             </div>
-                            
-                                <div class="custom-control custom-radio">
-                                    <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
-                                    <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
-                                </div>
+                            @if($company['company']->settings->hasDelivery == 1)
+                            <div class="custom-control custom-radio">
+                                <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
+                                <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                            </div>
+                            @endif
                         </div>
-                        {{-- <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
+                        <div class="mx-auto w-full mt-4 content-info-delivery-price" style="display: none">
                             <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($response['user']['company']['settings']->deliveryPrice, 2, ',','.')}} por conta da entrega
+                                <strong>Aviso !</strong> Você terá um custo adicional de R$ {{number_format($company['company']->settings->deliveryPrice, 2, ',','.')}} por conta da entrega
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                        </div> --}}
+                        </div>
                         <hr class="mb-4">
                         
                     </div>
