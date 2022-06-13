@@ -34,8 +34,8 @@ class AppServiceProvider extends ServiceProvider
 
             $subject = url()->previous();
             
-           // $search = 'https://cbfood.com.br' ;
-            $search = 'http://127.0.0.1:8000' ;
+            $search = 'https://cbfood.com.br' ;
+            //$search = 'http://127.0.0.1:8000' ;
             $trimmed = str_replace($search, '', $subject) ;
             $url = substr($subject, strpos($subject, "/app/menu/"), strpos($subject, "/app/menu/"));
 
