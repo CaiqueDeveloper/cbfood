@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
             $excludedViews = ['auth.login','auth.requestFreeDemo', 'layouts.auth.based-auth', 'layouts.include.panel.head'];
 
             $subject = url()->previous();
-            $search = 'http://127.0.0.1:8000' ;
+            $search = 'https://cbfood.com.br/' ;
             $trimmed = str_replace($search, '', $subject) ;
             $url = substr($subject, strpos($subject, "/app/menu/"), strpos($subject, "/app/menu/"));
 
