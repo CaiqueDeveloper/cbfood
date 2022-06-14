@@ -2,25 +2,23 @@
 
 namespace App\Notifications;
 
-use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class NotifyTheCompanyOfTheUsersRequest extends Notification
+class InvoicePaid extends Notification
 {
     use Queueable;
-    private $order;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Order $order)
+    public function __construct()
     {
-        $this->order = $order;
+        //
     }
 
     /**
@@ -56,15 +54,15 @@ class NotifyTheCompanyOfTheUsersRequest extends Notification
      */
     public function toDatabase($notifiable)
     {
-       
+        dd($notifiable);
         return [
-            'order' => $this->order
+            //
         ];
     }
     public function toArray($notifiable)
     {
         return [
-            'order' => $this->order
+            //
         ];
     }
 }

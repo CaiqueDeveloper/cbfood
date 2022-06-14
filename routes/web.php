@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\NotifyController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\settingCompanyController;
@@ -97,6 +98,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/showModalAddressOrderUser/{id}', [OrderController::class, 'showModalAddressOrderUser']);
     Route::get('/showModalGerAdditionalOrders', [OrderController::class, 'showModalGerAdditionalOrders']);
     Route::get('/getDataGraphSales', [HomeController::class, 'getDataGraphSales']);
+
+    //Notify
+    Route::get('/renderBoxNotifyCompany', [NotifyController::class, 'renderBoxNotifyCompany']);
+    Route::get('/getNotifyCompany', [NotifyController::class, 'getNotifyCompany']);
 
     
     

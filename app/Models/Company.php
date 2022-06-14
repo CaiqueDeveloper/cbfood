@@ -71,6 +71,12 @@ class Company extends Model
     public function orders(){
         return $this->hasMany(Order::class, 'company_id');
     }
+    public function user(){
+        return $this->hasMany(User::class, 'company_id');
+    }
+    public function notify(){
+        return $this->hasMany(Notify::class, 'notifiable_id');
+    }
     protected static function getCompanyOrder($company_id){
         return Company::where('id', $company_id)->select('companies.name','companies.phone_number')->get();
     }

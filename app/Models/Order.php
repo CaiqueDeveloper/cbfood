@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+
+use App\Notifications\NotifyTheCompanyOfTheUsersRequest;
 use DatePeriod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use League\CommonMark\Node\Query\OrExpr;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     protected $table = 'orders';
     protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot'];
 
@@ -21,6 +24,10 @@ class Order extends Model
     public function orderUser(){
        
         return $this->hasMany(User::class,'id', 'user_id');
+    }
+    public function orderCompany(){
+       
+        return $this->hasMany(User::class,'id', 'company_id');
     }
 
     protected static function getOrders(){
@@ -58,6 +65,7 @@ class Order extends Model
         }
 
         $orderUser =  [];
+        $nofityCompany =  [];
         $orderUser['company_id'] = $auxOrder->attributes->company_id;
         $orderUser['user_id'] = Auth::user()->id;
         $orderUser['address_id'] = $address_id;
@@ -68,8 +76,12 @@ class Order extends Model
         $orderUser['price_total'] = \Cart::getTotal();
 
         $orderInsert = Order::create($orderUser);
+        
         $storageOrderProduct =  OrderProduct::storageOrderProduct($orderInsert->id, $orders);
-
+    
+        $company = $orderInsert->orderCompany;
+        Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
+        
         return true;
     }
 
@@ -166,12 +178,17 @@ class Order extends Model
         $user = User::getUserOrder($order[0]->user_id);
         $company = Company::getCompanyOrder($order[0]->company_id);
         $order[0]->status = $status;
+        
+        
         if($order[0]->save()){
+            $user = $order[0]->orderUser;
+            Notification::send($user,new NotifyTheCompanyOfTheUsersRequest($order[0]));
             return [
                 'user' => $user,
                 'company' => $company,
                 'status_order' => $status,
             ];
+            
         }
     }
 }

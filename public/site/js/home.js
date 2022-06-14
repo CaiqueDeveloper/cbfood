@@ -497,6 +497,7 @@ var Home = {
                 setTimeout(() =>{
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
+                    Ultils.getNotifyComapy();
                     swal.close()
                     $("#modalMain").modal('hide');
                     
@@ -528,7 +529,7 @@ var Home = {
                     $("#modalMain").modal('hide');
                     swal.close()
                     window.location.href = window.location.href
-                    
+                    Ultils.getNotifyComapy();
                    
                 },2000)
                

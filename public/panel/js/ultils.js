@@ -1,8 +1,15 @@
 const Ultils = {
     construct(){
      Ultils.init_listerns()
+     $('.showNotify').on('click', function(e){
+        e.preventDefault()
+        Ultils.rendeBoxNotifyCompany();
+     })
     },
     init_listerns(){
+        setInterval(() =>{
+            Ultils.getNotifyComapy();
+        },3000)
         $(".updataIdCompany").on('click', function(e){
             e.preventDefault()
             e.stopImmediatePropagation()
@@ -129,5 +136,29 @@ const Ultils = {
     	} else {
     		return '-';
     	}
+    },
+    rendeBoxNotifyCompany(){
+        axios({
+            method: 'GET',
+            url: window.location.origin + '/admin/renderBoxNotifyCompany',
+           
+        })
+        .then((response) =>{
+            $('.content-render-notify').html(response.data.view)
+        }).catch((error) =>{
+            console.log(error.response.data)
+        })
+    },
+    getNotifyComapy(){
+        axios({
+            method: 'GET',
+            url: window.location.origin + '/admin/getNotifyCompany',
+           
+        })
+        .then((response) =>{
+            $('.count-notify').html(response.data.length)
+        }).catch((error) =>{
+            console.log(error.response.data)
+        })
     },
 }
