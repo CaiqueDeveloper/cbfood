@@ -1,15 +1,14 @@
 const Ultils = {
     construct(){
      Ultils.init_listerns()
+     Ultils.getNotifyComapy();
      $('.showNotify').on('click', function(e){
         e.preventDefault()
         Ultils.rendeBoxNotifyCompany();
      })
     },
     init_listerns(){
-        setInterval(() =>{
-            Ultils.getNotifyComapy();
-        },3000)
+       
         $(".updataIdCompany").on('click', function(e){
             e.preventDefault()
             e.stopImmediatePropagation()
