@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="laravel-userId" content="{{ auth()->user()->id }}">
     <title>Cbfood - @yield('title')</title>
 
     <!-- Custom fonts for this template-->
