@@ -15,7 +15,6 @@
   
     <!-- Custom styles for this template-->
     <link href="{{url('theme-sdb-admin-2/css/sb-admin-2.css')}}" rel="stylesheet">
-    {{-- <link href="{{url('theme-sdb-admin-2/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet"> --}}
     <link href="{{url('theme-sdb-admin-2/vendor/datatables/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link rel="icon" href="{{ url('panel/img/logo/icon-page.svg') }}" />
     <link rel="stylesheet" href="{{ url('/css/panel.css') }}" type="text/css"/>
@@ -23,7 +22,6 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />  
     <link rel="stylesheet" href="{{url('koolChartJs/KoolChart/Assets/Css/KoolChart.css')}}"/>
-    <script src="https://cdn.pushalert.co/integrate_05bd26cf92c47b43ec796041a0cdc76d.js"></script>
 
     <script>
         window.Laravel = {!! json_encode([

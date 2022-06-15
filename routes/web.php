@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::redirect('/', 'admin');
+Broadcast::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     
     //User

@@ -16,8 +16,7 @@ class Notify extends Model
         $notify = $company[0]->notify()->where('read_at', null)
         ->orderBy('notifications.created_at', 'desc')
         ->get();
-
-        //return $notify;
+        
         return self::processingNotification($notify);
     }
 
@@ -29,7 +28,6 @@ class Notify extends Model
             $notifications[$key]['body'] = json_decode($notification->data, true);
            $notifications[$key]['userRequesOrder'] = User::where('id', $notifications[$key]['body']['order']['user_id'])->select('users.name')->get();
         } 
-        //$notifications['total'][] = count($notify);
         return $notifications;
     }
 

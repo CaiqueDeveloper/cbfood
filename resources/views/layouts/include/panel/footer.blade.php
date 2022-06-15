@@ -72,8 +72,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="{{asset('js/notifyPusher.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    {{-- <script src="{{asset('js/bootstrap.js')}}" defer></script> --}}
     
     <script type="text/javascript">
         $(document).ready(function(){
