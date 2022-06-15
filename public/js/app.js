@@ -2113,17 +2113,17 @@ var pusher = new Pusher(window.Laravel.pusher.key, {
 });
 var channel = pusher.subscribe('new-order');
 channel.bind('App\\Events\\NotifyTheCompanySalesTheRequstUser', function (data) {
-  if (Notification.permission === 'grated') {
+  if (Notification.permission === 'granted') {
     var notification = new Notification("Voc\xEA tem um novo pedido de ".concat(data.order.user[0].name), {
-      icon: 'https://i.postimg.cc/W3Mhx5s3/Group-1-2.png',
-      vibrate: window.navigator.vibrate([200])
+      icon: 'https://i.postimg.cc/W3Mhx5s3/Group-1-2.png' //vibrate: window.navigator.vibrate([200]),
+
     });
   } else if (Notification.permission !== "denied") {
     Notification.requestPermission().then(function (permission) {
       if (permission === "granted") {
         var _notification = new Notification("Voc\xEA tem um novo pedido de ".concat(data.order.user[0].name), {
-          icon: 'https://i.postimg.cc/W3Mhx5s3/Group-1-2.png',
-          vibrate: window.navigator.vibrate([200])
+          icon: 'https://i.postimg.cc/W3Mhx5s3/Group-1-2.png' //vibrate: window.navigator.vibrate([200]),
+
         });
       }
     });
