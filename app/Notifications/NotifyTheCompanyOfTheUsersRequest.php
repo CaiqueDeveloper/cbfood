@@ -5,6 +5,7 @@ namespace App\Notifications;
 use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\BroadcastMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -31,7 +32,7 @@ class NotifyTheCompanyOfTheUsersRequest extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
     /**
@@ -54,6 +55,16 @@ class NotifyTheCompanyOfTheUsersRequest extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
+    public function toBroadcast($notifiable)
+    {
+        return new BroadcastMessage([
+            'id' => $this->id,
+            'read_at' => null,
+            'data' => [
+                'order' =>  $this->order
+            ]
+        ]);
+    }
     public function toDatabase($notifiable)
     {
        
@@ -61,10 +72,6 @@ class NotifyTheCompanyOfTheUsersRequest extends Notification
             'order' => $this->order
         ];
     }
-    public function toArray($notifiable)
-    {
-        return [
-            'order' => $this->order
-        ];
-    }
+    
+   
 }

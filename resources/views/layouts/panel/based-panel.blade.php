@@ -203,7 +203,7 @@
                                 <h6 class="dropdown-header">
                                     Notificações
                                 </h6>
-                                <div class="content-render-notify"></div>
+                                <div class="content-render-notify" style="overflow-y: scroll;max-height: 350px;"></div>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas</a>
                             </div>
                         </li>

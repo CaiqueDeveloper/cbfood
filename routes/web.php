@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 
 /*

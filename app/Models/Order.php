@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-
+use App\Events\NotifyTheCompanySalesTheRequstUser;
 use App\Notifications\NotifyTheCompanyOfTheUsersRequest;
 use DatePeriod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -81,6 +81,8 @@ class Order extends Model
     
         $company = $orderInsert->orderCompany;
         Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
+        event(new NotifyTheCompanySalesTheRequstUser($orderInsert));
+        
         
         return true;
     }
@@ -183,6 +185,7 @@ class Order extends Model
         if($order[0]->save()){
             $user = $order[0]->orderUser;
             Notification::send($user,new NotifyTheCompanyOfTheUsersRequest($order[0]));
+            //event(new NotifyTheCompanySalesTheRequstUser($order[0]));
             return [
                 'user' => $user,
                 'company' => $company,
