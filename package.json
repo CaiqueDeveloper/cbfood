@@ -18,6 +18,7 @@
         "pusher-js": "^7.1.1-beta"
     },
     "dependencies": {
-        "inputmask": "^5.0.7"
+        "inputmask": "^5.0.7",
+        "push.js": "^1.0.12"
     }
 }
