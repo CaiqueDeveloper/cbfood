@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="hasModules">
+              <input type="checkbox" class="form-check-input" id="hasModules" value="0">
               <label class="form-check-label" name="hasModules" for="hasModules">É um módulo?</label>
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>

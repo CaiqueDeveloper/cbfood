@@ -113,6 +113,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/storageProfile', [ProfilesController::class, 'storageProfile']);
     Route::get('/showModalCreateNewPermission', [PermissionController::class, 'showModalCreateNewPermission']);
     Route::post('/storagePermission', [PermissionController::class, 'storagePermission']);
+    Route::get('/geAllProfiles', [ProfilesController::class, 'geAllProfiles']);
+    Route::get('/geAllPermissions', [PermissionController::class, 'geAllPermissions']);
 
     
     

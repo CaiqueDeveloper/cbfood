@@ -24,4 +24,8 @@ class ProfilesController extends Controller
             return response()->json('Erro ao Cadastrar esse Perfil.', 200);
         }
     }
+    protected function geAllProfiles(){
+        
+        return response()->json(Profile::all(), 200);
+    }
 }

@@ -16,7 +16,7 @@ class StoragePermissionRequest extends FormRequest
         return [
            'name' => 'required|min:3|max:20|unique:modules',
            'label' => 'required|min:3|max:100',
-           'menu_name' => 'min:3|max:100',
+           'menu_name' => 'max:100',
            'url' => 'unique:modules'
         ];
     }

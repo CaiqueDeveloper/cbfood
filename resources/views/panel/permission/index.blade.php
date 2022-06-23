@@ -27,9 +27,21 @@
 </div>
 <div class="row mt-4">
     <div class="col-12">
-        <table class="table table-striped table-products"></table>
+        <div class="card">
+            <div class="card-header">
+                Perfis 
+            </div>
+            <table class="table table-info table-profiles col mt-5"></table>
+        </div>
     </div>
-  
+    <div class="col-12 mt-4">
+        <div class="card">
+            <div class="card-header">
+                Permissões 
+            </div>
+            <table class="table table-info table-permissions col mt-5"></table>
+        </div>
+    </div>
 </div>
 @endsection
 <script src="{{url('panel/js/profles.js')}}"></script>
@@ -43,3 +55,11 @@
         })
     </script>
 @endsection
+<style scoped>
+    .table-info, .table-info > th, .table-info > td{
+        background: #4e73df !important;
+    }
+    table{
+        color:  #fff !important;
+    }
+</style>

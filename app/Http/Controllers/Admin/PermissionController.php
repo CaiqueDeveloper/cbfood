@@ -19,4 +19,7 @@ class PermissionController extends Controller
             return response()->json('Erro ao  Cadastrar a Pemissão.', 500);
         }
     }
+    protected function geAllPermissions(){
+        return response()->json(Module::all(), 200);
+    }
 }
