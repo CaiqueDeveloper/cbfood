@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\NotifyController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\ProfilesController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
@@ -27,12 +29,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', 'admin');
+Route::redirect('/', '/admin/dashboard');
 Broadcast::routes();
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     
     //User
-    Route::get('/', [HomeController::class, 'index'])->name('admin');
+    Route::get('/dashboard', [HomeController::class, 'index']);
     Route::get('/getInfoUserLogged', [UserController::class, 'getInfoUserLogged']);
     Route::post('/updateUserFolks', [UserController::class, 'updateUserFolks']);
     Route::post('/userChangePassword', [UserController::class, 'userChangePassword']);
@@ -104,6 +106,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     //Notify
     Route::get('/renderBoxNotifyCompany', [NotifyController::class, 'renderBoxNotifyCompany']);
     Route::get('/getNotifyCompany', [NotifyController::class, 'getNotifyCompany']);
+
+    //Permissions
+    Route::get('/permissions', [ProfilesController::class, 'index']);
+    Route::get('/showModalCreateNewPorifle', [ProfilesController::class, 'showModalCreateNewPorifle']);
+    Route::post('/storageProfile', [ProfilesController::class, 'storageProfile']);
+    Route::get('/showModalCreateNewPermission', [PermissionController::class, 'showModalCreateNewPermission']);
+    Route::post('/storagePermission', [PermissionController::class, 'storagePermission']);
 
     
     

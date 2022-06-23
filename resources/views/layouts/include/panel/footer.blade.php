@@ -18,7 +18,7 @@
                 <div class="modal-body">Selecione "Sair" abaixo se você estiver pronto para encerrar sua sessão atual.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="{{route('logout')}}">Sair</a>
+                    <a class="btn btn-primary" href="/auth/logout">Sair</a>
                 </div>
             </div>
         </div>

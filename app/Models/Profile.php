@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+    protected $fillable  = ['name','label'];
+    protected static function storage($data){
+        return Profile::create($data);
+    }
 }

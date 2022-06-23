@@ -31,7 +31,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link"href="/admin/">
+                <a class="nav-link"href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -118,7 +118,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header d-none">Custom Components:</h6>
                         <a class="collapse-item" href="/admin/company">Empresa</a>
-                        <a class="collapse-item d-none" href="">Assinatura/Planos</a>
+                        <a class="collapse-item" href="/admin/permissions">Permissões</a>
                     </div>
                 </div>
             </li>
