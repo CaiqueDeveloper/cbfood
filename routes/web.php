@@ -115,9 +115,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/storagePermission', [PermissionController::class, 'storagePermission']);
     Route::get('/geAllProfiles', [ProfilesController::class, 'geAllProfiles']);
     Route::get('/geAllPermissions', [PermissionController::class, 'geAllPermissions']);
-
-    
-    
+    Route::get('/showModalUpdateProfile/{id}', [ProfilesController::class, 'showModalUpdateProfile']);
+    Route::post('/updateProfile', [ProfilesController::class, 'updateProfile']);
+    Route::get('/delteProfile/{id}', [ProfilesController::class, 'delteProfile']);
+    Route::get('/showModalAllUserAssociateWithProfile/{id}', [ProfilesController::class, 'showModalAllUserAssociateWithProfile']);
 });
 
 Route::prefix('app')->group(function(){
