@@ -48,6 +48,26 @@ const Profiles = {
             let url = window.location.origin + '/admin/showModalAllUserAssociateWithProfile/'+$(this).attr('value');
             Profiles.showModalAllUserAssociateWithProfile(url)
         })
+        $('.associate-profile-with-user').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            
+            let user_id = $(this).attr('value');
+            let profile_id = $(this).attr('data-profile_id')
+            let url = window.location.origin+ `/admin/storageAssociateProfileWithUser?profiles_id=${profile_id}&user_id=${user_id}`
+          
+            Profiles.storageAssociateProfileWithUser(url)
+        })
+        $('.remove-profile-association-with-user').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            
+            let user_id = $(this).attr('value');
+            let profile_id = $(this).attr('data-profile_id')
+            let url = window.location.origin+ `/admin/removeProfileAssociationWithUser?profiles_id=${profile_id}&user_id=${user_id}`
+          
+            Profiles.removeProfileAssociationWithUser(url)
+        })
     },
     showModalCreateNewProfile(url){
         $('.AppBlock').removeClass('d-none');
@@ -293,11 +313,78 @@ const Profiles = {
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Associar Perfil ao Usuário');
             Profiles.init_listerns()
-
+            Ultils.runAtcinoApplyDatableInTable(Profiles)
         }).catch((error) => {
             console.log(error.response.data)
         }).finally(()=>{
             $('.AppBlock').addClass('d-none');
         })
-    }
+    },
+    storageAssociateProfileWithUser(url){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            method: 'GET',
+            url:url,
+        }).then((response) => {
+            if(response.data){
+                swal(
+                    'Sucesso!',
+                    'Parabéns Perfil Associado Com Sucesso.',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    Profiles.getProfiles();
+                    $("#modalMain").modal('hide');
+                },2000)
+            }
+        }).catch((error) =>{
+            $.each(error.response.data.errors, function(i, error) {
+                let alertError = $(document).find('[name="' + i + '"]');
+                alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
+    
+            });
+        }).finally(()=>{
+            $('.AppBlock').addClass('d-none');
+        })
+    },
+    removeProfileAssociationWithUser(url){
+        
+        swal({
+            title: 'Tem certeza que deseja deletar essa associação',
+            text: "Ao deletar essa associação,o usuário perdera o acesso a  todos os módulos associado a esse perfil",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, confirmar!',
+            cancelButtonText: "Cancelar!",
+        }).then((result) => {
+            if (result.value) {
+                $('.AppBlock').removeClass('d-none');
+                axios({
+                    url:url,
+                    method: 'GET',
+                })
+                .then((response) =>{
+                    if(response.data){
+                        swal(
+                            'Sucesso!',
+                            'Associção desfeita com sucesso',
+                            'success'
+                        )
+                        setTimeout(() =>{
+                            swal.close()
+                            Profiles.getProfiles()
+                            $("#modalMain").modal('hide');
+                        },3000)
+                    }
+                })
+                .catch((error) =>{
+                    console.log(error.response.data)
+                })
+                .finally(() =>{$('.AppBlock').addClass('d-none');});
+            }
+        });
+    },
 }

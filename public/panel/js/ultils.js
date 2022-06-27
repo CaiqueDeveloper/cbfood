@@ -34,14 +34,14 @@ const Ultils = {
         })
       
     },
-    runAtcinoApplyDatableInTable(){
+    runAtcinoApplyDatableInTable(model){
         let tables = []
         let i = 0
         $('table').each(function(){
             tables[i]  = $(this).DataTable({
                 "retrieve": true,
                 "fnDrawCallback": function (oSettings) {
-                   NewPanelNetWork.action_listernsUpdateNetWork()
+                   model.init_listerns()
                 }
             })
             i++

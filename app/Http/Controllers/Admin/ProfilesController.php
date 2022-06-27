@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorageProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
+use App\Models\ProfilesUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 class ProfilesController extends Controller
@@ -51,6 +52,7 @@ class ProfilesController extends Controller
     protected function showModalAllUserAssociateWithProfile($id){
         $users = User::all();
         $profile_id = $id;
-        return view('panel.modals.profiles.modalAllUserAssociateWithProfile', compact('users', 'profile_id'));
+        $hasAssociateUserWithProfile = ProfilesUser::all();
+        return view('panel.modals.profiles.modalAllUserAssociateWithProfile', compact('users', 'profile_id', 'hasAssociateUserWithProfile'));
     }
 }

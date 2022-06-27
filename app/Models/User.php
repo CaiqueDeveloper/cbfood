@@ -90,6 +90,9 @@ class User extends Authenticatable
     public function companies(){
         return $this->belongsToMany(Company::class);
     }
+    public function company(){
+        return $this->belongsTo(Company::class, 'company_id', 'id');
+    }
     public function orders(){
 
         return $this->hasMany(Order::class, 'user_id');

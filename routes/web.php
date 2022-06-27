@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\ProfilesController;
+use App\Http\Controllers\Admin\ProfilesUserController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
@@ -119,6 +120,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/updateProfile', [ProfilesController::class, 'updateProfile']);
     Route::get('/delteProfile/{id}', [ProfilesController::class, 'delteProfile']);
     Route::get('/showModalAllUserAssociateWithProfile/{id}', [ProfilesController::class, 'showModalAllUserAssociateWithProfile']);
+    Route::get('/storageAssociateProfileWithUser', [ProfilesUserController::class, 'storageAssociateProfileWithUser']);
+    Route::get('/removeProfileAssociationWithUser', [ProfilesUserController::class, 'removeProfileAssociationWithUser']);
 });
 
 Route::prefix('app')->group(function(){
