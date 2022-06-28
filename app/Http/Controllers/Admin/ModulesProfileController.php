@@ -11,7 +11,7 @@ class ModulesProfileController extends Controller
 {
     protected function showModalPermissionAssociationWithProfile($permission_id){
         $profiles = Profile::all();
-        $hasAssociationPemmissionWithModule = ModulesProfile::all();
+        $hasAssociationPemmissionWithModule = ModulesProfile::where('module_id', $permission_id)->get();
         return view('panel.modals.permissions.modalPermissionAssociationWithProfile', compact('profiles','permission_id','hasAssociationPemmissionWithModule'));
     }
     protected function storageAssociationPermissionWithProfile(Request $request){
