@@ -5,12 +5,12 @@
 <body id="page-top">
      <!-- init header -->
      <header class="header w-full h-[320px] sm:flex sm:items-center flex items-center border border-b-3 bg-white bg-cover bg-no-repeat bg-top " @if(@count($menuCompany['company']['settings']['banner']) > 0) style="background-image: url('/profile/{{$menuCompany['company']['settings']['banner'][0]->path}}')" @else 
-            style="background-image: url('/site/images/default/banner-default.jpg')"
+            style="background-image: url('/profile/default/banner-food-demo.jpg')"
         @endif>
         <!-- container-page -->
         <div class="w-full h-full mx-auto flex justify-center items-center" style="background-image: radial-gradient(hsl(0deg 0% 0% / 62%), transparent)">
             <div class="conten-ifon-company flex flex-col items-center">
-                <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /site/images/default/logo-default.jpg @endif " alt="" width="150px" height="150px" class="rounded-full">
+                <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="150px" height="150px" class="rounded-full">
                 <div class="name-comapny mt-3 text-white font-medium text-4xl uppercase"><h4>{{$menuCompany['company']->name}}</h4></div>
 
                 <div class="name-comapny mt-3 text-white font-medium text-1xl flex">

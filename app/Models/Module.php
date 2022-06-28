@@ -12,4 +12,7 @@ class Module extends Model
     protected static function storage($data){
         return Module::create($data);
     }
+    protected static function updatePermission($permission_id, $data){
+        return Module::where('id', $permission_id)->update($data);
+    }
 }

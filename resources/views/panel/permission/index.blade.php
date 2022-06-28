@@ -14,7 +14,7 @@
    
     <div class="col d-flex justify-content-end flex-column flex-sm-row">
         <div role="group" class="btn-group mr-3">
-            <button type="button" class="align-self-center mr-0 btn btn-primary show-modal-create-new-profile mb-3">
+            <button type="button" class="align-self-center mr-0 btn btn-primary show-modal-create-new-profile ">
                 <i class="fa-fw fa fa-plus"></i> Criar Perfil
             </button>
         </div>

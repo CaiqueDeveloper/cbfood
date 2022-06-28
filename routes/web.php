@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ModulesProfileController;
 use App\Http\Controllers\Admin\NotifyController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -122,6 +123,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/showModalAllUserAssociateWithProfile/{id}', [ProfilesController::class, 'showModalAllUserAssociateWithProfile']);
     Route::get('/storageAssociateProfileWithUser', [ProfilesUserController::class, 'storageAssociateProfileWithUser']);
     Route::get('/removeProfileAssociationWithUser', [ProfilesUserController::class, 'removeProfileAssociationWithUser']);
+    Route::get('/showModalUpdatePermission/{id}', [PermissionController::class, 'showModalUpdatePermission']);
+    Route::post('/updatePermission', [PermissionController::class, 'updatePermission']);
+    Route::get('/deletePermission/{id}', [PermissionController::class, 'deletePermission']);
+    Route::get('/showModalPermissionAssociationWithProfile/{id}',[ModulesProfileController::class, 'showModalPermissionAssociationWithProfile']);
+    Route::get('/storageAssociationPermissionWithProfile', [ModulesProfileController::class, 'storageAssociationPermissionWithProfile']);
+    Route::get('/removeAssociationPermissionWithProfile', [ModulesProfileController::class, 'removeAssociationPermissionWithProfile']);
 });
 
 Route::prefix('app')->group(function(){

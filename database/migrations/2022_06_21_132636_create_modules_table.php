@@ -20,7 +20,7 @@ class CreateModulesTable extends Migration
             $table->string('url')->nullable();
             $table->string('menu_name')->nullable();
             $table->string('icon_class')->nullable();
-            $table->tinyInteger('hasModules')->default(1);
+            $table->tinyInteger('hasModules')->default(0);
             $table->timestamps();
         });
     }

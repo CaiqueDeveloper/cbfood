@@ -2,28 +2,25 @@
     <thead>
         <tr>
             <th>Nome</th>
-            <th class="text-center">Empresa</th>
             <th class="text-center">Ações</th>
         </tr>
     </thead>
     <tbody>
-        @forelse ($users as $user)
+        @forelse ($profiles as $profile)
         @php 
             $has = 0;
-            if(sizeof($hasAssociateUserWithProfile) > 0){
-                foreach($hasAssociateUserWithProfile as $associate){
-                    if($associate->profiles_id == $profile_id){
+            if(sizeof($hasAssociationPemmissionWithModule) > 0){
+                foreach($hasAssociationPemmissionWithModule as $associate){
+                    if($associate->profiles_id == $profile->id){
                         $has = 1;
                     }
                 }
             }
-            
         @endphp
             <tr>
-                <td>{{$user->name}}</td>
-                <td class="text-center">{{$user->company->name}}</td>
+                <td>{{$profile->label}}</td>
                 <td class="text-center">
-                    <a href="#" class="@if(!$has) text-info associate-profile-with-user @else remove-profile-association-with-user text-danger @endif" value="{{$user->id}}" data-profile_id="{{$profile_id}}">
+                    <a href="#" class="@if(!$has) text-info associate-permission-with-profile @else remove-profile-association-with-user text-danger @endif" value="{{$profile->id}}" data-permission_id="{{$permission_id}}">
                         @if(!$has) 
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
                                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>

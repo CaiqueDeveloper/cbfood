@@ -14,8 +14,20 @@ class CreateModulesProfilesTable extends Migration
     public function up()
     {
         Schema::create('modules_profiles', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('module_id')->unsigned();
+            $table->integer('profiles_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('profiles_id')
+            ->references('id')
+            ->on('profiles')
+            ->onDelete('cascade');
+
+            $table->foreign('module_id')
+            ->references('id')
+            ->on('modules')
+            ->onDelete('cascade');
         });
     }
 
