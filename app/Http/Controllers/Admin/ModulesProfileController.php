@@ -23,7 +23,7 @@ class ModulesProfileController extends Controller
     }
     protected function removeAssociationPermissionWithProfile(Request $request){
         
-        if(ModulesProfile::deleteAssociation($request->profiles_id, $request->module_id)){
+        if(ModulesProfile::deleteAssociation($request->profile_id, $request->module_id)){
             return response()->json('Parabéns Permissão cadastrada com sucesso!', 200);
         }else{
             return response()->json('Erro ao  Cadastrar a Pemissão.', 500);

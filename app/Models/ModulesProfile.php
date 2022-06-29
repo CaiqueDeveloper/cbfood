@@ -13,7 +13,7 @@ class ModulesProfile extends Model
 
     protected static function deleteAssociation($profiles_id, $module_id){
         
-        return ModulesProfile::where('profiles_id', $profiles_id)
+        return ModulesProfile::where('profile_id', $profiles_id)
         ->where('module_id', $module_id)
         ->delete();
     }
