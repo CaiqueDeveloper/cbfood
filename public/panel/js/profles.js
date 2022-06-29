@@ -54,7 +54,7 @@ const Profiles = {
             
             let user_id = $(this).attr('value');
             let profile_id = $(this).attr('data-profile_id')
-            let url = window.location.origin+ `/admin/storageAssociateProfileWithUser?profiles_id=${profile_id}&user_id=${user_id}`
+            let url = window.location.origin+ `/admin/storageAssociateProfileWithUser?profile_id=${profile_id}&user_id=${user_id}`
           
             Profiles.storageAssociateProfileWithUser(url)
         })
@@ -64,7 +64,7 @@ const Profiles = {
             
             let user_id = $(this).attr('value');
             let profile_id = $(this).attr('data-profile_id')
-            let url = window.location.origin+ `/admin/removeProfileAssociationWithUser?profiles_id=${profile_id}&user_id=${user_id}`
+            let url = window.location.origin+ `/admin/removeProfileAssociationWithUser?profile_id=${profile_id}&user_id=${user_id}`
           
             Profiles.removeProfileAssociationWithUser(url)
         })

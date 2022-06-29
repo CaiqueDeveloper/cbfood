@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ModulesProfile extends Model
 {
     use HasFactory;
-    protected  $table = 'modules_profiles';
-    protected $fillable = ['module_id', 'profiles_id'];
+    protected  $table = 'module_profile';
+    protected $fillable = ['module_id', 'profile_id'];
 
     protected static function deleteAssociation($profiles_id, $module_id){
         

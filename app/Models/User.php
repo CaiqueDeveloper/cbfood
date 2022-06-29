@@ -48,6 +48,19 @@ class User extends Authenticatable
         
         return $this->morphMany(Images::class, 'imagebleMorph');
     }
+     //ACL DA APLICAÇÃO
+     public function profiles(){
+        return $this->belongsToMany(Profile::class);
+    }
+    public function hasModule(Module $module){
+        return $this->hasAnyProfiles($module->profiles);
+    }
+    public function hasAnyProfiles($profiles){
+        if(is_array($profiles) || is_object($profiles)){
+            return !!$profiles->intersect($this->profiles)->count();
+        }
+        return $this->profiles->contains('name', $profiles->name);
+    }
     protected function getInfoUserLogged(){
         
         $data = [];
@@ -100,4 +113,5 @@ class User extends Authenticatable
     protected static function getUserOrder($user_id){
         return User::where('id', $user_id)->select('users.name','users.number_phone')->get();
     }
+   
 }

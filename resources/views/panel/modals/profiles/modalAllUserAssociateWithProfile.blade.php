@@ -12,12 +12,11 @@
             $has = 0;
             if(sizeof($hasAssociateUserWithProfile) > 0){
                 foreach($hasAssociateUserWithProfile as $associate){
-                    if($associate->profiles_id == $profile_id){
+                    if($associate->profile_id == $profile_id){
                         $has = 1;
                     }
                 }
             }
-            
         @endphp
             <tr>
                 <td>{{$user->name}}</td>

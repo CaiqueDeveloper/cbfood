@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Module;
+use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
-
+use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -21,10 +23,16 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(GateContract $gate)
     {
-        $this->registerPolicies();
+        $this->registerPolicies($gate);
 
-        //
+        $permissions = Module::with('profiles')->get();
+        //dd($permissions); 
+        foreach ($permissions as $permission) {
+            $gate->define($permission->name, function(User $user) use ($permission){                
+                return $user->hasModule($permission);
+            });
+        }
     }
 }

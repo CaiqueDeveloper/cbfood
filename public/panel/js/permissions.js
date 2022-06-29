@@ -65,18 +65,18 @@ const Permissions = {
             e.preventDefault()
             e.stopImmediatePropagation()
 
-            let profiles_id = $(this).attr('value')
+            let profile_id = $(this).attr('value')
             let module_id = $(this).attr('data-permission_id')
-            let url = window.location.origin + `/admin/storageAssociationPermissionWithProfile?profiles_id=${profiles_id}&module_id=${module_id}`
+            let url = window.location.origin + `/admin/storageAssociationPermissionWithProfile?profile_id=${profile_id}&module_id=${module_id}`
             Permissions.storageAssociationPermissionWithProfile(url);
         })
         $('.remove-profile-association-with-user').on('click', function(e){
             e.preventDefault()
             e.stopImmediatePropagation()
 
-            let profiles_id = $(this).attr('value')
+            let profile_id = $(this).attr('value')
             let module_id = $(this).attr('data-permission_id')
-            let url = window.location.origin + `/admin/removeAssociationPermissionWithProfile?profiles_id=${profiles_id}&module_id=${module_id}`
+            let url = window.location.origin + `/admin/removeAssociationPermissionWithProfile?profile_id=${profile_id}&module_id=${module_id}`
             Permissions.removeAssociationPermissionWithProfile(url);
         })
     },

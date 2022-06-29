@@ -15,4 +15,7 @@ class Module extends Model
     protected static function updatePermission($permission_id, $data){
         return Module::where('id', $permission_id)->update($data);
     }
+    public function profiles(){
+        return $this->belongsToMany(Profile::class);
+    }
 }

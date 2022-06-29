@@ -11,7 +11,7 @@
             $has = 0;
             if(sizeof($hasAssociationPemmissionWithModule) > 0){
                 foreach($hasAssociationPemmissionWithModule as $associate){
-                    if($associate->profiles_id == $profile->id){
+                    if($associate->profile_id == $profile->id){
                         $has = 1;
                     }
                 }
