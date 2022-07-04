@@ -44,7 +44,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::post('/updateOrInserAddressUser', [UserController::class, 'updateOrInserAddressUser']);
     Route::get('/changeCompany', [settingCompanyController::class, 'changeCompany']);
     Route::get('/profileUser', [UserController::class, 'getProfile'])->name('profileUser');
-    
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/showModalRegisterUser',[UserController::class, 'showModalRegisterUser']);
+    Route::post('/storageUser', [UserController::class, 'storageUser']);
+    Route::get('/getUsers', [UserController::class, 'getUsers']);
+    Route::get('/showModalUpdateUser/{id}', [UserController::class, 'showModalUpdateUser']);
+    Route::get('/showModalUpdateOrInserAddresUser/{id}', [UserController::class, 'showModalUpdateOrInserAddresUser']);
+    Route::get('/showModalUpdatePassword/{id}', [UserController::class, 'showModalUpdatePassword']);
+    Route::get('/deleteUser/{id}', [UserController::class, 'deleteUser']);
     //Company
     Route::get('/company', [CompanyController::class, 'getCompany']);
     Route::post('/updateOrInserAddreCompany', [CompanyController::class, 'updateOrInserAddreCompany']);

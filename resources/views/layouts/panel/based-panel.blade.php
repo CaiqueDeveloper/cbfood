@@ -119,6 +119,7 @@
                         <h6 class="collapse-header d-none">Custom Components:</h6>
                         <a class="collapse-item" href="/admin/company">Empresa</a>
                         <a class="collapse-item" href="/admin/permissions">Permissões</a>
+                        <a class="collapse-item" href="/admin/users">Usuários</a>
                     </div>
                 </div>
             </li>
