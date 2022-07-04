@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -75,6 +75,7 @@ class User extends Authenticatable
             $data['user']['company']['settings'] = SettingCompany::find(Auth::user()->company_id);
             $data['user']['company']['settings']['banner'] = (sizeof(SettingCompany::getPictureSettingCompany(Auth::user()->company_id)) > 0) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
             $data['user']['companies'] = Auth::user()->companies;
+            $data['user']['designMenu'] = self::designMenuBasedonUserProfiles();
         }
         
         return $data;
@@ -113,5 +114,30 @@ class User extends Authenticatable
     protected static function getUserOrder($user_id){
         return User::where('id', $user_id)->select('users.name','users.number_phone')->get();
     }
+    protected static function designMenuBasedonUserProfiles(){
+        
+        $modules = DB::table('profile_user')
+        ->join('module_profile', 'module_profile.profile_id', '=', 'profile_user.profile_id')
+        ->join('modules', 'modules.id', '=', 'module_profile.module_id')
+        ->where('profile_user.user_id', auth()->user()->id)
+        ->where('modules.hasModules', '!=', '0')
+        ->select('modules.name', 'modules.url', 'modules.label', 'modules.menu_name', 'modules.icon_class')
+      //  ->groupBy('module_profile.module_id')
+	    ->orderBy('modules.order_list', 'asc')
+        ->get();
+
+        $groupedModules = array();
+        foreach($modules as $module){
+            $index = array_search($module->menu_name, array_column($groupedModules, 'menu'));
+            if($index === false){
+                array_push($groupedModules, ['menu' => $module->menu_name, 'iconClass' => $module->icon_class, 'subMenu' => array($module)]);
+            }else{
+                array_push($groupedModules[$index]['subMenu'], $module);
+
+            }
+        }
+        return $groupedModules;
+    }
+
    
 }

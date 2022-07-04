@@ -28,101 +28,31 @@
             
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link"href="/admin/dashboard">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-               <!-- Heading -->
-            <div class="sidebar-heading">
-                Anúncios
-            </div>
-
             <!-- Nav Item - Pages Collapse Menu -->
+            @foreach($response['user']['designMenu'] as $menu)
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAnnouncente"
-                    aria-expanded="true" aria-controls="collapseAnnouncente">
-                    <i class="fas fa-bullhorn"></i>
-                    <span>Anúncios</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{$menu['menu']}}"
+                    aria-expanded="true" aria-controls="collapse{{$menu['menu']}}">
+                    <i class="{{$menu['iconClass']}}"></i>
+                    <span>{{$menu['menu']}}</span>
                 </a>
-                <div id="collapseAnnouncente" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapse{{$menu['menu']}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/category">
+                        @foreach($menu['subMenu'] as $sub)
+                        <a class="collapse-item" href="{{$sub->url}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
                                 <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                                 <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
                             </svg>
-                            Categorias
+                            {{$sub->name}}
                         </a>
-                        <a class="collapse-item" href="/admin/products">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket2-fill" viewBox="0 0 16 16">
-                                <path d="M5.929 1.757a.5.5 0 1 0-.858-.514L2.217 6H.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h.623l1.844 6.456A.75.75 0 0 0 3.69 15h8.622a.75.75 0 0 0 .722-.544L14.877 8h.623a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1.717L10.93 1.243a.5.5 0 1 0-.858.514L12.617 6H3.383L5.93 1.757zM4 10a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 1 1-2 0v-2zm4-1a1 1 0 0 1 1 1v2a1 1 0 1 1-2 0v-2a1 1 0 0 1 1-1z"/>
-                            </svg>
-                            Produtos
-                        </a>
-                        <a class="collapse-item" href="/admin/additional">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
-                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                            </svg>
-                            Adicionais
-                        </a>
-                        <a class="collapse-item d-none" href="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-percent" viewBox="0 0 16 16">
-                                <path d="M13.442 2.558a.625.625 0 0 1 0 .884l-10 10a.625.625 0 1 1-.884-.884l10-10a.625.625 0 0 1 .884 0zM4.5 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7 6a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm0 1a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
-                            </svg>
-                            Promoções
-                        </a>
+                        @endforeach
                     </div>
                 </div>
             </li>
+            @endforeach
 
-            <div class="sidebar-heading">
-                Pedidos
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInvocer"
-                    aria-expanded="true" aria-controls="collapseInvocer">
-                    <i class="fas fa-shipping-fast"></i>
-                    <span>Pedidos</span>
-                </a>
-                <div id="collapseInvocer" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/admin/orders">Todos</a>
-                        <a class="collapse-item" href="/admin/delivered">Entregues</a>
-                        <a class="collapse-item" href="/admin/beingPrepared">Sendo Preparados</a>
-                        <a class="collapse-item" href="/admin/canceled">Cancelados</a>
-                    </div>
-                </div>
-            </li>
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Àrea Administrativa
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Configurações</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header d-none">Custom Components:</h6>
-                        <a class="collapse-item" href="/admin/company">Empresa</a>
-                        <a class="collapse-item" href="/admin/permissions">Permissões</a>
-                        <a class="collapse-item" href="/admin/users">Usuários</a>
-                    </div>
-                </div>
-            </li>
+           
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
