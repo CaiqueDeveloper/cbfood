@@ -24,7 +24,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">@yield('title-form-auth')</h1>
                                     </div>
-                                        <div class="alert alert-danger alert-error-login alert-solid d-none" role="alert">This is a solid, danger alert!</div>
+                                    <div class="alert alert-danger alert-error-login alert-solid d-none" role="alert"></div>
                                         @yield('forms-auth')
                                     <hr>
                                     <div class="text-center">

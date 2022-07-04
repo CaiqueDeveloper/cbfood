@@ -80,4 +80,7 @@ class Company extends Model
     protected static function getCompanyOrder($company_id){
         return Company::where('id', $company_id)->select('companies.name','companies.phone_number')->get();
     }
+    public static function isActive($company_id){
+        return Company::where('id', $company_id)->select('companies.status')->get();
+    }
 }

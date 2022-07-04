@@ -79,22 +79,19 @@ const Auth = {
             if(response.data){
                 swal(
                     'Sucesso!',
-                    'Estamo lhe redirecionado.',
+                    'Estamos lhe redirecionado.',
                     'success'
                 )
                 setTimeout(() =>{
                     swal.close()
-                    window.location = '/admin/dashboard';
+                    window.location = response.data.redirectRoute
                 },3000)
             }
         })
         .catch((error) =>{
-           /// Ultils.validatorErro(error.response.data)
-            $.each(error.response.data.errors, function(i, error) {
-                let alertError = $(document).find('[name="' + i + '"]');
-                alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
-    
-            });
+            console.log()
+           $('.alert-error-login').removeClass('d-none')
+           $('.alert-error-login').html(error.response.data.alert)
         })
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     }

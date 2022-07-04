@@ -138,6 +138,18 @@ class User extends Authenticatable
         }
         return $groupedModules;
     }
+    protected static function redirectUserBasedOnProfileRoute($id_user){
+
+        $modules = DB::table('profile_user')
+        ->where('user_id', '=', $id_user)
+        ->join('module_profile', 'module_profile.profile_id','=', 'profile_user.profile_id')
+        ->join('modules', 'modules.id','=', 'module_profile.module_id' )
+        ->select('modules.name', 'modules.url')
+        ->orderBy('modules.id','asc')
+        ->first();
+
+        return $modules->url != null ? $modules->url : "/" ;
+	}
 
    
 }

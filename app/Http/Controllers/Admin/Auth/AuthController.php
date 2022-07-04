@@ -31,13 +31,28 @@ class AuthController extends Controller
     }
     public function actionLogin(Request $request){
 
+        
         $credentials = $request->only('email', 'password');
-
-        if(Auth::attempt($credentials)){
-            return response()->json($credentials, 200);
-        }else{
-            return response()->json('Erro e-mail e/ou senha incorretos.', 500);
+        $auth = Auth::attempt($credentials);
+        if(!$auth){
+           return response()->json(['alert' => 'E-mail e/ou Senha incorreto !'], 500);
         }
+
+        if(auth()->user()->status){
+            $company = Company::isActive(auth()->user()->company_id);
+
+            if($company[0]['status']){
+                $route = User::redirectUserBasedOnProfileRoute(auth()->user()->id);
+                return response()->json(['redirectRoute' =>  $route], 200);
+            }else{
+                return response()->json(['alert' => 'Opss! Notamos que a empresa que você está tentando logar se encontra inativa. 
+                Por favor entre em contato com nosso suporte técnico. <strong>suporte@cbfood.com.br<strong>'], 500);
+            }
+        }else{
+            return response()->json(['alert' => 'Opss ! Usuário não se encontra ativo. Por favor entre em contato com nosso suporte técnico.<strong>suporte@cbfood.com.br<strong>'], 500);
+        }
+        
+        
     }
     public function storage(Request $request){
         

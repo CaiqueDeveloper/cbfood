@@ -16,8 +16,8 @@ class ProfilesUserController extends Controller
         }
     }
     protected function removeProfileAssociationWithUser(Request $request){ 
-       
-        $association = ProfilesUser::where('profile_id',$request->profiles_id)->where('user_id', $request->user_id)->get();
+        
+        $association = ProfilesUser::where('profile_id',$request->profile_id)->where('user_id', $request->user_id)->get();
        
         if($association[0]->delete()){
             return response()->json('Parabéns Perfil Cadatrado Com Sucesso.', 200);
