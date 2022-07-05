@@ -36,6 +36,10 @@ class NotifyTheCompanySalesTheRequstUser implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['new-order'];
+        return ['orders'];
+    }
+    public function broadcastAs()
+    {
+      return 'sendOrderCompany';
     }
 }

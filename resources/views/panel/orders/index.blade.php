@@ -12,7 +12,7 @@
 </div>
 <div class="row mt-4">
     <div class="col-12 table-responsive">
-        <table class="table-orders table table-striped"  >
+        <table class="table-orders table table-info table-striped"  >
             
         </table>
        {{-- <div class="content-render-view"></div> --}}

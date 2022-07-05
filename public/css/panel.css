@@ -11,6 +11,25 @@
     background-position: center;
     cursor: not-allowed;
 }
+.bg-dark,
+.btn-primary,
+.previous,
+.next,
+.current {
+    background-color: #151a5f !important;
+}
+.table-info, .table-info > th, .table-info > td{
+    background: #151a5f !important
+}
+.table,
+.btn-primary,
+.previous,
+.next,
+.current,
+.current:hover
+{
+    color:  #fff !important;
+}
 
 .table_role_summed_up thead tr>th,
 .makeTablePermissionSommedUp thead tr>th {

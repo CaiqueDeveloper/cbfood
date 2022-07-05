@@ -17,10 +17,13 @@
                     }
                 }
             }
+
+           //dd();
         @endphp
+
             <tr>
                 <td>{{$user->name}}</td>
-                <td class="text-center">{{$user->company->name}}</td>
+                <td class="text-center">{{$user->company['name']}}</td>
                 <td class="text-center">
                     <a href="#" class="@if(!$has) text-info associate-profile-with-user @else remove-profile-association-with-user text-danger @endif" value="{{$user->id}}" data-profile_id="{{$profile_id}}">
                         @if(!$has) 

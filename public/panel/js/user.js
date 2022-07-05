@@ -224,7 +224,7 @@ var User = {
                 )
                 setTimeout(() =>{
                     swal.close()
-                    //User.geUser();
+                    User.geUser();
                     $("#modalMain").modal('hide');
                 },2000)
             }

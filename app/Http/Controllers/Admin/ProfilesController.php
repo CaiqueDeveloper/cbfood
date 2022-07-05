@@ -50,7 +50,7 @@ class ProfilesController extends Controller
         }
     }
     protected function showModalAllUserAssociateWithProfile($id){
-        $users = User::all();
+        $users = User::where('company_id', auth()->user()->company_id)->get();
         $profile_id = $id;
         $hasAssociateUserWithProfile = ProfilesUser::all();
         return view('panel.modals.profiles.modalAllUserAssociateWithProfile', compact('users', 'profile_id', 'hasAssociateUserWithProfile'));

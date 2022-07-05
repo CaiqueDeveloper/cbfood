@@ -55,11 +55,3 @@
         })
     </script>
 @endsection
-<style scoped>
-    .table-info, .table-info > th, .table-info > td{
-        background: #4e73df !important;
-    }
-    table{
-        color:  #fff !important;
-    }
-</style>

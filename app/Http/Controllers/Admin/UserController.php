@@ -110,16 +110,18 @@ class UserController extends Controller
     public function storage($data){
        
         $user = [];
+        ($data['profile'] != null) ? $user['company_id'] = auth()->user()->company->id : $user['company_id'] = null;
         $user['name'] = $data['name'];
-        $user['company_id'] = auth()->user()->company->id;
         $user['email'] = $data['email'];
         $user['number_phone'] = $data['number_phone'];
         $user['password'] = Hash::make($data['password']);
         $user_id = User::create($user)->id;
-        
-        if(isset($data['profile'])){
+        if($data['profile'] != null){
             ProfilesUser::create(['profile_id'=>$data['profile'],'user_id' => $user_id,]);
+            $user['company_id'] = auth()->user()->company->id;
         }
+        
+        
         return $user_id ;
 
     }

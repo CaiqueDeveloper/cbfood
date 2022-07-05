@@ -66,23 +66,23 @@ const Orders = {
             title: 'EXPANDIR'
         },{
             data: "orderCodId",
-            title: "CÓDIGO DO PEDIDO",
+            title: "CÓDIGO",
             className: 'text-center'
         }, {
             data: "orderUserName",
-            title: "PEDIDO POR",
+            title: "CLIENTE",
             className: 'text-center'
         }, {
             data: "orderTotalItens",
-            title: "QT ITENS",
+            title: "QUANTIDADE",
             className: 'text-center'
         }, {
             data: "orderPaymentMethod",
-            title: "FORMA DE PAGAMENTO",
+            title: "PAGAMENTO",
             className: 'text-center'
         }, {
             data: "orderTotalPrice",
-            title: "VALOR TOTAL",
+            title: "VALOR",
             className: 'text-center'
         }, {
             data: "orderThing",
@@ -90,7 +90,7 @@ const Orders = {
             className: 'text-center'
         },{
             data: "orderPickUpOnTheSpot",
-            title: "RETIRAR NO LOCAL?",
+            title: "RETIRAR?",
             className: 'text-center'
         }, {
             data: 'orderStatus',
@@ -98,15 +98,15 @@ const Orders = {
             className: 'text-center'
         }, {
             data: 'orderDate',
-            title: 'SOLICTADO EM',
+            title: 'DATA',
             className: 'text-center'
         }, {
             data: 'orderAddressUserId',
-            title: 'ENDEREÇO DE ENTREGA',
+            title: 'ENDEREÇO',
             className: 'text-center'
         },{
             data: 'orderCodId',
-            title: 'STATUS DO PEDIDO',
+            title: 'STATUS',
             className: 'text-center'
         }];
         //Mounted Table
@@ -320,16 +320,16 @@ const Orders = {
             </svg>
             </a>` : 'NÃO '
             row +=    `
-                <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
-                    <div class="nama col text-sm font-bold">Item: ${d.itemsOrderuser[i].itemName} </div>
-                    <div class="nama col text-sm font-bold">Qt: ${d.itemsOrderuser[i].itemQuantity}</div>
-                    <div class="nama col text-sm font-bold">Valor R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
-                    <div class="nama col text-sm font-bold">Tamanho: ${size}</div>
-                    <div class="nama col text-sm font-bold">Observações: ${obs}</div>
-                    <div class="nama col text-sm font-bold">TEM ADICIONAIS: ${additionals}</div>
-                    
-                    </div>
+            <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center" style="color: #14195a;font-weight: bold;">
+                <div class="nama col text-sm font-bold">PRODUTO: ${d.itemsOrderuser[i].itemName} </div>
+                <div class="nama col text-sm font-bold">QT: ${d.itemsOrderuser[i].itemQuantity}</div>
+                <div class="nama col text-sm font-bold">VALOR R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
+                <div class="nama col text-sm font-bold">TAMANHO: ${size}</div>
+                <div class="nama col text-sm font-bold">OBSERVAÇÕES: ${obs}</div>
+                <div class="nama col text-sm font-bold">ADICIONAIS: ${additionals}</div>
+                
                 </div>
+            </div>
                 `
           }
           return row;
@@ -380,27 +380,31 @@ const Orders = {
             title: 'EXPANDIR'
         },{
             data: "orderCodId",
-            title: "CÓDIGO DO PEDIDO",
+            title: "CÓDIGO",
             className: 'text-center'
         }, {
             data: "orderUserName",
-            title: "PEDIDO POR",
+            title: "CLIENTE",
             className: 'text-center'
         }, {
             data: "orderTotalItens",
-            title: "QT ITENS",
+            title: "QUANTIDADE",
             className: 'text-center'
         }, {
             data: "orderPaymentMethod",
-            title: "FORMA DE PAGAMENTO",
+            title: "PAGAMENTO",
             className: 'text-center'
         }, {
             data: "orderTotalPrice",
-            title: "VALOR TOTAL",
+            title: "VALOR",
             className: 'text-center'
         }, {
             data: "orderThing",
             title: "TROCO",
+            className: 'text-center'
+        },{
+            data: "orderPickUpOnTheSpot",
+            title: "RETIRAR?",
             className: 'text-center'
         }, {
             data: 'orderStatus',
@@ -408,15 +412,15 @@ const Orders = {
             className: 'text-center'
         }, {
             data: 'orderDate',
-            title: 'SOLICTADO EM',
+            title: 'DATA',
             className: 'text-center'
         }, {
             data: 'orderAddressUserId',
-            title: 'ENDEREÇO DE ENTREGA',
+            title: 'ENDEREÇO',
             className: 'text-center'
         },{
             data: 'orderCodId',
-            title: 'STATUS DO PEDIDO',
+            title: 'STATUS',
             className: 'text-center'
         }];
         //Mounted Table
@@ -624,13 +628,13 @@ const Orders = {
             </svg>
             </a>` : 'NÃO '
             row +=    `
-                <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
-                    <div class="nama col text-sm font-bold">Item: ${d.itemsOrderuser[i].itemName} </div>
-                    <div class="nama col text-sm font-bold">Qt: ${d.itemsOrderuser[i].itemQuantity}</div>
-                    <div class="nama col text-sm font-bold">Valor R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
-                    <div class="nama col text-sm font-bold">Tamanho: ${size}</div>
-                    <div class="nama col text-sm font-bold">Observações: ${obs}</div>
-                    <div class="nama col text-sm font-bold">TEM ADICIONAIS: ${additionals}</div>
+                <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center" style="color: #14195a;font-weight: bold;">
+                    <div class="nama col text-sm font-bold">PRODUTO: ${d.itemsOrderuser[i].itemName} </div>
+                    <div class="nama col text-sm font-bold">QT: ${d.itemsOrderuser[i].itemQuantity}</div>
+                    <div class="nama col text-sm font-bold">VALOR R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
+                    <div class="nama col text-sm font-bold">TAMANHO: ${size}</div>
+                    <div class="nama col text-sm font-bold">OBSERVAÇÕES: ${obs}</div>
+                    <div class="nama col text-sm font-bold">ADICIONAIS: ${additionals}</div>
                     
                     </div>
                 </div>
@@ -659,27 +663,31 @@ const Orders = {
             title: 'EXPANDIR'
         },{
             data: "orderCodId",
-            title: "CÓDIGO DO PEDIDO",
+            title: "CÓDIGO",
             className: 'text-center'
         }, {
             data: "orderUserName",
-            title: "PEDIDO POR",
+            title: "CLIENTE",
             className: 'text-center'
         }, {
             data: "orderTotalItens",
-            title: "QT ITENS",
+            title: "QUANTIDADE",
             className: 'text-center'
         }, {
             data: "orderPaymentMethod",
-            title: "FORMA DE PAGAMENTO",
+            title: "PAGAMENTO",
             className: 'text-center'
         }, {
             data: "orderTotalPrice",
-            title: "VALOR TOTAL",
+            title: "VALOR",
             className: 'text-center'
         }, {
             data: "orderThing",
             title: "TROCO",
+            className: 'text-center'
+        },{
+            data: "orderPickUpOnTheSpot",
+            title: "RETIRAR?",
             className: 'text-center'
         }, {
             data: 'orderStatus',
@@ -687,15 +695,15 @@ const Orders = {
             className: 'text-center'
         }, {
             data: 'orderDate',
-            title: 'SOLICTADO EM',
+            title: 'DATA',
             className: 'text-center'
         }, {
             data: 'orderAddressUserId',
-            title: 'ENDEREÇO DE ENTREGA',
+            title: 'ENDEREÇO',
             className: 'text-center'
         },{
             data: 'orderCodId',
-            title: 'STATUS DO PEDIDO',
+            title: 'STATUS',
             className: 'text-center'
         }];
         //Mounted Table
@@ -903,16 +911,16 @@ const Orders = {
             </svg>
             </a>` : 'NÃO '
             row +=    `
-                <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
-                    <div class="nama col text-sm font-bold">Item: ${d.itemsOrderuser[i].itemName} </div>
-                    <div class="nama col text-sm font-bold">Qt: ${d.itemsOrderuser[i].itemQuantity}</div>
-                    <div class="nama col text-sm font-bold">Valor R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
-                    <div class="nama col text-sm font-bold">Tamanho: ${size}</div>
-                    <div class="nama col text-sm font-bold">Observações: ${obs}</div>
-                    <div class="nama col text-sm font-bold">TEM ADICIONAIS: ${additionals}</div>
-                    
-                    </div>
-                </div>
+            <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center" style="color: #14195a;font-weight: bold;">
+            <div class="nama col text-sm font-bold">PRODUTO: ${d.itemsOrderuser[i].itemName} </div>
+            <div class="nama col text-sm font-bold">QT: ${d.itemsOrderuser[i].itemQuantity}</div>
+            <div class="nama col text-sm font-bold">VALOR R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
+            <div class="nama col text-sm font-bold">TAMANHO: ${size}</div>
+            <div class="nama col text-sm font-bold">OBSERVAÇÕES: ${obs}</div>
+            <div class="nama col text-sm font-bold">ADICIONAIS: ${additionals}</div>
+            
+            </div>
+        </div>
                 `
           }
           return row;
@@ -938,27 +946,31 @@ const Orders = {
             title: 'EXPANDIR'
         },{
             data: "orderCodId",
-            title: "CÓDIGO DO PEDIDO",
+            title: "CÓDIGO",
             className: 'text-center'
         }, {
             data: "orderUserName",
-            title: "PEDIDO POR",
+            title: "CLIENTE",
             className: 'text-center'
         }, {
             data: "orderTotalItens",
-            title: "QT ITENS",
+            title: "QUANTIDADE",
             className: 'text-center'
         }, {
             data: "orderPaymentMethod",
-            title: "FORMA DE PAGAMENTO",
+            title: "PAGAMENTO",
             className: 'text-center'
         }, {
             data: "orderTotalPrice",
-            title: "VALOR TOTAL",
+            title: "VALOR",
             className: 'text-center'
         }, {
             data: "orderThing",
             title: "TROCO",
+            className: 'text-center'
+        },{
+            data: "orderPickUpOnTheSpot",
+            title: "RETIRAR?",
             className: 'text-center'
         }, {
             data: 'orderStatus',
@@ -966,15 +978,15 @@ const Orders = {
             className: 'text-center'
         }, {
             data: 'orderDate',
-            title: 'SOLICTADO EM',
+            title: 'DATA',
             className: 'text-center'
         }, {
             data: 'orderAddressUserId',
-            title: 'ENDEREÇO DE ENTREGA',
+            title: 'ENDEREÇO',
             className: 'text-center'
         },{
             data: 'orderCodId',
-            title: 'STATUS DO PEDIDO',
+            title: 'STATUS',
             className: 'text-center'
         }];
         //Mounted Table
@@ -1182,16 +1194,16 @@ const Orders = {
             </svg>
             </a>` : 'NÃO '
             row +=    `
-                <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
-                    <div class="nama col text-sm font-bold">Item: ${d.itemsOrderuser[i].itemName} </div>
-                    <div class="nama col text-sm font-bold">Qt: ${d.itemsOrderuser[i].itemQuantity}</div>
-                    <div class="nama col text-sm font-bold">Valor R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
-                    <div class="nama col text-sm font-bold">Tamanho: ${size}</div>
-                    <div class="nama col text-sm font-bold">Observações: ${obs}</div>
-                    <div class="nama col text-sm font-bold">TEM ADICIONAIS: ${additionals}</div>
-                    
-                    </div>
-                </div>
+            <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center" style="color: #14195a;font-weight: bold;">
+            <div class="nama col text-sm font-bold">PRODUTO: ${d.itemsOrderuser[i].itemName} </div>
+            <div class="nama col text-sm font-bold">QT: ${d.itemsOrderuser[i].itemQuantity}</div>
+            <div class="nama col text-sm font-bold">VALOR R$: ${Ultils.formatMoney(d.itemsOrderuser[i].itemPrice)}</div>
+            <div class="nama col text-sm font-bold">TAMANHO: ${size}</div>
+            <div class="nama col text-sm font-bold">OBSERVAÇÕES: ${obs}</div>
+            <div class="nama col text-sm font-bold">ADICIONAIS: ${additionals}</div>
+            
+            </div>
+        </div>
                 `
           }
           return row;
