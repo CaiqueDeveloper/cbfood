@@ -26,6 +26,7 @@
     <link  rel="stylesheet" href="{{url('site/js/wolcarousel/owl.carousel.min.css')}}">
     <link  rel="stylesheet" href="{{url('site/js/wolcarousel/owl.theme.default.min.css')}}">
     <link  rel="stylesheet" href="{{url('site/css/checkout.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <style>
         body::-webkit-scrollbar {
             width: 15px;

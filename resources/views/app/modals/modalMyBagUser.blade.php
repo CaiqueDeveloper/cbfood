@@ -1,7 +1,7 @@
 @if(Auth::user()->orders)
 <div class="accordion" id="accordionorder">
     @forelse (Auth::user()->orders as $order)
-    <div class="card">
+    <div class="card mt-[10px] ">
         <div class="card-header d-flex justify-content-between align-items-center" id="heading-{{$order->id}}">
         <h2 class="">
             <button class="btn btn-block text-left shadow-none" type="button" data-toggle="collapse" data-target="#collapse-{{$order->id}}" aria-expanded="true" aria-controls="collapse-{{$order->id}}">
@@ -22,32 +22,35 @@
         <div class="status col">
             @switch($order->status)
                 @case(0)
-                        <p class="bg-red-300 text-red-600 font-bold px-2 rounded-lg">Cancelado</p>
+                        <p class="bg-red-300 text-red-600 font-bold px-2 rounded-lg text-center">Cancelado</p>
                     @break
                 @case(1)
-                        <p class="bg-blue-300 text-blue-600 font-bold px-2 rounded-lg">Enviado</p>
+                        <p class="bg-blue-300 text-blue-600 font-bold px-2 rounded-lg text-center">Enviado</p>
                     @break
                 @case(2)
-                        <p class="bg-emerald-300 text-emerald-600 font-bold px-2 rounded-lg">Recebido</p>
+                        <p class="bg-emerald-300 text-emerald-600 font-bold px-2 rounded-lg text-center">Recebido</p>
                     @break
                 @case(3)
-                        <p class="bg-yellow-300 text-yellow-600 font-bold px-2 rounded-lg">Sendo Preparado</p>
+                        <p class="bg-yellow-300 text-yellow-600 font-bold px-2 rounded-lg text-center">Sendo Preparado</p>
                     @break
                 @case(4)
-                        <p class="bg-teal-300 text-teal-600 font-bold px-2 rounded-lg">Saiu para entrega</p>
+                        <p class="bg-teal-300 text-teal-600 font-bold px-2 rounded-lg text-center">Saiu para entrega</p>
                     @break
                 @case(5)
-                        <p class="bg-green-300 text-green-600 font-bold px-2 rounded-lg">Entrengue</p>
+                        <p class="bg-green-300 text-green-600 font-bold px-2 rounded-lg text-center">Entrengue</p>
                     @break
                 @default
                     
             @endswitch
         </div>
 
-        <div class="icon">
-          Data {{date('d/m/Y', strtotime($order->created_at))}}
+        <div class="icon text-center">
+            Data {{date('d/m', strtotime($order->created_at))}}
         </div>
-        </div>
+        <a href="#" class="desabled-order text-center text-center text-red-300 bg-red-600 px-1 rounded-lg @if($order->status != 1) hidden @endif" value="{{$order->id}}">
+            Cancelar Pedido <i class="bi bi-x-circle-fill"></i>
+        </a>    
+    </div>
     
         <div id="collapse-{{$order->id}}" class="collapse" aria-labelledby="heading-{{$order->id}}" data-parent="#accordionorder">
         <div class="card-body">

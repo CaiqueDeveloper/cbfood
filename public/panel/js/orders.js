@@ -1265,12 +1265,9 @@ const Orders = {
             case '4':
                     status = 'Seu pedido foi enviado para entrega'
                 break;
-            case '5':
-                    status = 'Seu pedido foi entregue, obrigado pela preferencia.'
-                break;
-                default:
-                    status = 'Aguarde Entraremos em contato';
-                break
+            default:
+                status = 'Aguarde Entraremos em contato';
+            break
         }
         var bodyUrl = `*Olá: ${data.user[0].name}*\n\n${status}\nVocê será notificado sempre que houver um progresso no seu pedido. Obrigado pela compreensão!\n\nAtenciosamente: ${ data.company[0].name}\n\n`;
         console.log(bodyUrl)

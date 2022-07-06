@@ -105,7 +105,16 @@ var Home = {
             let url = window.location.origin +'/app/getModalMyBagUser'
             Home.getModalMyBagUser(url);
         })
-     
+        $('.desabled-order').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let order_id = $(this).attr('value')
+            let status = 0
+
+            let url = window.location.origin + `/admin/updateStatusOrder?order_id=${order_id}&status=${status}`
+            Home.updateStatusOrder(url);
+        })
     },
     renderViewGetProduct(url){
         axios({
@@ -665,6 +674,42 @@ var Home = {
         priceSelectedClient = (!isNaN( priceSelectedClient)) ? priceSelectedClient : 0;
         finalPrice = total + priceSelectedClient
         $('.final-price').html(finalPrice.toFixed(2))
+    },
+    updateStatusOrder(url){
+        swal({
+            title: 'Tem certeza que deseja cancelar esse pedido?',
+            text: "",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, confirmar!',
+            cancelButtonText: "Cancelar!",
+        }).then((result) => {
+            if (result.value) {
+                $('.AppBlock').removeClass('d-none');
+                axios({
+                    url:url,
+                    method: 'GET',
+                })
+                .then((response) =>{
+                    if(response.data){
+                        swal(
+                            'Sucesso!',
+                            'Pedido Cancelado com sucesso',
+                            'success'
+                        )
+                        setTimeout(() =>{
+                            swal.close()
+                            $("#modalMain").modal('hide');
+                        },3000)
+                    }
+                })
+                .catch((error) =>{
+                })
+                .finally(() =>{$('.AppBlock').addClass('d-none');});
+            }
+        });
     },
     
 }
