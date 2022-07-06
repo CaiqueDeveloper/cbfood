@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Auth\AuthController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
+use App\Http\Controllers\Admin\DeliverieController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ModulesProfileController;
 use App\Http\Controllers\Admin\NotifyController;
@@ -136,6 +137,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/showModalPermissionAssociationWithProfile/{id}',[ModulesProfileController::class, 'showModalPermissionAssociationWithProfile']);
     Route::get('/storageAssociationPermissionWithProfile', [ModulesProfileController::class, 'storageAssociationPermissionWithProfile']);
     Route::get('/removeAssociationPermissionWithProfile', [ModulesProfileController::class, 'removeAssociationPermissionWithProfile']);
+
+    //Deliveries
+    Route::get('/deliveries', [DeliverieController::class , 'index']);
 });
 
 Route::prefix('app')->group(function(){

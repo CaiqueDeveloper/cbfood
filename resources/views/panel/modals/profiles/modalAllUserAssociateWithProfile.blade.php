@@ -12,13 +12,13 @@
             $has = 0;
             if(sizeof($hasAssociateUserWithProfile) > 0){
                 foreach($hasAssociateUserWithProfile as $associate){
-                    if($associate->profile_id == $profile_id){
+                    if($user->id == $associate->user_id & $associate->profile_id == $profile_id){
                         $has = 1;
                     }
                 }
             }
 
-           //dd();
+           
         @endphp
 
             <tr>

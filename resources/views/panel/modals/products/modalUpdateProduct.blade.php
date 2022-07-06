@@ -31,6 +31,7 @@
         <div class="form-group col">
             <label for="category">Categoria</label>
             <select id="category" class="form-control" name="category_id">
+               
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}" @if($product->category_id == $category->id) selected @endif>{{$category->name}}</option>
                 @endforeach

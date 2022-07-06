@@ -1,9 +1,4 @@
-@foreach($notify as $not)
-    
-    @php
-    //var_dump($not);
-        // $body = json_decode($not->data, true);
-    @endphp
+@foreach($notify as $key => $not)
     <a class="dropdown-item d-flex align-items-center" href="#">
         <div class="mr-3">
             <div class="icon-circle bg-success text-white">
@@ -21,7 +16,5 @@
             </div>
             <span class="font-weight-bold">Você tem um novo Pedido de  {{$not['userRequesOrder'][0]['name']}}</span>
         </div>
-        
     </a>
-   
 @endforeach

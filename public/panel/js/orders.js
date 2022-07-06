@@ -370,7 +370,6 @@ const Orders = {
                 
             }
         }
-        console.log(deliveredOrders)
         //Create Colum
         var columns = [{
             className: 'dt-control',
@@ -403,10 +402,6 @@ const Orders = {
             title: "TROCO",
             className: 'text-center'
         },{
-            data: "orderPickUpOnTheSpot",
-            title: "RETIRAR?",
-            className: 'text-center'
-        }, {
             data: 'orderStatus',
             title: 'STATUS',
             className: 'text-center'

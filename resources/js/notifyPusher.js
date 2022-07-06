@@ -2,9 +2,10 @@ Pusher.logToConsole = true;
 var pusher = new Pusher(window.Laravel.pusher.key, {
     cluster: window.Laravel.pusher.cluster
 });
-var channel = pusher.subscribe('new-order');
-channel.bind('App\\Events\\NotifyTheCompanySalesTheRequstUser', function(data) {
+var channel = pusher.subscribe('orders');
+channel.bind('sendOrderCompany', function(data) {
     Ultils.getNotifyComapy();
+    
     if(!("Notification" in window)){
 
         console.log("Esse navegador não suporta a notifiação no desktop");

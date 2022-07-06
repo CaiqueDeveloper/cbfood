@@ -25,7 +25,7 @@ class CategoryController extends Controller
     }
     public function getAllCategoryCompany(){
 
-        $company = Company::find(Auth::user()->id);
+        $company = Company::find(Auth::user()->company_id);
         return $company->category;
     }
     public function storageCategory(Request $request){
