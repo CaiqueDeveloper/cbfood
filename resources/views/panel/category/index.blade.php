@@ -37,6 +37,14 @@
   
 </div>
 @endsection
+@section('scripts')
+<script src="{{url('panel/js/category.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            Category.construct();
+        })
+    </script>
+@endsection
 <style scoped>
     .dataTables_filter,
     .dataTables_length

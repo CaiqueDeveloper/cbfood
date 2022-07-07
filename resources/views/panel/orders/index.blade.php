@@ -1,5 +1,5 @@
 @extends('layouts.panel.based-panel')
-@section('title', 'Empresas')
+@section('title', 'Pedidos')
 @section('content')
 <div class="d-flex justify-content-between align-items-sm-center flex-column flex-sm-row mb-4">
     <div class="me-4 mb-3 mb-sm-0">

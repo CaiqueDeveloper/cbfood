@@ -17,7 +17,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="me-3">
                         <div class="text-white-75 small">Novas Entregas</div>
-                        <div class="text-lg fw-bold total-new-deliveries">0</div>
+                        <div class="text-lg fw-bold total-new-deliveries"></div>
                     </div>
                     <i class="bi bi-send-check-fill"></i>
                 </div>
@@ -34,7 +34,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="me-3">
                         <div class="text-white-75 small">Entregas Realizadas</div>
-                        <div class="text-lg fw-bold total-deliveries">0</div>
+                        <div class="text-lg fw-bold total-deliveries"></div>
                     </div>
                     <i class="bi bi-send-check-fill"></i>
                 </div>
@@ -48,17 +48,17 @@
 </div>
 <div class="row mt-4">
     <div class="col-12 table-responsive">
-        <table class="table  table-info table-products"></table>
+        <table class="table  table-info table-orders-deliverymen"></table>
     </div>
   
 </div>
 @endsection
-{{-- <script src="{{url('panel/js/products.js')}}"></script> --}}
+<script src="{{url('panel/js/deliverymen.js')}}"></script>
 @section('scripts')
     <script type="text/javascript">
     
         $(document).ready(function() {
-            // Products.construct();
+            DeliveryMen.construct();
         })
     </script>
 @endsection

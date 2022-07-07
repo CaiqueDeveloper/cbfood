@@ -57,10 +57,8 @@
     <!-- Custom scripts for all pages-->
     <script src="{{url('theme-sdb-admin-2/js/sb-admin-2.min.js')}}"></script>
     <script src="{{url('panel/js/ultils.js')}}"></script>
-    <script src="{{url('panel/js/user.js')}}"></script>
-    <script src="{{url('panel/js/company.js')}}"></script>
-    <script src="{{url('panel/js/category.js')}}"></script>
-    <script src="{{url('panel/js/dashboard.js')}}"></script>
+    
+    
     <script src="{{url('koolChartJs/KoolChart/JS/KoolChart.js')}}"></script>
     <script src="{{url('koolChartJs/LicenseKey/KoolChartLicense.js')}}"></script>
     <script src="{{url('jQueryMask/jquery.mask.js')}}"></script>
@@ -78,11 +76,6 @@
     <script type="text/javascript">
         $(document).ready(function(){
             Ultils.construct();
-            User.construct();
-            Company.construct();
-            Category.construct();
-            Dashboard.construct();
-            
         })
         
         

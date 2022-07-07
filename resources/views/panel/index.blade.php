@@ -98,3 +98,12 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+<script src="{{url('panel/js/dashboard.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            Dashboard.construct();
+        })
+    </script>
+@endsection

@@ -25,15 +25,23 @@ class Order extends Model
        
         return $this->hasMany(User::class,'id', 'user_id');
     }
+    public function orderAddress(){
+        return $this->belongsTo(Address::class,'address_id', 'addres_morph_id');
+    }
     public function orderCompany(){
        
         return $this->hasMany(User::class,'id', 'company_id');
     }
-
+    
     protected static function getOrders(){
 
         $company_id = Auth::user()->company_id;
         return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
+    }
+    protected static function getOrdersDeliveryMen(){
+
+        $myDeliveries = User::find(auth()->user()->id);
+        return Order::whereIn('id', array_column($myDeliveries->ordersDeliverymen->toArray(),'order_id'))->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
     }
     protected static function getOrder($id){
         return Order::where('id', $id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();

@@ -211,3 +211,11 @@
     </div>
   </div>
 @endsection
+@section('scripts')
+<script src="{{url('panel/js/company.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            Company.construct();
+        })
+    </script>
+@endsection

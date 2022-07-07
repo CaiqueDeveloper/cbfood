@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\Auth\AuthController;
 use App\Http\Controllers\Admin\CartController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CompanyController;
-use App\Http\Controllers\Admin\DeliverieController;
+use App\Http\Controllers\Admin\DeliveryMenController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ModulesProfileController;
 use App\Http\Controllers\Admin\NotifyController;
@@ -139,7 +139,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/removeAssociationPermissionWithProfile', [ModulesProfileController::class, 'removeAssociationPermissionWithProfile']);
 
     //Deliveries
-    Route::get('/deliveries', [DeliverieController::class , 'index']);
+    Route::get('/deliveries', [DeliveryMenController::class , 'index']);
+    Route::get('/showModalGeteDelirevyMen/{id}', [DeliveryMenController::class, 'showModalGeteDelirevyMen']);
+    Route::get('/sendOrderToDeliveryPerson', [DeliveryMenController::class, 'sendOrderToDeliveryPerson']);
+    Route::get('/getOrdersDeliveryMen', [DeliveryMenController::class, 'getOrdersDeliveryMen']);
+    Route::get('/getRederIdicatorsDeliveryMen', [DeliveryMenController::class, 'getRederIdicatorsDeliveryMen']);
 });
 
 Route::prefix('app')->group(function(){

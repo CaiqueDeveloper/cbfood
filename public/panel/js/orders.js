@@ -4,7 +4,23 @@ const Orders = {
         Orders.getOrders()
     },
     init_listerns(){
+        $('.show-modal-deliverymen').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
 
+            let order_id = $(this).attr('value');
+            let url = window.location.origin + '/admin/showModalGeteDelirevyMen/'+order_id
+            Orders.showModalGeteDelirevyMen(url);
+        })
+        $('.sendOrderToDeliveryPerson').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let user_id = $(this).attr('value');
+            let order_id = $(this).attr('data-order_id');
+            let url = window.location.origin + `/admin/sendOrderToDeliveryPerson?user_id=${user_id}&order_id=${order_id}`
+            Orders.sendOrderToDeliveryPerson(url);
+        })
     },
     getOrders(){
         $('.AppBlock').removeClass('d-none');
@@ -46,7 +62,6 @@ const Orders = {
                 })
                 itemsOrder = []
             }
-
             Orders.drawTableOrders(orders)
             Orders.delivered(orders)
             Orders.beingPrepared(orders)
@@ -104,6 +119,10 @@ const Orders = {
             data: 'orderAddressUserId',
             title: 'ENDEREÇO',
             className: 'text-center'
+        }, {
+            data: 'orderCodId',
+            title: 'ENTREGADOR',
+            className: 'text-center'
         },{
             data: 'orderCodId',
             title: 'STATUS',
@@ -118,6 +137,7 @@ const Orders = {
             [1, "desc"]
             ],
             drawCallback: function( settings ){
+                Orders.init_listerns()
                 $('.cancel-order, .to-recive-order, .being-prepared-order, .out-for-delivery-order, .delivered-order').on('click', function(e){
                     e.preventDefault();
                     e.stopImmediatePropagation();
@@ -247,8 +267,16 @@ const Orders = {
                     </svg>
                     </a>`;
                 }
-            }, {
+            },{
                 targets: 11,
+                orderable: true,
+                render: function(a, n, e, s) {
+                    return `<a href="#" class="show-modal-deliverymen" value="${a}" style="color:#6ee7b7">
+                        <i class="bi bi-send-check-fill"></i>
+                    </a>`;
+                }
+            },  {
+                targets: 12,
                 orderable: true,
                 render: function(a, n, e, s) {
                     
@@ -1288,6 +1316,50 @@ const Orders = {
             window.open(target,'_blank')
         }
           
-    }
+    },
+    showModalGeteDelirevyMen(url){
+        axios({
+            method: 'GET',
+            url: url
+        }).then((response) =>{
+
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-title').html('Entregadores');
+            Orders.init_listerns()
+        }).catch((error)=>{
+            console.log(error.response.data)
+        }).finally(() => {
+            console.log('finalizou a consulta..')
+        })
+    },
+    sendOrderToDeliveryPerson(url){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            method: 'GET',
+            url:url,
+        }).then((response) => {
+            if(response.data){
+                swal(
+                    'Sucesso!',
+                    'Parabéns Pedido enviado Com Sucesso.',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                },2000)
+            }
+        }).catch((error) =>{
+            $.each(error.response.data.errors, function(i, error) {
+                let alertError = $(document).find('[name="' + i + '"]');
+                alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
+    
+            });
+        }).finally(()=>{
+            $('.AppBlock').addClass('d-none');
+        })
+    },
     
 }
