@@ -135,7 +135,7 @@ class Order extends Model
     }
     public function allSalesByCategories($start, $interval, $end){
        
-        $order = Order::where('company_id', auth()->user()->company_id)
+        $data = Order::where('company_id', auth()->user()->company_id)
         ->whereBetween('orders.created_at', [$start, $end])
         ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
         ->join('products', 'products.id', '=', 'order_products.products_id')
@@ -145,7 +145,22 @@ class Order extends Model
         ->get();
        
 
-        return $order;
+        return $data;
+    }
+    public function getDataShowingTop10SellingProducts($start, $interval, $end){
+       
+        $data = Order::where('company_id', auth()->user()->company_id)
+        ->whereBetween('orders.created_at', [$start, $end])
+        ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
+        ->join('products', 'products.id', '=', 'order_products.products_id')
+        ->join('categories', 'categories.id','=', 'products.category_id')
+        ->select('products.name','categories.name as category',DB::raw('count(*) as total, sum(orders.price_total ) as totalBilling'))
+        ->groupBy('products.name', 'categories.name')
+        ->orderBy(DB::raw('count(order_products.orders_id)', 'DESC'))
+        ->limit(10)
+        ->get();
+
+        return $data;
     }
     public static function exportOrderUser($id){
         

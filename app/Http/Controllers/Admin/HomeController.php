@@ -26,5 +26,8 @@ class HomeController extends Controller
     protected function allSalesByCategories(Request $request){
         return response()->json(OrderController::allSalesByCategories($request->start, $request->end));
     }
+    protected function getDataShowingTop10SellingProducts(Request $request){
+        return response()->json(OrderController::getDataShowingTop10SellingProducts($request->start, $request->end));
+    }
     
 }

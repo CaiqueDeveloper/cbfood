@@ -102,6 +102,14 @@
     <div class="card-body">
         <div id="chartSalesCategories" style="height:500px; width:100%;"></div>
     </div>
+    <div class="row m-4 text-center">
+        <div class="col">
+            <h4>TOP 10 PRODUTOS MAIS VENDIDOS</h4>
+        </div>
+    </div>
+    <div class="col-12 table-responsive">
+        <table class="table  table-info table-showing-top-10-selling-products"></table>
+    </div>
 </div>
 @endsection
 

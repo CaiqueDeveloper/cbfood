@@ -182,16 +182,19 @@ const Category = {
             columnDefs: [{
                 targets: 0,
                 width: 100,
+                class: 'text-center',
                 data: function(row, type, val, meta) {
                    return row.id;
                 }
             }, {
                 targets: 1,
+                class: 'text-center',
                 data: function(row, type, val, meta) {
                     return row.name;
                 }
             }, {
                 targets: 2,
+                class: 'text-center',
                 data: function(row, type, val, meta) {
                     return `
                     <a href="#" class="update-category text-info" value='${row.id}'>

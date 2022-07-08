@@ -29,6 +29,7 @@ const Dashboard = {
         Dashboard.getRederIdicatorsDashboard(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
         Dashboard.getDataGraphSales(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
         Dashboard.allSalesByCategories(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
+        Dashboard.getDataShowingTop10SellingProducts(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
 
     },
     init_listerns(){
@@ -136,7 +137,7 @@ const Dashboard = {
             params: {start,end}
         })
         .then((response) =>{
-            console.log(response.data.original);
+            //console.log(response.data.original);
             KoolChart.create("chart-sales-catories", "chartSalesCategories", "", "100%", "100%");
 
             var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
@@ -165,5 +166,75 @@ const Dashboard = {
           console.log(error.response.data)
         })
         .finally(()=>{$('.AppBlock').addClass('d-none');})
+    },
+    getDataShowingTop10SellingProducts(start, end){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:window.location.origin + '/admin/getDataShowingTop10SellingProducts',
+            method: 'GET',
+            params: {start,end}
+        })
+        .then((response) =>{
+           Dashboard.drawTableShowingTop10SellingProducts(response.data.original)
+        })
+        .catch((error) =>{
+          console.log(error.response.data)
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');})
+    },
+    drawTableShowingTop10SellingProducts(data){
+        const columns = [{
+            field: "",
+            title: "Produto"
+        }, {
+            field: "",
+            title: "Categoria"
+        }, {
+            field: "",
+            title: "Quantidade Vendida"
+        },{
+            field: "",
+            title: "Faturamento"
+        }];
+        $('.table-showing-top-10-selling-products').DataTable({
+            data: data,
+            columns: columns,
+            scrollX: false,
+            paging: false,
+            info: false,
+            searching: false,
+            destroy:true,
+            "displayLength": 50,
+            order: [[ 1, "asc" ]],
+           drawCallback: function( settings ){
+               Category.inti_listerns()
+           },
+            columnDefs: [{
+                targets: 0,
+                data: function(row, type, val, meta) {
+                   return row.name;
+                }
+            }, {
+                targets: 1,
+                class: 'text-center',
+                data: function(row, type, val, meta) {
+                    return row.category;
+                }
+            }, {
+                targets: 2,
+                class: 'text-center',
+                data: function(row, type, val, meta) {
+                    return row.total;
+                }
+            }, {
+                targets: 3,
+                class: 'text-center',
+                data: function(row, type, val, meta) {
+                    let totalPrice = new Intl.NumberFormat({ style: 'currency', currency: 'BRL' }).format(row.totalBilling);
+                    return 'R$ '+totalPrice
+                }
+            }],
+        
+         })
     }
 }
