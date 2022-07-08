@@ -77,6 +77,15 @@ class OrderController extends Controller
         $data = Order::getDataShowingTop10SellingProducts($start, $interval, $end);
         return response()->json($data);  
     }
+    public function getDataTableSalesDay($start, $end){
+
+        $start = new DateTime($start);
+        $end = new DateTime($end);
+        $interval = new DateInterval('P1D');
+        
+        $data = Order::getDataTableSalesDay($start, $interval, $end);
+        return response()->json($data);  
+    }
 
     public function getOrders(){
 

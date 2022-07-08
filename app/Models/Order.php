@@ -162,6 +162,18 @@ class Order extends Model
 
         return $data;
     }
+    public function getDataTableSalesDay($start, $interval, $end){
+       
+        $data = Order::where('company_id', auth()->user()->company_id)
+        ->whereBetween('orders.created_at', [$start, $end])
+        ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
+        ->join('products', 'products.id', '=', 'order_products.products_id')
+        ->join('categories', 'categories.id','=', 'products.category_id')
+        ->select('products.name','categories.name as category','orders.price_total as price', 'order_products.quantity as total')
+        ->get();
+
+        return $data;
+    }
     public static function exportOrderUser($id){
         
         $order = Order::getOrder($id);

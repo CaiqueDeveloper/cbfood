@@ -96,6 +96,14 @@
     <div class="card-body">
         <div id="chartSalesMonth" style="height:500px; width:100%;"></div>
     </div>
+    <div class="row m-4 text-center">
+        <div class="col">
+            <h4>TABELA DE VENDAS DIÁRIA</h4>
+        </div>
+    </div>
+    <div class="col-12 table-responsive">
+        <table class="table  table-info table-sales-day"></table>
+    </div>
 </div>
 <div class="card mb-4">
     <div class="card-header">Gráfico de Vendas Por Categorias</div>

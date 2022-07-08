@@ -29,5 +29,8 @@ class HomeController extends Controller
     protected function getDataShowingTop10SellingProducts(Request $request){
         return response()->json(OrderController::getDataShowingTop10SellingProducts($request->start, $request->end));
     }
+    protected function getDataTableSalesDay(Request $request){
+        return response()->json(OrderController::getDataTableSalesDay($request->start, $request->end));
+    }
     
 }
