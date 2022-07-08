@@ -8,6 +8,7 @@ use App\Models\CompanyUser;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -22,4 +23,8 @@ class HomeController extends Controller
     protected function getDataGraphSales(Request $request){
         return response()->json(OrderController::getDataGraphSales($request->start, $request->end));
     }
+    protected function allSalesByCategories(Request $request){
+        return response()->json(OrderController::allSalesByCategories($request->start, $request->end));
+    }
+    
 }

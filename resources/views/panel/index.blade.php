@@ -92,9 +92,15 @@
     </div>
 </div>
 <div class="card mb-4">
-    <div class="card-header">Analise Gráfica</div>
+    <div class="card-header">Gráfico de Vendas Diárias</div>
     <div class="card-body">
         <div id="chartSalesMonth" style="height:500px; width:100%;"></div>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">Gráfico de Vendas Por Categorias</div>
+    <div class="card-body">
+        <div id="chartSalesCategories" style="height:500px; width:100%;"></div>
     </div>
 </div>
 @endsection

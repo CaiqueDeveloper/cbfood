@@ -59,6 +59,15 @@ class OrderController extends Controller
         $data = Order::getDataGraphSales($start, $interval, $end);
         return response()->json($data);  
     }
+    public function allSalesByCategories($start, $end){
+
+        $start = new DateTime($start);
+        $end = new DateTime($end);
+        $interval = new DateInterval('P1D');
+        
+        $data = Order::allSalesByCategories($start, $interval, $end);
+        return response()->json($data);  
+    }
 
     public function getOrders(){
 

@@ -28,6 +28,7 @@ const Dashboard = {
         });
         Dashboard.getRederIdicatorsDashboard(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
         Dashboard.getDataGraphSales(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
+        Dashboard.allSalesByCategories(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
 
     },
     init_listerns(){
@@ -120,6 +121,44 @@ const Dashboard = {
             KoolChart.calls("chart-sales", {
                 "setLayout" : layoutCharSalesMonth,
                 "setData" : data_sales_chart
+            });
+        })
+        .catch((error) =>{
+          console.log(error.response.data)
+        })
+        .finally(()=>{$('.AppBlock').addClass('d-none');})
+    },
+    allSalesByCategories(start, end){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:window.location.origin + '/admin/allSalesByCategories',
+            method: 'GET',
+            params: {start,end}
+        })
+        .then((response) =>{
+            console.log(response.data.original);
+            KoolChart.create("chart-sales-catories", "chartSalesCategories", "", "100%", "100%");
+
+            var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
+            +'<Options>'
+            +'<Caption text="Vendas Por Categorias"/>'
+            +'<Legend useVisibleCheck="true"/>'
+            +'</Options>'
+            +'<Pie3DChart showDataTips="true"  depth="50" paddingLeft="100" paddingTop="50" paddingRight="100" paddingBottom="50">'
+            +'<series>'
+            +'<Pie3DSeries nameField="name" field="total" labelPosition="inside" color="#ffffff" >'
+            +'<showDataEffect>'
+            +'<SeriesInterpolate duration="1000"/>'
+            +'</showDataEffect>'
+            +'</Pie3DSeries>'
+            +'</series>'
+            +'</Pie3DChart>'
+            +'</KoolChart>';
+
+
+            KoolChart.calls("chart-sales-catories", {
+                "setLayout": layoutStr,
+                "setData": response.data.original
             });
         })
         .catch((error) =>{
