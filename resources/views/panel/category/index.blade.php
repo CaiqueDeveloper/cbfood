@@ -32,7 +32,7 @@
 
 <div class="row mt-4">
     <div class="col-12 table-responsive">
-        <table class="table table-info table-category"></table>
+        <table class="table table-info table-bordered table-category"></table>
     </div>
   
 </div>

@@ -12,7 +12,7 @@
 </div>
 <div class="row mt-4">
     <div class="col-12 table-responsive">
-        <table class="table-orders table table-info table-striped"></table>
+        <table class="table-orders  table-bordered table table-info table-striped"></table>
     </div>
 </div>
 @endsection

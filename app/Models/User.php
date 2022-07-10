@@ -125,7 +125,7 @@ class User extends Authenticatable
         ->join('modules', 'modules.id', '=', 'module_profile.module_id')
         ->where('profile_user.user_id', auth()->user()->id)
         ->where('modules.hasModules', '!=', '0')
-        ->select('modules.name', 'modules.url', 'modules.label', 'modules.menu_name', 'modules.icon_class')
+        ->select('modules.name','modules.id', 'modules.url', 'modules.label', 'modules.menu_name', 'modules.icon_class')
       //  ->groupBy('module_profile.module_id')
 	    ->orderBy('modules.order_list', 'asc')
         ->get();
@@ -134,7 +134,7 @@ class User extends Authenticatable
         foreach($modules as $module){
             $index = array_search($module->menu_name, array_column($groupedModules, 'menu'));
             if($index === false){
-                array_push($groupedModules, ['menu' => $module->menu_name, 'iconClass' => $module->icon_class, 'subMenu' => array($module)]);
+                array_push($groupedModules, ['id' =>  $module->id,'menu' => $module->menu_name, 'iconClass' => $module->icon_class, 'subMenu' => array($module)]);
             }else{
                 array_push($groupedModules[$index]['subMenu'], $module);
 

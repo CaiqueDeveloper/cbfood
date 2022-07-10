@@ -39,7 +39,7 @@
             <div class="card-header">
                 Permissões 
             </div>
-            <table class="table table-info table-permissions col mt-5"></table>
+            <table class="table table-info table-bordered table-permissions col mt-5"></table>
         </div>
     </div>
 </div>

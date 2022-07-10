@@ -48,7 +48,7 @@
 </div>
 <div class="row mt-4">
     <div class="col-12 table-responsive">
-        <table class="table  table-info table-orders-deliverymen"></table>
+        <table class="table  table-info table-bordered table-orders-deliverymen"></table>
     </div>
   
 </div>

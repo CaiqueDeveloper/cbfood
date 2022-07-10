@@ -156,7 +156,7 @@ class Order extends Model
         ->join('categories', 'categories.id','=', 'products.category_id')
         ->select('products.name','categories.name as category',DB::raw('count(*) as total, sum(orders.price_total ) as totalBilling'))
         ->groupBy('products.name', 'categories.name')
-        ->orderBy(DB::raw('count(order_products.orders_id)', 'DESC'))
+        //->orderBy(DB::raw('count(*) as total', 'ASC'))
         ->limit(10)
         ->get();
 

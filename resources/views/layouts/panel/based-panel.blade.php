@@ -29,27 +29,24 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Pages Collapse Menu -->
+            
             @foreach($response['user']['designMenu'] as $menu)
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{$menu['menu']}}"
-                    aria-expanded="true" aria-controls="collapse{{$menu['menu']}}">
-                    <i class="{{$menu['iconClass']}}"></i>
-                    <span>{{$menu['menu']}}</span>
-                </a>
-                <div id="collapse{{$menu['menu']}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        @foreach($menu['subMenu'] as $sub)
-                        <a class="collapse-item" href="{{$sub->url}}">
-                            {{-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tags-fill" viewBox="0 0 16 16">
-                                <path d="M2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2zm3.5 4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-                                <path d="M1.293 7.793A1 1 0 0 1 1 7.086V2a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l.043-.043-7.457-7.457z"/>
-                            </svg> --}}
-                            {{$sub->name}}
-                        </a>
-                        @endforeach
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse{{$menu['id']}}"
+                        aria-expanded="true" aria-controls="collapse{{$menu['id']}}">
+                        <i class="{{$menu['iconClass']}}"></i>
+                        <span>{{$menu['menu']}}</span>
+                    </a>
+                    <div id="collapse{{$menu['id']}}" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            @foreach($menu['subMenu'] as $sub)
+                            <a class="collapse-item" href="{{$sub->url}}">
+                                {{$sub->name}}
+                            </a>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
             @endforeach
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

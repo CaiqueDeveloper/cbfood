@@ -278,7 +278,7 @@ const Dashboard = {
             info: false,
             searching: false,
             destroy:true,
-            "displayLength": 50,
+            "displayLength": 10,
             order: [[ 1, "asc" ]],
            drawCallback: function( settings ){
                Category.inti_listerns()

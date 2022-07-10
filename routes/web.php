@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\ProfilesController;
 use App\Http\Controllers\Admin\ProfilesUserController;
+use App\Http\Controllers\Admin\PromotionsController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
@@ -147,6 +148,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/sendOrderToDeliveryPerson', [DeliveryMenController::class, 'sendOrderToDeliveryPerson']);
     Route::get('/getOrdersDeliveryMen', [DeliveryMenController::class, 'getOrdersDeliveryMen']);
     Route::get('/getRederIdicatorsDeliveryMen', [DeliveryMenController::class, 'getRederIdicatorsDeliveryMen']);
+
+    //Promotions
+    Route::get('/promotions', [PromotionsController::class, 'index']);
+    Route::get('/showModalCreateNewPromotion', [PromotionsController::class, 'showModalCreateNewPromotion']);
 });
 
 Route::prefix('app')->group(function(){

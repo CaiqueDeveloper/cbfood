@@ -102,7 +102,7 @@
         </div>
     </div>
     <div class="col-12 table-responsive">
-        <table class="table  table-info table-sales-day"></table>
+        <table class="table table-bordered table-info table-sales-day"></table>
     </div>
 </div>
 <div class="card mb-4">
@@ -116,7 +116,7 @@
         </div>
     </div>
     <div class="col-12 table-responsive">
-        <table class="table  table-info table-showing-top-10-selling-products"></table>
+        <table class="table  table-info table-bordered table-showing-top-10-selling-products"></table>
     </div>
 </div>
 @endsection
