@@ -158,6 +158,8 @@ Route::prefix('app')->group(function(){
 
     Route::get('/menu/{slug}', [PageHomeController::class, 'index']);
     Route::get('/renderViewGetProduct/{product_id}', [PageHomeController::class, 'renderViewGetProduct']);
+    Route::get('/rederViewAllProductsCompany/{slug}', [PageHomeController::class, 'rederViewAllProductsCompany']);
+    Route::post('/getProductName', [PageHomeController::class, 'getProductName']);
     Route::post('/getProductCart', [PageHomeController::class, 'getProductCart']);
     Route::get('/getModalCartItem', [PageHomeController::class, 'getModalCartItem']);
     Route::get('/getModalCheckout', [PageHomeController::class, 'getModalCheckout']);

@@ -83,4 +83,8 @@ class Company extends Model
     public static function isActive($company_id){
         return Company::where('id', $company_id)->select('companies.status')->get();
     }
+    public function categories(){
+
+        return $this->hasMany(Category::class, 'category_morph_id', 'id');
+    }
 }

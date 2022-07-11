@@ -4,6 +4,17 @@ var Home = {
     constructor() {
         Home.init_listerns()
         Home.getTotalItemCart()
+        Home.rederViewAllProductsCompany()
+        $('.search-product').on('submit', function(e){
+            e.preventDefault()
+           
+            let productName = $(this).val()
+            let company_id = $(this).attr('data-company_id')
+
+            let url = window.location.origin + `/app/getProductName`
+            //alert(url);
+            Home.getProductName(url, this)
+        })
     },
     init_listerns(){
         let qtModal = 0;
@@ -133,6 +144,56 @@ var Home = {
 
         }).finally(()=>{
             console.log('finalizou a consulta')
+        })
+    },
+    rederViewAllProductsCompany(url){
+        let slug = window.location.pathname.replace('/app/menu/', '');
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url: window.location.origin + '/app/rederViewAllProductsCompany/'+slug,
+            method:'GET'
+        }).then((response) =>{
+            
+            $('.reder-view-all-products-company').html(response.data.view)
+           
+            Home.init_listerns()
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            $('.AppBlock').addClass('d-none');
+        })
+    },
+    getProductName(url, data){
+        
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url: url,
+            method:'POST',
+            data: new FormData(data),
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        }).then((response) =>{
+           
+            if(response.data.status == 200){
+                $('.reder-view-all-products-company').html(response.data.view)
+            }else{
+                $('.reder-view-all-products-company').html(`
+                <div class="mx-auto w-[80%] mt-4">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong>Opss !</strong> Não encontramos não um registro para essa pesquisa.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+                `)
+            }
+            Home.init_listerns()
+        }).catch((error) =>{
+            console.log(error.response.data)
+        }).finally(()=>{
+            $('.AppBlock').addClass('d-none');
         })
     },
     actionModalProduct(){

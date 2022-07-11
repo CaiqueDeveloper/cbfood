@@ -34,6 +34,43 @@ class HomeController extends Controller
         $view = view('app.renderModalProduct', compact('product'))->render();
         return response()->json(['status' => 200, 'view' => $view]);
     }
+    public function rederViewAllProductsCompany($slug){
+
+        $menuCompany = SettingCompany::getCompanyUsingSlug($slug);
+        $view = view('app.rederViewAllProductsCompany', compact('menuCompany'))->render();
+        return response()->json(['status' => 200, 'view' => $view]);
+    }
+    public function getProductName(Request $request){
+        
+        $menuCompany = [];
+        if($request->product_name === null && $request->category == "all_category"){
+            $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
+            ->get();
+        }elseif($request->product_name === null && $request->category != "all_category"){
+
+            $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
+            ->where('category_id', $request->category)
+            ->get();
+        }elseif($request->product_name != null && $request->category != "all_category"){
+            $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
+            ->where('category_id', $request->category)
+            ->where('name', 'like', '%'.$request->product_name.'%')
+            ->get();
+        }else{
+            $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
+            ->where('name', 'like', '%'.$request->product_name.'%')
+            ->get();
+        }
+
+        if(sizeof($menuCompany) > 0){
+            $view = view('app.rederViewAllProductsCompany', compact('menuCompany'))->render();
+            return response()->json(['status' => 200, 'view' => $view]);
+        }else{
+            return response()->json(['status' => 500, 'error' => 'erro']);
+        }
+        
+        
+    }
     protected function getProductCart(Request $request){
         $product = [];
         $prd = Product::find($request[0]['product_id']);
