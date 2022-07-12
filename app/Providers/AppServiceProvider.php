@@ -32,30 +32,24 @@ class AppServiceProvider extends ServiceProvider
 
             $excludedViews = ['auth.login','auth.requestFreeDemo', 'layouts.auth.based-auth', 'layouts.include.panel.head'];
 
-            $subject = url()->previous();
-            
-             $search = 'https://cbfood.com.br' ;
-            //$search = 'http://127.0.0.1:8000';
-            $trimmed = str_replace($search, '', $subject) ;
-            $url = substr($subject, strpos($subject, "/app/menu/"), strpos($subject, "/app/menu/"));
-
-            $urlAux = substr($subject, -strlen($url), strpos($subject, "/app/menu/"));
-            if($trimmed == $urlAux){
-                $company = SettingCompany::getCompanyUsingSlug(str_replace("/app/menu/","", $urlAux));
+            if(Auth::check()){
+                $slug = SettingCompany::where('company_id', Auth::user()->company_id)->value('slug_url');
+                $company = SettingCompany::getCompanyUsingSlug($slug);
             }else{
                 $company = [];
             }
+
            if(Auth::check()){
                 $response = User::getInfoUserLogged();
-               if($trimmed == $urlAux){
+               if(sizeof($company) > 0){
                    
-                    $view->with(['response' => $response, 'company' => $company]); 
+                    $view->with(['response' => $response, 'company' => $company, 'sizeArrayCompany' => sizeof($company)]); 
                 }else{
                   
-                    $view->with(['response' => $response, 'company' => $company]); 
+                    $view->with(['response' => $response, 'company' => $company , 'sizeArrayCompany' => sizeof($company)]); 
                 }
            }else{
-                $view->with(['company' => $company]); 
+                $view->with(['company' => $company , 'sizeArrayCompany' => sizeof($company)]); 
            }
         });  
     }

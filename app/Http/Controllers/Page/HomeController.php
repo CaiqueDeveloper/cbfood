@@ -26,6 +26,7 @@ class HomeController extends Controller
         return view('app.home.index', compact('menuCompany'));
     }
     public function renderViewGetProduct($product_id){
+        
         $product = [];
         $prd = Product::find($product_id);
         $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->get();

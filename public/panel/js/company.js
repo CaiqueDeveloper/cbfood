@@ -7,8 +7,10 @@ const Company = {
         $('.company-uploaded-file').on('submit', function(e){
             e.preventDefault()
             e.stopImmediatePropagation();
-            let url = window.location.origin + '/admin/uploadedFile'
-            Ultils.uploadedFile(url, this);
+
+            alert('Hello')
+            //let url = window.location.origin + '/admin/uploadedFile'
+            //Ultils.uploadedFile(url, this);
         })
         $('.company-folks').on('submit', function(e){
             e.preventDefault()
