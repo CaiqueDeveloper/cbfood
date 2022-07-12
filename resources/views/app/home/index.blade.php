@@ -42,8 +42,8 @@
         {{-- section reder view products --}}
         <div class="content-modal-view-product"></div>
         
-        <div class="grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2 announcement-area relative">
-            <div class="reder-view-all-products-company"></div>
+        <div class="announcement-area relative">
+            <div class="reder-view-all-products-company grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2"></div>
         </div>
         </div>
         <!-- final section conte-body page -->

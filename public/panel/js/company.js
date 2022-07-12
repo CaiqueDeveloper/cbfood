@@ -4,6 +4,12 @@ const Company = {
         Company.init_listners()
     },
     init_listners(){
+        $('.company-uploaded-file').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation();
+            let url = window.location.origin + '/admin/uploadedFile'
+            Ultils.uploadedFile(url, this);
+        })
         $('.company-folks').on('submit', function(e){
             e.preventDefault()
             e.stopImmediatePropagation()

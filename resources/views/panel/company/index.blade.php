@@ -37,7 +37,7 @@
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <form class="user-uploaded-file" action="#" method="POST" enctype="multipart/form-data">
+                    <form class="company-uploaded-file" action="#" method="POST" enctype="multipart/form-data">
                         <input type="file" name="file" id="">
                         <input type="hidden" id="custId" name="type_model" value="company">
                         <div class="row mt-4">

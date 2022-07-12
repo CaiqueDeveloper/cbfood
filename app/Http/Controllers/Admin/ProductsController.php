@@ -55,7 +55,7 @@ class ProductsController extends Controller
     }
     protected function getAllProducts(){
 
-        $products = Product::all();
+        $products = Product::where('product_morph_id', auth()->user()->company_id)->get();
         return response()->json($products, 200);
     }
     protected function deleteProduct($id){
