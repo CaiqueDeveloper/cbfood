@@ -56,14 +56,14 @@ class Company extends Model
             return $image;
     }
     protected static function getInfoCompany($company_id){
-
+        
         $data = [];
-        $data['company'] = Company::find($company_id[0]['company_id']);
-        $data['company']['address'] = (Company::getAddrressCompany($company_id[0]['company_id']) != null) ? Company::getAddrressCompany($company_id[0]['company_id']) : null;
-        $data['company']['settings'] = SettingCompany::find($company_id[0]['company_id']);
-        $data['company']['settings']['banner'] = SettingCompany::getPictureSettingCompany($company_id[0]['company_id']);
-        $data['company']['settings']['pictureProfile'] = Company::getPictureProfileCompany($company_id[0]['company_id']);
-        $data['company']['products'] = Product::getAllProductCompany($company_id[0]['company_id']);
+        $data['company'] = Company::find($company_id);
+        $data['company']['address'] = (Company::getAddrressCompany($company_id) != null) ? Company::getAddrressCompany($company_id) : null;
+        $data['company']['settings'] = SettingCompany::find($company_id);
+        $data['company']['settings']['banner'] = SettingCompany::getPictureSettingCompany($company_id);
+        $data['company']['settings']['pictureProfile'] = Company::getPictureProfileCompany($company_id);
+        $data['company']['products'] = Product::getAllProductCompany($company_id);
 
 
         return $data;

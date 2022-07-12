@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      
         view()->composer("*", function ($view){
 
-            $subject = url()->previous();
+            $subject = $_SERVER['HTTP_REFERER'];
             
             $search = 'https://cbfood.com.br' ;
             //$search = 'http://127.0.0.1:8000/';

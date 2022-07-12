@@ -26,7 +26,7 @@ class SettingCompany extends Model
     }
     protected static function getCompanyUsingSlug($slug){
 
-        $company_id = SettingCompany::where('slug_url',$slug)->select('company_id')->get();
+        $company_id = SettingCompany::where('slug_url',$slug)->value('company_id');
         return Company::getInfoCompany($company_id);
         
     }
