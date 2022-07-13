@@ -66,14 +66,15 @@ class User extends Authenticatable
         $data = [];
         
         $data['user'] = Auth::user();
+        
         if(Auth::user()->company_id != null){
             $data['user']['address'] = (self::getAddrressUser(Auth::user()->id) != null) ? self::getAddrressUser(Auth::user()->id) : null;
             $data['user']['pictureProfile'] = self::getPictureProfileUser(Auth::user()->id);
             $data['user']['company'] = Company::find(Auth::user()->company_id);
             $data['user']['company']['address'] = (Company::getAddrressCompany(Auth::user()->company_id) != null) ? Company::getAddrressCompany(Auth::user()->company_id) : null;
             $data['user']['company']['pictureProfile'] = (sizeof(Company::getPictureProfileCompany(Auth::user()->company_id)) > 0) ? Company::getPictureProfileCompany(Auth::user()->company_id) : null;
-            $data['user']['company']['settings'] = SettingCompany::find(Auth::user()->company_id);
-            $data['user']['company']['settings']['banner'] = (sizeof(SettingCompany::getPictureSettingCompany(Auth::user()->company_id)) > 0) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
+            $data['user']['company']['settings'] = SettingCompany::where('company_id',Auth::user()->company_id)->get();
+            $data['user']['company']['banner'] = (is_array(SettingCompany::getPictureSettingCompany(Auth::user()->company_id))) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
             $data['user']['companies'] = Auth::user()->companies;
             $data['user']['designMenu'] = self::designMenuBasedonUserProfiles();
         }

@@ -31,18 +31,25 @@ class AppServiceProvider extends ServiceProvider
         view()->composer("*", function ($view){
 
             $excludedViews = ['auth.login','auth.requestFreeDemo', 'layouts.auth.based-auth', 'layouts.include.panel.head'];
-
-            $subject = url()->previous();
+            
+            if(isset($_SERVER['HTTP_REFERER'])){
+               
+                $subject = $_SERVER['HTTP_REFERER'];
+            }else{
+                
+                $subject = url()->previous();
+            }
+            
+            
             
             //$search = 'https://cbfood.com.br' ;
             $search = 'http://127.0.0.1:8000';
             $trimmed = str_replace($search, '', $subject) ;
-            $url = substr($subject, strpos($subject, "/app/menu/"), strpos($subject, "/app/menu/"));
+            $url = substr($subject, strpos($subject, "app/menu/"), strpos($subject, "app/menu/"));
            
-            $urlAux = substr($subject, -strlen($url), strpos($subject, "/app/menu/"));
-           //dd($subject);
-            if($trimmed == $urlAux){
-                $company = SettingCompany::getCompanyUsingSlug(str_replace("/app/menu/","", $urlAux));
+            $urlAux = substr($subject, -strlen($url), strpos($subject, "app/menu/"));
+            if($url == $urlAux){
+                $company = SettingCompany::getCompanyUsingSlug(str_replace("app/menu/","", $urlAux));
             }else{
                 $company = [];
             }

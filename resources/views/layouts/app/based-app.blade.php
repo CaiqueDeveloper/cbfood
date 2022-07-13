@@ -4,9 +4,11 @@
 @include('layouts.include.app.head')
 <body id="page-top">
      <!-- init header -->
+    
      <header class="header w-full h-[320px] sm:flex sm:items-center flex items-center border border-b-3 bg-white bg-cover bg-no-repeat bg-top " @if(@count($menuCompany['company']['settings']['banner']) > 0) style="background-image: url('/profile/{{$menuCompany['company']['settings']['banner'][0]->path}}')" @else 
             style="background-image: url('/profile/default/banner-food-demo.jpg')"
         @endif>
+        
         <!-- container-page -->
         <div class="w-full h-full mx-auto flex justify-center items-center" style="background-image: radial-gradient(hsl(0deg 0% 0% / 62%), transparent)">
             <div class="conten-ifon-company flex flex-col items-center">
@@ -74,7 +76,7 @@
         </div>
        
     </section>
-    @if($menuCompany['company']['settings']->hasOpeneed == 0)
+    @if($menuCompany['company']['settings'][0]['hasOpeneed'] == 0)
         <div class="mx-auto w-[80%] mt-4">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Aviso !</strong> Essa loja encorou o expediente por hoje, mas fique tranquilo os seus pedidos serão salvos e poderão ser preparado e entregues amanhã.
@@ -84,7 +86,7 @@
             </div>
         </div>
     @endif
-    @if($menuCompany['company']['settings']->hasDelivery == 0)
+    @if($menuCompany['company']['settings'][0]['hasDelivery'] == 0)
         <div class="mx-auto w-[80%] mt-4">
             <div class="alert alert-info alert-dismissible fade show" role="alert">
                 <strong>Aviso !</strong> Desculpe mas não estamos com o delivery disponível hoje, somente retirada na nossa loja

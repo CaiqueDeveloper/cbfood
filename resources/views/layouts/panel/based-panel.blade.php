@@ -5,7 +5,7 @@
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-
+        
         <!-- Sidebar -->
         <ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -260,11 +260,11 @@
                 <div class="container-fluid">
                     <div class="row d-flex justify-content-end mb-4">
                         <div role="group" class="ml-2 btn-group d-flex flex-column flex-sm-row col-12 col-sm-4">
-                            <button type="button" class="d-inline-block btn btn-success open-menu-page" data-slug_url="{{$response['user']['company']['settings']->slug_url}}"><i class="fa fa-link mr-2"></i>Cardápio Online</button>
-                            <button type="button" class="center btn d-inline-block opennedSotore @if($response['user']['company']['settings']->hasOpeneed == 1) text-danger @else text-success @endif" data-hasOpeneed="@if($response['user']['company']['settings']->hasOpeneed == 1) 0 @else 1 @endif"><i class="fa fa-fw fa-power-off " ></i> @if($response['user']['company']['settings']->hasOpeneed == 1) Fechar loja @else Abrir loja @endif</button>
+                            <button type="button" class="d-inline-block btn btn-success open-menu-page" data-slug_url="{{$response['user']['company']['settings'][0]->slug_url}}"><i class="fa fa-link mr-2"></i>Cardápio Online</button>
+                            <button type="button" class="center btn d-inline-block opennedSotore @if($response['user']['company']['settings'][0]->hasOpeneed == 1) text-danger @else text-success @endif" data-hasOpeneed="@if($response['user']['company']['settings'][0]->hasOpeneed == 1) 0 @else 1 @endif"><i class="fa fa-fw fa-power-off " ></i> @if($response['user']['company']['settings'][0]->hasOpeneed == 1) Fechar loja @else Abrir loja @endif</button>
                         </div>
                     </div>
-                    @if($response['user']['company']['settings']->hasOpeneed == 0)
+                    @if($response['user']['company']['settings'][0]->hasOpeneed == 0)
                     <div class="alert alert-warning alert-dismissible fade show " role="alert">
                         <strong>Aviso</strong>A loja se encontra fechada, A partir desse momento seus clientes seram notificado que o expediente foi encerrado por hoje e todos os pedidos irão para uma lista de espera.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -272,7 +272,7 @@
                         </button>
                       </div>
                       @endif
-                      @if($response['user']['company']['settings']->hasOpeneed == 1)
+                      @if($response['user']['company']['settings'][0]->hasOpeneed == 1)
                     <div class="alert alert-success alert-dismissible fade show " role="alert">
                         <strong>Aviso</strong> A loja se encontra aberta.
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

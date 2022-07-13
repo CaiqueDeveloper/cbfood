@@ -16,10 +16,11 @@ class SettingCompany extends Model
         return $this->morphMany(Images::class, 'imagebleMorph');
     }
     protected static function getPictureSettingCompany($company_id){
-        $settingCompany = SettingCompany::find($company_id);
+        $settingCompany = SettingCompany::where('company_id',$company_id)->get();
+        
         if(!$settingCompany)
             return response()->json('Opss! algo deu errado, não encotramos o usuario informado.', 400);
-            $image = $settingCompany->image;
+            $image =$settingCompany[0]->image;
         if(!$image)
             return response()->json('Opss! algo deu errado, não encotramos o nenhum endereço para esse usuario.', 400);
             return $image;

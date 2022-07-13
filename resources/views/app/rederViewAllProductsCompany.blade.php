@@ -1,5 +1,5 @@
 @php
-    //dd($menuCompany)
+    //dd($menuCompany['company']['settings'])
 @endphp
 @forelse ($menuCompany['company']['products'] as $product)
 @php
@@ -24,8 +24,8 @@
         <div class="item-announcement-more-info drop-shadow-3xl hidden"><p>{{$product->description}}</p></div>
     </div>
     <div class="item-announcement-footer w-full h-[60px] bg-white z-10 flex items-center justify-between sm:px-10 px-3 text-lg">
-        <div class="item-announcement-footer-price @if(@count($menuCompany['company']['settings']) > 0) hover:text-[{{$menuCompany['company']['settings']->bgColor}}] @else  hover:text-orange-600 @endif text-sm font-bold">{{$product->name}} <p class="text-sm bg-orange-300 text-orange-600 rounded-full hidden">{{$product->category->name}}</p></div>
-        <div class="item-announcement-footer-add-cart animate-bounce   @if(@count($menuCompany['company']['settings']) > 0) hover:text-[{{$menuCompany['company']['settings']->bgColor}}] @else hover:text-orange-600 @endif"><i class="fa fa-cart-plus"></i></div>
+        <div class="item-announcement-footer-price  hover:text-orange-600 text-sm font-bold">{{$product->name}} <p class="text-sm bg-orange-300 text-orange-600 rounded-full hidden">{{$product->category->name}}</p></div>
+        <div class="item-announcement-footer-add-cart animate-bounce  hover:text-orange-600"><i class="fa fa-cart-plus"></i></div>
     </div>
 </div>
 @empty
