@@ -154,9 +154,8 @@ class Order extends Model
         ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
         ->join('products', 'products.id', '=', 'order_products.products_id')
         ->join('categories', 'categories.id','=', 'products.category_id')
-        ->select('products.name','categories.name as category',DB::raw('count(*) as total, sum(orders.price_total ) as totalBilling'))
-        ->groupBy('products.name', 'categories.name')
-        //->orderBy(DB::raw('count(*) as total', 'ASC'))
+        ->select('products.name','categories.name as category',DB::raw('order_products.quantity as total, order_products.price * order_products.quantity as totalBilling'))
+        ->orderBy('order_products.quantity', 'desc')
         ->limit(10)
         ->get();
 
@@ -169,7 +168,7 @@ class Order extends Model
         ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
         ->join('products', 'products.id', '=', 'order_products.products_id')
         ->join('categories', 'categories.id','=', 'products.category_id')
-        ->select('products.name','categories.name as category','orders.price_total as price', 'order_products.quantity as total')
+        ->select('products.name','categories.name as category','order_products.price', 'order_products.quantity as total')
         ->get();
 
         return $data;
