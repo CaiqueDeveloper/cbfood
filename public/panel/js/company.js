@@ -8,9 +8,9 @@ const Company = {
             e.preventDefault()
             e.stopImmediatePropagation();
 
-            alert('Hello')
-            //let url = window.location.origin + '/admin/uploadedFile'
-            //Ultils.uploadedFile(url, this);
+            
+            let url = window.location.origin + '/admin/uploadedFile'
+            Ultils.uploadedFile(url, this);
         })
         $('.company-folks').on('submit', function(e){
             e.preventDefault()

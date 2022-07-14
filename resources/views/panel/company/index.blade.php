@@ -137,7 +137,7 @@
     </div>
     {{-- segurança --}}
     @php
-        //@dd($response['user']['company']['settings']->slug_url);   
+        //@dd($response['user']['company']['settings'][0]->slug_url);   
     @endphp
     <div class="row tab-pane fade active show" id="user-secury" style="margin-top: -350px">
         <div class="col mb-4">
@@ -146,7 +146,7 @@
                 <div class="card-header">Banner</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="mb-2" src="@if(@count($response['user']['company']['settings']['banner']) > 0 ) /profile/{{$response['user']['company']['settings']['banner'][0]->path}} @endif" width="100%" height="320px">
+                    <img class="mb-2" src="@if(@count($response['user']['company']['settings'][0]['banner']) > 0 ) /profile/{{$response['user']['company']['settings'][0]['banner'][0]->path}} @endif" width="100%" height="320px">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
@@ -174,7 +174,7 @@
                                 <div class="input-group-prepend">
                                 <div class="input-group-text">http://127.0.0.1:8000/app/company/</div>
                                 </div>
-                                <input type="text" readonly class="form-control" value="{{$response['user']['company']['settings']->slug_url}}">
+                                <input type="text" readonly class="form-control" value="{{$response['user']['company']['settings'][0]->slug_url}}">
                             </div>
                             
                         </div>
@@ -183,15 +183,15 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Cor Primaria</label>
-                                <input class="form-control" type="color" name="primaryColor" value="{{$response['user']['company']['settings']->primaryColor}}">
+                                <input class="form-control" type="color" name="primaryColor" value="{{$response['user']['company']['settings'][0]->primaryColor}}">
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Cor Secundaria</label>
-                                <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings']->secondColor}}">
+                                <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings'][0]->secondColor}}">
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Valor do Delivery</label>
-                                <input class="form-control" type="text" name="deliveryPrice" value="{{$response['user']['company']['settings']->deliveryPrice}}">
+                                <input class="form-control" type="text" name="deliveryPrice" value="{{$response['user']['company']['settings'][0]->deliveryPrice}}">
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">O Delivery está disponível ?</label>
