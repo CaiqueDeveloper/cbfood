@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(){  
      
         view()->composer("*", function ($view){
-
             $excludedViews = ['auth.login','auth.requestFreeDemo', 'layouts.auth.based-auth', 'layouts.include.panel.head'];
             
             if(isset($_SERVER['HTTP_REFERER'])){
@@ -43,7 +42,7 @@ class AppServiceProvider extends ServiceProvider
             
             
             //$search = 'https://cbfood.com.br' ;
-            $search = 'http://127.0.0.1:8000';
+            $search = 'http://127.0.0.1:8000/';
             $trimmed = str_replace($search, '', $subject) ;
             $url = substr($subject, strpos($subject, "app/menu/"), strpos($subject, "app/menu/"));
            
@@ -53,19 +52,22 @@ class AppServiceProvider extends ServiceProvider
             }else{
                 $company = [];
             }
-           if(Auth::check()){
+            if(Auth::check()){
                 $response = User::getInfoUserLogged();
-               if($trimmed == $urlAux){
-                   
-                    $view->with(['response' => $response, 'company' => $company]); 
+                if($trimmed == $urlAux){
+                    $view->with(['response' => $response, 'company' => $company]);
                 }else{
-                  
-                    $view->with(['response' => $response, 'company' => $company]); 
+                    $view->with(['response' => $response, 'company' => $company]);
                 }
-           }else{
+                
+            }else{
+                
                 $view->with(['company' => $company]); 
-           }
+            }
+            
+           
         });
+       
          
     }
 }

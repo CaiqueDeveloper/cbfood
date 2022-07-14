@@ -1,6 +1,5 @@
-@php
- //dd($company['company']['settings'][0]->secondColor);
-@endphp
+
+
 <div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4">
         <div class="content-product-imgs relative overflow-hidden">
@@ -8,12 +7,14 @@
             <div class="contente-product-imgs-controls w-full flex justify-between hidden">
                 <div class="prev w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer ml-3 leading-[45px] font-bold text-2xl"><</div>
                 <div class="next w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer mr-3 leading-[45px] font-bold text-2xl">></div>
+
             </div>
         </div>
         <div class="content-product-name mr-3 ml-3 my-3">
             <h1 class="text-xl sm:text-4xl font-bold text-black-600 product-name">{{$product['product']->name}}</h1>
             <div class="content-produc-category flex mt-3">
                 <p class="text-sm text-black-600 font-bold" >Categoria:</p> <p class="text-sm  font-bold  bg-orange-300 text-orange-600 ml-2 rounded-lg px-1">{{$product['product']->category->name}}</p>
+
             </div>
         </div>
         @if($product['product']->description != null)
@@ -36,6 +37,7 @@
                 <div class="product-content-info-sizes flex flex-wrap sm:flex-nowrap my-3">
                     @foreach ($product['product']->variations as $key => $value)
                         <div data-key="{{$key}}" data-price_variation_product="{{$value['variationPrice']}}" data-variation_id="{{$value['id']}}"class="product-content-info-size mb-2 col col-sm-2 @if($maxValue['variationPrice'] == $value['variationPrice'])  bg-orange-300  @endif border-2 border-orange-300  font-medium  hover:bg-orange-300 px-[10px] ml-2 py-[15px] text-orange-600  hover:text-white cursor-pointer text-sm rounded-lg font-extrabold">{{$value['variationName']}}<span class="ml-2  text-orange-600  text-xs">{{$value['variationType']}}</span></div>   
+
                     @endforeach 
                 </div>
             </div>  
@@ -97,6 +99,7 @@
                     <button class="product-content-info--qtmenos  px-[10px] text-lg  bg-orange-600 text-white font-bold rounded-lg">-</button>
                     <div class="product-content-info--qt mx-3 font-bold">1</div>
                     <button class="product-content-info--qtmais px-[10px] text-lg  bg-orange-600 text-white font-bold rounded-lg">+</button>
+
                 </div>
             </div>
             

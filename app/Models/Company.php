@@ -58,6 +58,7 @@ class Company extends Model
     protected static function getInfoCompany($company_id){
         
         $data = [];
+        
         if( sizeof($company_id) > 0){
 
         
@@ -68,6 +69,7 @@ class Company extends Model
         $data['company']['settings']['pictureProfile'] = Company::getPictureProfileCompany($company_id[0]['company_id']);
         $data['company']['products'] = Product::getAllProductCompany($company_id[0]['company_id']);
     }
+
 
         return $data;
     }
