@@ -219,12 +219,12 @@ const Dashboard = {
             data: data,
             columns: columns,
             scrollX: false,
-            paging: false,
+            paging: true,
             info: false,
             searching: false,
             destroy:true,
-            "displayLength": 50,
-            order: [[ 1, "asc" ]],
+            "displayLength": 10,
+            order: [[ 3, "desc" ]],
            drawCallback: function( settings ){
                Category.inti_listerns()
            },
@@ -279,7 +279,7 @@ const Dashboard = {
             searching: false,
             destroy:true,
             "displayLength": 10,
-            order: [[ 1, "asc" ]],
+            order: [[ 3, "desc" ]],
            drawCallback: function( settings ){
                Category.inti_listerns()
            },
