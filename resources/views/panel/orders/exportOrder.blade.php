@@ -45,6 +45,7 @@
             <strong class="text-gray-600 font-bold">Cidade: {{$auxOrder['orderAddressUser']->city}}</strong>
             <strong class="text-gray-600 font-bold">CEP: {{$auxOrder['orderAddressUser']->zipe_code}}</strong>
             <strong class="text-gray-600 font-bold">Estado: {{$auxOrder['orderAddressUser']->states}}</strong>
+            <strong class="text-gray-600 font-bold">Ponto de Referêcia: {{$auxOrder['orderAddressUser']->complement}}</strong>
         </div>
     </div>
 </body>

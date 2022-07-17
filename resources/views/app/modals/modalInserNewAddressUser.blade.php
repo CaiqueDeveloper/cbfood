@@ -2,13 +2,14 @@
     <form class="needs-validation form-insert-new-address-user" >
         <div class="row font-bold text-gray-900">
             <div class="col-md-6 mb-3">
-                <label for="firstName">Estado</label>
-                <input type="text" class="form-control" name="states" placeholder="" required>
+                <label for="lastName">CEP</label>
+                <input type="text" class="form-control cep" name="zipe_code" placeholder="">
             </div>
             <div class="col-md-6 mb-3">
-                <label for="lastName">CEP</label>
-                <input type="text" class="form-control" name="zipe_code" placeholder="" required>
+                <label for="firstName">Estado</label>
+                <input type="text" class="form-control" name="states" placeholder="">
             </div>
+            
         </div>
         <div class="row font-bold text-gray-900">
             <div class="col-md-6 mb-3">
@@ -28,6 +29,12 @@
             <div class="col-md-6 mb-3">
                 <label for="lastName">Nª</label>
                 <input type="text" class="form-control" name="number" placeholder="" required>
+            </div>
+        </div>
+        <div class="row font-bold text-gray-900">
+            <div class="col mb-3">
+                <label for="firstName">Ponto de Referêcia</label>
+                <input type="text" class="form-control" name="complement" placeholder="" required>
             </div>
         </div>
         <input type="hidden" name="user_id" value="{{Auth::user()->id}}">

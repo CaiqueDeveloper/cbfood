@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
-    protected $fillable = ['states', 'zipe_code', 'city', 'distric', 'road', 'number'];
+    protected $fillable = ['states', 'zipe_code', 'city', 'distric', 'road', 'number', 'complement'];
     protected  $table = 'address';
 
     public function addres_morph(){

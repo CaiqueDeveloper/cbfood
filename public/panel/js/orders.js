@@ -1239,6 +1239,7 @@ const Orders = {
             method: 'GET'
         }).then((response) => {
             console.log(response.data)
+            //window.print();
             window.open(url, '_blank');
         }).catch((error) => {
             console.log(error.response.data);

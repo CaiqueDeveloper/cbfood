@@ -193,13 +193,14 @@
                     <div class="form_container">
                         <div class="row font-bold text-gray-900">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Estado</label>
-                                <input type="text" class="form-control" name="states" placeholder="">
-                            </div>
-                            <div class="col-md-6 mb-3">
                                 <label for="lastName">CEP</label>
                                 <input type="text" class="form-control cep" name="zipe_code" placeholder="">
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Estado</label>
+                                <input type="text" class="form-control" name="states" placeholder="">
+                            </div>
+                            
                         </div>
                         <div class="row font-bold text-gray-900">
                             <div class="col-md-6 mb-3">
@@ -219,6 +220,12 @@
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Nª</label>
                                 <input type="text" class="form-control" name="number" placeholder="" required>
+                            </div>
+                        </div>
+                        <div class="row font-bold text-gray-900">
+                            <div class="col mb-3">
+                                <label for="firstName">Ponto de Referêcia</label>
+                                <input type="text" class="form-control" name="complement" placeholder="" required>
                             </div>
                         </div>
                         <hr class="mb-4">
@@ -254,14 +261,12 @@
                                 <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                             </div>
                             @if(($company['company']['settings'][0]->hasDelivery == 1) && ($company['company']['settings'][0]->limit_send_delivery == null))
-
-                            
                                 <div class="custom-control custom-radio">
                                     <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                                     <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                                 </div>
                             @else
-                                @if($company['company']['settings'][0]->limit_send_delivery < number_format(Cart::getTotal(),2,",","."))
+                                @if(number_format(Cart::getTotal(),2,",",".") >= $company['company']['settings'][0]->limit_send_delivery)
                                     <div class="custom-control custom-radio">
                                         <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                                         <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>

@@ -5,3 +5,4 @@
 <strong>Estado: </strong>{{$addressOrderuser->states}} <br>
 <strong>CEP: </strong>{{$addressOrderuser->zipe_code}} <br>
 <strong>Cidade: </strong>{{$addressOrderuser->city}} <br>
+<strong>Ponto de Referêcia: </strong>{{$addressOrderuser->complement}} <br>
