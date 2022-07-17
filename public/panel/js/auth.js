@@ -51,7 +51,7 @@ const Auth = {
                 )
                 setTimeout(() =>{
                     swal.close()
-                    window.location = '/admin';
+                    window.location = '/admin/dashboard';
                 },3000)
             }
         })

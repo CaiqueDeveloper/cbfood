@@ -112,7 +112,7 @@
     </div>
     <div class="row m-4 text-center">
         <div class="col">
-            <h4>TOP 10 PRODUTOS MAIS VENDIDOS</h4>
+            <h4>PRODUTOS MAIS VENDIDOS</h4>
         </div>
     </div>
     <div class="col-12 table-responsive">

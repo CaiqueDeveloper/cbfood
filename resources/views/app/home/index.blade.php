@@ -33,8 +33,8 @@
                         <input type="hidden" name="company_id" value="{{$menuCompany['company']->id}}">
                         
                     </div>
-                    <div class="form-group mt-4 mr-2">
-                        <button type="submit" class="btn btn-primary">Pesquisar</button>
+                    <div class="form-group col mt-4 mr-2">
+                        <button type="submit" class="btn col-12 bg-orange-300 text-orange-600 font-bold shadow-none">Pesquisar</button>
                     </div>
                 </form>
             </div>
