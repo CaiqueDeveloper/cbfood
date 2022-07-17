@@ -11,9 +11,10 @@ channel.bind('sendOrderCompany', function(data) {
         console.log("Esse navegador não suporta a notifiação no desktop");
 
     }else if(Notification.permission === "granted"){
-
+       
         var notification = new Notification(`Você tem um novo pedido de ${data.order.user[0].name}`,{
             icon: 'https://i.postimg.cc/W3Mhx5s3/Group-1-2.png',});
+            
 
     }else if(Notification.permission !== 'denied' || Notification.permission === "default"){
         Notification.requestPermission().then(function(permission) { 

@@ -52,6 +52,7 @@ class AppServiceProvider extends ServiceProvider
             }else{
                 $company = [];
             }
+           // dd($company);
             if(Auth::check()){
                 $response = User::getInfoUserLogged();
                 if($trimmed == $urlAux){

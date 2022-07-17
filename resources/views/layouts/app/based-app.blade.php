@@ -96,6 +96,17 @@
             </div>
         </div>
     @endif
+    @if($menuCompany['company']['settings'][0]['limit_send_delivery'] != null)
+        <div class="mx-auto w-[80%] mt-4">
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Aviso</strong> O Delivery só estará disponível em compras a partir de <strong>R$ {{$menuCompany['company']['settings'][0]['limit_send_delivery']}}</strong>. Compras com valor menor do quê  o informado será necessário retirar pessoalmente no local.</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+      @endif
+      
     <section class="w-full h-full">
         <div class="container mx-auto mb-3">
             @yield('content-page')

@@ -272,6 +272,7 @@
                         </button>
                       </div>
                       @endif
+                   
                       @if($response['user']['company']['settings'][0]->hasOpeneed == 1)
                     <div class="alert alert-success alert-dismissible fade show " role="alert">
                         <strong>Aviso</strong> A loja se encontra aberta.
