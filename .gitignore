@@ -5,6 +5,7 @@
 /public/profile
 /storage/*.key
 /vendor
+/app/Providers/AppServiceProvider.php
 .env
 .env.backup
 .phpunit.result.cache
