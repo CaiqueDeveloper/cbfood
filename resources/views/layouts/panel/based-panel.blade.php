@@ -23,7 +23,7 @@
             align-items: center;">
                 
                 <img class="rounded-circle mb-2" src="@if(@count($response['user']['company']['pictureProfile']) > 0 ) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif" width="120px" height="120px">
-                <div class="content-company-name" style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;">@if(@count($response['user']['company']) > 0 ){{$response['user']['company']->name}}@endif</div>
+                <div class="content-company-name " style="background: #fff;color:#000;font-weight:bold;padding: 5px 10px;text-align:center;border-radius:50px;">@if(@count($response['user']['company']) > 0 ){{$response['user']['company']->name}}@endif</div>
             </section><br>
             
             <!-- Divider -->

@@ -13,7 +13,7 @@
         <div class="w-full h-full mx-auto flex justify-center items-center" style="background-image: radial-gradient(hsl(0deg 0% 0% / 62%), transparent)">
             <div class="conten-ifon-company flex flex-col items-center">
                 <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="150px" height="150px" class="rounded-full">
-                <div class="name-comapny mt-3 text-white font-medium text-4xl uppercase"><h4>{{$menuCompany['company']->name}}</h4></div>
+                <div class="name-comapny mt-3 text-white font-medium text-4xl uppercase text-center"><h4>{{$menuCompany['company']->name}}</h4></div>
 
                 <div class="name-comapny mt-3 text-white font-medium text-1xl flex">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map-fill hidden sm:flex" viewBox="0 0 16 16" >
