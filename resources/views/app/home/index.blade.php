@@ -43,7 +43,15 @@
         <div class="content-modal-view-product"></div>
         
         <div class="announcement-area relative">
-            <div class="reder-view-all-products-company grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2"></div>
+                
+              @if(@count($menuCompany['company']['products']) > 0)
+                <div class="reder-view-all-products-company grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2"></div>
+              @else
+                <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+                    <p class="font-bold">Aviso</p>
+                    <p>Essa Emprea ainda não fez o cadastro dos seus produtos</p>
+                </div>
+              @endif
         </div>
         </div>
         <!-- final section conte-body page -->

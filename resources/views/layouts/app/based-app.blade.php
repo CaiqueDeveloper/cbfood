@@ -77,32 +77,26 @@
        
     </section>
     @if($menuCompany['company']['settings'][0]['hasOpeneed'] == 0)
-        <div class="mx-auto w-[80%] mt-4">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Aviso !</strong> Essa loja encorou o expediente por hoje, mas fique tranquilo os seus pedidos serão salvos e poderão ser preparado e entregues amanhã.
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        </div>
+    <div class="mx-auto w-[78%] mt-4">
+        <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+            <p class="font-bold">Aviso</p>
+            <p>Essa loja encorou o expediente por hoje, mas fique tranquilo os seus pedidos serão salvos e poderão ser preparado e entregues amanhã.</p>
+          </div>
+    </div>
     @endif
     @if($menuCompany['company']['settings'][0]['hasDelivery'] == 0)
-        <div class="mx-auto w-[80%] mt-4">
-            <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <strong>Aviso !</strong> Desculpe mas não estamos com o delivery disponível hoje, somente retirada na nossa loja
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="mx-auto w-[78%] mt-4">
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                <p class="font-bold">Informativo</p>
+                <p class="text-sm">Desculpe mas não estamos com o delivery disponível hoje, somente retirada na nossa loja</p>
             </div>
         </div>
     @endif
     @if($menuCompany['company']['settings'][0]['limit_send_delivery'] != null)
-        <div class="mx-auto w-[80%] mt-4">
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Aviso</strong> O Delivery só estará disponível em compras a partir de <strong>R$ {{$menuCompany['company']['settings'][0]['limit_send_delivery']}}</strong>. Compras com valor menor do quê  o informado será necessário retirar pessoalmente no local.</strong>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
+        <div class="mx-auto w-[78%] mt-4">
+            <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+                <p class="font-bold">Informativo</p>
+                <p class="text-sm">O Delivery só estará disponível em compras a partir de <strong>R$ {{$menuCompany['company']['settings'][0]['limit_send_delivery']}}</strong>. Compras com valor menor do quê  o informado será necessário retirar pessoalmente no local.</p>
             </div>
         </div>
       @endif

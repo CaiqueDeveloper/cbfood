@@ -28,6 +28,5 @@
         <div class="item-announcement-footer-add-cart animate-bounce  hover:text-orange-600"><i class="fa fa-cart-plus"></i></div>
     </div>
 </div>
-@empty
-<h2>Ops ! A Empresa inda não cadastrou seus produtos</h2>    
+@empty  
 @endforelse 
