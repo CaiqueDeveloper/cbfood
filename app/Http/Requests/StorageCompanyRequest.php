@@ -24,20 +24,20 @@ class StorageCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5|max:100',
-            'email' => 'required|email',
-            'cnpj' => 'max:15',
+            'name' => 'required|min:2|max:100',
+            'email' => 'email',
+            'cnpj' => 'max:18',
         ];
     }
     public function messages()
     {
         return [
             'name.required' => 'O campo nome é obrigatorio.',
-            'name.min' => 'O campo nome é não pode ter menos de (5) caracter.',
+            'name.min' => 'O campo nome é não pode ter menos de (2) caracter.',
             'name.max' => 'O campo nome é excedeu a quantidade maxima de (100) caracter.',
             'email.required' => 'O campo email é obrigatorio.',
             'email.email' => 'O email não é um email valido.',
-            'cnpj.max' => 'O campo cnpj não pode ter menos que (11) caracter',
+            'cnpj.max' => 'O campo cnpj não pode ter mais que (18) caracter',
             
         ];
     }

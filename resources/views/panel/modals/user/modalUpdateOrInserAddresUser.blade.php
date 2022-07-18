@@ -5,14 +5,15 @@
             <div class="row gx-3 mb-3">
                 <!-- Form Group (phone number)-->
                 <div class="col-md-3">
+                    <label class="small mb-1" for="inputBirthday">CEP</label>
+                <input class="form-control cep" id="inputBirthday" type="text" name="zipe_code" value="@if(@count($address) > 0) {{$address[0]->zipe_code}} @endif">
+                </div>
+                <div class="col-md-3">
                     <label class="small mb-1" for="inputPhone">Estado</label>
                     <input class="form-control" id="inputPhone" type="text" name="states" value="@if(@count($address) > 0) {{$address[0]->states}} @endif">
                 </div>
                 <!-- Form Group (birthday)-->
-                <div class="col-md-3">
-                    <label class="small mb-1" for="inputBirthday">CEP</label>
-                <input class="form-control" id="inputBirthday" type="text" name="zipe_code" value="@if(@count($address) > 0) {{$address[0]->zipe_code}} @endif">
-                </div>
+                
                 <div class="col-md-6">
                     <label class="small mb-1" for="inputBirthday">Cidade</label>
                     <input class="form-control" id="inputBirthday" type="text" name="city" value="@if(@count($address) > 0) {{$address[0]->city}} @endif">

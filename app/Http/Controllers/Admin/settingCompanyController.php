@@ -17,8 +17,7 @@ class settingCompanyController extends Controller
     }       
    }
    public function updateSettingCompany(Request $request){
-       
-        $storageOrUpdateCompany = SettingCompany::where('id',$request->only('company_id'))->update($request->except('company_id'));
+        $storageOrUpdateCompany = SettingCompany::where('company_id',$request->only('company_id'))->update($request->except('company_id'));
         if($storageOrUpdateCompany){
             return response()->json('success', 200);
         }else{

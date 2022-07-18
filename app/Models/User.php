@@ -74,7 +74,7 @@ class User extends Authenticatable
             $data['user']['company']['address'] = (Company::getAddrressCompany(Auth::user()->company_id) != null) ? Company::getAddrressCompany(Auth::user()->company_id) : null;
             $data['user']['company']['pictureProfile'] = (sizeof(Company::getPictureProfileCompany(Auth::user()->company_id)) > 0) ? Company::getPictureProfileCompany(Auth::user()->company_id) : null;
             $data['user']['company']['settings'] = SettingCompany::where('company_id',Auth::user()->company_id)->get();
-            $data['user']['company']['banner'] = (is_array(SettingCompany::getPictureSettingCompany(Auth::user()->company_id))) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
+            $data['user']['company']['banner'] = (SettingCompany::getPictureSettingCompany(Auth::user()->company_id) != null) ? SettingCompany::getPictureSettingCompany(Auth::user()->company_id) : null;
             $data['user']['companies'] = Auth::user()->companies;
             $data['user']['designMenu'] = self::designMenuBasedonUserProfiles();
         }

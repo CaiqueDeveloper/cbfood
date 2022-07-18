@@ -33,7 +33,7 @@
                 <div class="card-header">Logo da Empresa</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="rounded-circle mb-2" src="@if(@count($response['user']['company']['pictureProfile']) > 0 ) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @endif" width="120px" height="120px">
+                    <img class="rounded-circle mb-2" src="@if(@count($response['user']['company']['pictureProfile'][0]->path) != null ) /profile/{{$response['user']['company']['pictureProfile'][0]->path}} @endif" width="120px" height="120px">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
@@ -57,24 +57,24 @@
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Nome</label>
-                            <input class="form-control" id="inputUsername" type="text" name="name" placeholder="Enter your username" value="{{$response['user']['company']->name}}">
+                            <input class="form-control" id="inputUsername" type="text" name="name" value="{{$response['user']['company']->name}}">
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">CNPJ</label>
-                            <input class="form-control" id="inputEmailAddress" type="text" name="cnpj" placeholder="Enter your email address" value="{{$response['user']['company']->cnpj}}">
+                            <input class="form-control cnpj" id="inputEmailAddress" type="text" name="cnpj"  value="{{$response['user']['company']->cnpj}}">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">E-mail</label>
-                                <input class="form-control" id="inputPhone" type="email" name="email"placeholder="Enter your phone number" value="{{$response['user']['company']->email}}">
+                                <input class="form-control" id="inputPhone" type="email" name="email value="{{$response['user']['company']->email}}">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Whatsapp</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="phone_number" placeholder="Enter your birthday" value="{{$response['user']['company']->phone_number}}">
+                                <input class="form-control phone" id="inputBirthday" type="text" name="phone_number"  value="{{$response['user']['company']->phone_number}}">
                             </div>
                             <input type="hidden" id="custId" name="company_id" value="{{$response['user']['id']}}">
                         </div>
@@ -97,17 +97,18 @@
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-3">
+                                <label class="small mb-1" for="inputBirthday">CEP</label>
+                            <input class="form-control cep" id="inputBirthday" type="text"  name="zipe_code" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['zipe_code']}}@endif">
+                            </div>
+                            <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Estado</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="states" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['states']}}@endif">
+                                <input class="form-control" id="inputPhone" type="tel" name="states" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['states']}}@endif">
                             </div>
                             <!-- Form Group (birthday)-->
-                            <div class="col-md-3">
-                                <label class="small mb-1" for="inputBirthday">CEP</label>
-                            <input class="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name="zipe_code" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['zipe_code']}}@endif">
-                            </div>
+                            
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Cidade</label>
-                                <input class="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name="city" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['city']}}@endif">
+                                <input class="form-control" id="inputBirthday" type="text"  name="city" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['city']}}@endif">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
@@ -115,16 +116,16 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-5">
                                 <label class="small mb-1" for="inputPhone">Bairro</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="distric" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['distric']}}@endif">
+                                <input class="form-control" id="inputPhone" type="tel" name="distric" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['distric']}}@endif">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-5">
                                 <label class="small mb-1" for="inputBirthday">Rua</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="road" placeholder="Enter your birthday" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['road']}}@endif">
+                                <input class="form-control" id="inputBirthday" type="text" name="road"  value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['road']}}@endif">
                             </div>
                             <div class="col-md-2">
                                 <label class="small mb-1" for="inputBirthday">Nª</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="number" placeholder="Enter your birthday" value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['number']}}@endif">
+                                <input class="form-control" id="inputBirthday" type="text" name="number"  value="@if(@count($response['user']['company']['address']) > 0){{$response['user']['company']['address'][0]['number']}}@endif">
                             </div>
                         </div>
                         <input type="hidden" id="custId" name="company_id" value="{{$response['user']['company']->id}}">
@@ -136,9 +137,6 @@
         </div>
     </div>
     {{-- segurança --}}
-    @php
-        //@dd($response['user']['company']['settings'][0]->slug_url);   
-    @endphp
     <div class="row tab-pane fade active show" id="user-secury" style="margin-top: -350px">
         <div class="col mb-4">
             <!-- Profile picture card-->
@@ -146,7 +144,7 @@
                 <div class="card-header">Banner</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
-                    <img class="mb-2" src="@if(@count($response['user']['company']['settings'][0]['banner']) > 0 ) /profile/{{$response['user']['company']['settings'][0]['banner'][0]->path}} @endif" width="100%" height="320px">
+                    <img class="mb-2" src="@if(@count($response['user']['company']['banner']) > 0 ) /profile/{{$response['user']['company']['banner'][0]->path}} @endif" width="100%" height="320px">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
@@ -190,14 +188,18 @@
                                 <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings'][0]->secondColor}}">
                             </div>
                             <div class="col-md-3">
-                                <label class="small mb-1" for="inputPhone">Valor do Delivery</label>
-                                <input class="form-control" type="text" name="deliveryPrice" value="{{$response['user']['company']['settings'][0]->deliveryPrice}}">
+                                <label class="small mb-1" for="inputPhone">Custo do Delivery</label>
+                                <input class="form-control price" type="text" name="deliveryPrice" value="{{$response['user']['company']['settings'][0]->deliveryPrice}}">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="small mb-1" for="inputPhone">Valor mínimo do delivery </label>
+                                <input class="form-control price" type="text" name="limit_send_delivery" value="{{$response['user']['company']['settings'][0]->limit_send_delivery}}">
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">O Delivery está disponível ?</label>
                                 <select class="custom-select  mb-3" name="hasDelivery">
-                                    <option value="1">Sim</option>
-                                    <option value="0">Não</option>>
+                                    <option value="1" @if($response['user']['company']['settings'][0]->hasDelivery == 1) selected @endif>Sim</option>
+                                    <option value="0" @if($response['user']['company']['settings'][0]->hasDelivery == 0) selected @endif>Não</option>>
                                   </select>
                             </div>
                             <input type="hidden" id="custId" name="company_id" value="{{$response['user']['company']->id}}">

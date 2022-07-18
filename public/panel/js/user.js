@@ -1,7 +1,10 @@
 var User = {
     construct(){
+        Ultils.filters_golbal()
+        Ultils.geAddresBasedCep()
         User.init_listerns()
         User.getUsers()
+        
     },
     init_listerns(){
         $('.show-modal-create-new-user').on('click', function(e){

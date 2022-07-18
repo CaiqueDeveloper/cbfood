@@ -9,18 +9,18 @@ class SettingCompany extends Model
 {
     use HasFactory;
     protected $table = 'setting_company';
-    protected $fillable = ['company_id','slug_url','primaryColor','secondColor','hasDelivery', 'hasOpeneed'];
+    protected $fillable = ['company_id','slug_url','primaryColor','secondColor','hasDelivery', 'hasOpeneed', 'deliveryPrice', 'limit_send_delivery'];
 
     public function image(){
         
         return $this->morphMany(Images::class, 'imagebleMorph');
     }
     protected static function getPictureSettingCompany($company_id){
-        $settingCompany = SettingCompany::where('company_id',$company_id)->get();
+        $settingCompany = SettingCompany::find($company_id);
         
         if(!$settingCompany)
             return response()->json('Opss! algo deu errado, não encotramos o usuario informado.', 400);
-            $image =$settingCompany[0]->image;
+            $image = $settingCompany->image;
         if(!$image)
             return response()->json('Opss! algo deu errado, não encotramos o nenhum endereço para esse usuario.', 400);
             return $image;

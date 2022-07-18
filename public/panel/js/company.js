@@ -2,8 +2,11 @@ const Company = {
 
     construct(){
         Company.init_listners()
+        Ultils.filters_golbal()
+        Ultils.geAddresBasedCep()
     },
     init_listners(){
+        
         $('.company-uploaded-file').on('submit', function(e){
             e.preventDefault()
             e.stopImmediatePropagation();
@@ -42,20 +45,14 @@ const Company = {
             let url = window.location.origin + '/admin/uploadedFile'
             Ultils.uploadedFile(url, this);
         })
-        $('.opennedSotore').on('click', function(e){
-            e.preventDefault()
-            e.stopImmediatePropagation()
-            let url = window.location.origin + '/admin/OpenedOrClosedStore'
-            let hasOpeneed = $(this).attr('data-hasOpeneed')
-            Company.OpenedOrClosedStore(url, hasOpeneed)
-        })
+        
         
         setTimeout(()=>{
             $('#user-secury-tab').click()
-        },500)
+        },700)
         setTimeout(()=>{
             $('#user-folks-tab').click()
-        },700)
+        },900)
             
     },
     storageOrCreateCompany (url ,data){
@@ -156,80 +153,6 @@ const Company = {
             });
         })
         .finally(() =>{$('.AppBlock').addClass('d-none');});
-    },
-    OpenedOrClosedStore(url ,hasOpeneed){
-        
-        if(hasOpeneed == 0){
-            swal({
-                title: 'Tem certeza que deseja fechar a loja por hoje ?',
-                text: "",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sim, confirmar!',
-                cancelButtonText: "Cancelar!",
-            }).then((result) => {
-                if (result.value) {
-                    $('.AppBlock').removeClass('d-none');
-                    axios({
-                        url:url,
-                        method: 'GET',
-                        params: {hasOpeneed:hasOpeneed},
-                    })
-                    .then((response) =>{
-                        if(response.data){
-                            swal(
-                                'Sucesso!',
-                                'Alterção feita com sucesso',
-                                'success'
-                            )
-                            setTimeout(() =>{
-                                swal.close()
-                                window.location.href = "/admin"
-                            },3000)
-                        }
-                    })
-                    .catch((error) =>{
-                        $.each(error.response.data.errors, function(i, error) {
-                            let alertError = $(document).find('[name="' + i + '"]');
-                            alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
-                
-                        });
-                    })
-                    .finally(() =>{$('.AppBlock').addClass('d-none');});
-                }
-            });
-        }else{
-            $('.AppBlock').removeClass('d-none');
-            axios({
-                url:url,
-                method: 'GET',
-                params: {hasOpeneed:hasOpeneed},
-            })
-            .then((response) =>{
-                if(response.data){
-                    swal(
-                        'Sucesso!',
-                        'Alterção feita com sucesso',
-                        'success'
-                    )
-                    setTimeout(() =>{
-                        swal.close()
-                        window.location.href = "/admin"
-                    },3000)
-                }
-            })
-            .catch((error) =>{
-                $.each(error.response.data.errors, function(i, error) {
-                    let alertError = $(document).find('[name="' + i + '"]');
-                    alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
-        
-                });
-            })
-            .finally(() =>{$('.AppBlock').addClass('d-none');});
-        }
-        
     },
     
 }

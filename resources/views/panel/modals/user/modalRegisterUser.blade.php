@@ -22,12 +22,12 @@
         <!-- Form Group (phone number)-->
         <div class="col-md-6">
             <label class="small mb-1" for="inputPhone">Número de Telefone</label>
-            <input class="form-control" id="inputPhone" type="tel" name="number_phone" value="">
+            <input class="form-control phone" id="inputPhone" type="tel" name="number_phone" value="">
         </div>
         <!-- Form Group (birthday)-->
         <div class="col-md-6">
             <label class="small mb-1" for="inputBirthday">Número de Telefone Alternativo</label>
-            <input class="form-control" id="inputBirthday" type="text" name="number_phone_alternative" value="">
+            <input class="form-control phone" id="inputBirthday" type="text" name="number_phone_alternative" value="">
         </div>
     </div>
     <div class="row gx-3 mb-3">

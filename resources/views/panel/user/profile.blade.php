@@ -57,24 +57,24 @@
                         <!-- Form Group (username)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputUsername">Nome</label>
-                            <input class="form-control" id="inputUsername" type="text" name="name" placeholder="Enter your username" value="{{$response['user']['name']}}">
+                            <input class="form-control" id="inputUsername" type="text" name="name"  value="{{$response['user']['name']}}">
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
                             <label class="small mb-1" for="inputEmailAddress">Email</label>
-                            <input class="form-control" id="inputEmailAddress" type="email" name="email" placeholder="Enter your email address" value="{{$response['user']['email']}}">
+                            <input class="form-control" id="inputEmailAddress" type="email" name="email"  value="{{$response['user']['email']}}">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">Número de Telefone</label>
-                                <input class="form-control" id="inputPhone" type="tel" name="number_phone"placeholder="Enter your phone number" value="{{$response['user']['number_phone']}}">
+                                <input class="form-control phone" id="inputPhone" type="text" name="number_phone" value="{{$response['user']['number_phone']}}">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Número de Telefone Alternativo</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="number_phone_alternative" placeholder="Enter your birthday" value="{{$response['user']['number_phone_alternative']}}">
+                                <input class="form-control phone" id="inputBirthday" type="text" name="number_phone_alternative"  value="{{$response['user']['number_phone_alternative']}}">
                             </div>
                         </div>
                         <!-- Save changes button-->
@@ -103,17 +103,18 @@
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-3">
+                                <label class="small mb-1" for="inputBirthday">CEP</label>
+                            <input class="form-control cep" id="inputBirthday" type="text"  name="zipe_code" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['zipe_code']}} @endif">
+                            </div>
+                            <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Estado</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="states" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['states']}} @endif">
+                                <input class="form-control" id="inputPhone" type="tel"  name="states" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['states']}} @endif">
                             </div>
                             <!-- Form Group (birthday)-->
-                            <div class="col-md-3">
-                                <label class="small mb-1" for="inputBirthday">CEP</label>
-                            <input class="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name="zipe_code" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['zipe_code']}} @endif">
-                            </div>
+                            
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputBirthday">Cidade</label>
-                                <input class="form-control" id="inputBirthday" type="text" placeholder="Enter your birthday" name="city" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['city']}} @endif">
+                                <input class="form-control" id="inputBirthday" type="text"  name="city" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['city']}} @endif">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
@@ -121,16 +122,16 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-5">
                                 <label class="small mb-1" for="inputPhone">Bairro</label>
-                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" name="distric" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['distric']}} @endif">
+                                <input class="form-control" id="inputPhone" type="tel"  name="distric" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['distric']}} @endif">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-5">
                                 <label class="small mb-1" for="inputBirthday">Rua</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="road" placeholder="Enter your birthday" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['road']}} @endif">
+                                <input class="form-control" id="inputBirthday" type="text" name="road"  value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['road']}} @endif">
                             </div>
                             <div class="col-md-2">
                                 <label class="small mb-1" for="inputBirthday">Nª</label>
-                                <input class="form-control" id="inputBirthday" type="text" name="number" placeholder="Enter your birthday" value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['number']}} @endif">
+                                <input class="form-control" id="inputBirthday" type="text" name="number"  value="@if(@count($response['user']['address']) > 0) {{$response['user']['address'][0]['number']}} @endif">
                             </div>
                         </div>
                         <input type="hidden" id="custId" name="user_id" value="{{$response['user']['id']}}">
@@ -154,7 +155,7 @@
                             <!-- Form Group (phone number)-->
                             <div class="col">
                                 <label class="small mb-1" for="inputPhone">Senha</label>
-                                <input class="form-control" id="inputPhone" type="password" placeholder="Enter your phone number" name="password" value="{{$response['user']['password']}}">
+                                <input class="form-control" id="inputPhone" type="password"  name="password" value="{{$response['user']['password']}}">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
@@ -162,7 +163,7 @@
                             <!-- Form Group (phone number)-->
                             <div class="col">
                                 <label class="small mb-1" for="inputPhone">Confirmação da Senha</label>
-                                <input class="form-control" id="inputPhone" type="password" placeholder="Enter your phone number" name="password_confirmation" value="{{$response['user']['password']}}">
+                                <input class="form-control" id="inputPhone" type="password"  name="password_confirmation" value="{{$response['user']['password']}}">
                             </div>
                         </div>
                         <!-- Save changes button-->
@@ -173,4 +174,13 @@
         </div>
     </div>
   </div>
+@endsection
+<script src="{{url('panel/js/user.js')}}"></script>
+@section('scripts')
+    <script type="text/javascript">
+    
+        $(document).ready(function() {
+            User.construct();
+        })
+    </script>
 @endsection

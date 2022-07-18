@@ -14,12 +14,12 @@
         <!-- Form Group (phone number)-->
         <div class="col-md-6">
             <label class="small mb-1" for="inputPhone">Número de Telefone</label>
-            <input class="form-control" id="inputPhone" type="tel" name="number_phone"placeholder="Enter your phone number" value="{{$user->number_phone}}">
+            <input class="form-control phone" id="inputPhone" type="tel" name="number_phone"placeholder="Enter your phone number" value="{{$user->number_phone}}">
         </div>
         <!-- Form Group (birthday)-->
         <div class="col-md-6">
             <label class="small mb-1" for="inputBirthday">Número de Telefone Alternativo</label>
-            <input class="form-control" id="inputBirthday" type="text" name="number_phone_alternative" placeholder="Enter your birthday" value="{{$user->number_phone_alternative}}">
+            <input class="form-control phone" id="inputBirthday" type="text" name="number_phone_alternative" placeholder="Enter your birthday" value="{{$user->number_phone_alternative}}">
         </div>
     </div>
     <input type="hidden" name="user_id" value="{{$user->id}}">

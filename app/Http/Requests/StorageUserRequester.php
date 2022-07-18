@@ -24,7 +24,7 @@ class StorageUserRequester extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5|max:100',
+            'name' => 'required|min:2|max:100',
             'email' => 'required|email',
             'number_phone' => 'required|max:11',
             'number_phone_alternative' => 'max:11',
@@ -36,7 +36,7 @@ class StorageUserRequester extends FormRequest
     {
         return [
             'name.required' => 'O campo nome é obrigatorio.',
-            'name.min' => 'O campo nome é não pode ter menos de (5) caracter.',
+            'name.min' => 'O campo nome é não pode ter menos de (2) caracter.',
             'name.max' => 'O campo nome é excedeu a quantidade maxima de (100) caracter.',
             'email.required' => 'O campo email é obrigatorio.',
             'email.email' => 'O email não é um email valido.',

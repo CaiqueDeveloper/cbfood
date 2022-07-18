@@ -546,43 +546,9 @@ var Home = {
             Home.init_listerns()
                //apply filter
                $('.phone_number').mask('(00)  0000-0000');
-               $('.cep').mask('00000-000');
+               let cep = $('.cep').mask('00000-000');
                Home.init_listerns()
-               $('input[name="zipe_code"]').blur(function(){
-                   var cep =$('input[name="zipe_code"]').val().replace(/\D/g, '');
-                   if (cep != "") {
-   
-                       //Expressão regular para validar o CEP.
-                       var validacep = /^[0-9]{8}$/;
-   
-                       //Valida o formato do CEP.
-                       if(validacep.test(cep)) {
-   
-                           //Preenche os campos com "..." enquanto consulta webservice.
-                           $('input[name="road"]').val("...");
-                           $('input[name="distric"]').val("...");
-                           $('input[name="city"]').val("...");
-                           $('input[name="states"]').val("...");
-   
-                           //Consulta o webservice viacep.com.br/
-                           $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
-   
-                               if (!("erro" in dados)) {
-                                   //Atualiza os campos com os valores da consulta.
-                                   $('input[name="road"]').val(dados.logradouro);
-                                   $('input[name="distric"]').val(dados.bairro);
-                                   $('input[name="city"]').val(dados.localidade);
-                                   $('input[name="states"]').val(dados.uf);
-                               } //end if.
-                               else {
-                                   //CEP pesquisado não foi encontrado.
-                                   limpa_formulário_cep();
-                                   alert("CEP não encontrado.");
-                               }
-                           });
-                       }
-                   }
-               })
+               Ultils.getAddresBasedCep()
             
         }).catch((error) =>{
 
