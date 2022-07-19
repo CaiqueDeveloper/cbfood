@@ -16,8 +16,8 @@ class CreateLogActivitiesTable extends Migration
         Schema::create('log_activities', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->dateTime('login');
-            $table->dateTime('logout');
+            $table->dateTime('login')->nullable();;
+            $table->dateTime('logout')->nullable();;
             $table->timestamps();
             
             $table->foreign('user_id')

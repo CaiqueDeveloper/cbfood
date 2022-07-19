@@ -17,7 +17,7 @@ class CreateUserActivityHistoriesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->text('action')->nullable();
-            $table->dateTime('day');
+            $table->dateTime('day')->nullable();;
             $table->timestamps();
             
             $table->foreign('user_id')

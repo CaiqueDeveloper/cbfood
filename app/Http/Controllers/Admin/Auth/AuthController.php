@@ -8,8 +8,10 @@ use App\Http\Requests\StorageCompanyRequest;
 use App\Http\Requests\StorageUserRequester;
 use App\Models\Company;
 use App\Models\CompanyUser;
+use App\Models\LogActivity;
 use App\Models\SettingCompany;
 use App\Models\User;
+use Illuminate\Auth\Events\Logout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,6 +24,7 @@ class AuthController extends Controller
         return view('auth.login');
     }
     public function logout(){
+        LogActivity::saveLogoutUser(auth()->user()->id);
         Auth::logout();
         return redirect('/admin/dashboard');
     }
@@ -40,7 +43,7 @@ class AuthController extends Controller
 
         if(auth()->user()->status){
             $company = Company::isActive(auth()->user()->company_id);
-
+            LogActivity::saveLoginUser(auth()->user()->id);
             if($company[0]['status']){
                 $route = User::redirectUserBasedOnProfileRoute(auth()->user()->id);
                 return response()->json(['redirectRoute' =>  $route], 200);

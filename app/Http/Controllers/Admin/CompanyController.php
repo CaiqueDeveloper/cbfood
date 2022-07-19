@@ -29,7 +29,8 @@ class CompanyController extends Controller
     public function storageOrCreateCompany(StorageCompanyRequest $request){
            
         if($request->only('company_id') != null){
-           $storageOrUpdateCompany = Company::where('id',$request->only('company_id'))->update($request->except('company_id'));
+            
+           $storageOrUpdateCompany = Company::where('id',$request->only('company_id'))->get();
             if($storageOrUpdateCompany){
                 return response()->json('success', 200);
             }else{

@@ -76,7 +76,7 @@
                                 <label class="small mb-1" for="inputBirthday">Whatsapp</label>
                                 <input class="form-control phone" id="inputBirthday" type="text" name="phone_number"  value="{{$response['user']['company']->phone_number}}">
                             </div>
-                            <input type="hidden" id="custId" name="company_id" value="{{$response['user']['id']}}">
+                            <input type="hidden" id="custId" name="company_id" value="{{$response['user']['company']->id}}">
                         </div>
                         <!-- Save changes button-->
                         <input type="submit" value="Salvar" class="btn btn-primary btn-user btn-block">
