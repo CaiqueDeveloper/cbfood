@@ -25,8 +25,8 @@ class StorageCompanyRequest extends FormRequest
     {
         return [
             'name' => 'required|min:2|max:100',
-            'email' => 'email',
-            'cnpj' => 'max:18',
+            //'email' => 'email',
+            'cnpj' => 'max:22',
         ];
     }
     public function messages()
@@ -37,7 +37,7 @@ class StorageCompanyRequest extends FormRequest
             'name.max' => 'O campo nome é excedeu a quantidade maxima de (100) caracter.',
             'email.required' => 'O campo email é obrigatorio.',
             'email.email' => 'O email não é um email valido.',
-            'cnpj.max' => 'O campo cnpj não pode ter mais que (18) caracter',
+            'cnpj.max' => 'O campo cnpj não pode ter mais que (22) caracter',
             
         ];
     }
