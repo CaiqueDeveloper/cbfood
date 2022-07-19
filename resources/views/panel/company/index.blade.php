@@ -69,7 +69,7 @@
                             <!-- Form Group (phone number)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputPhone">E-mail</label>
-                                <input class="form-control" id="inputPhone" type="email" name="email value="{{$response['user']['company']->email}}">
+                                <input class="form-control" id="inputPhone" type="email" name="email" value="{{'user']['company']->email}}">
                             </div>
                             <!-- Form Group (birthday)-->
                             <div class="col-md-6">
