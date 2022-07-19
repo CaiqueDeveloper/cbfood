@@ -30,7 +30,7 @@ class CompanyController extends Controller
            
         if($request->only('company_id') != null){
             
-           $storageOrUpdateCompany = Company::where('id',$request->only('company_id'))->get();
+           $storageOrUpdateCompany = Company::where('id',$request->only('company_id'))->update($request->except('company_id'));
             if($storageOrUpdateCompany){
                 return response()->json('success', 200);
             }else{
