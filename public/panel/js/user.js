@@ -205,6 +205,7 @@ var User = {
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Cadastrar novo Usuário');
             User.init_listerns()
+            Ultils.filters_golbal()
 
         }).catch((error) => {
             console.log(error.response.data)
@@ -370,6 +371,7 @@ var User = {
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Editar Usuário');
             User.init_listerns()
+            Ultils.filters_golbal()
 
         }).catch((error) => {
             console.log(error.response.data)
@@ -388,6 +390,8 @@ var User = {
             $('.modal-dialog').addClass('modal-lg');
             $('.modal-title').html('Editar/Adicionar Endereço');
             User.init_listerns()
+            Ultils.filters_golbal()
+            Ultils.geAddresBasedCep()
 
         }).catch((error) => {
             console.log(error.response.data)

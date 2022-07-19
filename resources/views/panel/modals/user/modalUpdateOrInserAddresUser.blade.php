@@ -6,7 +6,7 @@
                 <!-- Form Group (phone number)-->
                 <div class="col-md-3">
                     <label class="small mb-1" for="inputBirthday">CEP</label>
-                <input class="form-control cep" id="inputBirthday" type="text" name="zipe_code" value="@if(@count($address) > 0) {{$address[0]->zipe_code}} @endif">
+                    <input class="form-control cep" id="inputBirthday" type="text" name="zipe_code" value="@if(@count($address) > 0) {{$address[0]->zipe_code}} @endif">
                 </div>
                 <div class="col-md-3">
                     <label class="small mb-1" for="inputPhone">Estado</label>
