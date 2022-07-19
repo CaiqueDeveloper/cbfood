@@ -25,6 +25,7 @@ class CreateSettingCompanyTable extends Migration
             $table->string('deliveryPrice')->nullable();
             $table->string('hasOpeneed')->nullable()->default(1);
             $table->string('hasDelivery')->nullable()->default(1);
+            $table->string('limit_send_delivery')->nullable();
             $table->timestamps();
         });
     }

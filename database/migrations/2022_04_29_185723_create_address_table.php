@@ -21,7 +21,8 @@ class CreateAddressTable extends Migration
             $table->string('city');
             $table->string('distric');
             $table->string('road');
-            $table->integer('number')->nullable();;
+            $table->integer('number')->nullable();
+            $table->text('complement')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
