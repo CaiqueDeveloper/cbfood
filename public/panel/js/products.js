@@ -248,7 +248,7 @@ const Products = {
             info: true,
             searching: true,
             destroy:true,
-            "displayLength": 20,
+            "displayLength": 10,
             order: [[ 1, "asc" ]],
            drawCallback: function( settings ){
                Products.init_listerns()
