@@ -2,6 +2,7 @@ const Ultils = {
     construct(){
      Ultils.init_listerns()
      Ultils.getNotifyComapy();
+     Ultils.getTheNameOfTheModuleTheUserIsAccessing()
      $('.showNotify').on('click', function(e){
         e.preventDefault()
         Ultils.rendeBoxNotifyCompany();
@@ -283,5 +284,23 @@ const Ultils = {
             .finally(() =>{$('.AppBlock').addClass('d-none');});
         }
         
+    },
+    
+
+    getTheNameOfTheModuleTheUserIsAccessing() {
+        axios({
+            url: window.location.origin+'/admin/storageNameModuleUserAccessing',
+            method: 'POST',
+            data: {module: window.location.pathname},
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            console.log(response.data)
+        })
+        .catch((error) =>{
+           console.log(error.response.data)
+        })
     },
 }

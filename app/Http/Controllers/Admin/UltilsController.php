@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Images;
 use App\Models\SettingCompany;
 use App\Models\User;
+use App\Models\UserActivityHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -85,5 +86,9 @@ class UltilsController extends Controller
         
         $slug = Str::slug($name);
         return $slug;
-    }    
+    } 
+    protected function storageNameModuleUserAccessing(Request $request){
+        
+        return UserActivityHistory::create(['user_id' => auth()->user()->id, 'action' => $request->module, 'day' => date('Y-m-d H:i:s')]);
+    }   
 }

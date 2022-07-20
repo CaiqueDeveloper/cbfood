@@ -152,6 +152,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     //Promotions
     Route::get('/promotions', [PromotionsController::class, 'index']);
     Route::get('/showModalCreateNewPromotion', [PromotionsController::class, 'showModalCreateNewPromotion']);
+
+    //Save Histoy accessing user
+    Route::post('/storageNameModuleUserAccessing', [UltilsController::class, 'storageNameModuleUserAccessing']);
 });
 
 Route::prefix('app')->group(function(){
