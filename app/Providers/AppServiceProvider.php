@@ -41,21 +41,22 @@ class AppServiceProvider extends ServiceProvider
             
             
             
-            //$search = 'https://cbfood.com.br' ;
+            //$search = 'https://cbfood.com.br/' ;
             $search = 'http://127.0.0.1:8000/';
             $trimmed = str_replace($search, '', $subject) ;
             $url = substr($subject, strpos($subject, "app/menu/"), strpos($subject, "app/menu/"));
            
             $urlAux = substr($subject, -strlen($url), strpos($subject, "app/menu/"));
-            if($url == $urlAux){
-                $company = SettingCompany::getCompanyUsingSlug(str_replace("app/menu/","", $urlAux));
+           // dd($trimmed);
+            if($trimmed){
+                $company = SettingCompany::getCompanyUsingSlug(str_replace("app/menu/","", $trimmed));
             }else{
                 $company = [];
             }
            // dd($company);
             if(Auth::check()){
                 $response = User::getInfoUserLogged();
-                if($trimmed == $urlAux){
+                if($trimmed){
                     $view->with(['response' => $response, 'company' => $company]);
                 }else{
                     $view->with(['response' => $response, 'company' => $company]);

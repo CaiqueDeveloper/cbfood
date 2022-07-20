@@ -53,7 +53,7 @@
                 </div>
               @endif
         </div>
-        <div id="pagination">
+        <div id="pagination" class="my-3">
             {!!$menuCompany['company']['products']->links()!!}
         </div>
         
