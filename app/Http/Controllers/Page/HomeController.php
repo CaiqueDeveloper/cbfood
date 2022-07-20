@@ -36,7 +36,7 @@ class HomeController extends Controller
         return response()->json(['status' => 200, 'view' => $view]);
     }
     public function rederViewAllProductsCompany($slug){
-
+        
         $menuCompany = SettingCompany::getCompanyUsingSlug($slug);
         $view = view('app.rederViewAllProductsCompany', compact('menuCompany'))->render();
         return response()->json(['status' => 200, 'view' => $view]);

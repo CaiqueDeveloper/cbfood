@@ -248,7 +248,7 @@ const Products = {
             info: true,
             searching: true,
             destroy:true,
-            "displayLength": 50,
+            "displayLength": 20,
             order: [[ 1, "asc" ]],
            drawCallback: function( settings ){
                Products.init_listerns()
@@ -261,6 +261,7 @@ const Products = {
                 }
             }, {
                 targets: 1,
+                class:'text-center',
                 data: function(row, type, val, meta) {
                     if( row.description != null){
                         return  row.description;
@@ -270,11 +271,13 @@ const Products = {
                 }
             },{
                 targets: 2,
+                class:'text-center',
                 data: function(row, type, val, meta) {
                     return 'R$ '+row.price;
                 }
             },{
                 targets: 3,
+                class:'text-center',
                 data: function(row, type, val, meta) {
                     if(row.hasVariations != '0'){
                         if(row.hasVariations == 'on' || row.hasVariations == '1'){
@@ -286,6 +289,7 @@ const Products = {
                 }
             },{
                 targets: 4,
+                class:'text-center',
                 data: function(row, type, val, meta) {
                     if(row.canPrice != '0'){
                         if(row.canPrice == 'on' || row.canPrice == '1'){
@@ -297,6 +301,7 @@ const Products = {
                 }
             }, {
                 targets: 5,
+                class:'text-center',
                 data: function(row, type, val, meta) {
                     return `
                     <a href="#" class="show-modal-update-product text-info" value='${row.id}'>
