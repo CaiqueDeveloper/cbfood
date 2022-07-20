@@ -38,7 +38,7 @@ class Product extends Model
         $company = Company::find($id);
         if(!$company)
              return response()->json('Opss! algo deu errado, não encotramos o empresa informado.', 400);
-             $products = $company->product()->where('status',1)->get();
+             $products = $company->product()->where('status',1)->paginate(30);
  
         if(!$products)
             return response()->json('Opss! algo deu errado, não encotramos o nenhum endereço para esse empresa.', 400);

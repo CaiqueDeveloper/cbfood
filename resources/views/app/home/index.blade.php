@@ -53,6 +53,10 @@
                 </div>
               @endif
         </div>
+        <div id="pagination">
+            {!!$menuCompany['company']['products']->links()!!}
+        </div>
+        
         </div>
         <!-- final section conte-body page -->
     </div>

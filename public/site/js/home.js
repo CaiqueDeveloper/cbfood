@@ -15,6 +15,11 @@ var Home = {
             //alert(url);
             Home.getProductName(url, this)
         })
+        $("#pagination > nav span.relative a").on('click', function(e){
+            e.preventDefault()
+            var page = $(this).attr('href').split('page=')[1];
+            Home.rederViewAllProductsCompany(page)
+        })
     },
     init_listerns(){
         let qtModal = 0;
@@ -146,11 +151,20 @@ var Home = {
             console.log('finalizou a consulta')
         })
     },
-    rederViewAllProductsCompany(url){
+    rederViewAllProductsCompany(page = null){
+        
         let slug = window.location.pathname.replace('/app/menu/', '');
+        let url = '';
+
+        if(page == null){
+            url = window.location.origin + '/app/rederViewAllProductsCompany/'+slug
+        }else{
+            url = window.location.origin + '/app/rederViewAllProductsCompany/'+slug+'?page='+page
+        }
+
         $('.AppBlock').removeClass('d-none');
         axios({
-            url: window.location.origin + '/app/rederViewAllProductsCompany/'+slug,
+            url: url,
             method:'GET'
         }).then((response) =>{
             
