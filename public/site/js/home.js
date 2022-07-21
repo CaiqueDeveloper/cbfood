@@ -7,15 +7,12 @@ var Home = {
         Home.rederViewAllProductsCompany()
         $('.search-product').on('submit', function(e){
             e.preventDefault()
-           
             let productName = $(this).val()
             let company_id = $(this).attr('data-company_id')
 
             let url = window.location.origin + `/app/getProductName`
-            //alert(url);
             Home.getProductName(url, this)
-        })
-        
+        })  
     },
     init_listerns(){
         let qtModal = 0;
@@ -326,8 +323,6 @@ var Home = {
             Home.init_listerns()
             
             let qtModal = $('.product-content-info--qt').html(qtModal);
-            
-            console.log(qtModal)
         }).catch((error) =>{
 
         }).finally(()=>{
