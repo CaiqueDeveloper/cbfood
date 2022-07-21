@@ -46,21 +46,21 @@ class HomeController extends Controller
         $menuCompany = [];
         if($request->product_name === null && $request->category == "all_category"){
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
-            ->paginate(10);
+            ->paginate(50);
         }elseif($request->product_name === null && $request->category != "all_category"){
 
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('category_id', $request->category)
-            ->paginate(10);
+            ->paginate(50);
         }elseif($request->product_name != null && $request->category != "all_category"){
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('category_id', $request->category)
             ->where('name', 'like', '%'.$request->product_name.'%')
-            ->paginate(10);
+            ->paginate(50);
         }else{
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('name', 'like', '%'.$request->product_name.'%')
-            ->paginate(10);
+            ->paginate(50);
         }
 
         if(sizeof($menuCompany) > 0){
