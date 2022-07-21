@@ -231,10 +231,8 @@ class Order extends Model
         
         if($order[0]->save()){
             $user = $order[0]->orderUser;
-            if($status != 0){
-                Notification::send($user,new NotifyTheCompanyOfTheUsersRequest($order[0]));
-                event(new NotifyTheCompanySalesTheRequstUser($order[0]));
-            }
+            Notification::send($user,new NotifyTheCompanyOfTheUsersRequest($order[0]));
+            event(new NotifyTheCompanySalesTheRequstUser($order[0]));
             return [
                 'user' => $user,
                 'company' => $company,

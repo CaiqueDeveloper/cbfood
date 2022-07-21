@@ -24,8 +24,29 @@ class NotifyTheCompanySalesTheRequstUser implements ShouldBroadcast
     public $order;
     public function __construct(Order $order)
     {   
+        $userName = User::where('id', $order->user_id)->value('name');
+        $message = "";
+        $userLogged = auth()->user()->name;
+        switch($order->status){
+            case 2:
+                $message = "Usuário {$userLogged} marcaou o pedido de {$userName}, como recebido";
+            break;
+            case 3:
+                $message = "O Pedido de {$userName}, está sendo preparado";
+            break;
+            case 4:
+                $message = " Pedido de {$userName}, saiu para entrega";
+            break;
+            case 5:
+                $message = "O Pedido de {$userName}, foi entregue.";
+            break;
+            case 0:
+                $message = "O Pedido de {$userName}, foi cancelado.";
+            break;
+        }
+    
         $this->order = [
-            'user' => User::where('id', $order->user_id)->select('users.name')->get()
+            'message' => $message
         ];
     }
 
