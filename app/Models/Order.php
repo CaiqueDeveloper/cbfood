@@ -16,7 +16,7 @@ class Order extends Model
 {
     use HasFactory, Notifiable;
     protected $table = 'orders';
-    protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot'];
+    protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot', 'status'];
 
     public function orderProduct(){
        
@@ -83,11 +83,11 @@ class Order extends Model
         $orderUser['thing'] = $thing['thing'];
         $orderUser['pickUpOnTheSpot'] = $pickUpOnTheSpot['pick_up_on_the_spot'];
         $orderUser['price_total'] = \Cart::getTotal();
+        $orderUser['status'] = 1;
 
         $orderInsert = Order::create($orderUser);
         
         $storageOrderProduct =  OrderProduct::storageOrderProduct($orderInsert->id, $orders);
-    
         $company = $orderInsert->orderCompany;
         Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
         event(new NotifyTheCompanySalesTheRequstUser($orderInsert));

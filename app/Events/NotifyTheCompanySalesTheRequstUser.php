@@ -24,6 +24,7 @@ class NotifyTheCompanySalesTheRequstUser implements ShouldBroadcast
     public $order;
     public function __construct(Order $order)
     {   
+        //echo);
         $userName = User::where('id', $order->user_id)->value('name');
         $message = "";
         $userLogged = auth()->user()->name;
@@ -46,10 +47,14 @@ class NotifyTheCompanySalesTheRequstUser implements ShouldBroadcast
             case 0:
                 $message = "O Pedido de {$userName}, foi cancelado.";
             break;
+            default:
+                $message = 'Aguarde Entraremos em contato';
+            break;
         }
     
         $this->order = [
-            'message' => $message
+            'message' => $message,
+            'status' => $order->status
         ];
     }
 
