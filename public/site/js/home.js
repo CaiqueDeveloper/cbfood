@@ -568,6 +568,7 @@ var Home = {
         })
     },
     storageNewAddressUser(url,data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',
@@ -598,6 +599,7 @@ var Home = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     sendOrderUser(url,data){
+
         axios({
             url:url,
             method: 'POST',
@@ -631,6 +633,7 @@ var Home = {
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     CheckoutUser(url,data){
+        $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
             method: 'POST',

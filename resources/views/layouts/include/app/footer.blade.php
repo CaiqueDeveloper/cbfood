@@ -48,6 +48,7 @@
             </div>
         </div>
           {{-- bloc page --}}
+          <div class="AppBlock block d-none">
         <!-- modal Main -->
         <div class="modal fade" id="modalMain" tabindex="-1" role="dialog" aria-labelledby="modalMainLabel">
             <div class="modal-dialog">

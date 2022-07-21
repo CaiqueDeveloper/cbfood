@@ -17,7 +17,8 @@
 
     <!-- Custom styles for this template-->
     {{-- <link href="{{url('theme-sdb-admin-2/css/sb-admin-2.css')}}" rel="stylesheet"> --}}
-    <link href="{{url('css/panel.css')}}" rel="stylesheet">
+    {{-- <link href="{{url('css/panel.css')}}" rel="stylesheet"> --}}
+    <link href="{{url('css/app.css')}}" rel="stylesheet">
     <link href="{{url('theme-sdb-admin-2/css/sb-admin-2.css')}}" rel="stylesheet">
     <link href="{{url('theme-sdb-admin-2/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
     <link rel="icon" href="{{ url('panel/img/logo/icon-page.svg') }}" />
