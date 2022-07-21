@@ -28,7 +28,7 @@
 </div>
 <div class="row">
     <div class="col my-3 ">
-        <form action="" class="send-address-user">
+        <form action="" class="send-address-user" novalidate>
             <hr class="mb-4">
             <hr class="mb-4">
             {{-- Method Payment --}}
@@ -150,7 +150,7 @@
                 </ul>
             </div>
 		</div>
-        <form class="needs-validation form-checkout-new-user">
+        <form class="needs-validation form-checkout-new-user" novalidate>
             <div class="form_2 data_info w-[280px] ml-[-55px] sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações Pessoal</h2>
                 
