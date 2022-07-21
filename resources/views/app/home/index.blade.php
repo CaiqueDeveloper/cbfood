@@ -45,7 +45,7 @@
         <div class="announcement-area relative">
                 
               @if(@count($menuCompany['company']['products']) > 0)
-                <div class="reder-view-all-products-company grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2"></div>
+                <div class="reder-view-all-products-company"></div>
               @else
                 <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
                     <p class="font-bold">Aviso</p>
@@ -53,10 +53,6 @@
                 </div>
               @endif
         </div>
-        <div id="pagination" class="my-3">
-            {!!$menuCompany['company']['products']->links()!!}
-        </div>
-        
         </div>
         <!-- final section conte-body page -->
     </div>

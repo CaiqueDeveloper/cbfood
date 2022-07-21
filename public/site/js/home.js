@@ -15,11 +15,7 @@ var Home = {
             //alert(url);
             Home.getProductName(url, this)
         })
-        $("#pagination > nav span.relative a").on('click', function(e){
-            e.preventDefault()
-            var page = $(this).attr('href').split('page=')[1];
-            Home.rederViewAllProductsCompany(page)
-        })
+        
     },
     init_listerns(){
         let qtModal = 0;
@@ -152,7 +148,8 @@ var Home = {
         })
     },
     rederViewAllProductsCompany(page = null){
-        
+       
+
         let slug = window.location.pathname.replace('/app/menu/', '');
         let url = '';
 
