@@ -28,6 +28,9 @@ class NotifyTheCompanySalesTheRequstUser implements ShouldBroadcast
         $message = "";
         $userLogged = auth()->user()->name;
         switch($order->status){
+            case 1:
+                $message = "Você tem um novo pedido de {$userName}";
+            break;
             case 2:
                 $message = "Usuário {$userLogged} marcaou o pedido de {$userName}, como recebido";
             break;
