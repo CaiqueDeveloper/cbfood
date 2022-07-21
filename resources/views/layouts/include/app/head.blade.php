@@ -3,8 +3,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta property="og:site_name" content="Cbfood Delivery">
+    <meta property="og:title" content="Cbfood Delivery Plataform" />
+    <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
+    <meta property="og:image" itemprop="image" content="https://i.postimg.cc/W3Mhx5s3/Group-1-2.png">
+    <meta property="og:image" content="http://www.example.com/image01.jpg">
+
+    <!-- No need to change anything here -->
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/jpeg">
+
+    <!-- Size of image. Any size up to 300. Anything above 300px will not work in WhatsApp -->
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+
+    <!-- Website to visit when clicked in fb or WhatsApp-->
+    <meta property="og:url" content="https://cbfood.com.br">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cbfood - @yield('title')</title>
 
