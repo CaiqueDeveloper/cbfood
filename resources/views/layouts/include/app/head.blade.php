@@ -6,8 +6,8 @@
     <meta property="og:site_name" content="Cbfood Delivery">
     <meta property="og:title" content="Cbfood Delivery Plataform" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="https://i.postimg.cc/W3Mhx5s3/Group-1-2.png">
-    <meta property="og:image" content="http://www.example.com/image01.jpg">
+    <meta property="og:image" itemprop="image" content="https://i.postimg.cc/wv0DWcx8/Group-1.png">
+    <meta property="og:image" content="https://i.postimg.cc/wv0DWcx8/Group-1.png">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
