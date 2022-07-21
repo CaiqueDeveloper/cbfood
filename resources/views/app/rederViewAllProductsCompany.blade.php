@@ -1,6 +1,7 @@
 @php
     //dd($menuCompany['company']['settings'])
 @endphp
+<div class="grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2 py-4">
 @forelse ($menuCompany['company']['products'] as $product)
 @php
 //dd($product);
@@ -8,7 +9,7 @@
     $now = new DateTime();
     $difference = $first_date->diff($now)->days;
 @endphp
-<div class="grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2 py-4">
+
     <div class="item-announcement w-full min-h-[250px] flex flex-col-reverse relative shadow-lg cursor-pointer my-[5px] overflow-hidden sm:rounded-3xl">
         <div class="absolute bg-green-300 z-50 top-2 left-2 text-green-600 font-bold rounded-md px-1  @if($difference > 5)  hidden @endif">
             novo
@@ -29,10 +30,11 @@
             <div class="item-announcement-footer-add-cart animate-bounce  hover:text-orange-600"><i class="fa fa-cart-plus"></i></div>
         </div>
     </div>
-</div>
+
 
 @empty  
 @endforelse 
+</div>
 <div id="pagination" class="my-3">
     {!!$menuCompany['company']['products']->links()!!}
 </div>
