@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\ProfilesController;
 use App\Http\Controllers\Admin\ProfilesUserController;
 use App\Http\Controllers\Admin\PromotionsController;
 use App\Http\Controllers\Admin\settingCompanyController;
+use App\Http\Controllers\Admin\SystemUsabilityControlController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Page\HomeController as PageHomeController;
 use Illuminate\Support\Facades\Broadcast;
@@ -155,6 +156,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
 
     //Save Histoy accessing user
     Route::post('/storageNameModuleUserAccessing', [UltilsController::class, 'storageNameModuleUserAccessing']);
+
+    //System Usability Control
+    Route::get('/systemUsabilityControl', [SystemUsabilityControlController::class, 'index']);
 });
 
 Route::prefix('app')->group(function(){
