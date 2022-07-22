@@ -302,7 +302,7 @@
                                         <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                                     </div>
                                 @else
-                                    @if(number_format(Cart::getTotal(),2,",",".") < $company['company']['settings'][0]->limit_send_delivery)
+                                    @if(number_format(Cart::getTotal(),2,",",".") > $company['company']['settings'][0]->limit_send_delivery)
                                         <div class="custom-control custom-radio">
                                             <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
                                             <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
