@@ -10,7 +10,7 @@
             <div class="w-full header-filter flex justify-between mb-10 hidden">
                 <h1 class="text-black-700 text-[16px] font-bold ml-[30px]">Filtros</h1>
             </div>
-            <div class="body-filter  w-full">
+            <div class="body-filter  w-full text-black font-bold">
                 <form action="" class="search-product flex flex-col sm:flex-row  items-center sm:justify-between">
                     <div class="form-group col">
                         <label for="category" class="">
