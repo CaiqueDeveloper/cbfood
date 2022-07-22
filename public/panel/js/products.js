@@ -231,7 +231,7 @@ const Products = {
             title: "PREÇO BASE"
         },{
             field: "",
-            title: "TEM VARIÇÃO?"
+            title: "TEM VARIAÇÃO?"
         },{
             field: "",
             title: "O CLIENTE PODE PRECIFICAR?"
