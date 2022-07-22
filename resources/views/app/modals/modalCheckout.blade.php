@@ -35,7 +35,7 @@
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Forma de Pagamento</h4>
             <div class="d-block my-3">
                 <div class="custom-control custom-radio">
-                    <input id="credit" name="payment_method" checked  type="radio" class="custom-control-input checkbox-credcard"  value="credcard">
+                    <input id="credit" name="payment_method" type="radio" class="custom-control-input checkbox-credcard"  value="credcard">
                     <label class="custom-control-label" for="credit">Cartão</label>
                 </div>
                 <div class="custom-control custom-radio">
@@ -55,23 +55,45 @@
             {{-- Retirar no local --}}
             <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
             <div class="d-block my-3">
-                <div class="custom-control custom-radio">
-                    <input id="pick_up_on_the_spot-yes" checked name="pick_up_on_the_spot" type="radio" @if(((float)$company['company']['settings'][0]->hasDelivery == 0) || ($company['company']['settings'][0]->limit_send_delivery == null)) checked  @else @if($company['company']['settings'][0]->limit_send_delivery > number_format(Cart::getTotal(),2,",",".")) checked @endif @endif  class="custom-control-input"  value="sim">
-                    <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
-                </div>
-                @if(($company['company']['settings'][0]->hasDelivery == 1) && ($company['company']['settings'][0]->limit_send_delivery == null))
-
-                
+                @if(($company['company']['settings'][0]->hasDelivery == 0) && ($company['company']['settings'][0]->limit_send_delivery == null))
                     <div class="custom-control custom-radio">
-                        <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
-                        <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                        <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                        <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                     </div>
+                    
+                    @if(number_format(Cart::getTotal(),2,",",".") < $company['company']['settings'][0]->limit_send_delivery)
+                        <div class="custom-control custom-radio">
+                            <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                            <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                        </div>
+                    @endif
                 @else
-                    @if($company['company']['settings'][0]->limit_send_delivery < number_format(Cart::getTotal(),2,",","."))
+               
+                    @if(($company['company']['settings'][0]->hasDelivery == 1) && ($company['company']['settings'][0]->limit_send_delivery == null))
+                        <div class="custom-control custom-radio">
+                            <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                            <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                        </div>
                         <div class="custom-control custom-radio">
                             <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                             <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                         </div>
+                    @else
+                        @if(number_format(Cart::getTotal(),2,",",".") < $company['company']['settings'][0]->limit_send_delivery)
+                            <div class="custom-control custom-radio">
+                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
+                                <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                            </div>
+                        @else
+                            <div class="custom-control custom-radio">
+                                <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                            </div>
+                        @endif
                     @endif
                 @endif
             </div>
@@ -256,21 +278,45 @@
                         {{-- Retirar no local --}}
                         <h4 class="mb-3 font-bold text-gray-900 text-2xl">Retirar no Local?</h4>
                         <div class="d-block my-3">
-                            <div class="custom-control custom-radio">
-                                <input id="pick_up_on_the_spot-yes" checked name="pick_up_on_the_spot" type="radio" @if(((float)$company['company']['settings'][0]->hasDelivery == 0) || ($company['company']['settings'][0]->limit_send_delivery == null)) checked  @else @if($company['company']['settings'][0]->limit_send_delivery > number_format(Cart::getTotal(),2,",",".")) checked @endif @endif  class="custom-control-input"  value="sim">
-                                <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
-                            </div>
-                            @if(($company['company']['settings'][0]->hasDelivery == 1) && ($company['company']['settings'][0]->limit_send_delivery == null))
+                            @if(($company['company']['settings'][0]->hasDelivery == 0) && ($company['company']['settings'][0]->limit_send_delivery == null))
                                 <div class="custom-control custom-radio">
-                                    <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
-                                    <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                                    <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                    <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
                                 </div>
+                                
+                                @if(number_format(Cart::getTotal(),2,",",".") < $company['company']['settings'][0]->limit_send_delivery)
+                                    <div class="custom-control custom-radio">
+                                        <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                        <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                                    </div>
+                                @endif
                             @else
-                                @if(number_format(Cart::getTotal(),2,",",".") >= $company['company']['settings'][0]->limit_send_delivery)
+                       
+                                @if(($company['company']['settings'][0]->hasDelivery == 1) && ($company['company']['settings'][0]->limit_send_delivery == null))
+                                    <div class="custom-control custom-radio">
+                                        <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                        <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                                    </div>
                                     <div class="custom-control custom-radio">
                                         <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
                                         <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
                                     </div>
+                                @else
+                                    @if(number_format(Cart::getTotal(),2,",",".") < $company['company']['settings'][0]->limit_send_delivery)
+                                        <div class="custom-control custom-radio">
+                                            <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                            <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input id="pick_up_on_the_spot-no" name="pick_up_on_the_spot" type="radio" class="custom-control-input" value="não">
+                                            <label class="custom-control-label" for="pick_up_on_the_spot-no">Não</label>
+                                        </div>
+                                    @else
+                                        <div class="custom-control custom-radio">
+                                            <input id="pick_up_on_the_spot-yes" name="pick_up_on_the_spot" type="radio"checked class="custom-control-input"  value="sim">
+                                            <label class="custom-control-label" for="pick_up_on_the_spot-yes">Sim</label>
+                                        </div>
+                                    @endif
                                 @endif
                             @endif
                         </div>
