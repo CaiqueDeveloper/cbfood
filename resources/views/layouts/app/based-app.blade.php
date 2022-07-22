@@ -76,6 +76,17 @@
         </div>
        
     </section>
+   
+    <div class="mx-auto w-[78%] mt-4 flex justify-end">
+        <article class="flex items-center font-bold text-orange-600">
+            <p class="mr-3">Fale com nosco</p>
+            <p>
+                <a href="https://api.whatsapp.com/send?phone={{preg_replace( '/[^0-9]/','',$menuCompany['company']->phone_number)}}&text=Óla ! Vim pelo site."  class="btn btn-success">
+                    <i class="bi bi-whatsapp"></i>
+                </a>
+            </p>
+        </article>
+    </div>
     @if($menuCompany['company']['settings'][0]['hasOpeneed'] == 0)
     <div class="mx-auto w-[78%] mt-4">
         <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">

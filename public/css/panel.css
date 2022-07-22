@@ -110,3 +110,8 @@ table.makeTablePermissionSommedUp>thead .sorting::before {
     color: #000;
     margin-top: 10px;
 }
+.modal-content{
+    color: #151a5f !important;
+    font-weight: bold !important;
+
+}
