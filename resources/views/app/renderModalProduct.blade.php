@@ -1,9 +1,8 @@
 
-
 <div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px]">
         <div class="content-product-imgs relative overflow-hidden">
-            <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/@if(@count($product->images) > 0){{$product->images->last()->path}}') @else/default/default.jpg @endif')">
+            <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif')">
             <div class="contente-product-imgs-controls w-full flex justify-between hidden">
                 <div class="prev w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer ml-3 leading-[45px] font-bold text-2xl"><</div>
                 <div class="next w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer mr-3 leading-[45px] font-bold text-2xl">></div>
