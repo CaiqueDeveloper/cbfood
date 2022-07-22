@@ -225,7 +225,7 @@ const Products = {
             title: "NOME"
         }, {
             field: "",
-            title: "DESCRIPÇÃO"
+            title: "DESCRIÇÃO"
         },{
             field: "",
             title: "PREÇO BASE"
@@ -266,7 +266,7 @@ const Products = {
                     if( row.description != null){
                         return  row.description;
                     }else{
-                        return 'O Produdo não possue descrição.';
+                        return 'O Produto não possue descrição.';
                     }
                 }
             },{

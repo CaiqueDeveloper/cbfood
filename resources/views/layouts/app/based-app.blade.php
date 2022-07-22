@@ -79,7 +79,7 @@
    
     <div class="mx-auto w-[78%] mt-4 flex justify-end">
         <article class="flex items-center font-bold text-orange-600">
-            <p class="mr-3">Fale com nosco</p>
+            <p class="mr-3">Fale Conosco</p>
             <p>
                 <a href="https://api.whatsapp.com/send?phone={{preg_replace( '/[^0-9]/','',$menuCompany['company']->phone_number)}}&text=Óla ! Vim pelo site."  class="btn btn-success" target="_blank">
                     <i class="bi bi-whatsapp"></i>
