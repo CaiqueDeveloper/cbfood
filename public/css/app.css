@@ -1,1 +1,14 @@
 
+.block {
+    background:  #aa773d5c url('../site/images/load/loader-2_food.gif') no-repeat;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1200;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    cursor: not-allowed;
+}

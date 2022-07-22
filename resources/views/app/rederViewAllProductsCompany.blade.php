@@ -18,7 +18,7 @@
             promoção
         </div>
         <a href="#" class="getModalProduct" value="{{$product->id}}">
-            <div class="item-announcement-body absolute w-full h-full top-0 left-0 bg-cover bg-no-repeat bg-center z-1 mb-[20px] hover:scale-[1.2] transition duration-700" style="background-image: url('/product_photo/@if(@count($product->images->last()->path) > 0){{$product->images->last()->path}}') @else/default/default.jpg @endif">
+            <div class="item-announcement-body absolute w-full h-full top-0 left-0 bg-cover bg-no-repeat bg-center z-1 mb-[20px] hover:scale-[1.2] transition duration-700" style="background-image: url('/product_photo/@if(@count($product->images->last()->path) > 0){{$product->images->last()->path}}@else/default/default.jpg @endif ')">
             </div>
         </a>
         <div class="item-announcement-description justify-between sm:mx-10 mx-3 text-white font-bold items-center mt-[150px] absolute z-30 top-0 w-full">
