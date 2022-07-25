@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\LogActivity;
 use App\Models\Module;
 use App\Models\User;
+use App\Models\UserActivityHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,5 +31,9 @@ class SystemUsabilityControlController extends Controller
             'companiesInative' => ['goal' => UltilsController::percentage($goalCompaniesInative), 'total' => count(LogActivity::getTotalCompaniesInativeUser())]]
         );
         
+    }
+
+    protected function listUserUsabilityHistory(Request $request){
+        return UserActivityHistory::listUserUsabilityHistory($request->start, $request->end);
     }
 }

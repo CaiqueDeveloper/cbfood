@@ -30,7 +30,7 @@ var SystemUsabilityControl = {
         });
 
         SystemUsabilityControl.getSummaryIdicator()
-        
+        SystemUsabilityControl.getAllActions(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
     },
     getSummaryIdicator(){
         
@@ -53,4 +53,43 @@ var SystemUsabilityControl = {
             console.log('Hello');
        })
     },
+    getAllActions(start, end){
+        axios({
+            method: 'GET',
+            url: window.location.origin + `/admin/systemUsabilityControl/listUserUsabilityHistory`,
+            params:{start,end}
+       })
+       .then((response) =>{
+        console.log(response.data.resumied)
+        KoolChart.create("chart-user-usability-history", "UserUsabilityHistory", "", "100%", "100%");
+
+        var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
+        +'<Options>'
+        +'<Caption text="Navegação no Sistema"/>'
+        +'<Legend useVisibleCheck="true"/>'
+        +'</Options>'
+        +'<Pie3DChart showDataTips="true"  depth="50" paddingLeft="100" paddingTop="50" paddingRight="100" paddingBottom="50">'
+        +'<series>'
+        +'<Pie3DSeries nameField="label" field="total" labelPosition="inside" color="#ffffff" >'
+        +'<showDataEffect>'
+        +'<SeriesInterpolate duration="1000"/>'
+        +'</showDataEffect>'
+        +'</Pie3DSeries>'
+        +'</series>'
+        +'</Pie3DChart>'
+        +'</KoolChart>';
+
+
+        KoolChart.calls("chart-user-usability-history", {
+            "setLayout": layoutStr,
+            "setData": response.data.resumied
+        });
+       }).
+       catch((error) =>{
+           console.log(error.response.data)
+       })
+       .finally(()=>{
+            console.log('Hello');
+       })
+    }
 }

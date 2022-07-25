@@ -96,6 +96,9 @@
 <div class="card mb-4">
     <div class="card-header">Analise Detalhada</div>
     <div class="card-body">
+        <div class="card-body">
+            <div id="chartUserUsabilityHistory" style="height:500px; width:100%;"></div>
+        </div>
     </div>
 </div>
 

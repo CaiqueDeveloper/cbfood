@@ -160,6 +160,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     //System Usability Control
     Route::get('/systemUsabilityControl', [SystemUsabilityControlController::class, 'index']);
     Route::get('/systemUsabilityControl/summaryIdicator', [SystemUsabilityControlController::class, 'summaryIdicator']);
+    Route::get('/systemUsabilityControl/listUserUsabilityHistory', [SystemUsabilityControlController::class, 'listUserUsabilityHistory']);
 });
 
 Route::prefix('app')->group(function(){
