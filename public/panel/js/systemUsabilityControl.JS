@@ -1,6 +1,6 @@
-const systemUsabilityControl = {
+const SystemUsabilityControl = {
     construct(){
-        systemUsabilityControl.init_listerns()
+        SystemUsabilityControl.init_listerns()
     },
     init_listerns(){
         /* --- Primeira chamada ---*/
@@ -29,7 +29,7 @@ const systemUsabilityControl = {
             end = moment(end_).format("YYYY-MM-DD");
         });
 
-        systemUsabilityControl.getSummaryIdicator()
+        SystemUsabilityControl.getSummaryIdicator()
         
     },
     getSummaryIdicator(){

@@ -105,7 +105,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        systemUsabilityControl.construct();
+        SystemUsabilityControl.construct();
     })
 </script>
 @endsection
