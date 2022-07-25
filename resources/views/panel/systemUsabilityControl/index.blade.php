@@ -100,11 +100,3 @@
 </div>
 
 @endsection
-@section('scripts')
-<script src="{{url('panel/js/systemUsabilityControl.js')}}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        systemUsabilityControl.construct();
-    })
-</script>
-@endsection

@@ -57,6 +57,7 @@
     <!-- Custom scripts for all pages-->
     <script src="{{url('theme-sdb-admin-2/js/sb-admin-2.min.js')}}"></script>
     <script src="{{url('panel/js/ultils.js')}}"></script>
+    <script src="{{url('panel/js/systemUsabilityControl.js')}}"></script>
     
     
     <script src="{{url('koolChartJs/KoolChart/JS/KoolChart.js')}}"></script>
@@ -76,6 +77,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             Ultils.construct();
+            systemUsabilityControl.construct();
         })
         
         
