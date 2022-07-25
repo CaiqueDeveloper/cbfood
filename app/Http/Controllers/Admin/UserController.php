@@ -127,7 +127,7 @@ class UserController extends Controller
     }
     protected function getUsers(){
 
-        return response()->json(User::where('company_id', auth()->user()->company_id)->get(), 200);
+        return response()->json(User::where('company_id', auth()->user()->company_id)->whereNotIn('id', User::getAllUserManagerPlataform())->get(), 200);
     }
    
 }
