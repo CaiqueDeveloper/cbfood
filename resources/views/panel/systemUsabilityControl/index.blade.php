@@ -32,7 +32,7 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner" style="border-bottom: 1px solid #fff;margin-bottom: 10px;">
-                    <h3 style="color:#fff" class="totalCompaniesActive">0</h3>
+                    <h3 style="color:#fff" class="totalCompaniesActive">---</h3>
                     <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalCompaniesActive">--- %</b><b>%</b> Ativos</strong></p>
                     <p style="color:#fff"><strong>Empresas Ativa</strong></p>
                 </div>
@@ -100,20 +100,11 @@
 </div>
 
 @endsection
-<script src="{{url('panel/js/systemUsabilityControl.js')}}"></script>
 @section('scripts')
-    <script type="text/javascript">
-    
-        $(document).ready(function() {
-            systemUsabilityControl.construct();
-        })
-    </script>
+<script src="{{url('panel/js/systemUsabilityControl.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        systemUsabilityControl.construct();
+    })
+</script>
 @endsection
-<style scoped>
-    .table-info, .table-info > th, .table-info > td{
-        background: #4e73df !important;
-    }
-    table{
-        color:  #fff !important;
-    }
-</style>
