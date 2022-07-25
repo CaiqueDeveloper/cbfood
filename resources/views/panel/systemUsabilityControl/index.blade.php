@@ -18,8 +18,8 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner" style="border-bottom: 1px solid #fff;margin-bottom: 10px;">
-                    <h3 style="color:#fff" class="totalUserActive">0</h3>
-                    <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalUserActive">0%</b><b>%</b> Ativos</strong></p>
+                    <h3 style="color:#fff" class="totalUserActive">---</h3>
+                    <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalUserActive">---%</b><b>%</b> Ativos</strong></p>
                     <p style="color:#fff"><strong>Usuário Ativos</strong></p>
                 </div>
                 <div class="icon">
@@ -32,8 +32,8 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner" style="border-bottom: 1px solid #fff;margin-bottom: 10px;">
-                    <h3 style="color:#fff" class="totalHotelsActive">0</h3>
-                    <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalHotelsActive">0 %</b><b>%</b> Ativos</strong></p>
+                    <h3 style="color:#fff" class="totalCompaniesActive">0</h3>
+                    <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalCompaniesActive">--- %</b><b>%</b> Ativos</strong></p>
                     <p style="color:#fff"><strong>Empresas Ativa</strong></p>
                 </div>
                 <div class="icon">
@@ -46,8 +46,8 @@
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                     <div class="inner" style="border-bottom: 1px solid #fff;margin-bottom: 10px;">
-                        <h3 style="color:#fff" class="totalHotelsInactive">0</h3>
-                        <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalHotelsInactive">0 %</b><b>%</b> Inativos</strong></p>
+                        <h3 style="color:#fff" class="totalCompaniesInactive">---</h3>
+                        <p style="color:#fff"><strong><b style="font-size: 1.7em;margin-right: 3px;" class="goalCompaniesInactive">--- %</b><b>%</b> Inativos</strong></p>
                         <p style="color:#fff"><strong>Empresas Inativo</strong></p>
                     </div>
                     <div class="icon">
@@ -71,7 +71,8 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputState">Empresa</label>
-                <select id="inputState" class="form-control">
+                <select id="selectCompany" class="form-control">
+                    <option value="all" selected>Todas as Empresa</option>
                     @foreach ($companiesUser as $company)
                         <option value="{{$company->id}}">{{$company->name}}</option>
                     @endforeach
@@ -79,7 +80,8 @@
             </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Módulos</label>
-                <select id="inputState" class="form-control">
+                <select id="selectModules" class="form-control">
+                    <option value="all" selected>Todas os Móludos</option>
                     @foreach ($modules as $module)
                         <option value="{{$module->id}}">{{$module->name}}</option>
                     @endforeach

@@ -17,4 +17,49 @@ class LogActivity extends Model
     protected static function saveLogoutUser($user_id){
         return LogActivity::where('user_id',$user_id)->orderBy('id','desc')->update(['logout' => date('Y-m-d H:i:s')]);
     }
+    public function users(){
+      return  $this->belongsTo(User::class ,'user_id', 'id');
+    }
+
+    protected static function userLogged($start = null, $end = null){
+        
+        if($start == null && $end == null){
+            $start = date('Y-m-d');
+            $end = date('Y-m-d');
+        }
+
+        return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
+        ->whereNotIn('user_id', User::getAllUserManagerPlataform())
+        ->with('users')
+        ->get();
+    }
+    protected static function companyLogged($start = null, $end = null){
+        
+        if($start == null && $end == null){
+            $start = date('Y-m-d');
+            $end = date('Y-m-d');
+        }
+
+        return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
+        ->whereNotIn('user_id', User::getAllUserManagerPlataform())
+        ->with('users.companies')
+        ->get();
+    }
+    protected static function getTotalCompaniesActiveUser(){
+
+        $companies = [];
+        foreach(self::companyLogged() as $user){
+            $companies[] = $user->users->companies()->where('status', 1)->select('companies.id', 'companies.name')->get();
+        }
+        return $companies;
+    }
+    protected static function getTotalCompaniesInativeUser(){
+        $companiesLogged = [];
+        foreach(self::getTotalCompaniesActiveUser() as $key => $company){
+
+            $companiesLogged['company_id'][] = $company[$key]['id'];
+        }
+
+        return isset($companiesLogged['company_id']) ? Company::whereNotIn('id', $companiesLogged['company_id'])->get() : $companiesLogged;
+    }
 }

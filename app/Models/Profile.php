@@ -16,5 +16,5 @@ class Profile extends Model
     protected static function updateProfile($profile_id,$data){
         return Profile::where('id',$profile_id)->update($data);
     }
-    
+   
 }

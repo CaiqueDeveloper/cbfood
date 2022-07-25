@@ -91,4 +91,8 @@ class UltilsController extends Controller
         
         return UserActivityHistory::create(['user_id' => auth()->user()->id, 'action' => $request->module, 'day' => date('Y-m-d H:i:s')]);
     }   
+    public static function percentage($value)
+	{
+		return number_format($value, 2, ',', '.').' %';   
+	}
 }

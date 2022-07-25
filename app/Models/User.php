@@ -143,6 +143,26 @@ class User extends Authenticatable
         }
         return $groupedModules;
     }
+    protected static function getAllUserManagerPlataform(){
+
+        $users = User::with('profiles')->get();
+       $userMangerPlatatorm = [];
+        foreach($users as $key => $user){
+            foreach($user->profiles as $p){
+                if($p->name == 'manager_plataform'){
+                    $userMangerPlatatorm['user_id'][] = $user->id;
+                }
+            }
+        }
+        return isset($userMangerPlatatorm['user_id']) ? $userMangerPlatatorm['user_id'] :  [] ;
+    }
+    protected static function getAllUser(){
+
+        return  User::where('company_id', '!=', null)
+        ->whereNotIn('id', self::getAllUserManagerPlataform())
+        ->where('status', 1)
+        ->get();
+    }
     protected static function redirectUserBasedOnProfileRoute($id_user){
 
         $modules = DB::table('profile_user')
