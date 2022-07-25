@@ -50,7 +50,7 @@ const SystemUsabilityControl = {
            console.log(error.response.data)
        })
        .finally(()=>{
-        
+            console.log('Hello');
        })
     },
 }
