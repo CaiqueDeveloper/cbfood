@@ -1,4 +1,4 @@
-const SystemUsabilityControl = {
+var SystemUsabilityControl = {
     construct(){
         SystemUsabilityControl.init_listerns()
     },
