@@ -19,7 +19,7 @@ class SystemUsabilityControlController extends Controller
         return view('panel.systemUsabilityControl.index', compact('modules', 'companiesUser'));
     }
     protected function summaryIdicator(){
-       
+        
         $goalCompaniesActive = (count(LogActivity::getTotalCompaniesActiveUser()) / count(Company::where('status', 1)->get()))* 100;
         $goalCompaniesInative = (count(LogActivity::getTotalCompaniesInativeUser()) / count(Company::where('status', 1)->get())) * 100;
         $goaUsersActive = (count(LogActivity::userLogged()) / count(User::getAllUser())) * 100;

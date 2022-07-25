@@ -31,6 +31,7 @@ class LogActivity extends Model
         return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
         ->whereNotIn('user_id', User::getAllUserManagerPlataform())
         ->with('users')
+        ->groupBy('user_id')
         ->get();
     }
     protected static function companyLogged($start = null, $end = null){
@@ -43,6 +44,7 @@ class LogActivity extends Model
         return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
         ->whereNotIn('user_id', User::getAllUserManagerPlataform())
         ->with('users.companies')
+        ->groupBy('user_id')
         ->get();
     }
     protected static function getTotalCompaniesActiveUser(){
@@ -57,7 +59,7 @@ class LogActivity extends Model
         $companiesLogged = [];
         foreach(self::getTotalCompaniesActiveUser() as $key => $company){
 
-            $companiesLogged['company_id'][] = $company[$key]['id'];
+            $companiesLogged['company_id'][] = $company[0]['id'];
         }
 
         return isset($companiesLogged['company_id']) ? Company::whereNotIn('id', $companiesLogged['company_id'])->get() : $companiesLogged;
