@@ -20,9 +20,10 @@ class UserActivityHistory extends Model
 
         $resumied = UserActivityHistory::join('modules', 'modules.url', '=', 'user_activity_histories.action')
         ->whereBetween('day' , [$start." 00:00:00", $end." 23:59:59"])
-        ->select('user_activity_histories.action','modules.label', DB::raw('count(*) as total'))
-        ->groupBy('user_activity_histories.action')
+        ->select('user_activity_histories.action','modules.label', DB::raw('count(modules.label) as total'))
+        ->groupBy('modules.label')
         ->get();
+
 
         return ['resumied' => $resumied];
     }

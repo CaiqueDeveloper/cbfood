@@ -61,7 +61,7 @@ var SystemUsabilityControl = {
        })
        .then((response) =>{
         console.log(response.data.resumied)
-        KoolChart.create("chart-user-usability-history", "UserUsabilityHistory", "", "100%", "100%");
+        KoolChart.create("chart-user-usability-history", "chartUserUsabilityHistory", "", "100%", "100%");
 
         var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
         +'<Options>'

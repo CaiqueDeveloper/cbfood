@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ee32535aba314c1e6c656d78929abc2a",
+    "content-hash": "86ced33ef5c38d34b007d5b81d5f2124",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3403,6 +3403,64 @@
                 "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
+        },
+        {
+            "name": "sngrl/php-firebase-cloud-messaging",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sngrl/php-firebase-cloud-messaging.git",
+                "reference": "e1a344c20c6d7dc4f89dcc5a56b17129d007d2b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sngrl/php-firebase-cloud-messaging/zipball/e1a344c20c6d7dc4f89dcc5a56b17129d007d2b2",
+                "reference": "e1a344c20c6d7dc4f89dcc5a56b17129d007d2b2",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mockery/mockery": "*",
+                "phpunit/phpunit": "*"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "sngrl\\PhpFirebaseCloudMessaging\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sngrl",
+                    "email": "i@sngrl.ru"
+                }
+            ],
+            "description": "PHP API for Firebase Cloud Messaging from Google",
+            "homepage": "https://github.com/sngrl/php-firebase-cloud-messaging",
+            "keywords": [
+                "FCM",
+                "android",
+                "chrome",
+                "cloud",
+                "firebase",
+                "google",
+                "ios",
+                "notifications",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/sngrl/php-firebase-cloud-messaging/issues",
+                "source": "https://github.com/sngrl/php-firebase-cloud-messaging/tree/master"
+            },
+            "time": "2017-06-26T15:58:02+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8456,7 +8514,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "sngrl/php-firebase-cloud-messaging": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
