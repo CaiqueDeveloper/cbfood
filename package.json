@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.8.3",
+        "firebase": "^9.9.1",
         "inputmask": "^5.0.7",
         "push.js": "^1.0.12"
     }
