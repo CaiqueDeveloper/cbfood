@@ -27,4 +27,19 @@ class UserActivityHistory extends Model
 
         return ['resumied' => $resumied];
     }
+    protected static function getSatistcOfUsability($start, $end, $modules,$company){
+        return self::processingRequesUser(LogActivity::userLogged($start, $end));
+    }
+    private static function processingRequesUser($data){
+        $users = [];
+        foreach($data as $key => $d){
+            $users[$key]['id'] = $d->user_id;
+            $users[$key]['name'] = $d->users->name;
+            $users[$key]['company'] = $d->users->company->name;
+            $users[$key]['total_company'] = count($d->users->companies);
+            $users[$key]['profile'] = $d->users->profiles->last()->label;
+            $users[$key]['last_access'] = date('d/m/Y H:i:s',strtotime($d->login));
+        }
+        return $users;
+    }
 }

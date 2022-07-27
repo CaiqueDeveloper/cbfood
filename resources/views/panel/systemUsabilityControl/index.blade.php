@@ -98,6 +98,7 @@
     <div class="card-body">
         <div class="card-body">
             <div id="chartUserUsabilityHistory" style="height:500px; width:100%;"></div>
+            <table class="makeTableSystemUsabilityControl table  table-info table-bordered"></table>
         </div>
     </div>
 </div>

@@ -36,4 +36,8 @@ class SystemUsabilityControlController extends Controller
     protected function listUserUsabilityHistory(Request $request){
         return UserActivityHistory::listUserUsabilityHistory($request->start, $request->end);
     }
+    protected function getData(Request $request){
+        $users = UserActivityHistory::getSatistcOfUsability($request->start, $request->end, $request->modules,$request->company);
+        return response()->json($users);
+    }
 }
