@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\NotifyTheCompanySalesTheRequstUser;
+use App\Http\Controllers\Admin\SendNotificationFCMController;
 use App\Notifications\NotifyTheCompanyOfTheUsersRequest;
 use DatePeriod;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -91,6 +92,7 @@ class Order extends Model
         $company = $orderInsert->orderCompany;
         Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
         event(new NotifyTheCompanySalesTheRequstUser($orderInsert));
+        SendNotificationFCMController::sendPushNotification();
         return true;
     }
 
