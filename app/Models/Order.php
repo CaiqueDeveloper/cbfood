@@ -92,7 +92,7 @@ class Order extends Model
         $company = $orderInsert->orderCompany;
         Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
         event(new NotifyTheCompanySalesTheRequstUser($orderInsert));
-        SendNotificationFCMController::sendNotification();
+        //SendNotificationFCMController::sendNotification();
         return true;
     }
 
