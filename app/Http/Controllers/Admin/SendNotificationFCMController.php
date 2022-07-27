@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SendNotificationFCMController extends Controller
 {
-    public function sendNotification(Request $request)
+    public function sendNotification()
     {
         $firebaseToken = User::whereNotNull('device_token')->pluck('device_token')->all();
             
@@ -17,8 +17,8 @@ class SendNotificationFCMController extends Controller
         $data = [
             "registration_ids" => $firebaseToken,
             "notification" => [
-                "title" => $request->title,
-                "body" => $request->body,  
+                "title" => 'title',
+                "body" => 'body,'  
             ]
         ];
         $dataString = json_encode($data);
