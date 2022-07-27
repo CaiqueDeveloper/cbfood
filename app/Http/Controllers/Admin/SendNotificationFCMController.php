@@ -38,7 +38,7 @@ class SendNotificationFCMController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS, $dataString);
                  
         $response = curl_exec($ch);
-		dd($response);
+		return response()->jon($response);
     }
         
 }
