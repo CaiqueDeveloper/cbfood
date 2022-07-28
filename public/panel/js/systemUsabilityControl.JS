@@ -29,15 +29,25 @@ var SystemUsabilityControl = {
             end = moment(end_).format("YYYY-MM-DD");
         });
 
-        SystemUsabilityControl.getSummaryIdicator()
+        SystemUsabilityControl.getSummaryIdicator(moment().startOf('day').format("YYYY-MM-DD"), moment().startOf('day').format("YYYY-MM-DD"), modules, company)
         SystemUsabilityControl.getAllActions(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
         SystemUsabilityControl.getData(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"), modules, company);
+
+        $('.search-system-usability-period').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+            SystemUsabilityControl.getAllActions(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
+            SystemUsabilityControl.getData(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"), modules, $('#selectCompany option').filter(':selected').val());
+            
+        })
+        
     },
-    getSummaryIdicator(){
+    getSummaryIdicator(start, end,modules,company){
         $('.AppBlock').removeClass('d-none');
         axios({
             method: 'GET',
             url: window.location.origin + `/admin/systemUsabilityControl/summaryIdicator`,
+            params:{start,end,modules,company}
        })
        .then((response) =>{
             $('.totalUserActive').html(response.data.usersActive.total)

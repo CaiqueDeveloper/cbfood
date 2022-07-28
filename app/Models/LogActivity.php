@@ -21,22 +21,25 @@ class LogActivity extends Model
       return  $this->belongsTo(User::class ,'user_id', 'id');
     }
 
-    protected static function userLogged($start = null, $end = null){
-        
+    protected static function userLogged($start = null, $end = null, $company){
+       
         if($start == null && $end == null){
             $start = date('Y-m-d');
             $end = date('Y-m-d');
         }
 
-        return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
-        ->whereNotIn('user_id', User::getAllUserManagerPlataform())
-        ->with(['users.company', 'users.profiles', 'users.companies'])
-        ->orderBy('login', 'desc')
-        ->get()
-        ->unique('user_id');
+        switch($company){
+            case 'all':
+               return self::getAllUserFilterDefault($start, $end);
+            break;
+            default:
+                return self::getAllUserFilterCompany($start, $end, $company);
+            break;
+        }
+       
     }
     protected static function companyLogged($start = null, $end = null){
-        
+    
         if($start == null && $end == null){
             $start = date('Y-m-d');
             $end = date('Y-m-d');
@@ -64,5 +67,23 @@ class LogActivity extends Model
         }
 
         return isset($companiesLogged['company_id']) ? Company::whereNotIn('id', $companiesLogged['company_id'])->get() : $companiesLogged;
+    }
+    private static function getAllUserFilterDefault($start, $end){
+        
+        return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
+        ->whereNotIn('user_id', User::getAllUserManagerPlataform())
+        ->with(['users.company', 'users.profiles', 'users.companies'])
+        ->orderBy('login', 'desc')
+        ->get()
+        ->unique('user_id');
+    }
+    private static function getAllUserFilterCompany($start, $end, $company){
+      
+        return LogActivity::whereBetween('login', [$start." 00:00:00", $end." 23:59:59"])
+        ->whereIn('user_id', array_column(Company::geAllUserCompany($company)->toArray(), 'id'))
+        ->with(['users.company', 'users.profiles', 'users.companies'])
+        ->orderBy('login', 'desc')
+        ->get()
+        ->unique('user_id');
     }
 }

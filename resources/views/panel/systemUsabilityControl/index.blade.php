@@ -62,7 +62,7 @@
 <div class="card mb-4">
     <div class="card-header">Indicadores</div>
     <div class="card-body">
-        <div class="row  mt-2 mb-3 align-items-center">
+        <div class="row  mt-2 mb-3 align-items-center justify-content-center">
             <div class="input-group col col-sm-3 mb-2 mt-2 period_checkin flex flex-column ">
                 <h6 class="label-selector">Período do Login</h6>
                 <div class="d-flex">
@@ -78,12 +78,12 @@
                     @endforeach
                 </select>
             </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-4 d-none">
                 <label for="inputState">Módulos</label>
                 <select id="selectModules" class="form-control">
                     <option value="all" selected>Todas os Móludos</option>
                     @foreach ($modules as $module)
-                        <option value="{{$module->id}}">{{$module->name}}</option>
+                        <option value="{{$module->url}}">{{$module->name}}</option>
                     @endforeach
                 </select>
             </div>

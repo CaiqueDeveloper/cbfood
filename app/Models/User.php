@@ -105,6 +105,9 @@ class User extends Authenticatable
     public function companies(){
         return $this->belongsToMany(Company::class);
     }
+    public function logActivity(){
+        return $this->belongsTo(LogActivity::class);
+    }
     public function company(){
         return $this->belongsTo(Company::class, 'company_id', 'id');
     }

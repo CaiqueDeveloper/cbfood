@@ -19,14 +19,14 @@ class SystemUsabilityControlController extends Controller
         $companiesUser = Auth()->user()->companies()->where('status', 1)->get();
         return view('panel.systemUsabilityControl.index', compact('modules', 'companiesUser'));
     }
-    protected function summaryIdicator(){
+    protected function summaryIdicator(Request $request){
         
         $goalCompaniesActive = (count(LogActivity::getTotalCompaniesActiveUser()) / count(Company::where('status', 1)->get()))* 100;
         $goalCompaniesInative = (count(LogActivity::getTotalCompaniesInativeUser()) / count(Company::where('status', 1)->get())) * 100;
-        $goaUsersActive = (count(LogActivity::userLogged()) / count(User::getAllUser())) * 100;
+        $goaUsersActive = (count(LogActivity::userLogged($request->start, $request->end, $request->modules,$request->company)) / count(User::getAllUser())) * 100;
 
         return response()->json(
-            ['usersActive' => ['goal' => UltilsController::percentage($goaUsersActive), 'total' => count(LogActivity::userLogged())],
+            ['usersActive' => ['goal' => UltilsController::percentage($goaUsersActive), 'total' => count(LogActivity::userLogged($request->start, $request->end, $request->modules,$request->company))],
             'companiesActive' => ['goal' => UltilsController::percentage($goalCompaniesActive), 'total' => count(LogActivity::getTotalCompaniesActiveUser())], 
             'companiesInative' => ['goal' => UltilsController::percentage($goalCompaniesInative), 'total' => count(LogActivity::getTotalCompaniesInativeUser())]]
         );
@@ -37,6 +37,7 @@ class SystemUsabilityControlController extends Controller
         return UserActivityHistory::listUserUsabilityHistory($request->start, $request->end);
     }
     protected function getData(Request $request){
+
         $users = UserActivityHistory::getSatistcOfUsability($request->start, $request->end, $request->modules,$request->company);
         return response()->json($users);
     }

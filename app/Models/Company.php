@@ -76,6 +76,9 @@ class Company extends Model
     public function orders(){
         return $this->hasMany(Order::class, 'company_id');
     }
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
     public function user(){
         return $this->hasMany(User::class, 'company_id');
     }
@@ -91,5 +94,9 @@ class Company extends Model
     public function categories(){
 
         return $this->hasMany(Category::class, 'category_morph_id', 'id');
+    }
+    protected static function geAllUserCompany($id){
+
+        return Company::find($id)->users()->whereNotIn('id',  User::getAllUserManagerPlataform())->get();
     }
 }

@@ -28,7 +28,10 @@ class UserActivityHistory extends Model
         return ['resumied' => $resumied];
     }
     protected static function getSatistcOfUsability($start, $end, $modules,$company){
-        return self::processingRequesUser(LogActivity::userLogged($start, $end));
+       // return LogActivity::userLogged($start, $end, $company);
+        return self::processingRequesUser(LogActivity::userLogged($start, $end, $company));
+        
+        
     }
     private static function processingRequesUser($data){
         $users = [];

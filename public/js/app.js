@@ -46,7 +46,6 @@ var pusher = new Pusher(window.Laravel.pusher.key, {
 var channel = pusher.subscribe('orders');
 channel.bind('sendOrderCompany', function (data) {
   Ultils.getNotifyComapy();
-  var message = '';
   console.log(data.order.message);
 
   if (!("Notification" in window)) {
