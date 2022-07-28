@@ -13,7 +13,7 @@
 <div class="card mb-4">
     <div class="card-header">Analise Resumida</div>
     <div class="card-body">
-        <div class="row justify-content-center">
+        <div class="row flex-column align-items-center flex-sm-row justify-content-center">
             <div class="col  shadown" style="background: linear-gradient(90deg, rgba(1,31,75,1) 0%, rgba(1,31,75,1) 49%, rgba(114,81,178,1) 100%);border-radius: 10px;">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
@@ -28,7 +28,7 @@
                 <a href="#" class="small-box-footer show-modal-users-active" id="" style="color:#fff;">Usuários<i class="la la-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <div class="col  mx-3 shadown" style="background: linear-gradient(90deg, rgba(1,31,75,1) 0%, rgba(1,31,75,1) 49%, rgba(114,81,178,1) 100%);border-radius: 10px;">
+            <div class="col  my-3 mx-sm-3  my-sm-0 shadown" style="background: linear-gradient(90deg, rgba(1,31,75,1) 0%, rgba(1,31,75,1) 49%, rgba(114,81,178,1) 100%);border-radius: 10px;">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
                 <div class="inner" style="border-bottom: 1px solid #fff;margin-bottom: 10px;">
