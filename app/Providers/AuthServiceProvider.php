@@ -28,11 +28,13 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies($gate);
 
         $permissions = Module::with('profiles')->get();
-        //dd($permissions); 
-        foreach ($permissions as $permission) {
-            $gate->define($permission->name, function(User $user) use ($permission){                
-                return $user->hasModule($permission);
-            });
+        if(sizeof($permissions) > 0){
+            foreach ($permissions as $permission) {
+                $gate->define($permission->name, function(User $user) use ($permission){                
+                    return $user->hasModule($permission);
+                });
+            }
         }
+        
     }
 }
