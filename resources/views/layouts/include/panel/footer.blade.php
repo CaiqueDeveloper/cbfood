@@ -72,6 +72,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="{{asset('js/app.js')}}"></script>
     {{-- <script src="{{asset('js/bootstrap.js')}}" defer></script> --}}
+   
     
     <script type="text/javascript">
         $(document).ready(function(){

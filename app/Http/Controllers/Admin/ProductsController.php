@@ -17,6 +17,7 @@ class ProductsController extends Controller
     public function index(){
         return view('panel.products.index');
     }
+    
     public function getModalCreatProduct(){
         
         

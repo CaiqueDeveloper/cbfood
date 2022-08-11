@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "bootstrap-icons": "^1.8.3",
+        "dropzone": "^6.0.0-beta.2",
         "firebase": "^9.9.1",
         "inputmask": "^5.0.7",
         "push.js": "^1.0.12"

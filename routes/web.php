@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\ProfilesController;
 use App\Http\Controllers\Admin\ProfilesUserController;
 use App\Http\Controllers\Admin\PromotionsController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\settingCompanyController;
 use App\Http\Controllers\Admin\SystemUsabilityControlController;
 use App\Http\Controllers\Admin\UserController;
@@ -85,6 +86,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/deleteAdditionalProduct', [ProductsController::class, 'deleteAdditionalProduct']);
     Route::get('/deleteImageProduct', [ProductsController::class, 'deleteImageProduct']);
     Route::get('/deleteVariationProduct', [ProductsController::class, 'deleteVariationProduct']);
+    
+    Route::get('/import', [ReportController::class, 'import']);
+    Route::post('/import/processingReport', [ReportController::class, 'processingReport']);
 
     //Additionals
     Route::get('/additional', [AdditionalController::class, 'index']);
