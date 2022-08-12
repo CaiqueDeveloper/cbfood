@@ -22,6 +22,11 @@ const Report = {
                     $('#import').html('<div class="d-flex flex-column align-items-center"><i class="bi bi-check-circle-fill" style="font-size: 6rem; color: #92d72d;"></i><p style="font-size: 19px;color: #6b9c22;">Relatório Processado com Sucesso!</p></div>');
 
                 });
+                this.on("error", function(file, response) {
+                    $('#import').html('');
+                    $('#import').html('<div class="d-flex flex-column align-items-center"><i class="bi bi-x-octagon-fill" style="font-size: 6rem; color: red"></i><p style="font-size: 19px;color: red;">Erro ao processar o relatório. O tamanho excedeu o limite máximo de tempo de processamento</p></div>');
+
+                });
             }
         });
     }

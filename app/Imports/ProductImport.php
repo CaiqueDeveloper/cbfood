@@ -5,8 +5,11 @@ namespace App\Imports;
 use App\Models\Company;
 use App\Models\Product;
 use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 
-class ProductImport implements ToModel
+
+class ProductImport implements ToModel, WithChunkReading, ShouldQueue
 {
     /**
     * @param array $row
@@ -15,6 +18,7 @@ class ProductImport implements ToModel
     */
     public function model(array $row)
     {
+       set_time_limit(0);
       if($row[2] != "" && $row[4] != "" && $row[4] != "Preco de Venda"){
         
             $id = Company::find(auth()->user()->company_id)->category()->updateOrCreate(['name' => 'NÃO DEFINIDA'])->id;
@@ -25,6 +29,10 @@ class ProductImport implements ToModel
             );
        }
          
+    }
+    public function chunkSize(): int
+    {
+        return 1000;
     }
     
 }
