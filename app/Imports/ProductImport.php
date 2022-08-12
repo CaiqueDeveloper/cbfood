@@ -16,6 +16,7 @@ class ProductImport implements ToModel
     public function model(array $row)
     {
       if($row[2] != "" && $row[4] != "" && $row[4] != "Preco de Venda"){
+        
             $id = Company::find(auth()->user()->company_id)->category()->updateOrCreate(['name' => 'NÃO DEFINIDA'])->id;
             return Company::find(auth()->user()->company_id)->product()->
             updateOrCreate(

@@ -1,11 +1,4 @@
-{{-- <form action="/admin/import1" method="post" enctype="multipart/form-data">
-    @csrf
- 
-    <!-- Equivalent to... -->
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-    <input type="file" name="file" id="">
-    <input type="submit" value="Submit">
-  </form> --}}
+
 @extends('layouts.panel.based-panel')
 @section('title', 'Importação de Dados')
 @section('content')
@@ -25,6 +18,7 @@
       <div class="m-dropzone__msg dz-message needsclick">
         <h3 class="m-dropzone__msg-title"></h3>
         <span class="m-dropzone__msg-desc">Arraste ou clique aqui para realizar o upload</span>
+        <i class="bi bi-file-earmark-fill"></i>
       </div>
     </div>
   </div>
@@ -40,3 +34,10 @@
         })
     </script>
 @endsection
+<style>
+  .dropzone{
+    border: 2px dashed #ccc !important;
+    cursor: pointer;
+    border-radius: 30px !important;
+  }
+</style>
