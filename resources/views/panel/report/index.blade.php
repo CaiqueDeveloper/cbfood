@@ -14,7 +14,7 @@
 <div class="row mt-4">
     
   <div class="col-xl-12 col-lg-12">
-    <div class="m-dropzone dropzone dz-clickable" id="import">
+    <div class="m-dropzone dropzone dz-clickable d-flex justify-content-center" id="import">
       <div class="m-dropzone__msg dz-message needsclick">
         <h3 class="m-dropzone__msg-title"></h3>
         <span class="m-dropzone__msg-desc">Arraste ou clique aqui para realizar o upload</span>

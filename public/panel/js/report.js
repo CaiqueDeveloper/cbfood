@@ -18,24 +18,8 @@ const Report = {
                     form.append('_token', $('meta[name="csrf-token"]').attr('content'));
                 });
                 this.on("success", function(file, response) {
-                    $('#second-step').html('');
-                    $('#second-step').html('<div class=""><i class="fa fa-check-circle" style="font-size: 6rem; color: #92d72d;"></i><p style="font-size: 19px;color: #6b9c22;">Relatório Processado com Sucesso!</p></div>');
-
-                    $.notify({
-                        title: 'Importação realizada com sucesso',
-                        message: 'Você será redirecionado para o Dashboard',
-                        icon: 'fa fa-check'
-                    }, {
-                        type: 'success',
-                        placement: {
-                            from: "bottom",
-                            align: "right"
-                        },
-                        animate: {
-                            enter: 'animated bounce',
-                            exit: 'animated bounce'
-                        }
-                    });
+                    $('#import').html('');
+                    $('#import').html('<div class="d-flex flex-column align-items-center"><i class="bi bi-check-circle-fill" style="font-size: 6rem; color: #92d72d;"></i><p style="font-size: 19px;color: #6b9c22;">Relatório Processado com Sucesso!</p></div>');
 
                 });
             }
