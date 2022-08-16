@@ -102,7 +102,6 @@
         </div>
     </div>
 </div>
-
 @endsection
 <script src="{{url('panel/js/systemUsabilityControl.js')}}"></script>
 @section('scripts')
