@@ -1,7 +1,33 @@
 const Orders = {
 
     construct(){
-        Orders.getOrders()
+        let value_select = '';
+        let type_select = '';
+        let start = moment().startOf('month');
+        let end = moment().endOf('month');
+        let dateRanges = new Array();
+        dateRanges['Dia atual'] = [moment().startOf('day'), moment().endOf('day')];
+        dateRanges['Dia Anterior'] = [moment().subtract(1, 'days').startOf('day'), moment().endOf('day')];
+        dateRanges['Últimos Sete Dias'] = [moment().subtract(7, 'days').startOf('day'), moment().endOf('day')];
+        dateRanges['Últimos Quinze Dias'] = [moment().subtract(15, 'days').startOf('day'), moment().endOf('day')];
+        dateRanges['Últimos Trinta Dias'] = [moment().subtract(1, 'M').startOf('day'), moment().endOf('day')];
+        $('#date-ranger-picker-orders').daterangepicker({
+            locale: {
+                format: 'DD/MM/YYYY'
+            },
+            startDate: start,
+            endDate: end,
+            maxDate: end,
+            opens: 'left',
+            ranges: dateRanges
+        }, function(start_, end_, label) {
+            start = moment(start_).format("YYYY-MM-DD");
+            end = moment(end_).format("YYYY-MM-DD");
+            Orders.getOrders(start, end, value_select, type_select)
+            Orders.getDataGraphSalesStatus(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
+        });
+        Orders.getOrders(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"), value_select, type_select)
+        Orders.getDataGraphSalesStatus(moment(start).format("YYYY-MM-DD"), moment(end).format("YYYY-MM-DD"))
     },
     init_listerns(){
         $('.show-modal-deliverymen').on('click', function(e){
@@ -22,11 +48,12 @@ const Orders = {
             Orders.sendOrderToDeliveryPerson(url);
         })
     },
-    getOrders(){
+    getOrders(start, end, value_select, type_select){
         $('.AppBlock').removeClass('d-none');
         axios({
             method:'GET',
-            url: window.location.origin + '/admin/getOrders'
+            url: window.location.origin + '/admin/getOrders',
+            params:{start, end}
         })
         .then((response) =>{
             let orders = []
@@ -62,16 +89,139 @@ const Orders = {
                 })
                 itemsOrder = []
             }
-            Orders.drawTableOrders(orders)
-            Orders.delivered(orders)
-            Orders.beingPrepared(orders)
-            Orders.canceled(orders)
+            Orders.drawTableOrders(orders, value_select, type_select)
+            Orders.makeSelect(orders, value_select, type_select)
         })
         .catch((error) =>{
             console.log(error.response.data)
         }).finally(() => {$('.AppBlock').addClass('d-none');})
-    }, 
-    drawTableOrders(orders){
+    },
+    makeSelect(data, value_select, type_select){
+        //console.log(data)
+      
+        var filter_cliente = {};
+        var option_client = '';
+        var filte_status_sales = {};
+        var option_status_sales = '';
+
+        
+       // $('#booking-listing-indicator-select').html('')
+        $('#status_sales').html('')
+        $('#select_client').html('')
+
+        for (let i in data) {
+            filter_cliente[data[i].orderUserName] = data[i].orderUserName;
+            filte_status_sales[data[i].orderStatus] = data[i].orderStatus;
+        }
+
+        //Preenchendo os Selects
+        //Clientes
+        client = [];
+        option_client += `<option value="all_client">Todos os Clientes</option>`;
+        for (var key in filter_cliente) {
+            client.push(key);
+        }
+        for (var i = client.length - 1; i >= 0; i--) {
+            option_client += `<option value="${client[i]}">${client[i]}</option>`;
+        }
+        // Status
+        status_sales = [];
+        option_status_sales += `<option value="all_status">Todos os Status</option>`;
+        for (var key in filte_status_sales) {
+            status_sales.push(key);
+        }
+        for (var i = status_sales.length - 1; i >= 0; i--) {
+            var status_name = [];
+            switch(status_sales[i]){
+                case "0":
+                    status_name = '<p style="background:#6ee7b7; color:#059669;border-radius:20px;font-weight:bold">Cancelado</p>'    
+                break;
+                case "1":
+                    status_name = '<p style="background:#6ee7b7; color:#059669;border-radius:20px;font-weight:bold">Novo</p>'    
+                break;
+                case "2":
+                    status_name = '<p style="background:#6ee7b7; color:#059669;border-radius:20px;font-weight:bold">Recebido</p>'     
+                break;
+                case "3":
+                    status_name = '<p style="background:#fde047; color:#ca8a04;border-radius:20px;font-weight:bold">Sendo Preparado</p>'    
+                break;
+                case "4":
+                    status_name = '<p style="background:#5eead4; color:#0d9488;border-radius:20px;font-weight:bold">Saiu Para Entrega</p>'     
+                break;
+                case "5":
+                    status_name = '<p style="background:#86efac; color:#16a34a;border-radius:20px;font-weight:bold">Entregue</p>'     
+                break;
+                default:
+                        status_name = "Status não definido";
+                    break;
+            }
+            option_status_sales += `<option value="${status_sales[i]}">${status_name}</option>`;
+        }
+
+        console.log(status_name);
+       
+        $('#select_client').html(option_client);
+        $('#status_sales').html(option_status_sales);
+
+        // $('#status_sales, #booking-listing-indicator-select-company').selectpicker('refresh')
+
+        $('#status_sales').on('change', function(e){
+            e.preventDefault();
+            type_select = "status";   
+            value_select = $('#status_sales').val()
+            Orders.drawTableOrders(data, value_select, type_select)
+            //BookingListing.makeIndicatorTotalizer(data, value_select, type_select)
+
+        })
+        $('#select_client').on('change', function(e){
+            e.preventDefault();
+            type_select = "clients";
+            value_select = $('#select_client').val()
+            Orders.drawTableOrders(data, value_select, type_select)
+           // BookingListing.makeIndicatorTotalizer(data, value_select, type_select)
+        })
+    },
+    getDataGraphSalesStatus(start, end){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:window.location.origin + '/admin/getDataGraphSalesStatus',
+            method: 'GET',
+            params: {start,end}
+        })
+        .then((response) =>{
+            //console.log(response.data.original);
+            KoolChart.create("chart-sales", "chartSales", "", "100%", "100%");
+
+            var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
+            +'<Options>'
+            +'<Caption text="Resmo por status"/>'
+            +'<Legend useVisibleCheck="true"/>'
+            +'</Options>'
+            +'<Pie3DChart showDataTips="true"  depth="50" paddingLeft="100" paddingTop="50" paddingRight="100" paddingBottom="50">'
+            +'<series>'
+            +'<Pie3DSeries nameField="name" field="total" labelPosition="inside" color="#ffffff" >'
+            +'<showDataEffect>'
+            +'<SeriesInterpolate duration="1000"/>'
+            +'</showDataEffect>'
+            +'</Pie3DSeries>'
+            +'</series>'
+            +'</Pie3DChart>'
+            +'</KoolChart>';
+
+
+            KoolChart.calls("chart-sales", {
+                "setLayout": layoutStr,
+                "setData": response.data.original
+            });
+        })
+        .catch((error) =>{
+          console.log(error.response.data)
+        })
+        .finally(()=>{$('.AppBlock').addClass('d-none');})
+    },
+    drawTableOrders(orders,value_select, type_select){
+      
+        let response = []
         //Create Colum
         var columns = [{
             className: 'dt-control',
@@ -128,11 +278,30 @@ const Orders = {
             title: 'STATUS',
             className: 'text-center'
         }];
+        if(type_select != "" && value_select != "all_status" && value_select != "all_client"){
+            if(type_select == "status"){
+                console.log(value_select)
+                for(let i in orders){
+                    if(orders[i].orderStatus == parseInt(value_select) ){
+                        response.push(orders[i]);
+                    }
+                }
+            }else{
+                for(let i in orders){
+                    console.log(value_select)
+                    if(orders[i].orderUserName == value_select){
+                        response.push(orders[i]);
+                    }
+                }
+            }
+        }else{
+            response = orders;
+        }
         //Mounted Table
         var table = $('.table-orders ').DataTable({
             destroy: true,
             columns: columns,
-            data: orders,
+            data: response,
             order: [
             [1, "desc"]
             ],

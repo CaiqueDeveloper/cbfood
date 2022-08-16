@@ -21,9 +21,9 @@ class SystemUsabilityControlController extends Controller
     }
     protected function summaryIdicator(Request $request){
         
-        $goalCompaniesActive = (count(LogActivity::getTotalCompaniesActiveUser()) / count(Company::where('status', 1)->get()))* 100;
-        $goalCompaniesInative = (count(LogActivity::getTotalCompaniesInativeUser()) / count(Company::where('status', 1)->get())) * 100;
-        $goaUsersActive = (count(LogActivity::userLogged($request->start, $request->end, $request->modules,$request->company)) / count(User::getAllUser())) * 100;
+        $goalCompaniesActive = (count(LogActivity::getTotalCompaniesActiveUser()) > 0) ? (count(LogActivity::getTotalCompaniesActiveUser()) / count(Company::where('status', 1)->get()))* 100 : 0;
+        $goalCompaniesInative = (count(LogActivity::getTotalCompaniesActiveUser()) > 0) ?  (count(LogActivity::getTotalCompaniesInativeUser()) / count(Company::where('status', 1)->get())) * 100 : 0;
+        $goaUsersActive = (count(LogActivity::getTotalCompaniesActiveUser()) > 0) ?  (count(LogActivity::userLogged($request->start, $request->end, $request->modules,$request->company)) / count(User::getAllUser())) * 100 : 0;
 
         return response()->json(
             ['usersActive' => ['goal' => UltilsController::percentage($goaUsersActive), 'total' => count(LogActivity::userLogged($request->start, $request->end, $request->modules,$request->company))],

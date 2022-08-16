@@ -68,6 +68,15 @@ class OrderController extends Controller
         $data = Order::allSalesByCategories($start, $interval, $end);
         return response()->json($data);  
     }
+    public function getDataGraphSalesStatus($start, $end){
+
+        $start = new DateTime($start);
+        $end = new DateTime($end);
+        $interval = new DateInterval('P1D');
+        
+        $data = Order::getDataGraphSalesStatus($start, $interval, $end);
+        return response()->json($data);  
+    }
     public function getDataShowingTop10SellingProducts($start, $end){
 
         $start = new DateTime($start);
@@ -87,9 +96,9 @@ class OrderController extends Controller
         return response()->json($data);  
     }
 
-    public function getOrders(){
+    public function getOrders(Request $request){
 
-        return response()->json(Order::getOrders(), 200);
+        return response()->json(Order::getOrders($request->start, $request->end), 200);
     }
     protected function updateStatusOrder(Request $request){
         $changeStateOrder = Order::changeStateOrderUser($request->order_id, $request->status);
