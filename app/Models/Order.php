@@ -35,10 +35,13 @@ class Order extends Model
         return $this->hasMany(User::class,'id', 'company_id');
     }
     
-    protected static function getOrders(){
+    protected static function getOrders($start, $end){
 
         $company_id = Auth::user()->company_id;
-        return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
+        return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')
+        ->whereBetween('created_at', [$start, $end])
+        ->orderBy('orders.created_at', 'desc')
+        ->get();
     }
     protected static function getOrdersDeliveryMen(){
 
@@ -137,7 +140,7 @@ class Order extends Model
     }
     public function allSalesByCategories($start, $interval, $end){
        
-        $data = Order::where('company_id', auth()->user()->company_id)
+        return Order::where('company_id', auth()->user()->company_id)
         ->whereBetween('orders.created_at', [$start, $end])
         ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
         ->join('products', 'products.id', '=', 'order_products.products_id')
@@ -146,8 +149,46 @@ class Order extends Model
         ->groupBy('categories.name')
         ->get();
        
+    }
+    public function getDataGraphSalesStatus($start, $interval,$end){
+       
+        $orders = Order::where('company_id', auth()->user()->company_id)
+        ->whereBetween('orders.created_at', [$start, $end])
+        ->select('orders.status',DB::raw('count(*) as total'))
+        ->groupBy('orders.status')
+        ->get();
 
+        $data = [];
+        foreach($orders as $key => $or){
+            switch($or->status){
+                case "0":
+                   $status_name = 'Cancelado</p>';   
+                break;
+                case "1":
+                   $status_name = 'Novo';   
+                break;
+                case "2":
+                   $status_name = 'Recebido';    
+                break;
+                case "3":
+                   $status_name = 'Sendo Preparado';   
+                break;
+                case "4":
+                   $status_name = 'Saiu Para Entrega';    
+                break;
+                case "5":
+                   $status_name = 'Entregue';    
+                break;
+                default:
+                    $status_name = "Status não definido";
+                break;
+            }
+            
+            $data[$key]['total'] = $or->total;
+            $data[$key]['name'] = $status_name;
+        }
         return $data;
+       
     }
     public function getDataShowingTop10SellingProducts($start, $interval, $end){
        
@@ -156,11 +197,11 @@ class Order extends Model
         ->join('order_products', 'order_products.orders_id', '=', 'orders.id')
         ->join('products', 'products.id', '=', 'order_products.products_id')
         ->join('categories', 'categories.id','=', 'products.category_id')
-        ->select('products.name','categories.name as category',DB::raw('order_products.quantity as total, order_products.price * order_products.quantity as totalBilling'))
-        ->orderBy('order_products.quantity', 'desc')
+        ->select('products.name','categories.name as category',DB::raw('sum(order_products.quantity) as total, order_products.price * sum(order_products.quantity) as totalBilling'))
+        ->groupBy('products.name')
         ->limit(10)
         ->get();
-
+        
         return $data;
     }
     public function getDataTableSalesDay($start, $interval, $end){

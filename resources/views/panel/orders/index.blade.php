@@ -17,24 +17,21 @@
             <div class="input-group col col-sm-3 mb-2 mt-2 period_checkin flex flex-column ">
                 <h6 class="label-selector">Período de Venda</h6>
                 <div class="d-flex">
-                    <input type="text" class="form-control m-input input-io" id="systemUsabilityControlDatePicker">
+                    <input type="text" class="form-control m-input input-io" id="date-ranger-picker-orders">
                 </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputState">Estatus da Venda</label>
-                <select id="selectCompany" class="form-control">
-                    <option value="all" selected>Todo os Satus</option>
+                <select id="status_sales" class="form-control">
                 </select>
             </div>
               <div class="form-group col-md-4">
                 <label for="inputState">Clientes</label>
-                <select id="selectModules" class="form-control">
-                    <option value="all" selected>Todos os Clientes</option>
-              
+                <select id="select_client" class="form-control">
                 </select>
             </div>
-            <div class="mt-2">
-                <button class="btn btn-success btn-icon search-system-usability-period"><i class="fa fa-search d-none"></i> Pesquisar</button>
+            <div class="mt-2 col d-none">
+                <button class="btn btn-success btn-icon col search-system-usability-period"><i class="fa fa-search d-none"></i> Pesquisar</button>
             </div>
         </div>
     </div>
@@ -43,7 +40,7 @@
     <div class="card-header">Analise Grafica</div>
     <div class="card-body">
         <div class="row  mt-2 mb-3 align-items-center justify-content-center">
-            
+            <div id="chartSales" style="height:500px; width:100%;"></div>
         </div>
     </div>
 </div>
