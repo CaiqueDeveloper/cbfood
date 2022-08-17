@@ -36,11 +36,11 @@
         <div class="container mx-auto h-[50px] flex items-center justify-between font-bold text-gray-600">
             <section class="text-orange-600 text-2xl">
                 <header class="flex items-center justify-center sm:text-2xl font-bold text-gray-900">    
-                    <img src="{{ url('panel/img/logo/icon-page.svg') }}" alt="" width="70px"><p class="hidden sm:block ml-2">CbFood.</p>
+                    <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="70px" height="70px" class="rounded-full"><p class=" ml-2 text-md">{{$menuCompany['company']->name}}</p>
                 </header>
             </section>
            
-            <div class="content-alert-bar-menu flex">
+            <div class="content-alert-bar-menu flex hidden">
                 @if (!Auth::guest())
                     
                 

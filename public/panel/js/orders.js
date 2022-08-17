@@ -314,7 +314,7 @@ const Orders = {
                     let status = $(this).attr('data-order_status')
 
                     let url = window.location.origin + `/admin/updateStatusOrder?order_id=${order_id}&status=${status}`
-                    Orders.updateStatusOrder(url);
+                    Orders.updateStatusOrder(url, value_select, type_select);
                 })
                 $('.exportOrder').on('click', function(e){
                     e.preventDefault()
@@ -532,7 +532,7 @@ const Orders = {
           return row;
         } 
     },
-    updateStatusOrder(url){
+    updateStatusOrder(url,value_select, type_select){
         $('.AppBlock').removeClass('d-none');
         axios({
             url:url,
@@ -547,7 +547,7 @@ const Orders = {
                 );
                 setTimeout(() =>{
                     swal.close()
-                    Orders.getOrders()
+                    Orders.getOrders(start = null,end = null,value_select, type_select)
                     Orders.sendMessage(response.data)
                 },3000)
             }

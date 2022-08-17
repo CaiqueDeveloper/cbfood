@@ -6,6 +6,7 @@ use App\Events\NotifyTheCompanySalesTheRequstUser;
 use App\Http\Controllers\Admin\SendNotificationFCMController;
 use App\Notifications\NotifyTheCompanyOfTheUsersRequest;
 use DatePeriod;
+use DateTime;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
@@ -35,8 +36,12 @@ class Order extends Model
         return $this->hasMany(User::class,'id', 'company_id');
     }
     
-    protected static function getOrders($start, $end){
-
+    protected static function getOrders($start = null, $end = null){
+        
+        if($start == null && $end == null){
+            $start = new DateTime('first day of this month');
+            $end = new DateTime('last day of this month');
+        }
         $company_id = Auth::user()->company_id;
         return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')
         ->whereBetween('created_at', [$start, $end])
