@@ -25,6 +25,10 @@ class HomeController extends Controller
         $menuCompany = SettingCompany::getCompanyUsingSlug($slug);
         return view('app.home.index', compact('menuCompany'));
     }
+    public function getModalUser(){
+
+        return view('app.users.index');
+    }
     public function renderViewGetProduct($product_id){
         
         $product = [];

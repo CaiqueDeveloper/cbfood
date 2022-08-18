@@ -1,11 +1,38 @@
   <!-- button scroll top -->
-    <div id="toggleCart" class="bg-orange-600 sm:hidden open-shopping-cart  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toggleCart" class="bg-orange-600 hidden sm:hidden open-shopping-cart  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-cart-plus animate-pulse	"></i>
     </div>
     <!-- final  button scroll top -->
     <!-- button scroll top -->
-    <div id="toTop" class="bg-orange-600 hidden  w-[40px] h-[40px] fixed bottom-[30px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toTop" class="bg-orange-600 hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
+    </div>
+    <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-0 z-50">
+        <section class="cart-info bg-orange-600 h-12 ">
+            <div class="container mx-auto flex  justify-between ">
+                <article class="h-12 flex items-center justify-center font-bold text-white cursor-pointer open-shopping-cart">
+                    <i class="bi bi-cart-fill mx-2"></i>
+                    <p>VER CARRINHO</p>
+                </article>
+                <article class="h-12 flex items-center " >
+                    <p class="total-itemCart bg-orange-300 w-10 h-10 rounded-full text-white font-semibold text-center flex items-center justify-center"></p>
+                    <p class="total-priceIntemCart mx-2 text-white font-semibold text-center flex items-center justify-center"></p>
+                </article>
+            </div>
+        </section>
+        <section class="menu-mobile h-12 bg-white sm:hidden flex items-center">
+            <div class="container mx-auto flex justify-evenly text-2xl">
+                <p class=" cursor-pointer" onClick="window.location.reload()">
+                    <i class="bi bi-house-door-fill"></i>
+                </p>
+                <p class=" cursor-pointer show-modal-user">
+                    <i class="bi bi-person-fill"></i>
+                </p>
+                <p class=" cursor-pointer my-bag">
+                    <i class="bi bi-file-earmark-text"></i>
+                </p>
+            </div>   
+        </section>
     </div>
     <!-- final  button scroll top -->
     <!-- ini footer -->

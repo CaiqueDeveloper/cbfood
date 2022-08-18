@@ -186,9 +186,11 @@ Route::prefix('app')->group(function(){
     Route::post('/loginUser', [PageHomeController::class, 'loginUser']);
     Route::post('/logoutUser', [PageHomeController::class, 'logoutUser']);
     Route::get('/getModalMyBagUser', [PageHomeController::class, 'getModalMyBagUser']);
+    Route::get('/getModalUser', [PageHomeController::class, 'getModalUser']);
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+    Route::get('cart/totalPriceCartItem', [CartController::class, 'priceCart']);
     Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
     Route::get('updateItemCart', [CartController::class, 'updateCart'])->name('cart.update');
     Route::get('remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');

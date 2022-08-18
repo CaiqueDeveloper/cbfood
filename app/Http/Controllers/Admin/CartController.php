@@ -15,6 +15,13 @@ class CartController extends Controller
         
         return response()->json($cartItems, 200);
     }
+    public function priceCart()
+    {
+      
+        $priceCart = \Cart::getTotal();
+        
+        return response()->json(number_format($priceCart,2,",","."), 200);
+    }
 
 
     public function addToCart(Request $request){
@@ -50,7 +57,8 @@ class CartController extends Controller
                 ],
             ]
         );
-        return response()->json('Product is Added to Cart Successfully !',200);
+        $priceCart = \Cart::getTotal();
+        return response()->json(['quantity' => $request->quatity, 'totalPrice' => number_format($priceCart,2,",",".")],200);
     }
 
     public function removeCart($id)
