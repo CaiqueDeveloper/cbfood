@@ -7,7 +7,7 @@
     <div id="toTop" class="bg-orange-600 hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
     </div>
-    <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-0 z-50">
+    <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-[-10px] z-50">
         <section class="cart-info bg-orange-600 h-12 ">
             <div class="container mx-auto flex  justify-between ">
                 <article class="h-12 flex items-center justify-center font-bold text-white cursor-pointer open-shopping-cart">
