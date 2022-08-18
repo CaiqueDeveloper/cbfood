@@ -186,6 +186,7 @@ Route::prefix('app')->group(function(){
     Route::post('/loginUser', [PageHomeController::class, 'loginUser']);
     Route::post('/logoutUser', [PageHomeController::class, 'logoutUser']);
     Route::get('/getModalMyBagUser', [PageHomeController::class, 'getModalMyBagUser']);
+    Route::get('/getModalUser', [PageHomeController::class, 'getModalUser']);
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');

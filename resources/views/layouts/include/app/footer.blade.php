@@ -22,10 +22,10 @@
         </section>
         <section class="menu-mobile h-12 bg-white sm:hidden flex items-center">
             <div class="container mx-auto flex justify-evenly text-2xl">
-                <p class=" cursor-pointer">
+                <p class=" cursor-pointer" onClick="window.location.reload()">
                     <i class="bi bi-house-door-fill"></i>
                 </p>
-                <p class=" cursor-pointer">
+                <p class=" cursor-pointer show-modal-user">
                     <i class="bi bi-person-fill"></i>
                 </p>
                 <p class=" cursor-pointer my-bag">

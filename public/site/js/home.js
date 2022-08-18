@@ -26,6 +26,13 @@ var Home = {
             e.preventDefault();
             $('html, body').animate({scrollTop:0}, '300');
         });
+        $('.show-modal-user').on('click', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let url =  window.location.origin +  '/app/getModalUser'
+            Home.getModalUser(url);
+        })
     },
     init_listerns(){
         let qtModal = 0;
@@ -339,6 +346,24 @@ var Home = {
             Home.init_listerns()
             let qtModal = 1;
             $('.product-content-info--qt').html(qtModal);
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            console.log('finalizou a consulta')
+        })
+    },
+    getModalUser(url){
+        axios({
+            url:url,
+            method:'GET'
+        }).then((response) =>{
+            $("#modalMain").find('.modal-body').html(response.data);
+            $('#modalMain').modal('show');
+            $('.modal-dialog').addClass('modal-lg');
+            $('.modal-body').css({
+                'width': '100vw',
+            })
+            Home.init_listerns()
         }).catch((error) =>{
 
         }).finally(()=>{
