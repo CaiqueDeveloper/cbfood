@@ -4,7 +4,7 @@
     </div>
     <!-- final  button scroll top -->
     <!-- button scroll top -->
-    <div id="toTop" class="bg-orange-600 w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toTop" class="bg-orange-600 hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
     </div>
     <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-0 z-50">
@@ -16,7 +16,7 @@
                 </article>
                 <article class="h-12 flex items-center " >
                     <p class="total-itemCart bg-orange-300 w-10 h-10 rounded-full text-white font-semibold text-center flex items-center justify-center"></p>
-                    <p class="total-priceIntemCart mx-2 text-white font-semibold text-center flex items-center justify-center">R$ {{number_format(Cart::getTotal(),2,",",".") }}</p>
+                    <p class="total-priceIntemCart mx-2 text-white font-semibold text-center flex items-center justify-center"></p>
                 </article>
             </div>
         </section>

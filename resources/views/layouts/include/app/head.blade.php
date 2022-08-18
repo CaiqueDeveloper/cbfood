@@ -38,20 +38,4 @@
     <link rel="icon" href="{{ url('panel/img/logo/icon-page.svg') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
-    <style>
-        body::-webkit-scrollbar {
-            width: 15px;
-        }
-        
-        body::-webkit-scrollbar-track {
-            background: #ea580c;
-        }
-        
-        body::-webkit-scrollbar-thumb {
-            background-color: #ea580c;
-            border-radius: 20px;
-            border: 3px solid #fdba74;
-        }
-    </style>
-   
 </head>

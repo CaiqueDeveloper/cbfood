@@ -4,6 +4,7 @@ var Home = {
     constructor() {
         Home.init_listerns()
         Home.getTotalItemCart()
+        Home.getTotalPriceItemCart()
         Home.rederViewAllProductsCompany()
         $('.search-product').on('submit', function(e){
             e.preventDefault()
@@ -12,7 +13,19 @@ var Home = {
 
             let url = window.location.origin + `/app/getProductName`
             Home.getProductName(url, this)
-        })  
+        }) 
+        var btn = $('#toTop');
+        $(window).scroll(function() {
+            if ($(this).scrollTop() - 200 > 0) {
+                $('#toTop').stop().slideDown('fast'); // show the button
+            } else {
+                $('#toTop').stop().slideUp('fast'); // hide the button
+            }
+        });
+        btn.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({scrollTop:0}, '300');
+        });
     },
     init_listerns(){
         let qtModal = 0;
@@ -50,7 +63,7 @@ var Home = {
             let quantity = ($(this).val() > 0) ? $(this).val() : 1; 
             let product_id = $(this).attr('data-id_product')
             let url = window.location.origin + `/app/updateItemCart?product_id=${product_id}&quatity=${quantity}`;
-            Home.updateItemCart(url);
+            Home.updateItemCart(url, null);
         })
        $('.checout').on('click', function(e){
            e.preventDefault()
@@ -301,6 +314,7 @@ var Home = {
                 setTimeout(() =>{
                     
                     Home.getTotalItemCart()
+                    Home.getTotalPriceItemCart()
                     swal.close()
                    
                 },3000)
@@ -319,10 +333,12 @@ var Home = {
             $("#modalMain").find('.modal-body').html(response.data);
             $('#modalMain').modal('show');
             $('.modal-dialog').addClass('modal-lg');
-            $('.modal-title').html('Carrinho de Compras');
+            $('.modal-body').css({
+                'width': '100vw',
+            })
             Home.init_listerns()
-            
-            let qtModal = $('.product-content-info--qt').html(qtModal);
+            let qtModal = 1;
+            $('.product-content-info--qt').html(qtModal);
         }).catch((error) =>{
 
         }).finally(()=>{
@@ -355,6 +371,7 @@ var Home = {
                         setTimeout(() =>{
                             swal.close()
                             Home.getTotalItemCart()
+                            Home.getTotalPriceItemCart()
                             $("#modalMain").modal('hide');
                         },3000)
                     }
@@ -396,6 +413,7 @@ var Home = {
                         setTimeout(() =>{
                             swal.close()
                             Home.getTotalItemCart()
+                            Home.getTotalPriceItemCart()
                             let url = window.location.origin + '/app/getModalCartItem'
                             Home.getModalCartItem(url)
                             $("#modalMain").modal('hide');
@@ -426,7 +444,21 @@ var Home = {
             console.log('finalizou a consulta')
         })
     },
-    updateItemCart(url){
+    getTotalPriceItemCart(){
+        axios({
+            url:window.location.origin + '/app/cart/totalPriceCartItem',
+            method:'GET'
+        }).then((response) =>{
+            console.log(response.data)
+            $('.total-priceIntemCart').html(`R$ ${response.data}` );
+            
+        }).catch((error) =>{
+
+        }).finally(()=>{
+            console.log('finalizou a consulta')
+        })
+    },
+    updateItemCart(url, identifier){
         axios({
             url:url,
             method: 'GET',
@@ -434,6 +466,8 @@ var Home = {
         .then((response) =>{
             let url = window.location.origin + '/app/getModalCartItem'
             Home.getModalCartItem(url)
+            Home.getTotalPriceItemCart()
+            $('.total-price').html(`Total R$ ${response.data.totalPrice}`);
         })
         .catch((error) =>{
            
@@ -614,6 +648,7 @@ var Home = {
                 setTimeout(() =>{
                     $('.announcementModalArea').fadeOut('slow')
                     Home.getTotalItemCart()
+                    Home.getTotalPriceItemCart()
                     Ultils.getNotifyComapy();
                     swal.close()
                     $("#modalMain").modal('hide');

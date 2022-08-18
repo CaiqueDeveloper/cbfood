@@ -189,6 +189,7 @@ Route::prefix('app')->group(function(){
 
     //Cart
     Route::get('cart', [CartController::class, 'cartList'])->name('cart.list');
+    Route::get('cart/totalPriceCartItem', [CartController::class, 'priceCart']);
     Route::post('cart', [CartController::class, 'addToCart'])->name('cart.store');
     Route::get('updateItemCart', [CartController::class, 'updateCart'])->name('cart.update');
     Route::get('remove/{id}', [CartController::class, 'removeCart'])->name('cart.remove');
