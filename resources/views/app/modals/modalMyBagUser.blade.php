@@ -1,4 +1,4 @@
-@if(Auth::user()->orders)
+@if(Auth::user())
 <div class="accordion" id="accordionorder">
     @forelse (Auth::user()->orders as $order)
     <div class="card mt-[10px] ">
@@ -73,5 +73,8 @@
     
 </div>
 @else
-
+<div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+    <p class="font-bold">Aviso</p>
+    <p>Sua sacola está vazia.</p>
+</div>
 @endif
