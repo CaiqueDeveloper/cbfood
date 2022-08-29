@@ -12,7 +12,7 @@
             <div class="container mx-auto flex  justify-between ">
                 <article class="h-12 flex items-center justify-center font-bold text-white cursor-pointer open-shopping-cart">
                     <i class="bi bi-cart-fill mx-2"></i>
-                    <p>VER CARRINHO</p>
+                    <p class="text-sm">VER CARRINHO</p>
                 </article>
                 <article class="h-12 flex items-center " >
                     <p class="total-itemCart @if($menuCompany['company']->settings[0]->secondColor != null) bg-[{{$menuCompany['company']->settings[0]->secondColor}}] @else  bg-orange-300 @endif w-10 h-10 rounded-full  text-white font-semibold text-center flex items-center justify-center"></p>
