@@ -1,21 +1,21 @@
   <!-- button scroll top -->
-    <div id="toggleCart" class="bg-orange-600 hidden sm:hidden open-shopping-cart  w-[40px] h-[40px] fixed top-[140px] right-[10px] text-white leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toggleCart" class="@if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-300 @endif @if($menuCompany['company']->settings[0]->secondColor != null) text-[{{$menuCompany['company']->settings[0]->secondColor}}] @else text-orange-600 @endif hidden sm:hidden open-shopping-cart  w-[40px] h-[40px] fixed top-[140px] right-[10px] leading-[40px] text-center text-2xl rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-cart-plus animate-pulse	"></i>
     </div>
     <!-- final  button scroll top -->
     <!-- button scroll top -->
-    <div id="toTop" class="bg-orange-600 hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] text-white leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
+    <div id="toTop" class="@if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-300 @endif @if($menuCompany['company']->settings[0]->secondColor != null) text-[{{$menuCompany['company']->settings[0]->secondColor}}] @else text-orange-600 @endif hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
     </div>
     <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-[-5px] z-50">
-        <section class="cart-info bg-orange-600 h-12 ">
+        <section class="cart-info @if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-600 @endif h-12 ">
             <div class="container mx-auto flex  justify-between ">
                 <article class="h-12 flex items-center justify-center font-bold text-white cursor-pointer open-shopping-cart">
                     <i class="bi bi-cart-fill mx-2"></i>
                     <p>VER CARRINHO</p>
                 </article>
                 <article class="h-12 flex items-center " >
-                    <p class="total-itemCart bg-orange-300 w-10 h-10 rounded-full text-white font-semibold text-center flex items-center justify-center"></p>
+                    <p class="total-itemCart @if($menuCompany['company']->settings[0]->secondColor != null) bg-[{{$menuCompany['company']->settings[0]->secondColor}}] @else  bg-orange-300 @endif w-10 h-10 rounded-full  text-white font-semibold text-center flex items-center justify-center"></p>
                     <p class="total-priceIntemCart mx-2 text-white font-semibold text-center flex items-center justify-center"></p>
                 </article>
             </div>
@@ -34,6 +34,10 @@
             </div>   
         </section>
     </div>
+    @php
+        
+
+    @endphp
     <!-- final  button scroll top -->
     <!-- ini footer -->
     <footer class="w-full h-full bg-black flex  justify-center items-center">
