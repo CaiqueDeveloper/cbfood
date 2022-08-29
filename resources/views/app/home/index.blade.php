@@ -34,7 +34,7 @@
                         
                     </div>
                     <div class="form-group col mt-4 mr-2">
-                        <button type="submit" class="btn col-12 bg-orange-300 text-orange-600 font-bold shadow-none">Pesquisar</button>
+                        <button type="submit" class="btn col-12 @if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-300 @endif @if($menuCompany['company']->settings[0]->secondColor != null) text-[{{$menuCompany['company']->settings[0]->secondColor}}] @else text-orange-600 @endif font-bold shadow-none">Pesquisar</button>
                     </div>
                 </form>
             </div>
