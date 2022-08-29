@@ -1,7 +1,7 @@
 @php
     //dd($menuCompany['company']['settings'])
 @endphp
-<div class="grid grid-cols-1 gap-1 sm:grid-cols-6  sm:gap-2 py-4">
+<div class="grid grid-cols-1 gap-1 sm:grid-cols-3  sm:gap-2 py-4">
 @forelse ($menuCompany['company']['products'] as $product)
 @php
 //dd($product);
@@ -9,8 +9,33 @@
     $now = new DateTime();
     $difference = $first_date->diff($now)->days;
 @endphp
+<section class="cart-item-model mt-3 mr-3 shadow my-3 sm:mr-3 sm:ml-3 p-2 min-h-[250px] getModalProduct cursor-pointer" value="{{$product->id}}"  >
+    <div class="content-info-product grid grid-cols-2 col-span-2 min-h-[200px]">
+        <section>
+            <div class="title-product text-black font-bold text-sm mb-2">{{$product->name}}</div>
+            <div class="title-product  font-bold text-sm">
+                @if($product->description != null)
+                    {{$product->description}}
+                @else
+                    Não temos mais informações disponível sobre esse produto
+                @endif
+            </div>
+        </section>
+        <section class="bg-cover bg-no-repeat bg-center" style="background-image: url('/product_photo/@if(@count($product->images->last()->path) > 0){{$product->images->last()->path}}@else/default/default.jpg @endif ')" ></section>
+    </div>
+    <div class="footer-content-product mt-3 flex  justify-bettween border-t-2 border-gray-300">
+        <section class="font-bold text-green-600">
+            R$ {{number_format($product->price,2,",",".")}}
+        </section>
+        <section>
+            
+        </section>
+        <section>
+        </section>
+    </div>
+</section>
 
-    <div class="item-announcement w-full min-h-[250px] flex flex-col-reverse relative shadow-lg cursor-pointer my-[5px] overflow-hidden sm:rounded-3xl">
+    {{-- <div class="item-announcement w-full min-h-[250px] flex flex-col-reverse relative shadow-lg cursor-pointer my-[5px] overflow-hidden sm:rounded-3xl">
         <div class="absolute bg-green-300 z-50 top-2 left-2 text-green-600 font-bold rounded-md px-1  @if($difference > 5)  hidden @endif">
             novo
         </div>
@@ -29,7 +54,7 @@
             <div class="item-announcement-footer-price  hover:text-orange-600 text-sm font-bold">{{$product->name}} <p class="text-sm bg-orange-300 text-orange-600 rounded-full hidden">{{$product->category->name}}</p></div>
             <div class="item-announcement-footer-add-cart animate-bounce  hover:text-orange-600 add-cart"><i class="fa fa-cart-plus"></i></div>
         </div>
-    </div>
+    </div> --}}
 
 
 @empty  
