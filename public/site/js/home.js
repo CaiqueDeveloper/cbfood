@@ -248,8 +248,9 @@ var Home = {
         })
         $('.product-content-info-size').on('click', function(e){
             e.preventDefault()
-            $('.product-content-info-size').removeClass('bg-orange-300')
-            $(this).addClass('bg-orange-300')
+
+            $('.product-content-info-size').removeClass($(this).attr('data-bgColorItemSelect'))
+            $(this).addClass($(this).attr('data-bgColorItemSelect'))
             let price_product_selected = $(this).attr('data-price_variation_product')
             $('.price-product-selected').html(price_product_selected)
             Home.sumValueAdditionalSelected(price_product_selected)
@@ -260,7 +261,7 @@ var Home = {
         $('.add-cart').on('click', function(e){
             e.preventDefault();
 
-            let identifier =$(this).attr('data-product_id')+'@'+$('.product-content-info-size.bg-orange-300').attr('data-variation_id')
+            let identifier =$(this).attr('data-product_id')+'@'+$('.product-content-info-size.'+$(this).attr('data-bgColorItemSelect')).attr('data-variation_id')
             let key = cartItem.findIndex((item) => item.identifier == identifier)
             let idItemsAdditonal =  $("input[type='checkbox']:checked").map(function(i, e) {return e.value}).toArray(); 
             let price = 0;
@@ -289,8 +290,8 @@ var Home = {
                     quatity: qtModal,
                     image: image,
                     observation: $('.observation-user').val(),
-                    sizeId:  $('.product-content-info-size.bg-orange-300').attr('data-variation_id'),
-                    sizeText:  $('.product-content-info-size.bg-orange-300').html(),
+                    sizeId:  $('.product-content-info-size.'+$(this).attr('data-bgColorItemSelect')).attr('data-variation_id'),
+                    sizeText:  $('.product-content-info-size.'+$(this).attr('data-bgColorItemSelect')).html(),
                     itemsAdditional: idItemsAdditonal
 
                 })
