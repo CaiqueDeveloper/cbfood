@@ -341,9 +341,6 @@ var Home = {
             $("#modalMain").find('.modal-body').html(response.data);
             $('#modalMain').modal('show');
             $('.modal-dialog').addClass('modal-lg');
-            $('.modal-body').css({
-                'width': '100vw',
-            })
             Home.init_listerns()
             let qtModal = 1;
             $('.product-content-info--qt').html(qtModal);
@@ -361,9 +358,6 @@ var Home = {
             $("#modalMain").find('.modal-body').html(response.data);
             $('#modalMain').modal('show');
             $('.modal-dialog').addClass('modal-lg');
-            $('.modal-body').css({
-                'width': '100vw',
-            })
             Home.init_listerns()
         }).catch((error) =>{
 
