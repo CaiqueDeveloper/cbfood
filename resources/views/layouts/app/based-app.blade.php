@@ -20,7 +20,7 @@
                     <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
                     <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
                   </svg>
-                  <p class="ml-2 uppercase text-center">
+                  <p class="ml-2 uppercase text-center mb-4">
                     @if(@count($menuCompany['company']['address']) > 0) 
                         {{$menuCompany['company']['address'][0]->road}}, {{$menuCompany['company']['address'][0]->number}}, {{$menuCompany['company']['address'][0]->distric}}, {{$menuCompany['company']['address'][0]->city}}/{{$menuCompany['company']['address'][0]->states}}...
                     @else
@@ -36,7 +36,7 @@
         <div class="container mx-auto h-[50px] flex items-center justify-between font-bold text-gray-600">
             <section class="text-orange-600 text-2xl">
                 <header class="flex items-center justify-center sm:text-2xl font-bold text-gray-900">    
-                    <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="70px" height="70px" class="rounded-full"><p class=" ml-2 text-md">{{$menuCompany['company']->name}}</p>
+                    <img src="@if(@count($menuCompany['company']['settings']['pictureProfile']) > 0) /profile/{{$menuCompany['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="70px" height="70px" class="rounded-full"><p class=" ml-2 text-sm sm:text-md">{{$menuCompany['company']->name}}</p>
                 </header>
             </section>
            
