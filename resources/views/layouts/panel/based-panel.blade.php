@@ -282,6 +282,7 @@
                       </div>
                       @endif
                     <!-- Page Heading -->
+                    <audio id="notification" src="/sound/notification.mp3" muted autoplay></audio>
                     @yield('content')
 
                 </div>

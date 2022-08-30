@@ -211,6 +211,7 @@ const Ultils = {
         })
     },
     
+    
     OpenedOrClosedStore(url ,hasOpeneed){
         
         if(hasOpeneed == 0){
