@@ -3,9 +3,10 @@
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px]">
         <div class="content-product-imgs relative overflow-hidden">
             <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif')">
-            <div class="contente-product-imgs-controls w-full flex justify-between hidden">
-                <div class="prev w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer ml-3 leading-[45px] font-bold text-2xl"><</div>
-                <div class="next w-[50px] h-[50px] bg-white  text-orange-600 rounded-full text-center shadow-lg  cursor-pointer mr-3 leading-[45px] font-bold text-2xl">></div>
+            <div class="contente-product-imgs-controls w-[110px]  bg-gradient-to-b from-white h-[300px] drop-shadow-md  flex flex-col items-center overflow-x-auto hidden">
+                @foreach($product['product']->images as $key => $value)
+                    <img src="/product_photo/{{$value->path}}" alt=""width="100" height="100" class="my-2">
+                @endforeach
             </div>
         </div>
         <div class="content-product-name mr-3 ml-3 my-3">

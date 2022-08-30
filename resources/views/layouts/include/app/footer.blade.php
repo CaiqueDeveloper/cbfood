@@ -7,7 +7,7 @@
     <div id="toTop" class="@if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-300 @endif @if($menuCompany['company']->settings[0]->secondColor != null) text-[{{$menuCompany['company']->settings[0]->secondColor}}] @else text-orange-600 @endif hidden w-[40px] h-[40px] fixed sm:bottom-[60px] bottom-[100px] right-[10px] leading-[40px] text-center rounded-full cursor-pointer animate-bounce z-40">
         <i class="fa fa-arrow-up "></i>
     </div>
-    <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-[-5px] z-50">
+    <div class="w-full h-[100px] sm:h-[50px] shadow-lg fixed bottom-[-2px] z-50">
         <section class="cart-info @if($menuCompany['company']->settings[0]->primaryColor != null) bg-[{{$menuCompany['company']->settings[0]->primaryColor}}] @else bg-orange-600 @endif h-12 ">
             <div class="container mx-auto flex  justify-between ">
                 <article class="h-12 flex items-center justify-center font-bold text-white cursor-pointer open-shopping-cart">
@@ -95,7 +95,7 @@
                             <a href="#" class="close btn btn-danger btn-circle" data-dismiss="modal" aria-label="Close">× </a>
                         </div>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body sm:w-full w-screen">
                     </div>
                 </div>
             </div>
