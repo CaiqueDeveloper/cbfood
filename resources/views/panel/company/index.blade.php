@@ -180,12 +180,18 @@
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (phone number)-->
                             <div class="col-md-3">
-                                <label class="small mb-1" for="inputPhone">Cor Primaria</label>
-                                <input class="form-control" type="color" name="primaryColor" value="{{$response['user']['company']['settings'][0]->primaryColor}}">
+                                <label class="small mb-1" for="inputPhone">Cor Primaria </label>
+                                <div class="d-flex">
+                                    <input class="form-control" type="color" name="primaryColor" value="{{$response['user']['company']['settings'][0]->primaryColor}}">
+                                    <a href="" class="btn btn-danger remove-color" value="{{$response['user']['company']->id}}" data-type="primaryColor"><i class="bi bi-trash-fill"></i></a>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Cor Secundaria</label>
-                                <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings'][0]->secondColor}}">
+                                <div class="d-flex">
+                                    <input class="form-control" type="color" name="secondColor" value="{{$response['user']['company']['settings'][0]->secondColor}}">
+                                    <a href="" class="btn btn-danger remove-color" value="{{$response['user']['company']->id}}" data-type="secondColor"><i class="bi bi-trash-fill"></i></a>
+                                </div>
                             </div>
                             <div class="col-md-3">
                                 <label class="small mb-1" for="inputPhone">Custo do Delivery</label>

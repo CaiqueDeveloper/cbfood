@@ -60,6 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function(){
     Route::get('/company', [CompanyController::class, 'getCompany']);
     Route::post('/updateOrInserAddreCompany', [CompanyController::class, 'updateOrInserAddreCompany']);
     Route::post('/storageOrCreateCompany', [CompanyController::class, 'storageOrCreateCompany']);
+    Route::post('/removeCompanyDefaultColor', [CompanyController::class, 'removeCompanyDefaultColor']);
     
 
 

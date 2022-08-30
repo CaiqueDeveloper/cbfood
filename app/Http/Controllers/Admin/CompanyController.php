@@ -26,6 +26,18 @@ class CompanyController extends Controller
             return response()->json('error', 400);
         }
     }
+   public function removeCompanyDefaultColor(Request $request){
+        if($request->typeColor == 'primaryColor'){
+           $removeColor =  SettingCompany::find($request->company_id)->update(['secondColor' => '']);
+        }else{
+            $removeColor = SettingCompany::find($request->company_id)->update(['primaryColor' => '']);
+        }
+        if($removeColor){
+            return response()->json('success', 200);
+        }else{
+            return response()->json('error', 400);
+        }
+    }
     public function storageOrCreateCompany(StorageCompanyRequest $request){
            
         if($request->only('company_id') != null){
