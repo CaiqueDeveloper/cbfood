@@ -17,6 +17,10 @@ use SebastianBergmann\CodeUnit\FunctionUnit;
 
 class UltilsController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     public function uploadedFile(Request $request){
         $data = [];
         $hasExiteFiles = '';

@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ProfilesUserController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     protected function storageAssociateProfileWithUser(Request $request){ 
         if(ProfilesUser::updateOrCreate($request->all())){
             return response()->json('Parabéns Perfil Cadatrado Com Sucesso.', 200);

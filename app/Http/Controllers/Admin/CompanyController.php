@@ -13,6 +13,10 @@ use PhpParser\Node\Stmt\Return_;
 
 class CompanyController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+    }
    public function getCompany(Request $request){
         return view('panel.company.index');
    } 

@@ -14,6 +14,10 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 
 class ProductsController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     public function index(){
         return view('panel.products.index');
     }
