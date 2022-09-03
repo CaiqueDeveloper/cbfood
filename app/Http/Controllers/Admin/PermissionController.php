@@ -12,6 +12,10 @@ use Illuminate\Http\Request;
 
 class PermissionController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     protected function showModalCreateNewPermission(){
         return view('panel.modals.permissions.modalCreateNewPermission');
     }

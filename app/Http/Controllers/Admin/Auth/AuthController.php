@@ -45,9 +45,11 @@ class AuthController extends Controller
             $company = Company::isActive(auth()->user()->company_id);
             LogActivity::saveLoginUser(auth()->user()->id);
             if($company[0]['status']){
+               
                 $route = User::redirectUserBasedOnProfileRoute(auth()->user()->id);
                 return response()->json(['redirectRoute' =>  $route], 200);
             }else{
+                Auth::logout();
                 return response()->json(['alert' => 'Opss! Notamos que a empresa que você está tentando logar se encontra inativa. 
                 Por favor entre em contato com nosso suporte técnico. <strong>suporte@cbfood.com.br<strong>'], 500);
             }

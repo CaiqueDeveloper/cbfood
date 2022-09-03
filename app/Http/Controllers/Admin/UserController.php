@@ -23,6 +23,10 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 class UserController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     public function index(){
         return view('panel.user.index');
     }

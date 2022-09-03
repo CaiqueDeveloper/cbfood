@@ -9,6 +9,10 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ReportController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     public function import(){
         return view('panel.report.index');
     }

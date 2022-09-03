@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 
 class SystemUsabilityControlController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     public function index(){
         $modules = Module::where('hasModules', 1)
         ->get();

@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class settingCompanyController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
    public function changeCompany(Request $request){
     if(User::where('id',auth()->user()->id)->update(['company_id' => $request->company_id ])){
         return response()->json('Success', 200);

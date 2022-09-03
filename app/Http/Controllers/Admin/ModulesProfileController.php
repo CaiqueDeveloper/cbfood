@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ModulesProfileController extends Controller
 {
+    public function __construct() {
+    
+        $this->middleware('auth');
+   }
     protected function showModalPermissionAssociationWithProfile($permission_id){
         $profiles = Profile::all();
         $hasAssociationPemmissionWithModule = ModulesProfile::where('module_id', $permission_id)->get();
