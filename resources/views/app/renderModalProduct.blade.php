@@ -140,7 +140,9 @@
             </div>
         </div>
         <div class="product-content-add-cart mr-3 ml-3 my-4 flex items-center">
-            <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
+            @if($company['company']['status'])
+                <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
+            @endif
             <div class="closed-modal bg-red-300 text-red-600 font-bold p-2 rounded-xl cursor-pointer">Cancelar</div>
         </div>
     </div>
