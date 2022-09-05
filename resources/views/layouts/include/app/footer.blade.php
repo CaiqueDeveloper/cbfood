@@ -112,7 +112,6 @@
     <script src="{{url('theme-sdb-admin-2/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
     <script src="{{url('site/js/home.js')}}"></script>
     <script src="{{url('site/js/checkout.js')}}"></script>
-    <script src="{{url('site/js/ultils.js')}}"></script>
     <script src="{{url('panel/js/ultils.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.carousel.min.js')}}"></script>
     <script src="{{url('site/js/wolcarousel/owl.theme.default.min.js')}}"></script>
@@ -123,5 +122,5 @@
     
     <script>
         Home.constructor()
-       
+        
     </script>
