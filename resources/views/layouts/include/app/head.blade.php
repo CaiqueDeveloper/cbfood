@@ -6,8 +6,8 @@
     <meta property="og:site_name" content="{{$company['company']['name']}}">
     <meta property="og:title" content="Cbfood - {{$company['company']['name']}}" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @elsehttps://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
-    <meta property="og:image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @elsehttps://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
+    <meta property="og:image" itemprop="image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0)/profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @else https://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
+    <meta property="og:image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0)/profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @else https://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
