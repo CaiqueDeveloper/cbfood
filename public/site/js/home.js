@@ -755,7 +755,7 @@ var Home = {
             
         })
         .catch((error) =>{
-           
+           $('.alert').removeClass('hidden')
         })
         .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
