@@ -1,13 +1,13 @@
 <head>
-
+   
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta property="og:site_name" content="Cbfood Delivery">
-    <meta property="og:title" content="Cbfood Delivery Plataform" />
+    <meta property="og:site_name" content="{{$company['company']['name']}}">
+    <meta property="og:title" content="Cbfood - {{$company['company']['name']}}" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="https://i.postimg.cc/wv0DWcx8/Group-1.png">
-    <meta property="og:image" content="https://i.postimg.cc/wv0DWcx8/Group-1.png">
+    <meta property="og:image" itemprop="image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @elsehttps://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
+    <meta property="og:image" content="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @elsehttps://i.postimg.cc/wv0DWcx8/Group-1.png @endif ">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
     <meta property="og:image:height" content="300">
 
     <!-- Website to visit when clicked in fb or WhatsApp-->
-    <meta property="og:url" content="https://cbfood.com.br">
+    <meta property="og:url" content="{{url()->current()}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cbfood - @yield('title')</title>
 
