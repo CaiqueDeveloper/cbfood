@@ -1,4 +1,4 @@
-<header class="flex items-center justify-center sm:text-4xl font-bold text-gray-900 mb-[-60px]">    
+<header class="flex items-center justify-center sm:text-4xl font-bold text-gray-900 mb-[5px]">    
     <img src="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="150px" height="150px" class="rounded-full">
 </header>
 <br><br>
