@@ -18,7 +18,7 @@
     <meta property="og:image:height" content="300">
 
     <!-- Website to visit when clicked in fb or WhatsApp-->
-    <meta property="og:url" content="https://cbfood.com.br">
+    <meta property="og:url" content="{{url()->current()}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Cbfood - @yield('title')</title>
 
@@ -38,4 +38,6 @@
     <link rel="icon" href="{{ url('panel/img/logo/icon-page.svg') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </head>

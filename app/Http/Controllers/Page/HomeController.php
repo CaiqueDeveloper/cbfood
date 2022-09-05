@@ -128,7 +128,7 @@ class HomeController extends Controller
         if(Auth::attempt($request->except('redirectURL'))){
             return Redirect::to($request->redirectURL);
         }else{
-            return response()->json('error', 500);
+            return response()->json('Número de telefone e/ou senha errado.', 500);
         }
     }
     protected function logoutUser(Request $request){
