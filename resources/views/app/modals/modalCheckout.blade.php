@@ -1,5 +1,5 @@
 <header class="flex items-center justify-center sm:text-4xl font-bold text-gray-900 mb-[-60px]">    
-    <img src="{{ url('panel/img/logo/icon-page.svg') }}" alt=""><p>CbFood.</p>
+    <img src="@if(@count($company['company']['settings']['pictureProfile']) > 0) /profile/{{$company['company']['settings']['pictureProfile'][0]->path}} @else /profile/default/logo-food-demo.webp @endif " alt="" width="150px" height="150px" class="rounded-full">
 </header>
 <br><br>
 @if(Auth::user())
@@ -147,7 +147,7 @@
 		</ul>
 	</div>
 	<div class="form_wrap">
-		<div class="form_1 data_info w-[280px] ml-[-55px] sm:w-full sm:ml-0">
+		<div class="form_1 data_info sm:w-full sm:ml-0">
 			<h2 class="font-bold tex-2xl tex-gray-600">Resumo do Carrinho</h2>
             {{-- Item in Cart --}}
             <div class="col order-md-2 mb-4">
@@ -173,7 +173,7 @@
             </div>
 		</div>
         <form class="needs-validation form-checkout-new-user" novalidate>
-            <div class="form_2 data_info w-[280px] ml-[-55px] sm:w-full sm:ml-0" style="display: none;">
+            <div class="form_2 data_info sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações Pessoal</h2>
                 
                     <div class="form_container">
@@ -204,13 +204,13 @@
                         </div>
                     </div>
                     <div class="btns_wrap col">
-                        <div class="common_btns form_2_btns w-[280px] ml-[-10px] sm:w-full sm:ml-0" style="display: none;">
+                        <div class="common_btns form_2_btns ml-[-10px] sm:w-full sm:ml-0" style="display: none;">
                             <button type="button" class="btn_back"><span class="icon"><ion-icon name="arrow-back-sharp"></ion-icon></span>Voltar</button>
                             <button type="button" class="btn_next">Proximo <span class="icon"><ion-icon name="arrow-forward-sharp"></ion-icon></span></button>
                         </div>
                     </div>
             </div>
-            <div class="form_3 data_info w-[280px] ml-[-55px] sm:w-full sm:ml-0" style="display: none;">
+            <div class="form_3 data_info sm:w-full sm:ml-0" style="display: none;">
                 <h2>Informações de Pagamento e Endereço</h2>
                     <div class="form_container">
                         <div class="row font-bold text-gray-900">
@@ -394,15 +394,18 @@ body{
 	position: relative;
 }
 
-.wrapper{
+/* .wrapper{
 	width: 750px;
 	max-width: 100%;
 	background: var(--white);
 	margin: 50px auto 0;
 	padding: 50px;
 	border-radius: 5px;
+} */
+.wrapper{
+    margin-left: -6%;
+    padding: 0 10px;
 }
-
 .wrapper .header{
 	margin-bottom: 35px;
 	display: flex;
@@ -472,7 +475,7 @@ body{
 }
 
 .wrapper .form_wrap .input_wrap{
-	width: 350px;
+	/* width: 350px; */
 	max-width: 100%;
 	margin: 0 auto 20px;
 }
@@ -489,7 +492,7 @@ body{
 .wrapper .form_wrap .input_wrap .input{
 	border: 2px solid var(--secondary);
 	border-radius: 3px;
-	padding: 10px;
+	/* padding: 10px; */
 	display: block;
 	width: 100%;	
 	font-size: 16px;
