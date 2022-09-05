@@ -97,7 +97,7 @@
                         {{$maxValue['variationPrice']}}
                     </div>
                 @else
-                <input type="number" @if($product['product']->price != null) readonly @endif name="priceCliente" class="outline-none w-[120px]" placeholder="Ex: 30.00" value="{{$product['product']->price}}">
+                    <input type="number" @if($product['product']->price != null) readonly @endif name="priceCliente" class="outline-none w-[120px]" placeholder="Ex: 30.00" value="{{$product['product']->price}}">
                 
                 @endif
                 <div class="product-content-info--qtarea flex items-center  h-[30px] rounded-[10px] px-[10px]">
