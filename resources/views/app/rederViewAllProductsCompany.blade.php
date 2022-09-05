@@ -1,7 +1,7 @@
 @php
     //dd($menuCompany['company']['settings'])
 @endphp
-<div class="grid grid-cols-1 gap-1 sm:grid-cols-3  sm:gap-2 py-4">
+<div class="grid grid-cols-1 gap-1 sm:grid-cols-4  sm:gap-2 py-4">
 @forelse ($menuCompany['company']['products'] as $product)
 @php
 //dd($product);
