@@ -293,33 +293,33 @@ class Order extends Model
 
         $response = [];
         $response['message']['whatapp'] =  preg_replace("/[^\d]/", "", $phone);
-        $response['message']['cod'] = "*Códido do Pedido:* {$data['orderCod']}";
-        $response['message']['client'] = "*Cliente:* {$data['orderUser'][0]['name']}";
-        $response['message']['phone'] = "*Contato:* {$data['orderUser'][0]['number_phone']}";
-        $response['message']['dateSolicitation'] = "*Data do Pedido:* {$data['orderDate']}";
-        $response['message']['priceOrder'] = "*Preço Final:* {$data['orderTotalPrice']}";
-        $response['message']['paymentMethod'] = "*Forma de Pagamento:* {$data['orderPaymentMethod']}";
-        $response['message']['thing'] = "*Troco:* {$data['orderPaymentMethod']}";
-        $response['message']['paymentMethod'] = "*Quantidade de itens:* {$data['orderQtItem']}";
+        $response['message']['cod'] = $data['orderCod'];
+        $response['message']['client'] = $data['orderUser'][0]['name'];
+        $response['message']['phone'] =  $data['orderUser'][0]['number_phone'];
+        $response['message']['dateSolicitation'] = $data['orderDate'];
+        $response['message']['priceOrder'] = $data['orderTotalPrice'];
+        $response['message']['paymentMethod'] = $data['orderPaymentMethod'];
+        $response['message']['thing'] = $data['orderPaymentMethod'];
+        $response['message']['paymentMethod'] = $data['orderQtItem'];
         foreach($data['orderItem'] as $item){
             foreach($item->productOrder as $prod){
-                $response['message']['products'][] = "{$prod->name}";
+                $response['message']['products'][] = $prod->name;
                 if(count($item['additional']) > 0){
                     foreach($item['additional'] as $additional){
-                        $response['message']['additionals'][] = "{$additional->name}";
+                        $response['message']['additionals'][] = $additional->name;
                     }
                 }else{
                     $response['message']['additionals'][] = 'Não especificado';
                 }
             }
         }
-        $response['message']['address']['road'] = "*Rua:* {$data['orderAddressUser']->road}";
-        $response['message']['address']['distric'] = "*Bairro:* {$data['orderAddressUser']->distric}";
-        $response['message']['address']['number'] = "*Nª:* {$data['orderAddressUser']->number}";
-        $response['message']['address']['city'] = "*Cidade:* {$data['orderAddressUser']->city}";
-        $response['message']['address']['zipe_code'] = "*CEP:* {$data['orderAddressUser']->zipe_code}";
-        $response['message']['address']['states'] = "*Estado:* {$data['orderAddressUser']->states}";
-        $response['message']['address']['complement'] = "*Ponto de Referêcia:* {$data['orderAddressUser']->complement}";
+        $response['message']['address']['road'] = $data['orderAddressUser']->road;
+        $response['message']['address']['distric'] = $data['orderAddressUser']->distric;
+        $response['message']['address']['number'] = $data['orderAddressUser']->number;
+        $response['message']['address']['city'] = $data['orderAddressUser']->city;
+        $response['message']['address']['zipe_code'] = $data['orderAddressUser']->zipe_code;
+        $response['message']['address']['states'] = $data['orderAddressUser']->states;
+        $response['message']['address']['complement'] = $data['orderAddressUser']->complement;
         return $response;
     }
 }

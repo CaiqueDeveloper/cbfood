@@ -102,7 +102,7 @@ class HomeController extends Controller
         if(isset($user) && isset($address) && isset($order)){
             
             $response['user'] = User::find(Auth::user()->id)->get();
-            return response()->json($response, 200);
+            return response()->json(['response' => $response, 'order' => $order], 200);
         }else{
             return response()->json('Erro e-mail e/ou senha incorretos.', 500);
         }

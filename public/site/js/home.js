@@ -673,8 +673,6 @@ var Home = {
                     Home.sendMessage(response.data)
                     swal.close()
                     $("#modalMain").modal('hide');
-                    
-                   
                 },1500)
             
         })
@@ -697,27 +695,7 @@ var Home = {
             for(var i in data.message.products){
                 prod += data.message.products[i]+"\n";
             }
-            var bodyUrl = `
-                *Reseumo do Pedido*\n\n
-            ${data.message.cod}
-            ${data.message.client}
-            ${data.message.dateSolicitation}
-            ${data.message.paymentMethod}
-            ${data.message.phone}
-            ${data.message.priceOrder}\n
-            *Produtos*\n
-            ${prod}\n
-            *Adicionais*\n
-            ${addc}\n
-            *Endereço de Entega*\n
-            ${data.message.address.city}
-            ${data.message.address.states}
-            ${data.message.address.zipe_code}
-            ${data.message.address.distric}
-            ${data.message.address.road}
-            ${data.message.address.number}
-            ${data.message.address.complement}
-            `;
+            var bodyUrl = `*Reseumo do Pedido*\n\n*Código:* ${data.message.cod}\n*Cliente:* ${data.message.client}\n*Data do Pedido:* ${data.message.dateSolicitation}\n*F Pagamento:* ${data.message.paymentMethod}\n*Contato:* ${data.message.phone}\n*Valor Total:* ${data.message.priceOrder}\n\n*Produtos*\n ${prod}\n*Adicionais*\n${addc}\n\n*Endereço de Entega*\n*Cidade:* ${data.message.address.city}\n*Estado:* ${data.message.address.states}\n*Cep:* ${data.message.address.zipe_code}\n*Bairro* ${data.message.address.distric}\n*Rua* ${data.message.address.road}\n*Nª:* ${data.message.address.number}\n*Compemento* ${data.message.address.complement}`;
        
         console.log(bodyUrl)
         let isMobile = (function(a) {
@@ -747,7 +725,7 @@ var Home = {
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         })
         .then((response) =>{
-            
+           // console.log(response.data.order.original)
                 swal(
                     'Compra Realizada!',
                     '',
@@ -757,8 +735,10 @@ var Home = {
                 setTimeout(() =>{
                     $("#modalMain").modal('hide');
                     swal.close()
-                    window.location.href = window.location.href
+                    // window.location.href = window.location.href
+                    Home.sendMessage(response.data.order.original)
                     Ultils.getNotifyComapy();
+                   
                    
                 },2000)
                
