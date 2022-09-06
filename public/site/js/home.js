@@ -738,6 +738,8 @@ var Home = {
                     // window.location.href = window.location.href
                     Home.sendMessage(response.data.order.original)
                     Ultils.getNotifyComapy();
+                    Home.getTotalItemCart()
+                    Home.getTotalPriceItemCart()
                    
                    
                 },2000)
