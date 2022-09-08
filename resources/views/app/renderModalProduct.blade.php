@@ -3,6 +3,7 @@
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px] max-h-screen">
         <div class="relative">
             <!-- Carousel wrapper -->
+            @if(@count($product['product']->images) > 1)
             <div class="relative h-56 overflow-hidden rounded-lg sm:h-64 xl:h-80 2xl:h-96 ">
                 @foreach($product['product']->images as $key => $value)
                 <div id="carousel-item-{{$key}}" class="duration-700 ease-in-out content-slide">
@@ -30,6 +31,9 @@
                     <span class="hidden">Next</span>
                 </span>
             </button>
+            @else
+            <div class="img-product w-full min-h-[300px] mb-4  bg-cover bg-no-repeat bg-center flex items-center rounded-t-lg" style="background-image: url('/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif')">
+            @endif
         </div>
         <div class="content-product-name mr-3 ml-3 my-3">
             <h1 class="text-xl sm:text-4xl font-bold text-black-600 product-name">{{$product['product']->name}}</h1>
@@ -172,8 +176,8 @@
 <script scoped>
     const items  = [];
     const options = {
-        activeItemPosition: 0,
-        interval: 3000,
+        activeItemPosition: 1,
+        interval: 6000,
         indicators: {
             activeClasses: 'bg-white dark:bg-gray-800',
             inactiveClasses: 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800',
