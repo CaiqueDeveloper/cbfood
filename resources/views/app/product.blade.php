@@ -6,8 +6,8 @@
     <meta property="og:site_name" content="Cbfood Delivery">
     <meta property="og:title" content="{{$product['product']->name}}" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="{{$product['product']->images->last()->path}}">
-    <meta property="og:image" content="{{$product['product']->images->last()->path}}">
+    <meta property="og:image" itemprop="image" content="/product_photo/{{$product['product']->images->last()->path}}">
+    <meta property="og:image" content="/product_photo/{{$product['product']->images->last()->path}}">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
