@@ -1,6 +1,6 @@
 
-<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#fff] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
-    <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px] max-h-screen">
+<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
+    <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px]">
         <div class="relative">
             <!-- Carousel wrapper -->
             @if(@count($product['product']->images) > 1)
@@ -163,14 +163,14 @@
                     </div>
                 </div>
             </div>
-            <div class="product-content-add-cart mr-3 ml-3 my-4 flex items-center ">
-                @if($company['company']['status'])
-                    <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
-                @endif
-                <div class="closed-modal bg-red-300 text-red-600 font-bold p-2 rounded-xl cursor-pointer">Cancelar</div>
-            </div>
+            
         </div>
-        
+        <div class="product-content-add-cart mr-3 ml-3 my-4 flex items-center ">
+            @if($company['company']['status'])
+                <div class="add-cart bg-green-300 text-green-600 font-bold p-2 rounded-xl mr-4 cursor-pointer" data-product_id="{{$product['product']->id}}">Adicionar ao Carrinho</div>
+            @endif
+            <div class="closed-modal bg-red-300 text-red-600 font-bold p-2 rounded-xl cursor-pointer">Cancelar</div>
+        </div>
     </div>
 </div>
 <script scoped>
