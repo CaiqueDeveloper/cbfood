@@ -6,8 +6,8 @@
     <meta property="og:site_name" content="Cbfood Delivery">
     <meta property="og:title" content="{{$product['product']->name}}" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="/product_photo/{{$product['product']->images->last()->path}}">
-    <meta property="og:image" content="/product_photo/{{$product['product']->images->last()->path}}">
+    <meta property="og:image" itemprop="image" content="/product_photo/@if($value->path != null){{$product['product']->images->last()->path}} @else /default/default.jpg  @endif">
+    <meta property="og:image" content="/product_photo/@if($value->path != null){{$product['product']->images->last()->path}} @else /default/default.jpg  @endif">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
@@ -46,7 +46,7 @@
             @foreach($product['product']->images as $key => $value)
             <div id="carousel-item-{{$key}}" class="duration-700 ease-in-out content-slide">
                 <span class="absolute text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-                <img src="/product_photo/{{$value->path}}" class=" img-product absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="/product_photo/@if($value->path != null) {{$value->path}} @else /default/default.jpg  @endif" class=" img-product absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
             @endforeach
         </div>
@@ -73,7 +73,6 @@
     @else
     <div class="relative">
         <img src="/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif" class=" img-product absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-        
     </div>
     @endif
     <div class="content-product-name mr-3 ml-3 my-3">
