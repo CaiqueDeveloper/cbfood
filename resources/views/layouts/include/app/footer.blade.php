@@ -119,8 +119,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
     <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    {{-- // <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script> --}}
+   <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     
     <script>
         Home.constructor()
-        
     </script>

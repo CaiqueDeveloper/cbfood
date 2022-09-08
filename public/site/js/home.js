@@ -2,6 +2,7 @@
 var Home = {
 
     constructor() {
+        
         Home.init_listerns()
         Home.getTotalItemCart()
         Home.getTotalPriceItemCart()
@@ -127,6 +128,18 @@ var Home = {
             let url = window.location.origin +'/app/logoutUser?redirectURL='+window.location.href
             Home.logoutUser(url)
         })
+        $('.user-folks').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation();
+            let url = window.location.origin + '/admin/updateUserFolks'
+            Home.updateUserFolks(url, this);
+        })
+        $('.user-change-password').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation();
+            let url = window.location.origin + '/admin/userChangePassword'
+            Home.userChangePassword(url, this);
+        })
         $('.my-bag').on('click', function(e){
             e.preventDefault()
             e.stopImmediatePropagation()
@@ -144,6 +157,7 @@ var Home = {
             let url = window.location.origin + `/admin/updateStatusOrder?order_id=${order_id}&status=${status}`
             Home.updateStatusOrder(url);
         })
+        
     },
     renderViewGetProduct(url){
         axios({
@@ -190,6 +204,64 @@ var Home = {
         }).finally(()=>{
             $('.AppBlock').addClass('d-none');
         })
+    },
+    updateUserFolks(url, data){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:url,
+            method: 'POST',
+            data: new FormData(data),
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            if(response.data){
+                swal(
+                    'Sucesso!',
+                    'Alterção feita com sucesso',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    $("#modalMain").modal('hide');
+                },3000)
+            }
+        })
+    },
+    userChangePassword(url, data){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:url,
+            method: 'POST',
+            data: new FormData(data),
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            if(response.data){
+                swal(
+                    'Sucesso!',
+                    'Alterção feita com sucesso',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    
+                    $("#modalMain").modal('hide');
+                },3000)
+            }
+        })
+        .catch((error) =>{
+           /// Ultils.validatorErro(error.response.data)
+            $.each(error.response.data.errors, function(i, error) {
+                let alertError = $(document).find('[name="' + i + '"]');
+                alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
+    
+            });
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
     },
     getProductName(url, data){
         

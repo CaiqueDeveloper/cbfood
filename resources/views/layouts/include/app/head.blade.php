@@ -23,7 +23,7 @@
     <title>Cbfood - @yield('title')</title>
 
     {{-- tailwindcss --}}
-    <script src="https://cdn.tailwindcss.com"></script>
+    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
     {{-- <script src="{{asset('js/tailwindcss.js')}}"></script> --}}
     {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
     <!-- Custom fonts for this template-->
@@ -32,10 +32,12 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="{{url('css/app.css')}}" rel="stylesheet">
+    {{-- <link href="{{url('css/app.css')}}" rel="stylesheet"> --}}
     <link href="{{url('theme-sdb-admin-2/css/sb-admin-2.css')}}" rel="stylesheet">
-    <link href="{{url('theme-sdb-admin-2/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet">
+    {{-- <link href="{{url('theme-sdb-admin-2/vendor/datatables/dataTables.bootstrap4.css')}}" rel="stylesheet"> --}}
     <link rel="icon" href="{{ url('panel/img/logo/icon-page.svg') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <script src="https://js.pusher.com/7.1/pusher.min.js"></script>
+    <link href="/css/app.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </head>
