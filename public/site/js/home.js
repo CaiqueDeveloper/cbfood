@@ -7,6 +7,7 @@ var Home = {
         Home.getTotalItemCart()
         Home.getTotalPriceItemCart()
         Home.rederViewAllProductsCompany()
+        Home.sumValueAdditionalSelected()
         $('.search-product').on('submit', function(e){
             e.preventDefault()
             let productName = $(this).val()
@@ -36,6 +37,11 @@ var Home = {
         })
     },
     init_listerns(){
+        $('input[name="items[]"]').on('change', function(e){
+            e.preventDefault();
+           
+            Home.sumValueAdditionalSelected()
+        })
         let qtModal = 0;
 
         $('.getModalProduct').on('click', function(e){
@@ -169,10 +175,10 @@ var Home = {
             $('.content-modal-view-product').html(response.data.view)
             Home.actionModalProduct()
             Home.init_listerns()
-            $('input[name="items[]"]').on('change', function(e){
-                e.preventDefault();
-                Home.sumValueAdditionalSelected()
-            })
+            // $('input[name="items[]"]').on('change', function(e){
+            //     e.preventDefault();
+            //     Home.sumValueAdditionalSelected()
+            // })
         }).catch((error) =>{
 
         }).finally(()=>{

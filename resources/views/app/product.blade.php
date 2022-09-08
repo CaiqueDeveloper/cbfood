@@ -46,7 +46,7 @@
             @foreach($product['product']->images as $key => $value)
             <div id="carousel-item-{{$key}}" class="duration-700 ease-in-out content-slide">
                 <span class="absolute text-2xl font-semibold text-white -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 sm:text-3xl dark:text-gray-800">First Slide</span>
-                <img src="/product_photo/@if($value->path != null) {{$value->path}} @else /default/default.jpg  @endif" class=" img-product absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="/product_photo/{{$value->path}}" class=" img-product absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
             @endforeach
         </div>
@@ -173,7 +173,7 @@
         </div>
         
     </div>
-    @if(@count($additional->items) > 0)
+    @if(@count($product['additionals']) > 0)
         <div class="content-value-price-additional mr-3 ml-3 mb-3 my-3 text-xl sm:text-1xl">
             <h3 class="font-bold ">Valor dos Adicionais</h3>
             <section class="flex mt-2">
@@ -233,6 +233,7 @@
     <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
     <script >
         Home.constructor()
+        
         const items  = [];
         const options = {
             activeItemPosition: 1,

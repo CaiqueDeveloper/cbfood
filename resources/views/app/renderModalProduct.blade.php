@@ -138,7 +138,8 @@
             </div>
             
         </div>
-        @if(@count($additional->items) > 0)
+       
+        @if(@count($product['additionals']) > 0)
             <div class="content-value-price-additional mr-3 ml-3 mb-3 my-3 text-xl sm:text-1xl">
                 <h3 class="font-bold ">Valor dos Adicionais</h3>
                 <section class="flex mt-2">
