@@ -39,6 +39,18 @@ class HomeController extends Controller
         $view = view('app.renderModalProduct', compact('product'))->render();
         return response()->json(['status' => 200, 'view' => $view]);
     }
+    protected function product($id){
+        $product = [];
+        $prd = Product::find($id);
+        $company = [];
+        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->get();
+        $product['product'] = $prd;
+        $product['additionals'] = $additionals;
+        $product['company'] =  Company::where('id',$prd->product_morph_id)->get();
+        $product['company']['settings'] =  SettingCompany::where('company_id',$prd->product_morph_id)->get();
+        //$company['company']['settings'] =  SettingCompany::where('company_id',$prd->product_morph_id)->get();
+        return view('app.product', ['product' => $product, 'company' => $company]);
+    }
     public function rederViewAllProductsCompany($slug){
         
         $menuCompany = SettingCompany::getCompanyUsingSlug($slug);

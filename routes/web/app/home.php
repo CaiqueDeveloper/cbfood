@@ -19,3 +19,4 @@ Route::post('/loginUser', [HomeController::class, 'loginUser']);
 Route::post('/logoutUser', [HomeController::class, 'logoutUser']);
 Route::get('/getModalMyBagUser', [HomeController::class, 'getModalMyBagUser']);
 Route::get('/getModalUser', [HomeController::class, 'getModalUser']);
+Route::get('product/{id}', [HomeController::class, 'product'])->name('product');

@@ -157,6 +157,7 @@ var Home = {
             let url = window.location.origin + `/admin/updateStatusOrder?order_id=${order_id}&status=${status}`
             Home.updateStatusOrder(url);
         })
+        Home.actionModalProduct()
         
     },
     renderViewGetProduct(url){
@@ -303,7 +304,8 @@ var Home = {
         $('.closed-modal').on('click', function(e){
             e.preventDefault()
             e.stopImmediatePropagation();
-            $('.announcementModalArea').fadeOut('slow')
+            window.location.href = $(this).attr('data-back-home');
+            //$('.announcementModalArea').fadeOut('slow')
         })
         
         $('.product-content-info--qtmais').on('click', function(e){
@@ -337,7 +339,11 @@ var Home = {
             let key = cartItem.findIndex((item) => item.identifier == identifier)
             let idItemsAdditonal =  $("input[type='checkbox']:checked").map(function(i, e) {return e.value}).toArray(); 
             let price = 0;
-            let image = $('.img-product').css('background-image');
+            let image = '';
+            
+               image = $('.img-product').attr('src');
+            console.log(image);
+             
             image = image.replace('url(','').replace(')','').replace(/\"/gi, "");
             console.log(idItemsAdditonal);
             if(idItemsAdditonal.length > 0){
@@ -356,7 +362,7 @@ var Home = {
                 cartItem.push({
                     identifier,
                     product_id: $(this).attr('data-product_id'),
-                    company_id: $('.announcementModalArea').attr('data-company_id'),
+                    company_id: $(this).attr('data-company_id'),
                     name: $('.product-name').html(),
                     price: parseFloat(price).toFixed(2),
                     quatity: qtModal,
@@ -369,7 +375,7 @@ var Home = {
                 })
             }
            let url = window.location.origin + '/app/cart'
-           Home.addItemCart(url,cartItem)
+            Home.addItemCart(url,cartItem)
 
            console.log(cartItem);
         })
@@ -395,7 +401,7 @@ var Home = {
                     
                     Home.getTotalItemCart()
                     Home.getTotalPriceItemCart()
-                    swal.close()
+                     swal.close()
                    
                 },1500)
             
