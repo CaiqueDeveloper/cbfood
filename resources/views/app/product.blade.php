@@ -6,8 +6,8 @@
     <meta property="og:site_name" content="Cbfood Delivery">
     <meta property="og:title" content="{{$product['product']->name}}" />
     <meta property="og:description" content="Plataforma de Delivery, densenvolvida pensando em você !" />
-    <meta property="og:image" itemprop="image" content="/product_photo/@if($value->path != null){{$product['product']->images->last()->path}} @else /default/default.jpg  @endif">
-    <meta property="og:image" content="/product_photo/@if($value->path != null){{$product['product']->images->last()->path}} @else /default/default.jpg  @endif">
+    <meta property="og:image" itemprop="image" content="/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif">
+    <meta property="og:image" content="/product_photo/@if(count($product['product']->images) > 0){{$product['product']->images->last()->path}}@else/default/default.jpg @endif">
 
     <!-- No need to change anything here -->
     <meta property="og:type" content="website" />
