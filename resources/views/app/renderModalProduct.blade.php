@@ -1,5 +1,5 @@
 
-<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#33333387] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
+<div class="announcementModalArea  w-full h-screen fixed top-0 left-0 bg-[#fff] z-[100]  overflow-y-auto"  data-company_id="{{$product['product']->product_morph_id}}">
     <div class="content-product-item bg-white w-full sm:max-w-[750px] rounded-lg mx-auto pb-4 sm:mt-[75px] max-h-screen">
         <div class="relative">
             <!-- Carousel wrapper -->
