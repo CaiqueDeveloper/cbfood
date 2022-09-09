@@ -21,6 +21,9 @@
 .table-info, th, .table-info td{
     background: #151a5f !important
 }
+.table-condensed, th, .table-condensed td{
+    background: transparent !important
+}
 .table-info th, .table-info td, .table-info thead th, .table-info tbody + tbody {
     border-color: #2e3599;
 }

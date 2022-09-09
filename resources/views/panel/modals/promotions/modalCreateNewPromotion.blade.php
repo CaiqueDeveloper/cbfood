@@ -11,6 +11,12 @@
                     <option value="product">Produto</option>
                 </select>
             </div>
+            <div class="form-group content-render-selector d-none">
+                <label for="category" class="">
+                    Adicionar/Remover item <span class="text-danger">*</span>
+                </label>
+                <select name="select-type-promotion" multiple id="select-type-promotion" class="custom-select"></select>
+            </div>
             <div class="form-group">
                 <label for="category" class="">
                     Tipo de desconto 
@@ -34,7 +40,15 @@
                         <small>Limita a utilização de cupons entre um período de dias</small>
                     </label>
                 </div>
+                
             </div>
+            <div class="form-group">
+                <label for="datetange-period-promotion" class="">
+                    Selecione o Preríodo <span class="text-danger">*</span>
+                </label>
+                <input type="text" id="datetange-period-promotion" class="col-12 form-control" name="datetange-period-promotion">
+            </div>
+            <input type="hidden" name="typeSelect">
             <button type="submit" class="w-100 mt-3 btn btn-primary">
                 <i class="fa fa-plus"></i> Criar
             </button>
