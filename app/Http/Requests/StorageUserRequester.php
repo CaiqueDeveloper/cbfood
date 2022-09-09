@@ -26,8 +26,8 @@ class StorageUserRequester extends FormRequest
         return [
             'name' => 'required|min:2|max:100',
             'email' => 'required|email',
-            'number_phone' => 'required|max:11',
-            'number_phone_alternative' => 'max:11',
+            'number_phone' => 'required|max:21',
+            'number_phone_alternative' => 'max:21',
             'password'=>'required|min:8|max:12',
             'password_confirmation'=>'required|min:8|max:12|same:password',
         ];

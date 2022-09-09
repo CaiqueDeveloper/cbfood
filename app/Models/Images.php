@@ -22,12 +22,12 @@ class Images extends Model
     public static function storagePictureProfileCompany($company_id, $data){
 
         $company = Company::find($company_id);
-        return $company->image()->updateOrCreate(['imagebleMorph_id' => $company_id], $data);
+        return $company->image()->updateOrCreate(['imagebleMorph_id' => $company_id, 'type' => 'companyLogo'], ['type' => 'companyLogo', 'path' => $data['path']]);
     }
     public static function storagePictureSettingCompany($company_id, $data){
-
+        
         $company = SettingCompany::find($company_id);
-        return $company->image()->updateOrCreate(['imagebleMorph_id' => $company_id], $data);
+        return $company->image()->updateOrCreate(['imagebleMorph_id' => $company_id, 'type' => 'companyBanner'], ['type' => 'companyBanner', 'path' => $data['path']]);
     }
     public static function storagePhotoProduct($product_id, $images){
         

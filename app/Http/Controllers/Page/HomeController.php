@@ -39,6 +39,18 @@ class HomeController extends Controller
         $view = view('app.renderModalProduct', compact('product'))->render();
         return response()->json(['status' => 200, 'view' => $view]);
     }
+    protected function product($id){
+        $product = [];
+        $prd = Product::find($id);
+        $company = [];
+        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->get();
+        $product['product'] = $prd;
+        $product['additionals'] = $additionals;
+        $product['company'] =  Company::where('id',$prd->product_morph_id)->get();
+        $product['company']['settings'] =  SettingCompany::where('company_id',$prd->product_morph_id)->get();
+        //$company['company']['settings'] =  SettingCompany::where('company_id',$prd->product_morph_id)->get();
+        return view('app.product', ['product' => $product, 'company' => $company]);
+    }
     public function rederViewAllProductsCompany($slug){
         
         $menuCompany = SettingCompany::getCompanyUsingSlug($slug);
@@ -102,7 +114,7 @@ class HomeController extends Controller
         if(isset($user) && isset($address) && isset($order)){
             
             $response['user'] = User::find(Auth::user()->id)->get();
-            return response()->json($response, 200);
+            return response()->json(['response' => $response, 'order' => $order], 200);
         }else{
             return response()->json('Erro e-mail e/ou senha incorretos.', 500);
         }

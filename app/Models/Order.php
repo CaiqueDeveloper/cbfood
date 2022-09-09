@@ -93,15 +93,15 @@ class Order extends Model
         $orderUser['pickUpOnTheSpot'] = $pickUpOnTheSpot['pick_up_on_the_spot'];
         $orderUser['price_total'] = \Cart::getTotal();
         $orderUser['status'] = 1;
-
+        $phone = Company::find($auxOrder->attributes->company_id)->value('phone_number');
         $orderInsert = Order::create($orderUser);
         
         $storageOrderProduct =  OrderProduct::storageOrderProduct($orderInsert->id, $orders);
         $company = $orderInsert->orderCompany;
         Notification::send($company,new NotifyTheCompanyOfTheUsersRequest($orderInsert));
         event(new NotifyTheCompanySalesTheRequstUser($orderInsert));
-        //SendNotificationFCMController::sendNotification();
-        return true;
+       
+        return response()->json(self::formatSentMenssageWhatAppUser(self::exportOrderUser($orderInsert->id), $phone), 200);
     }
 
     public static function getDataGraphSales($start, $interval, $end){
@@ -288,5 +288,38 @@ class Order extends Model
             ];
             
         }
+    }
+    protected static function formatSentMenssageWhatAppUser($data, $phone){
+
+        $response = [];
+        $response['message']['whatapp'] =  preg_replace("/[^\d]/", "", $phone);
+        $response['message']['cod'] = $data['orderCod'];
+        $response['message']['client'] = $data['orderUser'][0]['name'];
+        $response['message']['phone'] =  $data['orderUser'][0]['number_phone'];
+        $response['message']['dateSolicitation'] = $data['orderDate'];
+        $response['message']['priceOrder'] = $data['orderTotalPrice'];
+        $response['message']['paymentMethod'] = $data['orderPaymentMethod'];
+        $response['message']['thing'] = $data['orderPaymentMethod'];
+        $response['message']['paymentMethod'] = $data['orderQtItem'];
+        foreach($data['orderItem'] as $item){
+            foreach($item->productOrder as $prod){
+                $response['message']['products'][] = $prod->name;
+                if(count($item['additional']) > 0){
+                    foreach($item['additional'] as $additional){
+                        $response['message']['additionals'][] = $additional->name;
+                    }
+                }else{
+                    $response['message']['additionals'][] = 'Não especificado';
+                }
+            }
+        }
+        $response['message']['address']['road'] = $data['orderAddressUser']->road;
+        $response['message']['address']['distric'] = $data['orderAddressUser']->distric;
+        $response['message']['address']['number'] = $data['orderAddressUser']->number;
+        $response['message']['address']['city'] = $data['orderAddressUser']->city;
+        $response['message']['address']['zipe_code'] = $data['orderAddressUser']->zipe_code;
+        $response['message']['address']['states'] = $data['orderAddressUser']->states;
+        $response['message']['address']['complement'] = $data['orderAddressUser']->complement;
+        return $response;
     }
 }

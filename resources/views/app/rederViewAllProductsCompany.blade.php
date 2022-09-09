@@ -1,7 +1,7 @@
 @php
     //dd($menuCompany['company']['settings'])
 @endphp
-<div class="grid grid-cols-1 gap-1 sm:grid-cols-3  sm:gap-2 py-4">
+<div class="grid grid-cols-1 gap-1 sm:grid-cols-4  sm:gap-2 py-4">
 @forelse ($menuCompany['company']['products'] as $product)
 @php
 //dd($product);
@@ -9,7 +9,8 @@
     $now = new DateTime();
     $difference = $first_date->diff($now)->days;
 @endphp
-<section class="cart-item-model mt-3 mr-3 shadow my-3 sm:mr-3 sm:ml-3 p-2 min-h-[250px] getModalProduct cursor-pointer" value="{{$product->id}}"  >
+<a href="{{route('product',['id' =>$product->id])}} " style="text-decoration: none" class="hover:text-gray-600">
+<section class="cart-item-model mt-3 mr-3 shadow my-3 sm:mr-3 sm:ml-3 p-2 min-h-[250px] cursor-pointer" value="{{$product->id}}"  >
     <div class="content-info-product grid grid-cols-2 col-span-2 min-h-[200px]">
         <section>
             <div class="title-product text-black font-bold text-sm mb-2">{{$product->name}}</div>
@@ -34,7 +35,7 @@
         </section>
     </div>
 </section>
-
+</a>
     {{-- <div class="item-announcement w-full min-h-[250px] flex flex-col-reverse relative shadow-lg cursor-pointer my-[5px] overflow-hidden sm:rounded-3xl">
         <div class="absolute bg-green-300 z-50 top-2 left-2 text-green-600 font-bold rounded-md px-1  @if($difference > 5)  hidden @endif">
             novo

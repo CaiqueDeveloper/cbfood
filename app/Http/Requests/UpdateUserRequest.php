@@ -26,8 +26,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => 'required|min:5|max:100',
             'email' => 'required|email',
-            'number_phone' => 'max:11',
-            'number_phone_alternative' => 'max:11',
+            'number_phone' => 'max:21',
+            'number_phone_alternative' => 'max:21',
         ];
     }
     public function messages()
