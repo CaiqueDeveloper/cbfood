@@ -26,9 +26,11 @@ const Promotions = {
                 case 'product':
                     Promotions.getDataRenderSelector($(this).val());
                     $('.content-render-selector').removeClass('d-none')
+                    $('input[name=typeSelect]').attr('value', $(this).val())
                 break;
                 case 'store':
                     $('.content-render-selector').addClass('d-none')
+                    $('input[name=typeSelect]').attr('value', $(this).val())
                 break;
            }
         })

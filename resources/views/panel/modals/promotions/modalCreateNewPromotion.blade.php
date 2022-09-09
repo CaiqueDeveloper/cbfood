@@ -31,7 +31,7 @@
                 <label for="discount" class="">
                     Valor <span class="text-danger">*</span>
                 </label>
-                <input type="text" id="discount" class="col-12 form-control" name="discount" value="% 0">
+                <input type="text" id="discount" class="col-12 form-control" name="discount">
             </div>
             <div class="form-group" style="height: 40px;">
                 <div class="toggle-title">
