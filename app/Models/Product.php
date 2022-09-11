@@ -34,16 +34,22 @@ class Product extends Model
             return false;
         }
     }
-    protected static function getAllProductCompany($id){
+    protected static function getAllProductCompany($id, $withPaginate = true){
+        
         $company = Company::find($id);
         if(!$company)
              return response()->json('Opss! algo deu errado, não encotramos o empresa informado.', 400);
-             $products = $company->product()->where('status',1)->paginate(50);
- 
+             if($withPaginate == false){
+                $products = $company->product()->where('status',1)->groupBy('products.name')->select('products.id', 'products.name')->get();
+             }else{
+                $products = $company->product()->where('status',1)->paginate(50);
+             }
+             
         if(!$products)
             return response()->json('Opss! algo deu errado, não encotramos o nenhum endereço para esse empresa.', 400);
             return $products;
     }
+    
     public function category(){
         return $this->belongsTo(Category::class);
     }

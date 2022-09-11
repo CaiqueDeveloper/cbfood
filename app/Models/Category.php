@@ -19,4 +19,7 @@ class Category extends Model
         $company = Company::find($company_id);
         return $company->category()->create($data);
     }
+    protected static function getAllCategoryCompany(){
+        return Company::find(auth()->user()->company_id)->category()->groupBy('categories.name')->select('categories.id','categories.name')->get();
+    }
 }
