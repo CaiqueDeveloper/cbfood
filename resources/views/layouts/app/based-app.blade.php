@@ -5,7 +5,7 @@
 <body id="page-top">
      <!-- init header -->
     
-     <header class="header w-full h-[320px] sm:flex sm:items-center flex items-center border border-b-3 bg-white bg-cover bg-no-repeat bg-top " @if(@count($menuCompany['company']['settings']['banner']) > 0) style="background-image: url('/profile/{{$menuCompany['company']['settings']['banner'][0]->path}}')" @else 
+     <header class="header w-full h-[450px] sm:flex sm:items-center flex items-center border border-b-3 bg-white bg-cover bg-no-repeat bg-top " @if(@count($menuCompany['company']['settings']['banner']) > 0) style="background-image: url('/profile/{{$menuCompany['company']['settings']['banner'][0]->path}}')" @else 
             style="background-image: url('/profile/default/banner-food-demo.jpg')"
         @endif>
         
