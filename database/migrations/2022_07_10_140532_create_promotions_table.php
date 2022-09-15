@@ -15,18 +15,28 @@ class CreatePromotionsTable extends Migration
     {
         Schema::create('promotions', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('company_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-            $table->tinyInteger('type_descount')->nullable();
-            $table->tinyInteger('type_promotion')->nullable();
+            
+            $table->integer('user_id')->unsigned()
+            ->references('id')->on('users')
+            ->nullable()
+            ->onDelete('set null');
+
+            $table->integer('product_id')->unsigned()
+            ->references('id')->on('products')
+            ->nullable()
+            ->onDelete('set null');
+
+            $table->string('typePromotion')->nullable();
+            $table->string('typeDecount')->nullable();
             $table->string('descount')->nullable();
-            $table->date('start');
-            $table->date('end');
+            $table->date('periodStart');
+            $table->date('periodEnd');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
 
-            $table->foreign('company_id')
+            $table->foreign('product_id')
             ->references('id')
-            ->on('companies')
+            ->on('products')
             ->onDelete('cascade');
 
             $table->foreign('user_id')

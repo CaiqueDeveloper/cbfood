@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Promotion;
 use Illuminate\Http\Request;
 
 class PromotionsController extends Controller
@@ -34,5 +35,13 @@ class PromotionsController extends Controller
                 return response()->json(['status' => 400, 'message' => 'Type Item not maping'], 400);
             break;
        }
+    }
+    protected function storagePromotion(Request $request){
+        
+        if(Promotion::storage($request->all())){
+            return response()->json('seccess', 200);
+        }else{
+            return response()->json('error', 500);
+        }
     }
 }

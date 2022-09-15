@@ -53,6 +53,9 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+    public function promotion(){
+        return $this->hasMany(Promotion::class);
+    }
     
     public function images(){
         return $this->hasMany(Images::class,'imagebleMorph_id');

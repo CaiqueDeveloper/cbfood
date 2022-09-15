@@ -14,7 +14,6 @@ class Category extends Model
 
         return $this->morphTo();
     }
-    
     public function storageCategryCompany($company_id, $data){
         $company = Company::find($company_id);
         return $company->category()->create($data);

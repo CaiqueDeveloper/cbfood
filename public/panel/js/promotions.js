@@ -26,11 +26,9 @@ const Promotions = {
                 case 'product':
                     Promotions.getDataRenderSelector($(this).val());
                     $('.content-render-selector').removeClass('d-none')
-                    $('input[name=typeSelect]').attr('value', $(this).val())
                 break;
                 case 'store':
                     $('.content-render-selector').addClass('d-none')
-                    $('input[name=typeSelect]').attr('value', $(this).val())
                 break;
            }
         })
@@ -48,6 +46,17 @@ const Promotions = {
             end = moment(end_).format("YYYY-MM-DD");
             
         });
+        $('.storage-promotion').on('submit', function(e){
+            e.preventDefault()
+            e.stopImmediatePropagation()
+
+            let url = window.location.origin + '/admin/storagePromotion';
+            let form = new FormData(this)
+            form.append('periodStart', moment(start).format('YYYY-MM-DD'))
+            form.append('periodEnd', moment(end).format('YYYY-MM-DD'))
+            form.delete('datetange-period-promotion')
+            Promotions.storagePromotion(url, form);
+        })
         
     },
     showModalCreateNewPromotion(url){
@@ -89,5 +98,38 @@ const Promotions = {
         }
         
         $('#select-type-promotion').html(option);
-    }
+    },
+    storagePromotion(url, data){
+        $('.AppBlock').removeClass('d-none');
+        axios({
+            url:url,
+            method: 'POST',
+            data: data,
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            },
+        })
+        .then((response) =>{
+            if(response.data){
+                swal(
+                    'Sucesso!',
+                    'Promoçaõ Cadastrada com sucesso',
+                    'success'
+                )
+                setTimeout(() =>{
+                    swal.close()
+                    console.log(response.data)
+                    $("#modalMain").modal('hide');
+                },3000)
+            }
+        })
+        .catch((error) =>{
+            $.each(error.response.data.errors, function(i, error) {
+                let alertError = $(document).find('[name="' + i + '"]');
+                alertError.after($('<strong style="color: red;">Aviso: ' + error[0] + '</strong></br>'));
+    
+            });
+        })
+        .finally(() =>{$('.AppBlock').addClass('d-none');});
+    },
 }
