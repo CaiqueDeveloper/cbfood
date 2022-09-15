@@ -31,7 +31,7 @@
             <div class="card-header">
                 Perfis 
             </div>
-            <table class="table table-info table-profiles col mt-5"></table>
+            <table class="table table-info table-bordered table-profiles col mt-5"></table>
         </div>
     </div>
     <div class="col-12 mt-4">

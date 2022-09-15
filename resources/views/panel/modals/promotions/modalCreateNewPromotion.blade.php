@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
-        <form class="">
+        <form class="storage-promotion">
             <div class="form-group">
                 <label for="category" class="">
                     Tipo <span class="text-danger">*</span>
@@ -15,7 +15,7 @@
                 <label for="category" class="">
                     Adicionar/Remover item <span class="text-danger">*</span>
                 </label>
-                <select name="select-type-promotion" multiple id="select-type-promotion" class="custom-select"></select>
+                <select name="select-type-promotion[]" multiple id="select-type-promotion" class="custom-select"></select>
             </div>
             <div class="form-group">
                 <label for="category" class="">
@@ -48,7 +48,6 @@
                 </label>
                 <input type="text" id="datetange-period-promotion" class="col-12 form-control" name="datetange-period-promotion">
             </div>
-            <input type="hidden" name="typeSelect">
             <button type="submit" class="w-100 mt-3 btn btn-primary">
                 <i class="fa fa-plus"></i> Criar
             </button>
