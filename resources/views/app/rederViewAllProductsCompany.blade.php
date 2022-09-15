@@ -10,7 +10,7 @@
 @endphp
 <a href="{{route('product',['id' =>$product->id])}} " style="text-decoration: none" class="hover:text-gray-600">
 <section class="cart-item-model relative mt-3 mr-3 shadow my-3 sm:mr-3 sm:ml-3 p-2 min-h-[250px] cursor-pointer rounded-xl" value="{{$product->id}}"  >
-    @if($difference < 5)
+    {{-- @if($difference < 5)
         <div class="absolute bg-green-300 z-50 top-2 left-2 text-green-600 font-bold rounded-md px-1">
             novo
         </div>
@@ -21,7 +21,7 @@
                     promoção
                 </div>
             @endif
-        @endif
+    @endif --}}
     <div class="content-info-product grid sm:grid-cols-2 col-span-2 min-h-[200px]">
         <section>
             <div class="title-product text-black font-bold text-sm mb-2">{{$product->name}}</div>
@@ -36,9 +36,9 @@
         <section class="bg-cover bg-no-repeat bg-center" style="background-image: url('/product_photo/@if(@count($product->images->last()->path) > 0){{$product->images->last()->path}}@else/default/default.jpg @endif ')" ></section>
     </div>
     <div class="footer-content-product mt-3 flex  justify-bettwee">
-        <section class="font-bold text-green-600">
+        {{-- <section class="font-bold text-green-600">
             R$ {{number_format($product->price,2,",",".")}}
-        </section>
+        </section> --}}
         <section>
             
         </section>
