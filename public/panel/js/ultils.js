@@ -90,6 +90,7 @@ const Ultils = {
         $('table').each(function(){
             tables[i]  = $(this).DataTable({
                 "retrieve": true,
+                
                 "fnDrawCallback": function (oSettings) {
                    model.init_listerns()
                 }

@@ -21,11 +21,6 @@ class CreatePromotionsTable extends Migration
             ->nullable()
             ->onDelete('set null');
 
-            $table->integer('product_id')->unsigned()
-            ->references('id')->on('products')
-            ->nullable()
-            ->onDelete('set null');
-
             $table->string('typePromotion')->nullable();
             $table->string('typeDecount')->nullable();
             $table->string('descount')->nullable();

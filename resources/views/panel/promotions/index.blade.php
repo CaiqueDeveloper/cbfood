@@ -36,6 +36,22 @@
   
 </div>
 @endsection
+<style scoped>
+    .table-bordered{
+        border:  none !important;
+    }
+    .dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
+        color: #fff !important;
+    }
+    .dataTables_wrapper .dataTables_filter input{
+        background-color: '#fff' !important;
+    }
+    #subtable tbody tr td{
+        background-color: #fff !important;
+        color: #151a5f;
+        font-weight: bold;
+    }
+</style>
 <script src="{{url('panel/js/promotions.js')}}"></script>
 @section('scripts')
     <script type="text/javascript">

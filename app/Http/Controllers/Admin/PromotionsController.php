@@ -44,4 +44,7 @@ class PromotionsController extends Controller
             return response()->json('error', 500);
         }
     }
+    protected function getAllPromotions (Request $request){
+        return response()->json(Promotion::getData(), 200);
+    }
 }
