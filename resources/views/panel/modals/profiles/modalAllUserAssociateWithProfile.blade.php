@@ -1,4 +1,4 @@
-<table class="table table-info">
+<table class="table table-info  table-bordered">
     <thead>
         <tr>
             <th>Nome</th>
