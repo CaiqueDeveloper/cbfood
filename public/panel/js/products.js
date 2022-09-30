@@ -28,34 +28,20 @@ const Products = {
             e.stopImmediatePropagation()
             e.preventDefault();
            
-            if ($(this).prop('checked')) {
+            if (this.value == 1) {
                 $('.content-variation-area').fadeIn();
-                $(this).attr('value', '1')
             } else {
                 $('.content-variation-area').fadeOut();
-                $(this).attr('value', '0')
-            }
-        })
-        $('#canPrice').on('change', function(e) {
-            e.stopImmediatePropagation()
-            e.preventDefault();
-           
-            if ($(this).prop('checked')) {
-                $(this).attr('value', '1')
-            } else {
-                $(this).attr('value', '0')
             }
         })
         $('#hasAdditionals').on('change', function(e) {
             e.stopImmediatePropagation()
             e.preventDefault();
            
-            if ($(this).prop('checked')) {
+            if (this.value == 1) {
                 $('.content-additional-area').fadeIn();
-                $(this).attr('value', '1')
             } else {
                 $('.content-additional-area').fadeOut();
-                $(this).attr('value', '0')
             }
         })
         $('.delete-product').on('click', function(e){

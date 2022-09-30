@@ -31,20 +31,32 @@
             <textarea class="form-control" id="descriptionPoduct" rows="3" name="description"></textarea>
         </div>
     </div>
-    <div class="form-row mb-4">
-        <div class="form-check ml-2 mr-5">
-            <input class="form-check-input" name="hasVariations" id="hasVariations" type="checkbox">
-            <label class="form-check-label" for="hasVariations" style="cursor: pointer">Tem Varições ?</label>
+    <div class="form-row">
+        <div class="form-group col">
+          <label for="category">Tem Varições ?</label>
+          <select id="hasVariations" class="form-control" name="hasVariations">
+              <option value=""></option>
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+          </select>
         </div>
-        <div class="form-check mr-4">
-            <input class="form-check-input" id="canPrice"  name="canPrice" type="checkbox">
-            <label class="form-check-label" for="canPrice" style="cursor: pointer">O Cliente pode especificar o valor ?</label>
+        <div class="form-group col">
+          <label for="category">Tem Adicionais/Complemento ?</label>
+          <select id="hasAdditionals" class="form-control" name="hasAdditionals">
+              <option value=""></option>
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+          </select>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" id="hasAdditionals"  name="hasAdditionals" type="checkbox">
-            <label class="form-check-label" for="hasAdditionals" style="cursor: pointer">Tem Adicionais/Complemento ?</label>
+        <div class="form-group col">
+          <label for="category">O Cliente pode especificar?</label>
+          <select id="canPrice" class="form-control" name="canPrice">
+              <option value=""></option>
+              <option value="1">Sim</option>
+              <option value="0">Não</option>
+          </select>
         </div>
-    </div>
+      </div>
     {{-- variations area --}}
     <div class="content-variation-area mb-4" style="display: none">
         <h5 class="my-3">Adicionar Variações do Produto</h5>
