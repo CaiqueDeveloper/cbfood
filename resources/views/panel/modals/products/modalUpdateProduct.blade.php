@@ -37,6 +37,13 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group col">
+            <label for="category">Status</label>
+            <select id="category" class="form-control" name="status">
+                <option value="1" @if($product->status == 1) selected @endif>Disponível</option>
+                <option value="0" @if($product->status == 0) selected @endif>Indisponível</option>
+            </select>
+        </div>
     </div>
     <div class="for-row">
         <div class="form-group">

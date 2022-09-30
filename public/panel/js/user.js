@@ -220,7 +220,7 @@ var User = {
             url:url,
             data: new FormData(data)
         }).then((response) => {
-            if(response.data){
+            
                 swal(
                     'Sucesso!',
                     'Parabéns Usuário Cadatrado Com Sucesso.',
@@ -231,7 +231,7 @@ var User = {
                     User.geUser();
                     $("#modalMain").modal('hide');
                 },2000)
-            }
+            
         }).catch((error) =>{
             $.each(error.response.data.errors, function(i, error) {
                 let alertError = $(document).find('[name="' + i + '"]');

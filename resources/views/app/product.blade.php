@@ -128,7 +128,7 @@
                     </div>
                     <div id="collapse-{{$additional->id}}" class="collapse" aria-labelledby="heading-{{$additional->id}}" data-parent="#accordionAdditional">
                     <div class="card-body">
-                        @foreach ($additional->items as $item)
+                        @foreach ($additional->items()->where('status', true)->get() as $item)
                             <div class="item-area shadow p-3 mb-2 bg-white rounded d-flex flex-column flex-sm-row justify-content-between align-items-center">
                                 <div class="form-check">
                                     <input class="form-check-input" id="{{$item->id}}" data-price_additional="{{$item->price}}" value="{{$item->id}}" name="items[]" type="checkbox">

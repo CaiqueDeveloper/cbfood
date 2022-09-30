@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['category_id', 'name', 'description', 'price', 'canPrice', 'hasVariations'];
+    protected $fillable = ['category_id', 'name', 'description', 'price', 'canPrice', 'hasVariations','status'];
 
     public function prduct_morph(){
         

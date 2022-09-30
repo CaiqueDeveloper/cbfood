@@ -48,6 +48,7 @@ class ProductsController extends Controller
         }
         
        $product = $request->except('files','variationName', 'variationType', 'variationPrice', 'additionals', 'product_id');
+      // dd($product);
        $additinalIds = $request->only('additionals');
        $product_id = $request->only('product_id');
        $product = Product::storageProductCompany(Auth::user()->company_id, $product_id, $product, $request->images,  $additinalIds, $arrVariationProduct);

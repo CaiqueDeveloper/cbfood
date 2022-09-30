@@ -122,6 +122,7 @@ class UserController extends Controller
         $user_id = User::create($user)->id;
         if(isset($data['profile'])){
             ProfilesUser::create(['profile_id'=>$data['profile'],'user_id' => $user_id,]);
+            CompanyUser::updateOrCreate(['company_id'=> auth()->user()->company->id, 'user_id' => $user_id,]);
             $user['company_id'] = auth()->user()->company->id;
         }
         

@@ -33,7 +33,8 @@ class HomeController extends Controller
         
         $product = [];
         $prd = Product::find($product_id);
-        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->get();
+        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->where('status', true)->get();
+        
         $product['product'] = $prd;
         $product['additionals'] = $additionals;
         $view = view('app.renderModalProduct', compact('product'))->render();
@@ -43,7 +44,8 @@ class HomeController extends Controller
         $product = [];
         $prd = Product::find($id);
         $company = [];
-        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->get();
+        $additionals = Additional::whereIn('id', array_column($prd->additionalsProduct->toArray(), 'additional_id'))->where('status', true)->get();
+        
         $product['product'] = $prd;
         $product['additionals'] = $additionals;
         $product['company'] =  Company::where('id',$prd->product_morph_id)->get();
@@ -62,20 +64,24 @@ class HomeController extends Controller
         $menuCompany = [];
         if($request->product_name === null && $request->category == "all_category"){
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
+            ->where('status', true)
             ->paginate(50);
         }elseif($request->product_name === null && $request->category != "all_category"){
 
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('category_id', $request->category)
+            ->where('status', true)
             ->paginate(50);
         }elseif($request->product_name != null && $request->category != "all_category"){
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('category_id', $request->category)
             ->where('name', 'like', '%'.$request->product_name.'%')
+            ->where('status', true)
             ->paginate(50);
         }else{
             $menuCompany['company']['products']  = Product::where('product_morph_id', $request->company_id)
             ->where('name', 'like', '%'.$request->product_name.'%')
+            ->where('status', true)
             ->paginate(50);
         }
 
