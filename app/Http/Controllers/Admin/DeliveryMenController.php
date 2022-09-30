@@ -39,9 +39,10 @@ class DeliveryMenController extends Controller
     }
     protected function getRederIdicatorsDeliveryMen(){
         $myDeliveries = User::find(auth()->user()->id);
+       
         return [
-            'totalDeliveries' => $myDeliveries->ordersDeliverymen()->where('status', 0)->count(),
-            'totalNewDeliveries' => $myDeliveries->ordersDeliverymen()->where('status', 1)->count(),
+            'totalDeliveries' => $myDeliveries->ordersDeliverymen()->where('status', 1)->count(),
+            'totalNewDeliveries' => $myDeliveries->ordersDeliverymen()->where('status', 0)->count(),
         ];
     }
 }

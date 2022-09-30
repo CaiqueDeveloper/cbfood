@@ -773,7 +773,7 @@ var Home = {
                 addc = data.message.additionals[0]
             }else{
                 for(var i in data.message.additionals){
-                    addc =  data.message.additionals[i]+"\n"
+                    addc +=  data.message.additionals[i]+"\n"
                 }
             }
             for(var i in data.message.products){

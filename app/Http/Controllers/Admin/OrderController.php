@@ -8,6 +8,7 @@ use App\Models\AdditionalItems;
 use App\Models\Address;
 use App\Models\Company;
 use App\Models\Order;
+use App\Models\OrderDeliveryman;
 use App\Models\OrderProduct;
 use App\Models\User;
 use App\Notifications\NotifyTheCompanyOfTheUsersRequest;
@@ -106,6 +107,7 @@ class OrderController extends Controller
     }
     protected function updateStatusOrder(Request $request){
         $changeStateOrder = Order::changeStateOrderUser($request->order_id, $request->status);
+        OrderDeliveryman::where('order_id', $request->order_id)->where('user_id', auth()->user()->id)->update(['status' => 1]);
         if($changeStateOrder){
             return response()->json($changeStateOrder, 200);
         }else{
