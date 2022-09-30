@@ -18,7 +18,7 @@ class Order extends Model
 {
     use HasFactory, Notifiable;
     protected $table = 'orders';
-    protected $fillable = ['company_id','user_id','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot', 'status'];
+    protected $fillable = ['company_id','user_id','day','address_id', 'payment_method', 'delivery_price', 'price_total', 'thing','pickUpOnTheSpot', 'status'];
 
     public function orderProduct(){
        
@@ -38,23 +38,28 @@ class Order extends Model
     
     protected static function getOrders($start = null, $end = null){
         
+      
         if($start == null && $end == null){
             $start = new DateTime('first day of this month');
             $end = new DateTime('last day of this month');
         }
+
+        $start = new DateTime($start);
+        $end = new DateTime($end);
+
         $company_id = Auth::user()->company_id;
         return Order::where('company_id',$company_id)->with('orderProduct.productOrder','orderUser')
-        ->whereBetween('created_at', [$start, $end])
-        ->orderBy('orders.created_at', 'desc')
+        ->whereBetween('day', [$start->format('Y-m-d'), $end->format('Y-m-d')])
+        ->orderBy('orders.day', 'desc')
         ->get();
     }
     protected static function getOrdersDeliveryMen(){
 
         $myDeliveries = User::find(auth()->user()->id);
-        return Order::whereIn('id', array_column($myDeliveries->ordersDeliverymen->toArray(),'order_id'))->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
+        return Order::whereIn('id', array_column($myDeliveries->ordersDeliverymen->toArray(),'order_id'))->with('orderProduct.productOrder','orderUser')->orderBy('orders.day', 'desc')->get();
     }
     protected static function getOrder($id){
-        return Order::where('id', $id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.created_at', 'desc')->get();
+        return Order::where('id', $id)->with('orderProduct.productOrder','orderUser')->orderBy('orders.day', 'desc')->get();
     }
     public static function storageOrderUser($orders, $paymentMethod,$thing,$pickUpOnTheSpot, $address){
         
@@ -86,6 +91,7 @@ class Order extends Model
         $nofityCompany =  [];
         $orderUser['company_id'] = $auxOrder->attributes->company_id;
         $orderUser['user_id'] = Auth::user()->id;
+        $orderUser['day'] = date('Y-m-d');
         $orderUser['address_id'] = $address_id;
         $orderUser['payment_method'] = $payment;
         $orderUser['delivery_price'] = $deliveryPrice;
@@ -158,7 +164,7 @@ class Order extends Model
     public function getDataGraphSalesStatus($start, $interval,$end){
        
         $orders = Order::where('company_id', auth()->user()->company_id)
-        ->whereBetween('orders.created_at', [$start, $end])
+        ->whereBetween('orders.day', [$start, $end])
         ->select('orders.status',DB::raw('count(*) as total'))
         ->groupBy('orders.status')
         ->get();
