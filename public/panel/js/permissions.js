@@ -14,13 +14,10 @@ const Permissions = {
         $('#hasModules').on('change', function(e) {
             e.stopImmediatePropagation()
             e.preventDefault();
-           
-            if ($(this).prop('checked')) {
+            if (this.value == 1) {
                 $('.section-module').fadeIn();
-                $(this).attr('value', '1')
             } else {
                 $('.section-module').fadeOut();
-                $(this).attr('value', '0')
             }
         })
         $('.form-create-permission').on('submit', function(e){

@@ -7,10 +7,20 @@
                 <small id="emailHelp" class="form-text text-muted">Ex: showBtnCreateProfile</small>
                 
             </div>
-            <div class="form-group">
-                <label for="title">Descrição</label>
-                <input type="text" name="label" class="form-control" id="title" value="{{$permission->label}}">
-                <small id="emailHelp" class="form-text text-muted">Ex:Exibir Botão Para Criar novo Perfil</small>
+            <div class="form-row">
+              <div class="form-group col">
+                  <label for="title">Descrição</label>
+                  <input type="text" name="label" class="form-control" id="title">
+                  <small id="emailHelp" class="form-text text-muted">Ex:Exibir Botão Para Criar novo Perfil</small>
+              </div>
+              <div class="form-group col-3">
+                <label for="category">È um módulo?</label>
+                <select id="hasModules" class="form-control" name="hasModules">
+                    <option value=""></option>
+                    <option value="1" @if($permission->hasModules == 1) selected @endif>Sim</option>
+                    <option value="0" @if($permission->hasModules == 0) selected @endif>Não</option>
+                </select>
+              </div>
             </div>
             <div class="form-row section-module" @if(!$permission->hasModules) style="display: none" @endif>
                 <div class="form-group col-md-4">
@@ -28,10 +38,6 @@
                   <input type="text" name="icon_class"class="form-control" value="{{$permission->icon_class}}">
                   <small id="emailHelp" class="form-text text-muted">Ex: fa fa-arrow-up-square</small>
                 </div>
-            </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="hasModules" @if($permission->hasModules) checked @endif value="0">
-              <label class="form-check-label" name="hasModules" for="hasModules">É um módulo?</label>
             </div>
             <input type="hidden" name="permission_id" value="{{$permission->id}}">
             <button type="submit" class="btn btn-primary">Editar</button>
