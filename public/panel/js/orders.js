@@ -189,29 +189,26 @@ const Orders = {
             params: {start,end}
         })
         .then((response) =>{
-            //console.log(response.data.original);
-            KoolChart.create("chart-sales", "chartSales", "", "100%", "100%");
-
-            var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
-            +'<Options>'
-            +'<Caption text="Resmo por status"/>'
-            +'<Legend useVisibleCheck="true"/>'
-            +'</Options>'
-            +'<Pie3DChart showDataTips="true"  depth="50" paddingLeft="100" paddingTop="50" paddingRight="100" paddingBottom="50">'
-            +'<series>'
-            +'<Pie3DSeries nameField="name" field="total" labelPosition="inside" color="#ffffff" >'
-            +'<showDataEffect>'
-            +'<SeriesInterpolate duration="1000"/>'
-            +'</showDataEffect>'
-            +'</Pie3DSeries>'
-            +'</series>'
-            +'</Pie3DChart>'
-            +'</KoolChart>';
-
-
-            KoolChart.calls("chart-sales", {
-                "setLayout": layoutStr,
-                "setData": response.data.original
+           
+            const labelsAux = [];
+            const total =  []
+            for (var i in response.data.original) {  
+                labelsAux.push(response.data.original[i].name)
+                total .push(response.data.original[i].total)
+            }
+            const data = {
+                labels: labelsAux,
+                datasets: [
+                  {
+                    label: [],
+                    data: total,
+                  },
+                ]
+            };
+            const ctx = document.getElementById('chartSales');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: data
             });
         })
         .catch((error) =>{

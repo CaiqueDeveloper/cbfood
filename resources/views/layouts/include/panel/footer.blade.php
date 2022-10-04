@@ -59,9 +59,10 @@
     <script src="{{url('panel/js/ultils.js')}}"></script>
     
     
-    <script src="{{url('koolChartJs/KoolChart/JS/KoolChart.js')}}"></script>
-    <script src="{{url('koolChartJs/LicenseKey/KoolChartLicense.js')}}"></script>
+    {{-- <script src="{{url('koolChartJs/KoolChart/JS/KoolChart.js')}}"></script> --}}
+    {{-- <script src="{{url('koolChartJs/LicenseKey/KoolChartLicense.js')}}"></script> --}}
     <script src="{{url('jQueryMask/jquery.mask.js')}}"></script>
+    
     
     <script src="{{url('theme-sdb-admin-2/vendor/sweetalert2/sweetalert.all.js')}}" type="text/javascript"></script>
     <script src="{{url('theme-sdb-admin-2/vendor/mommentJS/momment.js')}}" type="text/javascript"></script>
@@ -69,8 +70,10 @@
     <script src="{{url('theme-sdb-admin-2/vendor/axiosJS/axios.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.13.4/jquery.mask.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{url('chartColors/chartjs-plugin-colorschemes.js')}}"></script>
     {{-- <script src="{{asset('js/bootstrap.js')}}" defer></script> --}}
    
     

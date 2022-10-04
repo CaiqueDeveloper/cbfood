@@ -94,7 +94,11 @@
 <div class="card mb-4">
     <div class="card-header">Gráfico de Vendas Diárias</div>
     <div class="card-body">
-        <div id="chartSalesMonth" style="height:500px; width:100%;"></div>
+        {{-- <div id="chartSalesMonth" style="height:500px; width:100%;"></div> --}}
+        <div id="content-graph">
+            <canvas id = "chartSalesMonth" style = "height: 400px;"></canvas>
+        </div>
+        
     </div>
     <div class="row m-4 text-center">
         <div class="col">
@@ -103,12 +107,15 @@
     </div>
     <div class="col-12 table-responsive">
         <table class="table table-bordered table-info table-sales-day"></table>
+        
     </div>
 </div>
 <div class="card mb-4">
     <div class="card-header">Gráfico de Vendas Por Categorias</div>
     <div class="card-body">
-        <div id="chartSalesCategories" style="height:500px; width:100%;"></div>
+        <div id="content-graph">
+            <canvas id = "chartSalesCategories" style = "height: 400px;"></canvas>
+        </div>
     </div>
     <div class="row m-4 text-center">
         <div class="col">

@@ -40,7 +40,7 @@
     <div class="card-header">Analise Grafica</div>
     <div class="card-body">
         <div class="row  mt-2 mb-3 align-items-center justify-content-center">
-            <div id="chartSales" style="height:500px; width:100%;"></div>
+            <canvas id = "chartSales" style = "height: 400px;"></canvas>
         </div>
     </div>
 </div>

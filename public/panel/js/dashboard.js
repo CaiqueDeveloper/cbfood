@@ -71,62 +71,77 @@ const Dashboard = {
             params: {start,end}
         })
         .then((response) =>{
-           // Use a string variable for Layout.
-           KoolChart.create("chart-sales", "chartSalesMonth", "", "100%", "100%");
-            var layoutCharSalesMonth =
-            '<KoolChart  backgroundColor="#ffffff" borderStyle="none">'+
-            '<CurrencyFormatter id="fmt" currencySymbol="R$ " alignSymbol="left" precision="2" decimalSeparatorTo= "," thousandsSeparatorTo = "."/>' 
-            +'<Options>'
-               +'<Caption text="Gráfico de Faturamento Mensal"/>'
-               +'<SubCaption text="Mês Atual X Mês Anteriror" textAlign="center" />'
-                +'<Legend useVisibleCheck="true" formatter="{fmt}"/>'
-            +'</Options>'+
-            '<NumberFormatter id="numFmt"  useThousandsSeparator="true" precision="2"/>' 
-          +'<Line2DChart showDataTips="true" dataTipDisplayMode="axis" paddingTop="0" dataTipFormatter="{fmt}">'
-              +'<horizontalAxis>'
-                    +'<CategoryAxis categoryField="day" padding=""/>'
-                 +'</horizontalAxis>'
-               +'<verticalAxis>'
-                +'<LinearAxis formatter="{fmt}" title="Indicador De Receita"/>'
-                 +'</verticalAxis>'
-                 +'<series>'
-                     +'<Line2DSeries labelPosition="up" yField="sales" fill="#ffffff" radius="5" displayName="Realizado" showValueLabels="[5]" itemRenderer="CircleItemRenderer">'
-                        +'<showDataEffect>'
-                            +'<SeriesInterpolate/>'
-                        +'</showDataEffect>'
-                   +'</Line2DSeries>'
-                     +'<Line2DSeries yField="cancel_sales" fill="#ffffff" radius="6" displayName="Cancelamentos" itemRenderer="CircleItemRenderer">'
-                      +'<showDataEffect>'
-                            +'<SeriesInterpolate/>'
-                        +'</showDataEffect>'
-                   +'</Line2DSeries>'
-                     +'<Line2DSeries yField="last_sales" fill="#ffffff" radius="6" displayName="Realizo Mês Anterior" itemRenderer="CircleItemRenderer">'
-                      +'<showDataEffect>'
-                            +'<SeriesInterpolate/>'
-                        +'</showDataEffect>'
-                   +'</Line2DSeries>'
-                     +'<Line2DSeries yField="last_canceled_sales" fill="#ffffff" radius="6" displayName="Cancelamento Mês anterior" itemRenderer="CircleItemRenderer">'
-                      +'<showDataEffect>'
-                            +'<SeriesInterpolate/>'
-                        +'</showDataEffect>'
-                   +'</Line2DSeries>'
-                 +'</series>'
-               +'<annotationElements>'
-                    +'<CrossRangeZoomer zoomType="horizontal" fontSize="11" color="#FFFFFF" verticalLabelPlacement="bottom" horizontalLabelPlacement="left" enableZooming="false" enableCrossHair="true">'
-                     +'</CrossRangeZoomer>'
-                 +'</annotationElements>'
-                +'</Line2DChart>'
-             +'</KoolChart>';
-            var data_sales_chart = [];
+           
+            const labelsAux = [];
+            const actualSales =  []
+            const actualCancel =  []
+            const lastSales =  []
+            const lastCancel =  []
             for (var i in response.data.original) {  
-                data_sales_chart.push({ "day": response.data.original[i].day, "sales": response.data.original[i].sales, "last_sales": response.data.original[i].last_sales, 'last_canceled_sales':response.data.original[i].last_canceled_sales, 'cancel_sales': response.data.original[i].cancel_sales});
+                labelsAux.push(response.data.original[i].day)
+                actualSales .push(response.data.original[i].sales)
+                lastSales .push(response.data.original[i].last_sales)
+                actualCancel .push(response.data.original[i].cancel_sales)
+                lastCancel .push(response.data.original[i].last_canceled_sales)
             }
+            const data = {
+                labels: labelsAux,
+                datasets: [
+                  {
+                    label: 'Vendas Mes Atual',
+                    data: actualSales ,
+                  },
+                  {
+                    label: 'Cancelamentos do Mes Atual',
+                    data: actualCancel ,
+                  },{
+                    label: 'Vendas Mes Anterior',
+                    data:  lastSales,
+                  },{
+                    label: 'Cancelamentos do Mes Anterior',
+                    data: lastCancel ,
+                  }
+                ]
+            };
+            const ctx = document.getElementById('chartSalesMonth');
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: data,
+                options: {
+                  responsive: true,
+                  interaction: {
+                    mode: 'index',
+                    intersect: false,
+                  },
+                  stacked: false,
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: 'Chart.js Line Chart - Multi Axis'
+                    },
+
+                        
+                  },
+                  scales: {
+                    y: {
+                      type: 'linear',
+                      display: true,
+                      position: 'left',
+                    },
+                    y1: {
+                      type: 'linear',
+                      display: true,
+                      position: 'right',
+              
+                      // grid line settings
+                      grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                      },
+                    },
+                  }
+                },
+              });
             
-            
-            KoolChart.calls("chart-sales", {
-                "setLayout" : layoutCharSalesMonth,
-                "setData" : data_sales_chart
-            });
         })
         .catch((error) =>{
           console.log(error.response.data)
@@ -141,30 +156,26 @@ const Dashboard = {
             params: {start,end}
         })
         .then((response) =>{
-            //console.log(response.data.original);
-            KoolChart.create("chart-sales-catories", "chartSalesCategories", "", "100%", "100%");
-
-            var layoutStr = '<KoolChart backgroundColor="#FFFFFF" borderStyle="none">'
-            +'<Options>'
-            +'<Caption text="Vendas Por Categorias"/>'
-            +'<Legend useVisibleCheck="true"/>'
-            +'</Options>'
-            +'<Pie3DChart showDataTips="true"  depth="50" paddingLeft="100" paddingTop="50" paddingRight="100" paddingBottom="50">'
-            +'<series>'
-            +'<Pie3DSeries nameField="name" field="total" labelPosition="inside" color="#ffffff" >'
-            +'<showDataEffect>'
-            +'<SeriesInterpolate duration="1000"/>'
-            +'</showDataEffect>'
-            +'</Pie3DSeries>'
-            +'</series>'
-            +'</Pie3DChart>'
-            +'</KoolChart>';
-
-
-            KoolChart.calls("chart-sales-catories", {
-                "setLayout": layoutStr,
-                "setData": response.data.original
-            });
+            const labelsAux = [];
+            const total =  []
+            for (var i in response.data.original) {  
+                labelsAux.push(response.data.original[i].name)
+                total .push(response.data.original[i].total)
+            }
+            const data = {
+                labels: labelsAux,
+                datasets: [
+                  {
+                    label: [],
+                    data: total,
+                  },
+                ]
+            };
+            const ctx = document.getElementById('chartSalesCategories');
+            const myChart = new Chart(ctx, {
+                type: 'pie',
+                data: data
+              });
         })
         .catch((error) =>{
           console.log(error.response.data)
